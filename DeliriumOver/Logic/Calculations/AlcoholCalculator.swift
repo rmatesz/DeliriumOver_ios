@@ -10,7 +10,7 @@ import Foundation
 
 private let FEMALE_AVERAGE_WEIGHT = 69.0
 private let MALE_AVERAGE_WEIGHT = 83.0
-private let ALCOHOL_DENSITY = 83.0
+private let ALCOHOL_DENSITY = 0.789 // g/cm3
 private let GENDER_COEFFICIENT_MALE = 0.7
 private let GENDER_COEFFICIENT_FEMALE = 0.6
 private let ALCOHOL_ABSORPTION_TIME: Double = Double(30 * ONE_MINUTE_IN_MILLIS)

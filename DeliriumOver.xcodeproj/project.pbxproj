@@ -24,6 +24,8 @@
 		429893B42202233700460356 /* DrinkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893B32202233700460356 /* DrinkType.swift */; };
 		429893B62202265200460356 /* DateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893B52202265200460356 /* DateProvider.swift */; };
 		429893B82202279700460356 /* SystemDateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893B72202279700460356 /* SystemDateProvider.swift */; };
+		429893BC220313CF00460356 /* AlcoholCalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893BB220313CF00460356 /* AlcoholCalculatorTest.swift */; };
+		429893BF22031C0400460356 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893BE22031C0400460356 /* DoubleExtension.swift */; };
 		42E44DDD2201C1F500F367CB /* Sex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E44DDC2201C1F500F367CB /* Sex.swift */; };
 		42E44DDF2201C23000F367CB /* Consumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E44DDE2201C23000F367CB /* Consumption.swift */; };
 		42E44DE12201C38500F367CB /* DrinkUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E44DE02201C38500F367CB /* DrinkUnit.swift */; };
@@ -70,6 +72,8 @@
 		429893B32202233700460356 /* DrinkType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkType.swift; sourceTree = "<group>"; };
 		429893B52202265200460356 /* DateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateProvider.swift; sourceTree = "<group>"; };
 		429893B72202279700460356 /* SystemDateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemDateProvider.swift; sourceTree = "<group>"; };
+		429893BB220313CF00460356 /* AlcoholCalculatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholCalculatorTest.swift; sourceTree = "<group>"; };
+		429893BE22031C0400460356 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		42E44DDC2201C1F500F367CB /* Sex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sex.swift; sourceTree = "<group>"; };
 		42E44DDE2201C23000F367CB /* Consumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consumption.swift; sourceTree = "<group>"; };
 		42E44DE02201C38500F367CB /* DrinkUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkUnit.swift; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 		422C68DA22010E9800F7702A /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				429893BD22031BC100460356 /* Number */,
 				422C68DB22010EA000F7702A /* Date */,
 			);
 			path = Util;
@@ -178,6 +183,7 @@
 		4246D74A2200583E0066BC01 /* DeliriumOverTests */ = {
 			isa = PBXGroup;
 			children = (
+				429893B92203138900460356 /* Logic */,
 				4246D74B2200583E0066BC01 /* DeliriumOverTests.swift */,
 				4246D74D2200583E0066BC01 /* Info.plist */,
 			);
@@ -298,6 +304,30 @@
 			children = (
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		429893B92203138900460356 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				429893BA2203139400460356 /* Calculations */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
+		429893BA2203139400460356 /* Calculations */ = {
+			isa = PBXGroup;
+			children = (
+				429893BB220313CF00460356 /* AlcoholCalculatorTest.swift */,
+			);
+			path = Calculations;
+			sourceTree = "<group>";
+		};
+		429893BD22031BC100460356 /* Number */ = {
+			isa = PBXGroup;
+			children = (
+				429893BE22031C0400460356 /* DoubleExtension.swift */,
+			);
+			path = Number;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -442,6 +472,7 @@
 				422C68E52201117E00F7702A /* Session.swift in Sources */,
 				422C68D922010DC900F7702A /* AlcoholCalculator.swift in Sources */,
 				4246D7372200583D0066BC01 /* ReportsOverviewViewController.swift in Sources */,
+				429893BF22031C0400460356 /* DoubleExtension.swift in Sources */,
 				429893B42202233700460356 /* DrinkType.swift in Sources */,
 				429893B82202279700460356 /* SystemDateProvider.swift in Sources */,
 				42E44DE12201C38500F367CB /* DrinkUnit.swift in Sources */,
@@ -456,6 +487,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				429893BC220313CF00460356 /* AlcoholCalculatorTest.swift in Sources */,
 				4246D74C2200583E0066BC01 /* DeliriumOverTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -679,6 +711,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hu.rmatesz.DeliriumOverUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = DeliriumOver;
@@ -694,6 +727,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hu.rmatesz.DeliriumOverUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = DeliriumOver;
