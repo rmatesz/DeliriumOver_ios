@@ -1,0 +1,745 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		422C68D922010DC900F7702A /* AlcoholCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C68D822010DC800F7702A /* AlcoholCalculator.swift */; };
+		422C68DE22010EBA00F7702A /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C68DD22010EBA00F7702A /* DateExtensions.swift */; };
+		422C68E022010F0300F7702A /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C68DF22010F0300F7702A /* Record.swift */; };
+		422C68E2220110E600F7702A /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C68E1220110E600F7702A /* Statistic.swift */; };
+		422C68E52201117E00F7702A /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C68E42201117E00F7702A /* Session.swift */; };
+		4246D7352200583D0066BC01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246D7342200583D0066BC01 /* AppDelegate.swift */; };
+		4246D7372200583D0066BC01 /* ReportsOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246D7362200583D0066BC01 /* ReportsOverviewViewController.swift */; };
+		4246D7392200583D0066BC01 /* ConsumptionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246D7382200583D0066BC01 /* ConsumptionListViewController.swift */; };
+		4246D73C2200583D0066BC01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4246D73A2200583D0066BC01 /* Main.storyboard */; };
+		4246D73E2200583D0066BC01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4246D73D2200583D0066BC01 /* Assets.xcassets */; };
+		4246D7412200583D0066BC01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4246D73F2200583D0066BC01 /* LaunchScreen.storyboard */; };
+		4246D74C2200583E0066BC01 /* DeliriumOverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246D74B2200583E0066BC01 /* DeliriumOverTests.swift */; };
+		4246D7572200583E0066BC01 /* DeliriumOverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246D7562200583E0066BC01 /* DeliriumOverUITests.swift */; };
+		429893B2220222C900460356 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893B1220222C900460356 /* Drink.swift */; };
+		429893B42202233700460356 /* DrinkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893B32202233700460356 /* DrinkType.swift */; };
+		429893B62202265200460356 /* DateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893B52202265200460356 /* DateProvider.swift */; };
+		429893B82202279700460356 /* SystemDateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893B72202279700460356 /* SystemDateProvider.swift */; };
+		42E44DDD2201C1F500F367CB /* Sex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E44DDC2201C1F500F367CB /* Sex.swift */; };
+		42E44DDF2201C23000F367CB /* Consumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E44DDE2201C23000F367CB /* Consumption.swift */; };
+		42E44DE12201C38500F367CB /* DrinkUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E44DE02201C38500F367CB /* DrinkUnit.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4246D7482200583E0066BC01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4246D7292200583D0066BC01 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4246D7302200583D0066BC01;
+			remoteInfo = DeliriumOver;
+		};
+		4246D7532200583E0066BC01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4246D7292200583D0066BC01 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4246D7302200583D0066BC01;
+			remoteInfo = DeliriumOver;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		422C68D822010DC800F7702A /* AlcoholCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholCalculator.swift; sourceTree = "<group>"; };
+		422C68DD22010EBA00F7702A /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		422C68DF22010F0300F7702A /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		422C68E1220110E600F7702A /* Statistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistic.swift; sourceTree = "<group>"; };
+		422C68E42201117E00F7702A /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		4246D7312200583D0066BC01 /* DeliriumOver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeliriumOver.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4246D7342200583D0066BC01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4246D7362200583D0066BC01 /* ReportsOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsOverviewViewController.swift; sourceTree = "<group>"; };
+		4246D7382200583D0066BC01 /* ConsumptionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListViewController.swift; sourceTree = "<group>"; };
+		4246D73B2200583D0066BC01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4246D73D2200583D0066BC01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4246D7402200583D0066BC01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4246D7422200583D0066BC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4246D7472200583E0066BC01 /* DeliriumOverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeliriumOverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4246D74B2200583E0066BC01 /* DeliriumOverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliriumOverTests.swift; sourceTree = "<group>"; };
+		4246D74D2200583E0066BC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4246D7522200583E0066BC01 /* DeliriumOverUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeliriumOverUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4246D7562200583E0066BC01 /* DeliriumOverUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliriumOverUITests.swift; sourceTree = "<group>"; };
+		4246D7582200583E0066BC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		429893B1220222C900460356 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
+		429893B32202233700460356 /* DrinkType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkType.swift; sourceTree = "<group>"; };
+		429893B52202265200460356 /* DateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateProvider.swift; sourceTree = "<group>"; };
+		429893B72202279700460356 /* SystemDateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemDateProvider.swift; sourceTree = "<group>"; };
+		42E44DDC2201C1F500F367CB /* Sex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sex.swift; sourceTree = "<group>"; };
+		42E44DDE2201C23000F367CB /* Consumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consumption.swift; sourceTree = "<group>"; };
+		42E44DE02201C38500F367CB /* DrinkUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkUnit.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4246D72E2200583D0066BC01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4246D7442200583E0066BC01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4246D74F2200583E0066BC01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		422C68D722010DA300F7702A /* Calculations */ = {
+			isa = PBXGroup;
+			children = (
+				422C68D822010DC800F7702A /* AlcoholCalculator.swift */,
+				422C68DF22010F0300F7702A /* Record.swift */,
+				422C68E1220110E600F7702A /* Statistic.swift */,
+			);
+			path = Calculations;
+			sourceTree = "<group>";
+		};
+		422C68DA22010E9800F7702A /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				422C68DB22010EA000F7702A /* Date */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		422C68DB22010EA000F7702A /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				422C68DD22010EBA00F7702A /* DateExtensions.swift */,
+				429893B52202265200460356 /* DateProvider.swift */,
+				429893B72202279700460356 /* SystemDateProvider.swift */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
+		422C68E32201116100F7702A /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				422C68E42201117E00F7702A /* Session.swift */,
+				42E44DDC2201C1F500F367CB /* Sex.swift */,
+				42E44DDE2201C23000F367CB /* Consumption.swift */,
+				42E44DE02201C38500F367CB /* DrinkUnit.swift */,
+				429893B1220222C900460356 /* Drink.swift */,
+				429893B32202233700460356 /* DrinkType.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		4246D7282200583D0066BC01 = {
+			isa = PBXGroup;
+			children = (
+				4246D7332200583D0066BC01 /* DeliriumOver */,
+				4246D74A2200583E0066BC01 /* DeliriumOverTests */,
+				4246D7552200583E0066BC01 /* DeliriumOverUITests */,
+				4246D7322200583D0066BC01 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4246D7322200583D0066BC01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4246D7312200583D0066BC01 /* DeliriumOver.app */,
+				4246D7472200583E0066BC01 /* DeliriumOverTests.xctest */,
+				4246D7522200583E0066BC01 /* DeliriumOverUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4246D7332200583D0066BC01 /* DeliriumOver */ = {
+			isa = PBXGroup;
+			children = (
+				422C68DA22010E9800F7702A /* Util */,
+				4246D765220059060066BC01 /* Presentation */,
+				4246D764220058F80066BC01 /* Logic */,
+				4246D73A2200583D0066BC01 /* Main.storyboard */,
+				4246D73D2200583D0066BC01 /* Assets.xcassets */,
+				4246D73F2200583D0066BC01 /* LaunchScreen.storyboard */,
+				4246D7422200583D0066BC01 /* Info.plist */,
+			);
+			path = DeliriumOver;
+			sourceTree = "<group>";
+		};
+		4246D74A2200583E0066BC01 /* DeliriumOverTests */ = {
+			isa = PBXGroup;
+			children = (
+				4246D74B2200583E0066BC01 /* DeliriumOverTests.swift */,
+				4246D74D2200583E0066BC01 /* Info.plist */,
+			);
+			path = DeliriumOverTests;
+			sourceTree = "<group>";
+		};
+		4246D7552200583E0066BC01 /* DeliriumOverUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4246D7562200583E0066BC01 /* DeliriumOverUITests.swift */,
+				4246D7582200583E0066BC01 /* Info.plist */,
+			);
+			path = DeliriumOverUITests;
+			sourceTree = "<group>";
+		};
+		4246D764220058F80066BC01 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				422C68E32201116100F7702A /* Entity */,
+				422C68D722010DA300F7702A /* Calculations */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
+		4246D765220059060066BC01 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				4246D76E220060CB0066BC01 /* Application */,
+				4246D76B220060A10066BC01 /* Sessions */,
+				4246D76A2200609A0066BC01 /* Consumptions */,
+				4246D766220059110066BC01 /* Reports */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		4246D766220059110066BC01 /* Reports */ = {
+			isa = PBXGroup;
+			children = (
+				4246D767220059530066BC01 /* Overview */,
+			);
+			path = Reports;
+			sourceTree = "<group>";
+		};
+		4246D767220059530066BC01 /* Overview */ = {
+			isa = PBXGroup;
+			children = (
+				4246D769220059850066BC01 /* Interceptor */,
+				4246D7682200597F0066BC01 /* Router */,
+			);
+			path = Overview;
+			sourceTree = "<group>";
+		};
+		4246D7682200597F0066BC01 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				4246D7362200583D0066BC01 /* ReportsOverviewViewController.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		4246D769220059850066BC01 /* Interceptor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interceptor;
+			sourceTree = "<group>";
+		};
+		4246D76A2200609A0066BC01 /* Consumptions */ = {
+			isa = PBXGroup;
+			children = (
+				4246D76C220060B00066BC01 /* List */,
+			);
+			path = Consumptions;
+			sourceTree = "<group>";
+		};
+		4246D76B220060A10066BC01 /* Sessions */ = {
+			isa = PBXGroup;
+			children = (
+				4246D770220061010066BC01 /* List */,
+			);
+			path = Sessions;
+			sourceTree = "<group>";
+		};
+		4246D76C220060B00066BC01 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				4246D76D220060B50066BC01 /* Router */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		4246D76D220060B50066BC01 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				4246D7382200583D0066BC01 /* ConsumptionListViewController.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		4246D76E220060CB0066BC01 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				4246D7342200583D0066BC01 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		4246D770220061010066BC01 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				4246D771220061070066BC01 /* Router */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		4246D771220061070066BC01 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4246D7302200583D0066BC01 /* DeliriumOver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4246D75B2200583E0066BC01 /* Build configuration list for PBXNativeTarget "DeliriumOver" */;
+			buildPhases = (
+				4246D72D2200583D0066BC01 /* Sources */,
+				4246D72E2200583D0066BC01 /* Frameworks */,
+				4246D72F2200583D0066BC01 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DeliriumOver;
+			productName = DeliriumOver;
+			productReference = 4246D7312200583D0066BC01 /* DeliriumOver.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4246D7462200583E0066BC01 /* DeliriumOverTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4246D75E2200583E0066BC01 /* Build configuration list for PBXNativeTarget "DeliriumOverTests" */;
+			buildPhases = (
+				4246D7432200583E0066BC01 /* Sources */,
+				4246D7442200583E0066BC01 /* Frameworks */,
+				4246D7452200583E0066BC01 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4246D7492200583E0066BC01 /* PBXTargetDependency */,
+			);
+			name = DeliriumOverTests;
+			productName = DeliriumOverTests;
+			productReference = 4246D7472200583E0066BC01 /* DeliriumOverTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4246D7512200583E0066BC01 /* DeliriumOverUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4246D7612200583E0066BC01 /* Build configuration list for PBXNativeTarget "DeliriumOverUITests" */;
+			buildPhases = (
+				4246D74E2200583E0066BC01 /* Sources */,
+				4246D74F2200583E0066BC01 /* Frameworks */,
+				4246D7502200583E0066BC01 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4246D7542200583E0066BC01 /* PBXTargetDependency */,
+			);
+			name = DeliriumOverUITests;
+			productName = DeliriumOverUITests;
+			productReference = 4246D7522200583E0066BC01 /* DeliriumOverUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4246D7292200583D0066BC01 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = rmatesz;
+				TargetAttributes = {
+					4246D7302200583D0066BC01 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					4246D7462200583E0066BC01 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4246D7302200583D0066BC01;
+					};
+					4246D7512200583E0066BC01 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4246D7302200583D0066BC01;
+					};
+				};
+			};
+			buildConfigurationList = 4246D72C2200583D0066BC01 /* Build configuration list for PBXProject "DeliriumOver" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4246D7282200583D0066BC01;
+			productRefGroup = 4246D7322200583D0066BC01 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4246D7302200583D0066BC01 /* DeliriumOver */,
+				4246D7462200583E0066BC01 /* DeliriumOverTests */,
+				4246D7512200583E0066BC01 /* DeliriumOverUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4246D72F2200583D0066BC01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4246D7412200583D0066BC01 /* LaunchScreen.storyboard in Resources */,
+				4246D73E2200583D0066BC01 /* Assets.xcassets in Resources */,
+				4246D73C2200583D0066BC01 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4246D7452200583E0066BC01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4246D7502200583E0066BC01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4246D72D2200583D0066BC01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				429893B62202265200460356 /* DateProvider.swift in Sources */,
+				4246D7392200583D0066BC01 /* ConsumptionListViewController.swift in Sources */,
+				422C68DE22010EBA00F7702A /* DateExtensions.swift in Sources */,
+				422C68E022010F0300F7702A /* Record.swift in Sources */,
+				4246D7352200583D0066BC01 /* AppDelegate.swift in Sources */,
+				422C68E52201117E00F7702A /* Session.swift in Sources */,
+				422C68D922010DC900F7702A /* AlcoholCalculator.swift in Sources */,
+				4246D7372200583D0066BC01 /* ReportsOverviewViewController.swift in Sources */,
+				429893B42202233700460356 /* DrinkType.swift in Sources */,
+				429893B82202279700460356 /* SystemDateProvider.swift in Sources */,
+				42E44DE12201C38500F367CB /* DrinkUnit.swift in Sources */,
+				42E44DDF2201C23000F367CB /* Consumption.swift in Sources */,
+				422C68E2220110E600F7702A /* Statistic.swift in Sources */,
+				429893B2220222C900460356 /* Drink.swift in Sources */,
+				42E44DDD2201C1F500F367CB /* Sex.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4246D7432200583E0066BC01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4246D74C2200583E0066BC01 /* DeliriumOverTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4246D74E2200583E0066BC01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4246D7572200583E0066BC01 /* DeliriumOverUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4246D7492200583E0066BC01 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4246D7302200583D0066BC01 /* DeliriumOver */;
+			targetProxy = 4246D7482200583E0066BC01 /* PBXContainerItemProxy */;
+		};
+		4246D7542200583E0066BC01 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4246D7302200583D0066BC01 /* DeliriumOver */;
+			targetProxy = 4246D7532200583E0066BC01 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4246D73A2200583D0066BC01 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4246D73B2200583D0066BC01 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4246D73F2200583D0066BC01 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4246D7402200583D0066BC01 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4246D7592200583E0066BC01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4246D75A2200583E0066BC01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4246D75C2200583E0066BC01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DeliriumOver/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hu.rmatesz.DeliriumOver;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4246D75D2200583E0066BC01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DeliriumOver/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hu.rmatesz.DeliriumOver;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4246D75F2200583E0066BC01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DeliriumOverTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hu.rmatesz.DeliriumOverTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeliriumOver.app/DeliriumOver";
+			};
+			name = Debug;
+		};
+		4246D7602200583E0066BC01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DeliriumOverTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hu.rmatesz.DeliriumOverTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeliriumOver.app/DeliriumOver";
+			};
+			name = Release;
+		};
+		4246D7622200583E0066BC01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DeliriumOverUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hu.rmatesz.DeliriumOverUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DeliriumOver;
+			};
+			name = Debug;
+		};
+		4246D7632200583E0066BC01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DeliriumOverUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hu.rmatesz.DeliriumOverUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DeliriumOver;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4246D72C2200583D0066BC01 /* Build configuration list for PBXProject "DeliriumOver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4246D7592200583E0066BC01 /* Debug */,
+				4246D75A2200583E0066BC01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4246D75B2200583E0066BC01 /* Build configuration list for PBXNativeTarget "DeliriumOver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4246D75C2200583E0066BC01 /* Debug */,
+				4246D75D2200583E0066BC01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4246D75E2200583E0066BC01 /* Build configuration list for PBXNativeTarget "DeliriumOverTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4246D75F2200583E0066BC01 /* Debug */,
+				4246D7602200583E0066BC01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4246D7612200583E0066BC01 /* Build configuration list for PBXNativeTarget "DeliriumOverUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4246D7622200583E0066BC01 /* Debug */,
+				4246D7632200583E0066BC01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4246D7292200583D0066BC01 /* Project object */;
+}
