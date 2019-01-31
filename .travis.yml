@@ -1,5 +1,5 @@
 language: swift
 os: osx
 xcode_project: DeliriumOver.xcodeproj # path to your xcodeproj folder
-xcode_scheme: DeliriumOverTests
+xcode_scheme: DeliriumOver
 xcode_destination: platform=iOS Simulator,OS=10.1,name=iPad Pro (9.7-inch)
