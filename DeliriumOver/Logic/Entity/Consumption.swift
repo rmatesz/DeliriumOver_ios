@@ -16,6 +16,22 @@ public class Consumption {
     var alcohol: Double = 0.0
     var date: Date = dateProvider.currentDate
 
+    init(
+        id: Int64 = 0,
+        drink: String = "",
+        quantity: Double = 0.0,
+        unit: DrinkUnit = DrinkUnit.DL,
+        alcohol: Double = 0.0,
+        date: Date = dateProvider.currentDate
+    ) {
+        self.id = id
+        self.drink = drink
+        self.quantity = quantity
+        self.unit = unit
+        self.alcohol = alcohol
+        self.date = date
+    }
+    
     init(drink: Drink) {
         if let drinkName = drink.localization[Locale.current.languageCode!] {
             self.drink = drinkName

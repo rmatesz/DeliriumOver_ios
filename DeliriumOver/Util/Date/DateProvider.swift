@@ -14,6 +14,6 @@ var currentDate: Date {
         return dateProvider.currentDate
     }
 }
-protocol DateProvider {
+public protocol DateProvider {
     var currentDate: Date { get }
 }

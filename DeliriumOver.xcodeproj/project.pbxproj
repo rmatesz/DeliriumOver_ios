@@ -26,6 +26,7 @@
 		429893B82202279700460356 /* SystemDateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893B72202279700460356 /* SystemDateProvider.swift */; };
 		429893BC220313CF00460356 /* AlcoholCalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893BB220313CF00460356 /* AlcoholCalculatorTest.swift */; };
 		429893BF22031C0400460356 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893BE22031C0400460356 /* DoubleExtension.swift */; };
+		42B8D8AF22044F0B0050F0B2 /* TestDateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B8D8AE22044F0B0050F0B2 /* TestDateProvider.swift */; };
 		42E44DDD2201C1F500F367CB /* Sex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E44DDC2201C1F500F367CB /* Sex.swift */; };
 		42E44DDF2201C23000F367CB /* Consumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E44DDE2201C23000F367CB /* Consumption.swift */; };
 		42E44DE12201C38500F367CB /* DrinkUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E44DE02201C38500F367CB /* DrinkUnit.swift */; };
@@ -74,6 +75,7 @@
 		429893B72202279700460356 /* SystemDateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemDateProvider.swift; sourceTree = "<group>"; };
 		429893BB220313CF00460356 /* AlcoholCalculatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholCalculatorTest.swift; sourceTree = "<group>"; };
 		429893BE22031C0400460356 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
+		42B8D8AE22044F0B0050F0B2 /* TestDateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDateProvider.swift; sourceTree = "<group>"; };
 		42E44DDC2201C1F500F367CB /* Sex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sex.swift; sourceTree = "<group>"; };
 		42E44DDE2201C23000F367CB /* Consumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consumption.swift; sourceTree = "<group>"; };
 		42E44DE02201C38500F367CB /* DrinkUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkUnit.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				429893B92203138900460356 /* Logic */,
 				4246D74B2200583E0066BC01 /* DeliriumOverTests.swift */,
 				4246D74D2200583E0066BC01 /* Info.plist */,
+				42B8D8AE22044F0B0050F0B2 /* TestDateProvider.swift */,
 			);
 			path = DeliriumOverTests;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42B8D8AF22044F0B0050F0B2 /* TestDateProvider.swift in Sources */,
 				429893BC220313CF00460356 /* AlcoholCalculatorTest.swift in Sources */,
 				4246D74C2200583E0066BC01 /* DeliriumOverTests.swift in Sources */,
 			);

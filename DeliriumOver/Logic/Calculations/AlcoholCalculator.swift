@@ -13,7 +13,7 @@ private let MALE_AVERAGE_WEIGHT = 83.0
 private let ALCOHOL_DENSITY = 0.789 // g/cm3
 private let GENDER_COEFFICIENT_MALE = 0.7
 private let GENDER_COEFFICIENT_FEMALE = 0.6
-private let ALCOHOL_ABSORPTION_TIME: Double = Double(30 * ONE_MINUTE_IN_MILLIS)
+private let ALCOHOL_ABSORPTION_TIME: Double = Double(30 * 60)
 private let ALCOHOL_ABSORPTION_LOSS = 0.15
 private let ALCOHOL_ELIMINATION_RATE = 0.15 // 
 
@@ -24,7 +24,7 @@ public class AlcoholCalculator {
         }
         
         let lastConsumption =
-            session.consumptions.sorted(by: { (left, right) -> Bool in left.date > right.date
+            session.consumptions.sorted(by: { (left, right) -> Bool in left.date < right.date
             })[session.consumptions.count - 1]
         let consumptions = getRelevantConsumptions(
             session: session,
@@ -38,14 +38,14 @@ public class AlcoholCalculator {
         
         let eliminationRate = min(
             ALCOHOL_ELIMINATION_RATE,
-            alcoholBAC / (Double(endDate.timeIntervalSince(startDate)) / Double(ONE_HOUR_IN_MILLIS))
+            alcoholBAC / (Double(endDate.timeIntervalSince(startDate)) / Double(ONE_HOUR_IN_SECONDS))
         )
         
-        return Date(timeIntervalSince1970: consumptions[0].date.timeIntervalSince1970.advanced(by: ((alcoholBAC / eliminationRate) * Double(ONE_HOUR_IN_MILLIS))))
+        return Date(timeIntervalSince1970: consumptions[0].date.timeIntervalSince1970.advanced(by: ((alcoholBAC / eliminationRate) * Double(ONE_HOUR_IN_SECONDS))))
     }
     
     private func getRelevantConsumptions(session: Session, date: Date) -> [Consumption] {
-        let consumptions = session.consumptions.sorted(by: {(left, right) -> Bool in left.date > right.date})
+        let consumptions = session.consumptions.sorted(by: {(left, right) -> Bool in left.date < right.date})
             .filter { (consumption) -> Bool in
                 date > consumption.date
             }
@@ -71,7 +71,7 @@ public class AlcoholCalculator {
         }
         let alcohol = absorption(consumptions: consumptions, date: date, absorptionLoss: 0.0)
     
-        let elapsedHours = max(0.0, Double(date.timeIntervalSince(consumptions[0].date)) / Double(ONE_HOUR_IN_MILLIS))
+        let elapsedHours = max(0.0, Double(date.timeIntervalSince(consumptions[0].date)) / Double(ONE_HOUR_IN_SECONDS))
     
         return max(
             0.0,
@@ -139,13 +139,13 @@ public class AlcoholCalculator {
             if (timeOfZeroBac > currentTime
                 && session.consumptions.min(by:
                     { (left, right) -> Bool in
-                        left.date > right.date
+                        left.date < right.date
                 })!.date < currentTime) {
                 records.append(generateRecord(session: session, date: currentTime))
             }
         }
         return records.sorted(by: { (left, right) -> Bool in
-            left.time > right.time
+            left.time < right.time
         })
     }
     

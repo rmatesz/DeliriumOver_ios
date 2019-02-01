@@ -21,6 +21,33 @@ public struct Session {
     var deviceId: String = ""
     var shared: Bool = false
     var shareKey: String = ""
+    
+    init(
+        id: Int64 = 0,
+        title: String = "",
+        description: String = "",
+        name: String = "",
+        weight: Double = 0.0,
+        height: Double = 0.0,
+        gender: Sex = Sex.MALE,
+        consumptions: [Consumption] = [],
+        inProgress: Bool = false,
+        deviceId: String = "",
+        shared: Bool = false,
+        shareKey: String = ""
+    ) {
+        self.id = id
+        self.title = title
+        self.description = description
+        self.name = name
+        self.weight = weight
+        self.gender = gender
+        self.consumptions = consumptions
+        self.inProgress = inProgress
+        self.deviceId = deviceId
+        self.shared = shared
+        self.shareKey = shareKey
+    }
 
     func clone() -> Session {
         var session = Session()
