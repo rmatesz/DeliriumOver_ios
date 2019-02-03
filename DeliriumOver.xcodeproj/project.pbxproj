@@ -20,16 +20,24 @@
 		4246D7412200583D0066BC01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4246D73F2200583D0066BC01 /* LaunchScreen.storyboard */; };
 		4246D74C2200583E0066BC01 /* DeliriumOverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246D74B2200583E0066BC01 /* DeliriumOverTests.swift */; };
 		4246D7572200583E0066BC01 /* DeliriumOverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246D7562200583E0066BC01 /* DeliriumOverUITests.swift */; };
+		428875EE220580DD00EED6BB /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 428875ED220580DD00EED6BB /* Podfile */; };
+		428875F22205FB2200EED6BB /* SessionDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428875F12205FB2200EED6BB /* SessionDAO.swift */; };
+		428875F42206005B00EED6BB /* SessionDAOImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428875F32206005B00EED6BB /* SessionDAOImpl.swift */; };
 		429893B2220222C900460356 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893B1220222C900460356 /* Drink.swift */; };
 		429893B42202233700460356 /* DrinkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893B32202233700460356 /* DrinkType.swift */; };
 		429893B62202265200460356 /* DateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893B52202265200460356 /* DateProvider.swift */; };
 		429893B82202279700460356 /* SystemDateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893B72202279700460356 /* SystemDateProvider.swift */; };
 		429893BC220313CF00460356 /* AlcoholCalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893BB220313CF00460356 /* AlcoholCalculatorTest.swift */; };
 		429893BF22031C0400460356 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893BE22031C0400460356 /* DoubleExtension.swift */; };
+		429B93902204DEDA00B663FD /* DeliriumOver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 429B938E2204DEDA00B663FD /* DeliriumOver.xcdatamodeld */; };
+		429B93952204E24600B663FD /* SessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429B93942204E24600B663FD /* SessionRepository.swift */; };
+		429B93972204E28100B663FD /* SessionRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429B93962204E28100B663FD /* SessionRepositoryImpl.swift */; };
 		42B8D8AF22044F0B0050F0B2 /* TestDateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B8D8AE22044F0B0050F0B2 /* TestDateProvider.swift */; };
 		42E44DDD2201C1F500F367CB /* Sex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E44DDC2201C1F500F367CB /* Sex.swift */; };
 		42E44DDF2201C23000F367CB /* Consumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E44DDE2201C23000F367CB /* Consumption.swift */; };
 		42E44DE12201C38500F367CB /* DrinkUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E44DE02201C38500F367CB /* DrinkUnit.swift */; };
+		80239DE305DE6FE952994E34 /* Pods_DeliriumOverTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C99880F8C752445999952D /* Pods_DeliriumOverTests.framework */; };
+		B8B96A0A05D74AAE63584771 /* Pods_DeliriumOver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13B129C7E5EC8374E6B23481 /* Pods_DeliriumOver.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +58,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05EC6AAAB1F2E52B9375A76E /* Pods-DeliriumOver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliriumOver.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeliriumOver/Pods-DeliriumOver.debug.xcconfig"; sourceTree = "<group>"; };
+		13B129C7E5EC8374E6B23481 /* Pods_DeliriumOver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeliriumOver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		38161ADD0FEC4C46AB918CAF /* Pods-DeliriumOverTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliriumOverTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeliriumOverTests/Pods-DeliriumOverTests.debug.xcconfig"; sourceTree = "<group>"; };
 		422C68D822010DC800F7702A /* AlcoholCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholCalculator.swift; sourceTree = "<group>"; };
 		422C68DD22010EBA00F7702A /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		422C68DF22010F0300F7702A /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
@@ -69,16 +80,25 @@
 		4246D7522200583E0066BC01 /* DeliriumOverUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeliriumOverUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4246D7562200583E0066BC01 /* DeliriumOverUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliriumOverUITests.swift; sourceTree = "<group>"; };
 		4246D7582200583E0066BC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		428875ED220580DD00EED6BB /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		428875F12205FB2200EED6BB /* SessionDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDAO.swift; sourceTree = "<group>"; };
+		428875F32206005B00EED6BB /* SessionDAOImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDAOImpl.swift; sourceTree = "<group>"; };
 		429893B1220222C900460356 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		429893B32202233700460356 /* DrinkType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkType.swift; sourceTree = "<group>"; };
 		429893B52202265200460356 /* DateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateProvider.swift; sourceTree = "<group>"; };
 		429893B72202279700460356 /* SystemDateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemDateProvider.swift; sourceTree = "<group>"; };
 		429893BB220313CF00460356 /* AlcoholCalculatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholCalculatorTest.swift; sourceTree = "<group>"; };
 		429893BE22031C0400460356 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
+		429B938F2204DEDA00B663FD /* DeliriumOver.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DeliriumOver.xcdatamodel; sourceTree = "<group>"; };
+		429B93942204E24600B663FD /* SessionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRepository.swift; sourceTree = "<group>"; };
+		429B93962204E28100B663FD /* SessionRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRepositoryImpl.swift; sourceTree = "<group>"; };
 		42B8D8AE22044F0B0050F0B2 /* TestDateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDateProvider.swift; sourceTree = "<group>"; };
 		42E44DDC2201C1F500F367CB /* Sex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sex.swift; sourceTree = "<group>"; };
 		42E44DDE2201C23000F367CB /* Consumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consumption.swift; sourceTree = "<group>"; };
 		42E44DE02201C38500F367CB /* DrinkUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkUnit.swift; sourceTree = "<group>"; };
+		49C99880F8C752445999952D /* Pods_DeliriumOverTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeliriumOverTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		631CE8ED2BFE7C5CF2CF2492 /* Pods-DeliriumOver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliriumOver.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeliriumOver/Pods-DeliriumOver.release.xcconfig"; sourceTree = "<group>"; };
+		6B7B2E3C799FB3B9A883F8B6 /* Pods-DeliriumOverTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliriumOverTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeliriumOverTests/Pods-DeliriumOverTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8B96A0A05D74AAE63584771 /* Pods_DeliriumOver.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80239DE305DE6FE952994E34 /* Pods_DeliriumOverTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +128,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		279AB540D815B3014EC5F9B0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				13B129C7E5EC8374E6B23481 /* Pods_DeliriumOver.framework */,
+				49C99880F8C752445999952D /* Pods_DeliriumOverTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		422C68D722010DA300F7702A /* Calculations */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,10 +182,13 @@
 		4246D7282200583D0066BC01 = {
 			isa = PBXGroup;
 			children = (
+				428875ED220580DD00EED6BB /* Podfile */,
 				4246D7332200583D0066BC01 /* DeliriumOver */,
 				4246D74A2200583E0066BC01 /* DeliriumOverTests */,
 				4246D7552200583E0066BC01 /* DeliriumOverUITests */,
 				4246D7322200583D0066BC01 /* Products */,
+				F228245A082D87936C3B6BE5 /* Pods */,
+				279AB540D815B3014EC5F9B0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -205,6 +239,8 @@
 		4246D764220058F80066BC01 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				429B93922204E22300B663FD /* Repository */,
+				429B93912204E1F400B663FD /* DB */,
 				422C68E32201116100F7702A /* Entity */,
 				422C68D722010DA300F7702A /* Calculations */,
 			);
@@ -309,6 +345,23 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		428875EF2205FB0000EED6BB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				429B938E2204DEDA00B663FD /* DeliriumOver.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		428875F02205FB0D00EED6BB /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				428875F12205FB2200EED6BB /* SessionDAO.swift */,
+				428875F32206005B00EED6BB /* SessionDAOImpl.swift */,
+			);
+			path = DAO;
+			sourceTree = "<group>";
+		};
 		429893B92203138900460356 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,6 +386,36 @@
 			path = Number;
 			sourceTree = "<group>";
 		};
+		429B93912204E1F400B663FD /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				428875F02205FB0D00EED6BB /* DAO */,
+				428875EF2205FB0000EED6BB /* Model */,
+			);
+			name = DB;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		429B93922204E22300B663FD /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				429B93942204E24600B663FD /* SessionRepository.swift */,
+				429B93962204E28100B663FD /* SessionRepositoryImpl.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		F228245A082D87936C3B6BE5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				05EC6AAAB1F2E52B9375A76E /* Pods-DeliriumOver.debug.xcconfig */,
+				631CE8ED2BFE7C5CF2CF2492 /* Pods-DeliriumOver.release.xcconfig */,
+				38161ADD0FEC4C46AB918CAF /* Pods-DeliriumOverTests.debug.xcconfig */,
+				6B7B2E3C799FB3B9A883F8B6 /* Pods-DeliriumOverTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -340,9 +423,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4246D75B2200583E0066BC01 /* Build configuration list for PBXNativeTarget "DeliriumOver" */;
 			buildPhases = (
+				C487B4589E5B6C43001E2D33 /* [CP] Check Pods Manifest.lock */,
 				4246D72D2200583D0066BC01 /* Sources */,
 				4246D72E2200583D0066BC01 /* Frameworks */,
 				4246D72F2200583D0066BC01 /* Resources */,
+				548FBBF4459A07A65B6DF926 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -357,9 +442,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4246D75E2200583E0066BC01 /* Build configuration list for PBXNativeTarget "DeliriumOverTests" */;
 			buildPhases = (
+				297D8D09D06454FBC305C272 /* [CP] Check Pods Manifest.lock */,
 				4246D7432200583E0066BC01 /* Sources */,
 				4246D7442200583E0066BC01 /* Frameworks */,
 				4246D7452200583E0066BC01 /* Resources */,
+				31FEA5453B21E4F943C9A219 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -442,6 +529,7 @@
 			files = (
 				4246D7412200583D0066BC01 /* LaunchScreen.storyboard in Resources */,
 				4246D73E2200583D0066BC01 /* Assets.xcassets in Resources */,
+				428875EE220580DD00EED6BB /* Podfile in Resources */,
 				4246D73C2200583D0066BC01 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,6 +550,89 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		297D8D09D06454FBC305C272 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DeliriumOverTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		31FEA5453B21E4F943C9A219 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DeliriumOverTests/Pods-DeliriumOverTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeliriumOverTests/Pods-DeliriumOverTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		548FBBF4459A07A65B6DF926 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DeliriumOver/Pods-DeliriumOver-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeliriumOver/Pods-DeliriumOver-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C487B4589E5B6C43001E2D33 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DeliriumOver-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4246D72D2200583D0066BC01 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -470,15 +641,20 @@
 				429893B62202265200460356 /* DateProvider.swift in Sources */,
 				4246D7392200583D0066BC01 /* ConsumptionListViewController.swift in Sources */,
 				422C68DE22010EBA00F7702A /* DateExtensions.swift in Sources */,
+				428875F42206005B00EED6BB /* SessionDAOImpl.swift in Sources */,
 				422C68E022010F0300F7702A /* Record.swift in Sources */,
+				429B93952204E24600B663FD /* SessionRepository.swift in Sources */,
 				4246D7352200583D0066BC01 /* AppDelegate.swift in Sources */,
+				429B93902204DEDA00B663FD /* DeliriumOver.xcdatamodeld in Sources */,
 				422C68E52201117E00F7702A /* Session.swift in Sources */,
+				429B93972204E28100B663FD /* SessionRepositoryImpl.swift in Sources */,
 				422C68D922010DC900F7702A /* AlcoholCalculator.swift in Sources */,
 				4246D7372200583D0066BC01 /* ReportsOverviewViewController.swift in Sources */,
 				429893BF22031C0400460356 /* DoubleExtension.swift in Sources */,
 				429893B42202233700460356 /* DrinkType.swift in Sources */,
 				429893B82202279700460356 /* SystemDateProvider.swift in Sources */,
 				42E44DE12201C38500F367CB /* DrinkUnit.swift in Sources */,
+				428875F22205FB2200EED6BB /* SessionDAO.swift in Sources */,
 				42E44DDF2201C23000F367CB /* Consumption.swift in Sources */,
 				422C68E2220110E600F7702A /* Statistic.swift in Sources */,
 				429893B2220222C900460356 /* Drink.swift in Sources */,
@@ -648,6 +824,7 @@
 		};
 		4246D75C2200583E0066BC01 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05EC6AAAB1F2E52B9375A76E /* Pods-DeliriumOver.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -662,6 +839,7 @@
 		};
 		4246D75D2200583E0066BC01 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 631CE8ED2BFE7C5CF2CF2492 /* Pods-DeliriumOver.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -676,6 +854,7 @@
 		};
 		4246D75F2200583E0066BC01 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38161ADD0FEC4C46AB918CAF /* Pods-DeliriumOverTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -692,6 +871,7 @@
 		};
 		4246D7602200583E0066BC01 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B7B2E3C799FB3B9A883F8B6 /* Pods-DeliriumOverTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -778,6 +958,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		429B938E2204DEDA00B663FD /* DeliriumOver.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				429B938F2204DEDA00B663FD /* DeliriumOver.xcdatamodel */,
+			);
+			currentVersion = 429B938F2204DEDA00B663FD /* DeliriumOver.xcdatamodel */;
+			path = DeliriumOver.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4246D7292200583D0066BC01 /* Project object */;
 }

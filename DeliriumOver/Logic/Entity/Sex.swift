@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Sex {
-    case MALE
-    case FEMALE
+enum Sex: Int {
+    case MALE = 0
+    case FEMALE = 1
 }

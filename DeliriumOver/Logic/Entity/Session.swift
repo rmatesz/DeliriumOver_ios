@@ -9,7 +9,7 @@
 import Foundation
 
 public struct Session {
-    var id: Int64 = 0
+    var id: String = ""
     var title: String = ""
     var description: String = ""
     var name: String = ""
@@ -21,9 +21,21 @@ public struct Session {
     var deviceId: String = ""
     var shared: Bool = false
     var shareKey: String = ""
+
+    init(sessionEntity: SessionEntity) {
+        self.id = sessionEntity.objectID.uriRepresentation().absoluteString
+        self.title = sessionEntity.title ?? self.title
+        self.description = sessionEntity.desc ?? self.description
+        self.name = sessionEntity.name ?? self.name
+        self.weight = sessionEntity.weight
+        self.gender = Sex(rawValue: Int(sessionEntity.gender)) ?? self.gender
+        self.consumptions = sessionEntity.consumptions?.allObjects.map({ (any) -> Consumption in
+            Consumption(consumptionEntity: (any as! ConsumptionEntity))
+        }) ?? []
+    }
     
     init(
-        id: Int64 = 0,
+        id: String = "",
         title: String = "",
         description: String = "",
         name: String = "",

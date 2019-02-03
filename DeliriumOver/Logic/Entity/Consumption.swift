@@ -32,6 +32,15 @@ public class Consumption {
         self.date = date
     }
     
+    init(consumptionEntity: ConsumptionEntity) {
+        self.id = consumptionEntity.id
+        self.drink = consumptionEntity.drink ?? self.drink
+        self.quantity = consumptionEntity.quantity
+        self.unit = DrinkUnit(rawValue: Int(consumptionEntity.unit)) ?? self.unit
+        self.alcohol = consumptionEntity.alcohol
+        self.date = consumptionEntity.date ?? self.date
+    }
+    
     init(drink: Drink) {
         if let drinkName = drink.localization[Locale.current.languageCode!] {
             self.drink = drinkName
