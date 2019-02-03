@@ -23,6 +23,13 @@
 		428875EE220580DD00EED6BB /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 428875ED220580DD00EED6BB /* Podfile */; };
 		428875F22205FB2200EED6BB /* SessionDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428875F12205FB2200EED6BB /* SessionDAO.swift */; };
 		428875F42206005B00EED6BB /* SessionDAOImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428875F32206005B00EED6BB /* SessionDAOImpl.swift */; };
+		42895B2222077AAE00386A21 /* ConsumptionDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42895B2122077AAE00386A21 /* ConsumptionDAO.swift */; };
+		42895B2422077BA000386A21 /* ConsumptionDAOImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42895B2322077BA000386A21 /* ConsumptionDAOImpl.swift */; };
+		42895B262207887100386A21 /* ConsumptionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42895B252207887100386A21 /* ConsumptionRepository.swift */; };
+		42895B28220788CE00386A21 /* ConsumptionRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42895B27220788CE00386A21 /* ConsumptionRepositoryImpl.swift */; };
+		42895B2A22078AE600386A21 /* RepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42895B2922078AE600386A21 /* RepositoryError.swift */; };
+		42895B2C22078BD100386A21 /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42895B2B22078BD100386A21 /* DAO.swift */; };
+		42895B2E22078BFF00386A21 /* DAOImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42895B2D22078BFF00386A21 /* DAOImpl.swift */; };
 		429893B2220222C900460356 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893B1220222C900460356 /* Drink.swift */; };
 		429893B42202233700460356 /* DrinkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893B32202233700460356 /* DrinkType.swift */; };
 		429893B62202265200460356 /* DateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893B52202265200460356 /* DateProvider.swift */; };
@@ -83,6 +90,13 @@
 		428875ED220580DD00EED6BB /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		428875F12205FB2200EED6BB /* SessionDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDAO.swift; sourceTree = "<group>"; };
 		428875F32206005B00EED6BB /* SessionDAOImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDAOImpl.swift; sourceTree = "<group>"; };
+		42895B2122077AAE00386A21 /* ConsumptionDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionDAO.swift; sourceTree = "<group>"; };
+		42895B2322077BA000386A21 /* ConsumptionDAOImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionDAOImpl.swift; sourceTree = "<group>"; };
+		42895B252207887100386A21 /* ConsumptionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionRepository.swift; sourceTree = "<group>"; };
+		42895B27220788CE00386A21 /* ConsumptionRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionRepositoryImpl.swift; sourceTree = "<group>"; };
+		42895B2922078AE600386A21 /* RepositoryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryError.swift; sourceTree = "<group>"; };
+		42895B2B22078BD100386A21 /* DAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
+		42895B2D22078BFF00386A21 /* DAOImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOImpl.swift; sourceTree = "<group>"; };
 		429893B1220222C900460356 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		429893B32202233700460356 /* DrinkType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkType.swift; sourceTree = "<group>"; };
 		429893B52202265200460356 /* DateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateProvider.swift; sourceTree = "<group>"; };
@@ -358,6 +372,10 @@
 			children = (
 				428875F12205FB2200EED6BB /* SessionDAO.swift */,
 				428875F32206005B00EED6BB /* SessionDAOImpl.swift */,
+				42895B2122077AAE00386A21 /* ConsumptionDAO.swift */,
+				42895B2322077BA000386A21 /* ConsumptionDAOImpl.swift */,
+				42895B2B22078BD100386A21 /* DAO.swift */,
+				42895B2D22078BFF00386A21 /* DAOImpl.swift */,
 			);
 			path = DAO;
 			sourceTree = "<group>";
@@ -401,6 +419,9 @@
 			children = (
 				429B93942204E24600B663FD /* SessionRepository.swift */,
 				429B93962204E28100B663FD /* SessionRepositoryImpl.swift */,
+				42895B252207887100386A21 /* ConsumptionRepository.swift */,
+				42895B27220788CE00386A21 /* ConsumptionRepositoryImpl.swift */,
+				42895B2922078AE600386A21 /* RepositoryError.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -638,14 +659,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42895B2222077AAE00386A21 /* ConsumptionDAO.swift in Sources */,
+				42895B2422077BA000386A21 /* ConsumptionDAOImpl.swift in Sources */,
 				429893B62202265200460356 /* DateProvider.swift in Sources */,
+				42895B2C22078BD100386A21 /* DAO.swift in Sources */,
 				4246D7392200583D0066BC01 /* ConsumptionListViewController.swift in Sources */,
 				422C68DE22010EBA00F7702A /* DateExtensions.swift in Sources */,
+				42895B262207887100386A21 /* ConsumptionRepository.swift in Sources */,
+				42895B2A22078AE600386A21 /* RepositoryError.swift in Sources */,
 				428875F42206005B00EED6BB /* SessionDAOImpl.swift in Sources */,
 				422C68E022010F0300F7702A /* Record.swift in Sources */,
 				429B93952204E24600B663FD /* SessionRepository.swift in Sources */,
+				42895B28220788CE00386A21 /* ConsumptionRepositoryImpl.swift in Sources */,
 				4246D7352200583D0066BC01 /* AppDelegate.swift in Sources */,
 				429B93902204DEDA00B663FD /* DeliriumOver.xcdatamodeld in Sources */,
+				42895B2E22078BFF00386A21 /* DAOImpl.swift in Sources */,
 				422C68E52201117E00F7702A /* Session.swift in Sources */,
 				429B93972204E28100B663FD /* SessionRepositoryImpl.swift in Sources */,
 				422C68D922010DC900F7702A /* AlcoholCalculator.swift in Sources */,

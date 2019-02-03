@@ -9,7 +9,7 @@
 import Foundation
 
 public class Consumption {
-    var id: Int64 = 0
+    var id: String = ""
     var drink: String = ""
     var quantity: Double = 0.0
     var unit: DrinkUnit = DrinkUnit.DL
@@ -17,7 +17,7 @@ public class Consumption {
     var date: Date = dateProvider.currentDate
 
     init(
-        id: Int64 = 0,
+        id: String = "",
         drink: String = "",
         quantity: Double = 0.0,
         unit: DrinkUnit = DrinkUnit.DL,
@@ -33,7 +33,7 @@ public class Consumption {
     }
     
     init(consumptionEntity: ConsumptionEntity) {
-        self.id = consumptionEntity.id
+        self.id = consumptionEntity.objectID.uriRepresentation().absoluteString
         self.drink = consumptionEntity.drink ?? self.drink
         self.quantity = consumptionEntity.quantity
         self.unit = DrinkUnit(rawValue: Int(consumptionEntity.unit)) ?? self.unit

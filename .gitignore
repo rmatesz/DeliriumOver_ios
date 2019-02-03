@@ -1,2 +1,3 @@
 *.xcexplist
 *.xcuserstate
+Podfile.lock

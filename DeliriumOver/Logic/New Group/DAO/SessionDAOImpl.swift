@@ -10,13 +10,7 @@ import Foundation
 import RxSwift
 import CoreData
 
-class SessionDAOImpl: SessionDAO {
-    private var context: NSManagedObjectContext {
-        get {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            return appDelegate.persistentContainer.viewContext
-        }
-    }
+class SessionDAOImpl: DAOImpl, SessionDAO {
 
     func loadAll() -> Observable<[SessionEntity]> {
         return Observable<[SessionEntity]>.create { (observer) -> Disposable in
@@ -61,7 +55,7 @@ class SessionDAOImpl: SessionDAO {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "SessionEntity")
         request.returnsObjectsAsFaults = false
         
-        let result = try self.context.fetch(request)
+        let result = try super.context.fetch(request)
         return result as! [SessionEntity]
     }
     
@@ -96,8 +90,8 @@ class SessionDAOImpl: SessionDAO {
     }
     
     func deleteSync(_ session: SessionEntity) throws {
-        context.delete(session)
-        try context.save()
+        super.context.delete(session)
+        try super.context.save()
     }
     
     func deleteAll() -> Completable {
@@ -116,24 +110,8 @@ class SessionDAOImpl: SessionDAO {
         })
     }
     
-    func save() -> Completable {
-        return Completable.create(subscribe: { (observer) -> Disposable in
-            do {
-                try self.context.save()
-                observer(CompletableEvent.completed)
-            } catch {
-                observer(CompletableEvent.error(error))
-            }
-            return Disposables.create()
-        })
-    }
-    
-    func saveSync() throws {
-        try context.save()
-    }
-    
     func createEntity() -> SessionEntity {
-        return NSEntityDescription.insertNewObject(forEntityName: "SessionEntity", into: context) as! SessionEntity
+        return NSEntityDescription.insertNewObject(forEntityName: "SessionEntity", into: super.context) as! SessionEntity
         
     }
     

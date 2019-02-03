@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-protocol SessionDAO {
+protocol SessionDAO : DAO {
     func loadAll() -> Observable<[SessionEntity]>
 
     func getAll() -> Maybe<[SessionEntity]>
@@ -23,10 +23,6 @@ protocol SessionDAO {
     func deleteSync(_ session: SessionEntity) throws
 
     func deleteAll() -> Completable
-
-    func save() -> Completable
-
-    func saveSync() throws
     
     func createEntity() -> SessionEntity
 }

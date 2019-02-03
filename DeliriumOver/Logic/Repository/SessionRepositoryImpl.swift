@@ -89,10 +89,5 @@ class SessionRepositoryImpl: SessionRepository {
             }
     }
     
-    class RepositoryError: Error {
-        let message: String
-        init(message: String) {
-            self.message = message
-        }
-    }
+    
 }
