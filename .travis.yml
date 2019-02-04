@@ -1,5 +1,5 @@
 language: swift
 os: osx
-xcode_project: DeliriumOver.xcodeproj # path to your xcodeproj folder
+xcode_project: DeliriumOver.xcworkspace # path to your xcodeproj folder
 xcode_scheme: DeliriumOver
 xcode_destination: platform=iOS Simulator,OS=11.2,name=iPhone 8 Plus
