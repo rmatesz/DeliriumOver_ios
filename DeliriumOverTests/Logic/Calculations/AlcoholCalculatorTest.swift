@@ -261,635 +261,635 @@ class AlcoholCalculatorTest: XCTestCase {
         var records: [Record]
         
         // One Beer
-//        consumptions = [Consumption(
-//                id: 0,
-//                drink: "sör",
-//                quantity: 0.5,
-//                unit: DrinkUnit.L,
-//                alcohol: BEER_ALCOHOL_P,
-//                date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//            )]
-//        session = Session(title: "One beer", weight: 85.0, consumptions: consumptions)
-//        absorptionDate = createDate(2018, 1, 26, 13, 10, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacDuringAbsorption = 0.0634
-//        maximumBacDate = createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacWhenMaximum = 0.1902100840336135
-//        duringEliminationDate =
-//            createDate(2018, 1, 26, 14, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacDuringElimination = 0.11521008403361352
-//        afterEliminationDate =
-//            createDate(2018, 1, 26, 16, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//        zeroBacDate = createDate(2018, 1, 26, 14, 46, 5, timezone: TimeZone(abbreviation: "UTC")!)
-//        records = [
-//            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-//            Record(
-//                time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
-//                bacLevel: 0.1902100840336135
-//            ),
-//            Record(time: zeroBacDate, bacLevel: 0.0)
-//        ]
-//        params.append(
-//            [
-//                session,
-//                absorptionDate,
-//                bacDuringAbsorption,
-//                maximumBacDate,
-//                bacWhenMaximum,
-//                duringEliminationDate,
-//                bacDuringElimination,
-//                afterEliminationDate,
-//                zeroBacDate,
-//                records
-//            ]
-//        )
-//
-//        // One beer - zero weight
-//        consumptions = [
-//            Consumption(
-//                id: 0,
-//                drink: "sör",
-//                quantity: 0.5,
-//                unit: DrinkUnit.L,
-//                alcohol: BEER_ALCOHOL_P,
-//                date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//            )
-//        ]
-//        session =
-//            Session(title: "One beer - zero weight", weight: 0.0, consumptions: consumptions)
-//        absorptionDate = createDate(2018, 1, 26, 13, 10, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacDuringAbsorption = 0.06553356282271947
-//        maximumBacDate = createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacWhenMaximum = 0.19660068846815837
-//        duringEliminationDate =
-//            createDate(2018, 1, 26, 14, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacDuringElimination = 0.12160068846815839
-//        afterEliminationDate =
-//            createDate(2018, 1, 26, 16, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//        zeroBacDate =
-//            createDate(2018, 1, 26, 14, 48, 38, timezone: TimeZone(abbreviation: "UTC")!)
-//        records = [
-//            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-//            Record(
-//                time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
-//                bacLevel: 0.19660068846815837
-//            ),
-//            Record(time: zeroBacDate, bacLevel: 0.0)
-//        ]
-//        params.append(
-//            [
-//                session,
-//                absorptionDate,
-//                bacDuringAbsorption,
-//                maximumBacDate,
-//                bacWhenMaximum,
-//                duringEliminationDate,
-//                bacDuringElimination,
-//                afterEliminationDate,
-//                zeroBacDate,
-//                records
-//            ]
-//        )
-//
-//        consumptions = [
-//            Consumption(
-//                id: 0,
-//                drink: "sör",
-//                quantity: 0.5,
-//                unit: DrinkUnit.L,
-//                alcohol: BEER_ALCOHOL_P,
-//                date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//            )
-//        ]
-//        session = Session(
-//            title: "One beer - zero weight female",
-//            weight: 0.0,
-//            gender: Sex.FEMALE,
-//            consumptions: consumptions
-//        )
-//        absorptionDate = createDate(2018, 1, 26, 13, 10, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacDuringAbsorption = 0.10205314009661837
-//        maximumBacDate = createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacWhenMaximum = 0.3061594202898551
-//        duringEliminationDate =
-//            createDate(2018, 1, 26, 14, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacDuringElimination = 0.23115942028985512
-//        afterEliminationDate =
-//            createDate(2018, 1, 26, 16, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//        zeroBacDate =
-//            createDate(2018, 1, 26, 15, 32, 27, timezone: TimeZone(abbreviation: "UTC")!)
-//        records = [
-//            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-//            Record(
-//                time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
-//                bacLevel: 0.3061594202898551
-//            ),
-//            Record(time: zeroBacDate, bacLevel: 0.0)
-//        ]
-//        params.append(
-//            [
-//                session,
-//                absorptionDate,
-//                bacDuringAbsorption,
-//                maximumBacDate,
-//                bacWhenMaximum,
-//                duringEliminationDate,
-//                bacDuringElimination,
-//                afterEliminationDate,
-//                zeroBacDate,
-//                records
-//            ]
-//        )
-//
-//        // One Beer - Female
-//        consumptions = [
-//            Consumption(
-//                id: 0,
-//                drink: "sör",
-//                quantity: 0.5,
-//                unit: DrinkUnit.L,
-//                alcohol: BEER_ALCOHOL_P,
-//                date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//            )
-//        ]
-//        session = Session(
-//            title: "One beer - Female",
-//            weight: 85.0,
-//            gender: Sex.FEMALE,
-//            consumptions: consumptions
-//        )
-//        absorptionDate = createDate(2018, 1, 26, 13, 10, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacDuringAbsorption = 0.0781
-//        maximumBacDate = createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacWhenMaximum = 0.23441176470588238
-//        duringEliminationDate =
-//            createDate(2018, 1, 26, 14, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacDuringElimination = 0.1594117647058824
-//        afterEliminationDate =
-//            createDate(2018, 1, 26, 15, 30, 46, timezone: TimeZone(abbreviation: "UTC")!)
-//        zeroBacDate = createDate(2018, 1, 26, 15, 3, 46, timezone: TimeZone(abbreviation: "UTC")!)
-//        records = [
-//            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-//            Record(
-//                time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
-//                bacLevel: 0.23441176470588238
-//            ),
-//            Record(time: zeroBacDate, bacLevel: 0.0)
-//        ]
-//        params.append(
-//            [
-//                session,
-//                absorptionDate,
-//                bacDuringAbsorption,
-//                maximumBacDate,
-//                bacWhenMaximum,
-//                duringEliminationDate,
-//                bacDuringElimination,
-//                afterEliminationDate,
-//                zeroBacDate,
-//                records
-//            ]
-//        )
-//
-//        // One sip
-//        consumptions = [
-//            Consumption(
-//                id: 0,
-//                drink: "sör",
-//                quantity: 1.0,
-//                unit: DrinkUnit.DL,
-//                alcohol: 0.02,
-//                date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//            )
-//        ]
-//        session = Session(title: "One sip", weight: 65.0, consumptions: consumptions)
-//        absorptionDate = createDate(2018, 1, 26, 13, 10, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacDuringAbsorption = 0.0
-//        maximumBacDate = createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacWhenMaximum = 0.0
-//        duringEliminationDate =
-//            createDate(2018, 1, 26, 13, 31, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacDuringElimination = 0.0
-//        afterEliminationDate =
-//            createDate(2018, 1, 26, 14, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//        zeroBacDate = createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!)
-//        records = [
-//            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-//            Record(
-//                time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
-//                bacLevel: 0.0
-//            ),
-//            Record(time: zeroBacDate, bacLevel: 0.0)
-//        ]
-//        params.append(
-//            [
-//                session,
-//                absorptionDate,
-//                bacDuringAbsorption,
-//                maximumBacDate,
-//                bacWhenMaximum,
-//                duringEliminationDate,
-//                bacDuringElimination,
-//                afterEliminationDate,
-//                zeroBacDate,
-//                records
-//            ]
-//        )
-//
-//        consumptions = [
-//            Consumption(
-//                id: 0,
-//                drink: "sör",
-//                quantity: 5.0,
-//                unit: DrinkUnit.DL,
-//                alcohol: BEER_ALCOHOL_P,
-//                date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//            ),
-//            Consumption(
-//                id: 0,
-//                drink: "palinka",
-//                quantity: 5.0,
-//                unit: DrinkUnit.CL,
-//                alcohol: PALINKA_ALCOHOL_P,
-//                date: createDate(2018, 1, 26, 13, 10, timezone: TimeZone(abbreviation: "UTC")!)
-//            )
-//        ]
-//        session = Session(
-//            title: "Beer + Palinka in 10 minutes",
-//            weight: 65.0,
-//            consumptions: consumptions
-//        )
-//        absorptionDate = createDate(2018, 1, 26, 13, 20, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacDuringAbsorption = 0.3546153846153846
-//        maximumBacDate = createDate(2018, 1, 26, 13, 40, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacWhenMaximum = 0.7670329670329671
-//        duringEliminationDate =
-//            createDate(2018, 1, 26, 14, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacDuringElimination = 0.717032967032967
-//        afterEliminationDate =
-//            createDate(2018, 1, 26, 19, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//        zeroBacDate =
-//            createDate(2018, 1, 26, 18, 46, 49, timezone: TimeZone(abbreviation: "UTC")!)
-//        records = [
-//            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-//            Record(
-//                time: createDate(2018, 1, 26, 13, 10, timezone: TimeZone(abbreviation: "UTC")!),
-//                bacLevel: 0.09060439560439561
-//            ),
-//            Record(
-//                time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
-//                bacLevel: 0.6186263736263737
-//            ),
-//            Record(
-//                time: createDate(2018, 1, 26, 13, 40, timezone: TimeZone(abbreviation: "UTC")!),
-//                bacLevel: 0.7670329670329671
-//            ),
-//            Record(time: zeroBacDate, bacLevel: 0.0)
-//        ]
-//        params.append(
-//            [
-//                session,
-//                absorptionDate,
-//                bacDuringAbsorption,
-//                maximumBacDate,
-//                bacWhenMaximum,
-//                duringEliminationDate,
-//                bacDuringElimination,
-//                afterEliminationDate,
-//                zeroBacDate,
-//                records
-//            ]
-//        )
-//
-//        consumptions = [
-//            Consumption(
-//                id: 0,
-//                drink: "sör",
-//                quantity: 5.0,
-//                unit: DrinkUnit.DL,
-//                alcohol: BEER_ALCOHOL_P,
-//                date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//            ),
-//            Consumption(
-//                id: 0,
-//                drink: "palinka",
-//                quantity: 5.0,
-//                unit: DrinkUnit.CL,
-//                alcohol: PALINKA_ALCOHOL_P,
-//                date: createDate(2018, 1, 26, 13, 10, timezone: TimeZone(abbreviation: "UTC")!)
-//            )
-//        ]
-//        session = Session(
-//            title: "Beer + Palinka in 10 minutes - Female",
-//            weight: 65.0,
-//            gender: Sex.FEMALE,
-//            consumptions: consumptions
-//        )
-//        absorptionDate = createDate(2018, 1, 26, 13, 20, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacDuringAbsorption = 0.4221
-//        maximumBacDate = createDate(2018, 1, 26, 13, 40, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacWhenMaximum = 0.9115384615384617
-//        duringEliminationDate =
-//            createDate(2018, 1, 26, 14, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacDuringElimination = 0.8615384615384617
-//        afterEliminationDate =
-//            createDate(2018, 1, 26, 20, 46, timezone: TimeZone(abbreviation: "UTC")!)
-//        zeroBacDate =
-//            createDate(2018, 1, 26, 19, 44, 37, timezone: TimeZone(abbreviation: "UTC")!)
-//        records = [
-//            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-//            Record(
-//                time: createDate(2018, 1, 26, 13, 10, timezone: TimeZone(abbreviation: "UTC")!),
-//                bacLevel: 0.10987179487179488
-//            ),
-//            Record(
-//                time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
-//                bacLevel: 0.7342307692307694
-//            ),
-//            Record(
-//                time: createDate(2018, 1, 26, 13, 40, timezone: TimeZone(abbreviation: "UTC")!),
-//                bacLevel: 0.9115384615384617
-//            ),
-//            Record(time: zeroBacDate, bacLevel: 0.0)
-//        ]
-//        params.append(
-//            [
-//                session,
-//                absorptionDate,
-//                bacDuringAbsorption,
-//                maximumBacDate,
-//                bacWhenMaximum,
-//                duringEliminationDate,
-//                bacDuringElimination,
-//                afterEliminationDate,
-//                zeroBacDate,
-//                records
-//            ]
-//        )
-//
-//        consumptions = [
-//            Consumption(
-//                id: 0,
-//                drink: "sör",
-//                quantity: 5.0,
-//                unit: DrinkUnit.DL,
-//                alcohol: BEER_ALCOHOL_P,
-//                date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//            ),
-//            Consumption(
-//                id: 0,
-//                drink: "sör",
-//                quantity: 5.0,
-//                unit: DrinkUnit.DL,
-//                alcohol: BEER_STRONG_ALCOHOL_P,
-//                date: createDate(2018, 1, 26, 14, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//            )
-//        ]
-//        session = Session(
-//            title: "Two beers in 1 hour period",
-//            weight: 85.0,
-//            consumptions: consumptions
-//        )
-//        absorptionDate = createDate(2018, 1, 26, 14, 10, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacDuringAbsorption = 0.2228
-//        maximumBacDate = createDate(2018, 1, 26, 14, 30, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacWhenMaximum = 0.4380252100840337
-//        duringEliminationDate =
-//            createDate(2018, 1, 26, 15, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacDuringElimination = 0.3630252100840337
-//        afterEliminationDate =
-//            createDate(2018, 1, 26, 18, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//        zeroBacDate =
-//            createDate(2018, 1, 26, 17, 25, 12, timezone: TimeZone(abbreviation: "UTC")!)
-//        records = [
-//            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-//            Record(
-//                time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
-//                bacLevel: 0.1902100840336135
-//            ),
-//            Record(
-//                time: createDate(2018, 1, 26, 14, 0, timezone: TimeZone(abbreviation: "UTC")!),
-//                bacLevel: 0.11521008403361352
-//            ),
-//            Record(
-//                time: createDate(2018, 1, 26, 14, 30, timezone: TimeZone(abbreviation: "UTC")!),
-//                bacLevel: 0.4380252100840337
-//            ),
-//            Record(time: zeroBacDate, bacLevel: 0.0)
-//        ]
-//        params.append(
-//            [
-//                session,
-//                absorptionDate,
-//                bacDuringAbsorption,
-//                maximumBacDate,
-//                bacWhenMaximum,
-//                duringEliminationDate,
-//                bacDuringElimination,
-//                afterEliminationDate,
-//                zeroBacDate,
-//                records
-//            ]
-//        )
-//
-//        consumptions = [
-//            Consumption(
-//                id: 0,
-//                drink: "sör",
-//                quantity: 5.0,
-//                unit: DrinkUnit.DL,
-//                alcohol: BEER_ALCOHOL_P,
-//                date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//            ),
-//            Consumption(
-//                id: 0,
-//                drink: "sör",
-//                quantity: 5.0,
-//                unit: DrinkUnit.DL,
-//                alcohol: BEER_STRONG_ALCOHOL_P,
-//                date: createDate(2018, 1, 26, 18, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//            )
-//        ]
-//        session = Session(
-//            title: "One beer at afternoon, One beer in evening",
-//            weight: 65.0,
-//            consumptions: consumptions
-//        )
-//        absorptionDate = createDate(2018, 1, 26, 18, 10, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacDuringAbsorption = 0.1484
-//        maximumBacDate = createDate(2018, 1, 26, 18, 30, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacWhenMaximum = 0.4452197802197802
-//        duringEliminationDate =
-//            createDate(2018, 1, 26, 19, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacDuringElimination = 0.3702197802197802
-//        afterEliminationDate =
-//            createDate(2018, 1, 26, 22, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//        zeroBacDate = createDate(2018, 1, 26, 21, 28, 6, timezone: TimeZone(abbreviation: "UTC")!)
-//        records = [
-//            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-//            Record(
-//                time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
-//                bacLevel: 0.27181318681318684
-//            ),
-//            Record(time: createDate(2018, 1, 26, 18, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-//            Record(
-//                time: createDate(2018, 1, 26, 18, 30, timezone: TimeZone(abbreviation: "UTC")!),
-//                bacLevel: 0.4452197802197802
-//            ),
-//            Record(time: zeroBacDate, bacLevel: 0.0)
-//        ]
-//        params.append(
-//            [
-//                session,
-//                absorptionDate,
-//                bacDuringAbsorption,
-//                maximumBacDate,
-//                bacWhenMaximum,
-//                duringEliminationDate,
-//                bacDuringElimination,
-//                afterEliminationDate,
-//                zeroBacDate,
-//                records
-//            ]
-//        )
-//
-//        consumptions = [
-//            Consumption(
-//                id: 0,
-//                drink: "sör",
-//                quantity: 5.0,
-//                unit: DrinkUnit.DL,
-//                alcohol: BEER_STRONG_ALCOHOL_P,
-//                date: createDate(2018, 1, 26, 18, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//            ),
-//            Consumption(
-//                id: 0,
-//                drink: "sör",
-//                quantity: 5.0,
-//                unit: DrinkUnit.DL,
-//                alcohol: BEER_ALCOHOL_P,
-//                date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//            )
-//        ]
-//        session = Session(
-//            title: "One beer at afternoon, One beer in evening 2",
-//            weight: 65.0,
-//            consumptions: consumptions
-//        )
-//        absorptionDate = createDate(2018, 1, 26, 18, 10, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacDuringAbsorption = 0.1484
-//        maximumBacDate = createDate(2018, 1, 26, 18, 30, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacWhenMaximum = 0.4452197802197802
-//        duringEliminationDate =
-//            createDate(2018, 1, 26, 19, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacDuringElimination = 0.3702197802197802
-//        afterEliminationDate =
-//            createDate(2018, 1, 26, 22, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//        zeroBacDate = createDate(2018, 1, 26, 21, 28, 6, timezone: TimeZone(abbreviation: "UTC")!)
-//        records = [
-//            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-//            Record(
-//                time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
-//                bacLevel: 0.27181318681318684
-//            ),
-//            Record(time: createDate(2018, 1, 26, 18, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-//            Record(
-//                time: createDate(2018, 1, 26, 18, 30, timezone: TimeZone(abbreviation: "UTC")!),
-//                bacLevel: 0.4452197802197802
-//            ),
-//            Record(time: zeroBacDate, bacLevel: 0.0)
-//        ]
-//        params.append(
-//            [
-//                session,
-//                absorptionDate,
-//                bacDuringAbsorption,
-//                maximumBacDate,
-//                bacWhenMaximum,
-//                duringEliminationDate,
-//                bacDuringElimination,
-//                afterEliminationDate,
-//                zeroBacDate,
-//                records
-//            ]
-//        )
-//
-//        consumptions = [
-//            Consumption(
-//                id: 2361,
-//                drink: "sör",
-//                quantity: 10.0,
-//                unit: DrinkUnit.L,
-//                alcohol: 0.045,
-//                date: createDate(2018, 9, 5, 17, 5, timezone: TimeZone(abbreviation: "UTC")!)
-//            ),
-//            Consumption(
-//                id: 2362,
-//                drink: "palinka",
-//                quantity: 2.0,
-//                unit: DrinkUnit.DL,
-//                alcohol: 0.5,
-//                date: createDate(2018, 9, 5, 17, 5, timezone: TimeZone(abbreviation: "UTC")!)
-//            ),
-//            Consumption(
-//                id: 2367,
-//                drink: "sör",
-//                quantity: 1.0,
-//                unit: DrinkUnit.L,
-//                alcohol: 0.045,
-//                date: createDate(2018, 9, 5, 17, 5, 27, timezone: TimeZone(abbreviation: "UTC")!)
-//            )
-//        ]
-//        session = Session(title: "Vedelés", weight: 65.0, consumptions: consumptions)
-//        absorptionDate = createDate(2018, 9, 5, 17, 15, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacDuringAbsorption = 3.4025
-//        maximumBacDate =
-//            createDate(2018, 9, 5, 17, 35, 27, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacWhenMaximum = 10.241567307692309
-//        duringEliminationDate =
-//            createDate(2018, 9, 7, 18, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//        bacDuringElimination = 2.9801923076923087
-//        afterEliminationDate =
-//            createDate(2018, 9, 8, 18, 0, timezone: TimeZone(abbreviation: "UTC")!)
-//        zeroBacDate = createDate(2018, 9, 8, 13, 52, 5, timezone: TimeZone(abbreviation: "UTC")!)
-//        records = [
-//            Record(time: createDate(2018, 9, 5, 17, 5, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-//            Record(time: createDate(2018, 9, 5, 17, 5, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-//            Record(
-//                time: createDate(2018, 9, 5, 17, 5, 27, timezone: TimeZone(abbreviation: "UTC")!),
-//                bacLevel: 0.14193543956043958
-//            ),
-//            Record(
-//                time: createDate(2018, 9, 5, 17, 35, timezone: TimeZone(abbreviation: "UTC")!),
-//                bacLevel: 10.230987362637364
-//            ),
-//            Record(
-//                time: createDate(2018, 9, 5, 17, 35, timezone: TimeZone(abbreviation: "UTC")!),
-//                bacLevel: 10.230987362637364
-//            ),
-//            Record(
-//                time: createDate(2018, 9, 5, 17, 35, 27, timezone: TimeZone(abbreviation: "UTC")!),
-//                bacLevel: 10.241567307692309
-//            ),
-//            Record(time: zeroBacDate, bacLevel: 0.0)
-//        ]
-//        params.append(
-//            [
-//                session,
-//                absorptionDate,
-//                bacDuringAbsorption,
-//                maximumBacDate,
-//                bacWhenMaximum,
-//                duringEliminationDate,
-//                bacDuringElimination,
-//                afterEliminationDate,
-//                zeroBacDate,
-//                records
-//            ]
-//        )
+        consumptions = [Consumption(
+                id: "0",
+                drink: "sör",
+                quantity: 0.5,
+                unit: DrinkUnit.L,
+                alcohol: BEER_ALCOHOL_P,
+                date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
+            )]
+        session = Session(title: "One beer", weight: 85.0, consumptions: consumptions)
+        absorptionDate = createDate(2018, 1, 26, 13, 10, timezone: TimeZone(abbreviation: "UTC")!)
+        bacDuringAbsorption = 0.0634
+        maximumBacDate = createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!)
+        bacWhenMaximum = 0.1902100840336135
+        duringEliminationDate =
+            createDate(2018, 1, 26, 14, 0, timezone: TimeZone(abbreviation: "UTC")!)
+        bacDuringElimination = 0.11521008403361352
+        afterEliminationDate =
+            createDate(2018, 1, 26, 16, 0, timezone: TimeZone(abbreviation: "UTC")!)
+        zeroBacDate = createDate(2018, 1, 26, 14, 46, 5, timezone: TimeZone(abbreviation: "UTC")!)
+        records = [
+            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            Record(
+                time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
+                bacLevel: 0.1902100840336135
+            ),
+            Record(time: zeroBacDate, bacLevel: 0.0)
+        ]
+        params.append(
+            [
+                session,
+                absorptionDate,
+                bacDuringAbsorption,
+                maximumBacDate,
+                bacWhenMaximum,
+                duringEliminationDate,
+                bacDuringElimination,
+                afterEliminationDate,
+                zeroBacDate,
+                records
+            ]
+        )
+
+        // One beer - zero weight
+        consumptions = [
+            Consumption(
+                id: "0",
+                drink: "sör",
+                quantity: 0.5,
+                unit: DrinkUnit.L,
+                alcohol: BEER_ALCOHOL_P,
+                date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
+            )
+        ]
+        session =
+            Session(title: "One beer - zero weight", weight: 0.0, consumptions: consumptions)
+        absorptionDate = createDate(2018, 1, 26, 13, 10, timezone: TimeZone(abbreviation: "UTC")!)
+        bacDuringAbsorption = 0.06553356282271947
+        maximumBacDate = createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!)
+        bacWhenMaximum = 0.19660068846815837
+        duringEliminationDate =
+            createDate(2018, 1, 26, 14, 0, timezone: TimeZone(abbreviation: "UTC")!)
+        bacDuringElimination = 0.12160068846815839
+        afterEliminationDate =
+            createDate(2018, 1, 26, 16, 0, timezone: TimeZone(abbreviation: "UTC")!)
+        zeroBacDate =
+            createDate(2018, 1, 26, 14, 48, 38, timezone: TimeZone(abbreviation: "UTC")!)
+        records = [
+            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            Record(
+                time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
+                bacLevel: 0.19660068846815837
+            ),
+            Record(time: zeroBacDate, bacLevel: 0.0)
+        ]
+        params.append(
+            [
+                session,
+                absorptionDate,
+                bacDuringAbsorption,
+                maximumBacDate,
+                bacWhenMaximum,
+                duringEliminationDate,
+                bacDuringElimination,
+                afterEliminationDate,
+                zeroBacDate,
+                records
+            ]
+        )
 
         consumptions = [
             Consumption(
-                id: 2361,
+                id: "0",
+                drink: "sör",
+                quantity: 0.5,
+                unit: DrinkUnit.L,
+                alcohol: BEER_ALCOHOL_P,
+                date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
+            )
+        ]
+        session = Session(
+            title: "One beer - zero weight female",
+            weight: 0.0,
+            gender: Sex.FEMALE,
+            consumptions: consumptions
+        )
+        absorptionDate = createDate(2018, 1, 26, 13, 10, timezone: TimeZone(abbreviation: "UTC")!)
+        bacDuringAbsorption = 0.10205314009661837
+        maximumBacDate = createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!)
+        bacWhenMaximum = 0.3061594202898551
+        duringEliminationDate =
+            createDate(2018, 1, 26, 14, 0, timezone: TimeZone(abbreviation: "UTC")!)
+        bacDuringElimination = 0.23115942028985512
+        afterEliminationDate =
+            createDate(2018, 1, 26, 16, 0, timezone: TimeZone(abbreviation: "UTC")!)
+        zeroBacDate =
+            createDate(2018, 1, 26, 15, 32, 27, timezone: TimeZone(abbreviation: "UTC")!)
+        records = [
+            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            Record(
+                time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
+                bacLevel: 0.3061594202898551
+            ),
+            Record(time: zeroBacDate, bacLevel: 0.0)
+        ]
+        params.append(
+            [
+                session,
+                absorptionDate,
+                bacDuringAbsorption,
+                maximumBacDate,
+                bacWhenMaximum,
+                duringEliminationDate,
+                bacDuringElimination,
+                afterEliminationDate,
+                zeroBacDate,
+                records
+            ]
+        )
+
+        // One Beer - Female
+        consumptions = [
+            Consumption(
+                id: "0",
+                drink: "sör",
+                quantity: 0.5,
+                unit: DrinkUnit.L,
+                alcohol: BEER_ALCOHOL_P,
+                date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
+            )
+        ]
+        session = Session(
+            title: "One beer - Female",
+            weight: 85.0,
+            gender: Sex.FEMALE,
+            consumptions: consumptions
+        )
+        absorptionDate = createDate(2018, 1, 26, 13, 10, timezone: TimeZone(abbreviation: "UTC")!)
+        bacDuringAbsorption = 0.0781
+        maximumBacDate = createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!)
+        bacWhenMaximum = 0.23441176470588238
+        duringEliminationDate =
+            createDate(2018, 1, 26, 14, 0, timezone: TimeZone(abbreviation: "UTC")!)
+        bacDuringElimination = 0.1594117647058824
+        afterEliminationDate =
+            createDate(2018, 1, 26, 15, 30, 46, timezone: TimeZone(abbreviation: "UTC")!)
+        zeroBacDate = createDate(2018, 1, 26, 15, 3, 46, timezone: TimeZone(abbreviation: "UTC")!)
+        records = [
+            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            Record(
+                time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
+                bacLevel: 0.23441176470588238
+            ),
+            Record(time: zeroBacDate, bacLevel: 0.0)
+        ]
+        params.append(
+            [
+                session,
+                absorptionDate,
+                bacDuringAbsorption,
+                maximumBacDate,
+                bacWhenMaximum,
+                duringEliminationDate,
+                bacDuringElimination,
+                afterEliminationDate,
+                zeroBacDate,
+                records
+            ]
+        )
+
+        // One sip
+        consumptions = [
+            Consumption(
+                id: "0",
+                drink: "sör",
+                quantity: 1.0,
+                unit: DrinkUnit.DL,
+                alcohol: 0.02,
+                date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
+            )
+        ]
+        session = Session(title: "One sip", weight: 65.0, consumptions: consumptions)
+        absorptionDate = createDate(2018, 1, 26, 13, 10, timezone: TimeZone(abbreviation: "UTC")!)
+        bacDuringAbsorption = 0.0
+        maximumBacDate = createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!)
+        bacWhenMaximum = 0.0
+        duringEliminationDate =
+            createDate(2018, 1, 26, 13, 31, timezone: TimeZone(abbreviation: "UTC")!)
+        bacDuringElimination = 0.0
+        afterEliminationDate =
+            createDate(2018, 1, 26, 14, 0, timezone: TimeZone(abbreviation: "UTC")!)
+        zeroBacDate = createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!)
+        records = [
+            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            Record(
+                time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
+                bacLevel: 0.0
+            ),
+            Record(time: zeroBacDate, bacLevel: 0.0)
+        ]
+        params.append(
+            [
+                session,
+                absorptionDate,
+                bacDuringAbsorption,
+                maximumBacDate,
+                bacWhenMaximum,
+                duringEliminationDate,
+                bacDuringElimination,
+                afterEliminationDate,
+                zeroBacDate,
+                records
+            ]
+        )
+
+        consumptions = [
+            Consumption(
+                id: "0",
+                drink: "sör",
+                quantity: 5.0,
+                unit: DrinkUnit.DL,
+                alcohol: BEER_ALCOHOL_P,
+                date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
+            ),
+            Consumption(
+                id: "0",
+                drink: "palinka",
+                quantity: 5.0,
+                unit: DrinkUnit.CL,
+                alcohol: PALINKA_ALCOHOL_P,
+                date: createDate(2018, 1, 26, 13, 10, timezone: TimeZone(abbreviation: "UTC")!)
+            )
+        ]
+        session = Session(
+            title: "Beer + Palinka in 10 minutes",
+            weight: 65.0,
+            consumptions: consumptions
+        )
+        absorptionDate = createDate(2018, 1, 26, 13, 20, timezone: TimeZone(abbreviation: "UTC")!)
+        bacDuringAbsorption = 0.3546153846153846
+        maximumBacDate = createDate(2018, 1, 26, 13, 40, timezone: TimeZone(abbreviation: "UTC")!)
+        bacWhenMaximum = 0.7670329670329671
+        duringEliminationDate =
+            createDate(2018, 1, 26, 14, 0, timezone: TimeZone(abbreviation: "UTC")!)
+        bacDuringElimination = 0.717032967032967
+        afterEliminationDate =
+            createDate(2018, 1, 26, 19, 0, timezone: TimeZone(abbreviation: "UTC")!)
+        zeroBacDate =
+            createDate(2018, 1, 26, 18, 46, 49, timezone: TimeZone(abbreviation: "UTC")!)
+        records = [
+            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            Record(
+                time: createDate(2018, 1, 26, 13, 10, timezone: TimeZone(abbreviation: "UTC")!),
+                bacLevel: 0.09060439560439561
+            ),
+            Record(
+                time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
+                bacLevel: 0.6186263736263737
+            ),
+            Record(
+                time: createDate(2018, 1, 26, 13, 40, timezone: TimeZone(abbreviation: "UTC")!),
+                bacLevel: 0.7670329670329671
+            ),
+            Record(time: zeroBacDate, bacLevel: 0.0)
+        ]
+        params.append(
+            [
+                session,
+                absorptionDate,
+                bacDuringAbsorption,
+                maximumBacDate,
+                bacWhenMaximum,
+                duringEliminationDate,
+                bacDuringElimination,
+                afterEliminationDate,
+                zeroBacDate,
+                records
+            ]
+        )
+
+        consumptions = [
+            Consumption(
+                id: "0",
+                drink: "sör",
+                quantity: 5.0,
+                unit: DrinkUnit.DL,
+                alcohol: BEER_ALCOHOL_P,
+                date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
+            ),
+            Consumption(
+                id: "0",
+                drink: "palinka",
+                quantity: 5.0,
+                unit: DrinkUnit.CL,
+                alcohol: PALINKA_ALCOHOL_P,
+                date: createDate(2018, 1, 26, 13, 10, timezone: TimeZone(abbreviation: "UTC")!)
+            )
+        ]
+        session = Session(
+            title: "Beer + Palinka in 10 minutes - Female",
+            weight: 65.0,
+            gender: Sex.FEMALE,
+            consumptions: consumptions
+        )
+        absorptionDate = createDate(2018, 1, 26, 13, 20, timezone: TimeZone(abbreviation: "UTC")!)
+        bacDuringAbsorption = 0.4221
+        maximumBacDate = createDate(2018, 1, 26, 13, 40, timezone: TimeZone(abbreviation: "UTC")!)
+        bacWhenMaximum = 0.9115384615384617
+        duringEliminationDate =
+            createDate(2018, 1, 26, 14, 0, timezone: TimeZone(abbreviation: "UTC")!)
+        bacDuringElimination = 0.8615384615384617
+        afterEliminationDate =
+            createDate(2018, 1, 26, 20, 46, timezone: TimeZone(abbreviation: "UTC")!)
+        zeroBacDate =
+            createDate(2018, 1, 26, 19, 44, 37, timezone: TimeZone(abbreviation: "UTC")!)
+        records = [
+            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            Record(
+                time: createDate(2018, 1, 26, 13, 10, timezone: TimeZone(abbreviation: "UTC")!),
+                bacLevel: 0.10987179487179488
+            ),
+            Record(
+                time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
+                bacLevel: 0.7342307692307694
+            ),
+            Record(
+                time: createDate(2018, 1, 26, 13, 40, timezone: TimeZone(abbreviation: "UTC")!),
+                bacLevel: 0.9115384615384617
+            ),
+            Record(time: zeroBacDate, bacLevel: 0.0)
+        ]
+        params.append(
+            [
+                session,
+                absorptionDate,
+                bacDuringAbsorption,
+                maximumBacDate,
+                bacWhenMaximum,
+                duringEliminationDate,
+                bacDuringElimination,
+                afterEliminationDate,
+                zeroBacDate,
+                records
+            ]
+        )
+
+        consumptions = [
+            Consumption(
+                id: "0",
+                drink: "sör",
+                quantity: 5.0,
+                unit: DrinkUnit.DL,
+                alcohol: BEER_ALCOHOL_P,
+                date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
+            ),
+            Consumption(
+                id: "0",
+                drink: "sör",
+                quantity: 5.0,
+                unit: DrinkUnit.DL,
+                alcohol: BEER_STRONG_ALCOHOL_P,
+                date: createDate(2018, 1, 26, 14, 0, timezone: TimeZone(abbreviation: "UTC")!)
+            )
+        ]
+        session = Session(
+            title: "Two beers in 1 hour period",
+            weight: 85.0,
+            consumptions: consumptions
+        )
+        absorptionDate = createDate(2018, 1, 26, 14, 10, timezone: TimeZone(abbreviation: "UTC")!)
+        bacDuringAbsorption = 0.2228
+        maximumBacDate = createDate(2018, 1, 26, 14, 30, timezone: TimeZone(abbreviation: "UTC")!)
+        bacWhenMaximum = 0.4380252100840337
+        duringEliminationDate =
+            createDate(2018, 1, 26, 15, 0, timezone: TimeZone(abbreviation: "UTC")!)
+        bacDuringElimination = 0.3630252100840337
+        afterEliminationDate =
+            createDate(2018, 1, 26, 18, 0, timezone: TimeZone(abbreviation: "UTC")!)
+        zeroBacDate =
+            createDate(2018, 1, 26, 17, 25, 12, timezone: TimeZone(abbreviation: "UTC")!)
+        records = [
+            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            Record(
+                time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
+                bacLevel: 0.1902100840336135
+            ),
+            Record(
+                time: createDate(2018, 1, 26, 14, 0, timezone: TimeZone(abbreviation: "UTC")!),
+                bacLevel: 0.11521008403361352
+            ),
+            Record(
+                time: createDate(2018, 1, 26, 14, 30, timezone: TimeZone(abbreviation: "UTC")!),
+                bacLevel: 0.4380252100840337
+            ),
+            Record(time: zeroBacDate, bacLevel: 0.0)
+        ]
+        params.append(
+            [
+                session,
+                absorptionDate,
+                bacDuringAbsorption,
+                maximumBacDate,
+                bacWhenMaximum,
+                duringEliminationDate,
+                bacDuringElimination,
+                afterEliminationDate,
+                zeroBacDate,
+                records
+            ]
+        )
+
+        consumptions = [
+            Consumption(
+                id: "0",
+                drink: "sör",
+                quantity: 5.0,
+                unit: DrinkUnit.DL,
+                alcohol: BEER_ALCOHOL_P,
+                date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
+            ),
+            Consumption(
+                id: "0",
+                drink: "sör",
+                quantity: 5.0,
+                unit: DrinkUnit.DL,
+                alcohol: BEER_STRONG_ALCOHOL_P,
+                date: createDate(2018, 1, 26, 18, 0, timezone: TimeZone(abbreviation: "UTC")!)
+            )
+        ]
+        session = Session(
+            title: "One beer at afternoon, One beer in evening",
+            weight: 65.0,
+            consumptions: consumptions
+        )
+        absorptionDate = createDate(2018, 1, 26, 18, 10, timezone: TimeZone(abbreviation: "UTC")!)
+        bacDuringAbsorption = 0.1484
+        maximumBacDate = createDate(2018, 1, 26, 18, 30, timezone: TimeZone(abbreviation: "UTC")!)
+        bacWhenMaximum = 0.4452197802197802
+        duringEliminationDate =
+            createDate(2018, 1, 26, 19, 0, timezone: TimeZone(abbreviation: "UTC")!)
+        bacDuringElimination = 0.3702197802197802
+        afterEliminationDate =
+            createDate(2018, 1, 26, 22, 0, timezone: TimeZone(abbreviation: "UTC")!)
+        zeroBacDate = createDate(2018, 1, 26, 21, 28, 6, timezone: TimeZone(abbreviation: "UTC")!)
+        records = [
+            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            Record(
+                time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
+                bacLevel: 0.27181318681318684
+            ),
+            Record(time: createDate(2018, 1, 26, 18, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            Record(
+                time: createDate(2018, 1, 26, 18, 30, timezone: TimeZone(abbreviation: "UTC")!),
+                bacLevel: 0.4452197802197802
+            ),
+            Record(time: zeroBacDate, bacLevel: 0.0)
+        ]
+        params.append(
+            [
+                session,
+                absorptionDate,
+                bacDuringAbsorption,
+                maximumBacDate,
+                bacWhenMaximum,
+                duringEliminationDate,
+                bacDuringElimination,
+                afterEliminationDate,
+                zeroBacDate,
+                records
+            ]
+        )
+
+        consumptions = [
+            Consumption(
+                id: "0",
+                drink: "sör",
+                quantity: 5.0,
+                unit: DrinkUnit.DL,
+                alcohol: BEER_STRONG_ALCOHOL_P,
+                date: createDate(2018, 1, 26, 18, 0, timezone: TimeZone(abbreviation: "UTC")!)
+            ),
+            Consumption(
+                id: "0",
+                drink: "sör",
+                quantity: 5.0,
+                unit: DrinkUnit.DL,
+                alcohol: BEER_ALCOHOL_P,
+                date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
+            )
+        ]
+        session = Session(
+            title: "One beer at afternoon, One beer in evening 2",
+            weight: 65.0,
+            consumptions: consumptions
+        )
+        absorptionDate = createDate(2018, 1, 26, 18, 10, timezone: TimeZone(abbreviation: "UTC")!)
+        bacDuringAbsorption = 0.1484
+        maximumBacDate = createDate(2018, 1, 26, 18, 30, timezone: TimeZone(abbreviation: "UTC")!)
+        bacWhenMaximum = 0.4452197802197802
+        duringEliminationDate =
+            createDate(2018, 1, 26, 19, 0, timezone: TimeZone(abbreviation: "UTC")!)
+        bacDuringElimination = 0.3702197802197802
+        afterEliminationDate =
+            createDate(2018, 1, 26, 22, 0, timezone: TimeZone(abbreviation: "UTC")!)
+        zeroBacDate = createDate(2018, 1, 26, 21, 28, 6, timezone: TimeZone(abbreviation: "UTC")!)
+        records = [
+            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            Record(
+                time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
+                bacLevel: 0.27181318681318684
+            ),
+            Record(time: createDate(2018, 1, 26, 18, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            Record(
+                time: createDate(2018, 1, 26, 18, 30, timezone: TimeZone(abbreviation: "UTC")!),
+                bacLevel: 0.4452197802197802
+            ),
+            Record(time: zeroBacDate, bacLevel: 0.0)
+        ]
+        params.append(
+            [
+                session,
+                absorptionDate,
+                bacDuringAbsorption,
+                maximumBacDate,
+                bacWhenMaximum,
+                duringEliminationDate,
+                bacDuringElimination,
+                afterEliminationDate,
+                zeroBacDate,
+                records
+            ]
+        )
+
+        consumptions = [
+            Consumption(
+                id: "2361",
+                drink: "sör",
+                quantity: 10.0,
+                unit: DrinkUnit.L,
+                alcohol: 0.045,
+                date: createDate(2018, 9, 5, 17, 5, timezone: TimeZone(abbreviation: "UTC")!)
+            ),
+            Consumption(
+                id: "2362",
+                drink: "palinka",
+                quantity: 2.0,
+                unit: DrinkUnit.DL,
+                alcohol: 0.5,
+                date: createDate(2018, 9, 5, 17, 5, timezone: TimeZone(abbreviation: "UTC")!)
+            ),
+            Consumption(
+                id: "2367",
+                drink: "sör",
+                quantity: 1.0,
+                unit: DrinkUnit.L,
+                alcohol: 0.045,
+                date: createDate(2018, 9, 5, 17, 5, 27, timezone: TimeZone(abbreviation: "UTC")!)
+            )
+        ]
+        session = Session(title: "Vedelés", weight: 65.0, consumptions: consumptions)
+        absorptionDate = createDate(2018, 9, 5, 17, 15, timezone: TimeZone(abbreviation: "UTC")!)
+        bacDuringAbsorption = 3.4025
+        maximumBacDate =
+            createDate(2018, 9, 5, 17, 35, 27, timezone: TimeZone(abbreviation: "UTC")!)
+        bacWhenMaximum = 10.241567307692309
+        duringEliminationDate =
+            createDate(2018, 9, 7, 18, 0, timezone: TimeZone(abbreviation: "UTC")!)
+        bacDuringElimination = 2.9801923076923087
+        afterEliminationDate =
+            createDate(2018, 9, 8, 18, 0, timezone: TimeZone(abbreviation: "UTC")!)
+        zeroBacDate = createDate(2018, 9, 8, 13, 52, 5, timezone: TimeZone(abbreviation: "UTC")!)
+        records = [
+            Record(time: createDate(2018, 9, 5, 17, 5, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            Record(time: createDate(2018, 9, 5, 17, 5, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            Record(
+                time: createDate(2018, 9, 5, 17, 5, 27, timezone: TimeZone(abbreviation: "UTC")!),
+                bacLevel: 0.14193543956043958
+            ),
+            Record(
+                time: createDate(2018, 9, 5, 17, 35, timezone: TimeZone(abbreviation: "UTC")!),
+                bacLevel: 10.230987362637364
+            ),
+            Record(
+                time: createDate(2018, 9, 5, 17, 35, timezone: TimeZone(abbreviation: "UTC")!),
+                bacLevel: 10.230987362637364
+            ),
+            Record(
+                time: createDate(2018, 9, 5, 17, 35, 27, timezone: TimeZone(abbreviation: "UTC")!),
+                bacLevel: 10.241567307692309
+            ),
+            Record(time: zeroBacDate, bacLevel: 0.0)
+        ]
+        params.append(
+            [
+                session,
+                absorptionDate,
+                bacDuringAbsorption,
+                maximumBacDate,
+                bacWhenMaximum,
+                duringEliminationDate,
+                bacDuringElimination,
+                afterEliminationDate,
+                zeroBacDate,
+                records
+            ]
+        )
+
+        consumptions = [
+            Consumption(
+                id: "2361",
                 drink: "sör",
                 quantity: 10.0,
                 unit: DrinkUnit.L,
@@ -897,7 +897,7 @@ class AlcoholCalculatorTest: XCTestCase {
                 date: createDate(2018, 1, 26, 17, 5, timezone: TimeZone(abbreviation: "UTC")!)
             ),
             Consumption(
-                id: 2362,
+                id: "2362",
                 drink: "palinka",
                 quantity: 2.0,
                 unit: DrinkUnit.DL,
@@ -905,7 +905,7 @@ class AlcoholCalculatorTest: XCTestCase {
                 date: createDate(2018, 1, 26, 17, 5, timezone: TimeZone(abbreviation: "UTC")!)
             ),
             Consumption(
-                id: 2367,
+                id: "2367",
                 drink: "sör",
                 quantity: 1.0,
                 unit: DrinkUnit.L,
