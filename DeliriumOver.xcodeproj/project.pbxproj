@@ -30,6 +30,7 @@
 		42895B2A22078AE600386A21 /* RepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42895B2922078AE600386A21 /* RepositoryError.swift */; };
 		42895B2C22078BD100386A21 /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42895B2B22078BD100386A21 /* DAO.swift */; };
 		42895B2E22078BFF00386A21 /* DAOImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42895B2D22078BFF00386A21 /* DAOImpl.swift */; };
+		42895B3022082B9800386A21 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 42895B2F22082B9800386A21 /* GoogleService-Info.plist */; };
 		429893B2220222C900460356 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893B1220222C900460356 /* Drink.swift */; };
 		429893B42202233700460356 /* DrinkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893B32202233700460356 /* DrinkType.swift */; };
 		429893B62202265200460356 /* DateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893B52202265200460356 /* DateProvider.swift */; };
@@ -97,6 +98,7 @@
 		42895B2922078AE600386A21 /* RepositoryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryError.swift; sourceTree = "<group>"; };
 		42895B2B22078BD100386A21 /* DAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
 		42895B2D22078BFF00386A21 /* DAOImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOImpl.swift; sourceTree = "<group>"; };
+		42895B2F22082B9800386A21 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		429893B1220222C900460356 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		429893B32202233700460356 /* DrinkType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkType.swift; sourceTree = "<group>"; };
 		429893B52202265200460356 /* DateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateProvider.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 		4246D7332200583D0066BC01 /* DeliriumOver */ = {
 			isa = PBXGroup;
 			children = (
+				42895B2F22082B9800386A21 /* GoogleService-Info.plist */,
 				422C68DA22010E9800F7702A /* Util */,
 				4246D765220059060066BC01 /* Presentation */,
 				4246D764220058F80066BC01 /* Logic */,
@@ -550,6 +553,7 @@
 			files = (
 				4246D7412200583D0066BC01 /* LaunchScreen.storyboard in Resources */,
 				4246D73E2200583D0066BC01 /* Assets.xcassets in Resources */,
+				42895B3022082B9800386A21 /* GoogleService-Info.plist in Resources */,
 				428875EE220580DD00EED6BB /* Podfile in Resources */,
 				4246D73C2200583D0066BC01 /* Main.storyboard in Resources */,
 			);
@@ -619,15 +623,19 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DeliriumOver/Pods-DeliriumOver-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
