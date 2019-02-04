@@ -8,6 +8,7 @@ target "DeliriumOver" do
 end
 
 target 'DeliriumOverTests' do
+	pod 'Firebase/Core'
     pod 'RxSwift',  '~> 4.0'
     pod 'RxBlocking',  '~> 4.0'
 end
