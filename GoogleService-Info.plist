@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>60010115345-tobt14i1tbnjgqshbv5tri33padgd1nm.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.60010115345-tobt14i1tbnjgqshbv5tri33padgd1nm</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDXCvpF-Q2qLtU_Aq-fwlJaVK8NgpS555s</string>
+	<key>GCM_SENDER_ID</key>
+	<string>60010115345</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>hu.rmatesz.DeliriumOver</string>
+	<key>PROJECT_ID</key>
+	<string>delirium-over</string>
+	<key>STORAGE_BUCKET</key>
+	<string>delirium-over.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:60010115345:ios:1bd4ab6f1993c6af</string>
+	<key>DATABASE_URL</key>
+	<string>https://delirium-over.firebaseio.com</string>
+</dict>
+</plist>
