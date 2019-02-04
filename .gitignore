@@ -1,3 +1,4 @@
 *.xcexplist
 *.xcuserstate
 Podfile.lock
+Pods
