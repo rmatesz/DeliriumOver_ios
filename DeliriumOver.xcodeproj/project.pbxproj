@@ -20,6 +20,8 @@
 		4246D7412200583D0066BC01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4246D73F2200583D0066BC01 /* LaunchScreen.storyboard */; };
 		4246D74C2200583E0066BC01 /* DeliriumOverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246D74B2200583E0066BC01 /* DeliriumOverTests.swift */; };
 		4246D7572200583E0066BC01 /* DeliriumOverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246D7562200583E0066BC01 /* DeliriumOverUITests.swift */; };
+		42731B002208D93B0048AB83 /* FirebaseAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42731AFF2208D93B0048AB83 /* FirebaseAuthentication.swift */; };
+		42731B022208F9F30048AB83 /* FirebaseDrinksDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42731B012208F9F30048AB83 /* FirebaseDrinksDatabase.swift */; };
 		428875EE220580DD00EED6BB /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 428875ED220580DD00EED6BB /* Podfile */; };
 		428875F22205FB2200EED6BB /* SessionDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428875F12205FB2200EED6BB /* SessionDAO.swift */; };
 		428875F42206005B00EED6BB /* SessionDAOImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428875F32206005B00EED6BB /* SessionDAOImpl.swift */; };
@@ -88,6 +90,8 @@
 		4246D7522200583E0066BC01 /* DeliriumOverUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeliriumOverUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4246D7562200583E0066BC01 /* DeliriumOverUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliriumOverUITests.swift; sourceTree = "<group>"; };
 		4246D7582200583E0066BC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42731AFF2208D93B0048AB83 /* FirebaseAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthentication.swift; sourceTree = "<group>"; };
+		42731B012208F9F30048AB83 /* FirebaseDrinksDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDrinksDatabase.swift; sourceTree = "<group>"; };
 		428875ED220580DD00EED6BB /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		428875F12205FB2200EED6BB /* SessionDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDAO.swift; sourceTree = "<group>"; };
 		428875F32206005B00EED6BB /* SessionDAOImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDAOImpl.swift; sourceTree = "<group>"; };
@@ -362,6 +366,24 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		42731AFD2208D90F0048AB83 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				428875F02205FB0D00EED6BB /* DAO */,
+				428875EF2205FB0000EED6BB /* Model */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		42731AFE2208D91F0048AB83 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				42731AFF2208D93B0048AB83 /* FirebaseAuthentication.swift */,
+				42731B012208F9F30048AB83 /* FirebaseDrinksDatabase.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
 		428875EF2205FB0000EED6BB /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -410,8 +432,8 @@
 		429B93912204E1F400B663FD /* DB */ = {
 			isa = PBXGroup;
 			children = (
-				428875F02205FB0D00EED6BB /* DAO */,
-				428875EF2205FB0000EED6BB /* Model */,
+				42731AFE2208D91F0048AB83 /* Firebase */,
+				42731AFD2208D90F0048AB83 /* CoreData */,
 			);
 			name = DB;
 			path = "New Group";
@@ -627,18 +649,22 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DeliriumOver/Pods-DeliriumOver-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -675,6 +701,7 @@
 				42895B2422077BA000386A21 /* ConsumptionDAOImpl.swift in Sources */,
 				429893B62202265200460356 /* DateProvider.swift in Sources */,
 				42895B2C22078BD100386A21 /* DAO.swift in Sources */,
+				42731B022208F9F30048AB83 /* FirebaseDrinksDatabase.swift in Sources */,
 				4246D7392200583D0066BC01 /* ConsumptionListViewController.swift in Sources */,
 				422C68DE22010EBA00F7702A /* DateExtensions.swift in Sources */,
 				42895B262207887100386A21 /* ConsumptionRepository.swift in Sources */,
@@ -686,6 +713,7 @@
 				4246D7352200583D0066BC01 /* AppDelegate.swift in Sources */,
 				429B93902204DEDA00B663FD /* DeliriumOver.xcdatamodeld in Sources */,
 				42895B2E22078BFF00386A21 /* DAOImpl.swift in Sources */,
+				42731B002208D93B0048AB83 /* FirebaseAuthentication.swift in Sources */,
 				422C68E52201117E00F7702A /* Session.swift in Sources */,
 				429B93972204E28100B663FD /* SessionRepositoryImpl.swift in Sources */,
 				422C68D922010DC900F7702A /* AlcoholCalculator.swift in Sources */,
