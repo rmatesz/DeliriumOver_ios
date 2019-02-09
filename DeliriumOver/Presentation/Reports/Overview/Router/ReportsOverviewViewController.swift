@@ -24,12 +24,12 @@ class ReportsOverviewViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         sessionDAO = SessionDAOImpl()
-        sessionRepository = SessionRepositoryImpl(sessionDAO: sessionDAO)
         firebaseDatabase = Database.database().reference()
         firebaseAuth = Auth.auth()
         firebaseSessionDatabase = FirebaseSessionDatabase(firebaseDatabase: firebaseDatabase)
         firebaseAuthentication = FirebaseAuthentication(firebaseAuth: firebaseAuth)
         firebaseCommunicator = FirebaseCommunicator(firebaseSessionDatabase: firebaseSessionDatabase, firebaseAuthentication: firebaseAuthentication)
+        sessionRepository = SessionRepositoryImpl(sessionDAO: sessionDAO, firebaseCommunicator: firebaseCommunicator, deviceId: "deviceID")
         super.init(coder: coder)
     }
     

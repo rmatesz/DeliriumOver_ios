@@ -14,9 +14,13 @@ import RxSwift
 class SessionRepositoryImpl: SessionRepository {
     
     private let sessionDAO: SessionDAO
+    private let firebaseCommunicator: FirebaseCommunicator
+    private let deviceId: String
     
-    init(sessionDAO: SessionDAO) {
+    init(sessionDAO: SessionDAO, firebaseCommunicator: FirebaseCommunicator, deviceId: String) {
         self.sessionDAO = sessionDAO
+        self.firebaseCommunicator = firebaseCommunicator
+        self.deviceId = deviceId
     }
     
     func getSessions() -> Maybe<[Session]> {
@@ -33,7 +37,14 @@ class SessionRepositoryImpl: SessionRepository {
     }
     
     func getFriendsSessions(shareKey: String) -> Observable<[Session]> {
-        return Observable.just([])
+        return firebaseCommunicator.getSessions(shareKey: shareKey)
+            .map({ (it) -> [Session] in
+                it.filter({ (session) -> Bool in
+                    session.shared && session.deviceId != self.deviceId
+                })
+            })
+        
+            //.map { it.filter { session -> session.shared && session.deviceId != deviceId } }
     }
     
     func insert(session: Session) -> Completable {
