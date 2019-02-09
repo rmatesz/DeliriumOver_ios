@@ -9,15 +9,27 @@
 import UIKit
 import CoreData
 import RxSwift
+import FirebaseDatabase
+import FirebaseAuth
 
 class ReportsOverviewViewController: UIViewController {
     var sessionDAO: SessionDAO
     var sessionRepository: SessionRepository
+    var firebaseDatabase: DatabaseReference
+    var firebaseSessionDatabase: FirebaseSessionDatabase
+    var firebaseAuth: Auth
+    var firebaseAuthentication: FirebaseAuthentication
+    var firebaseCommunicator: FirebaseCommunicator
     var disposeBag = DisposeBag()
     
     required init?(coder: NSCoder) {
         sessionDAO = SessionDAOImpl()
         sessionRepository = SessionRepositoryImpl(sessionDAO: sessionDAO)
+        firebaseDatabase = Database.database().reference()
+        firebaseAuth = Auth.auth()
+        firebaseSessionDatabase = FirebaseSessionDatabase(firebaseDatabase: firebaseDatabase)
+        firebaseAuthentication = FirebaseAuthentication(firebaseAuth: firebaseAuth)
+        firebaseCommunicator = FirebaseCommunicator(firebaseSessionDatabase: firebaseSessionDatabase, firebaseAuthentication: firebaseAuthentication)
         super.init(coder: coder)
     }
     
@@ -32,6 +44,16 @@ class ReportsOverviewViewController: UIViewController {
                 self.sessionRepository.getSessions().subscribe(onSuccess: { (sessions) in
                     print("sessions loaded")
                 }).disposed(by: self.disposeBag)
+            }).disposed(by: disposeBag)
+        
+        firebaseCommunicator.loadMinVersionForShare()
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler())
+            .subscribe({ (event) in
+                switch event {
+                    case .success(let version): print("DB min version for share: \(version)")
+                    case .error: print("error")
+                }
             }).disposed(by: disposeBag)
     }
 

@@ -18,19 +18,19 @@ class FirebaseAuthentication {
         self.firebaseAuth = firebaseAuth
     }
     
-    func authenticate() -> Maybe<User> {
+    func authenticate() -> Single<User> {
         if (firebaseAuth.currentUser != nil) {
-            return Maybe.just(firebaseAuth.currentUser!)
+            return Single.just(firebaseAuth.currentUser!)
         }
         else {
-            return Maybe<User>.create { (observer: @escaping (MaybeEvent<User>) -> ()) -> Disposable in
+            return Single<User>.create { (observer: @escaping (SingleEvent<User>) -> ()) -> Disposable in
                 self.firebaseAuth.signInAnonymously(completion: { (result, error) in
                     if (result != nil) {
                         observer(.success(result!.user))
                     } else if (error != nil) {
                         observer(.error(error!))
                     } else {
-                        observer(.completed)
+                        observer(.error(FirebaseError.AUTHENTICATION_ERROR))
                     }
                 })
                 return Disposables.create()
