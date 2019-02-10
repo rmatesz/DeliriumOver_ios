@@ -11,42 +11,43 @@ import CoreData
 import RxSwift
 import FirebaseDatabase
 import FirebaseAuth
+import SwinjectStoryboard
 
 class ReportsOverviewViewController: UIViewController {
-    var sessionDAO: SessionDAO
-    var sessionRepository: SessionRepository
-    var firebaseDatabase: DatabaseReference
-    var firebaseSessionDatabase: FirebaseSessionDatabase
-    var firebaseAuth: Auth
-    var firebaseAuthentication: FirebaseAuthentication
-    var firebaseCommunicator: FirebaseCommunicator
+    var sessionRepository: SessionRepository?
+    var consumptionRepository: ConsumptionRepository?
+    var firebaseCommunicator: FirebaseCommunicator?
     var disposeBag = DisposeBag()
-    
-    required init?(coder: NSCoder) {
-        sessionDAO = SessionDAOImpl()
-        firebaseDatabase = Database.database().reference()
-        firebaseAuth = Auth.auth()
-        firebaseSessionDatabase = FirebaseSessionDatabase(firebaseDatabase: firebaseDatabase)
-        firebaseAuthentication = FirebaseAuthentication(firebaseAuth: firebaseAuth)
-        firebaseCommunicator = FirebaseCommunicator(firebaseSessionDatabase: firebaseSessionDatabase, firebaseAuthentication: firebaseAuthentication)
-        sessionRepository = SessionRepositoryImpl(sessionDAO: sessionDAO, firebaseCommunicator: firebaseCommunicator, deviceId: "deviceID")
-        super.init(coder: coder)
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let session = Session(title: "test title", description: "description", name: "Test Elek", weight: 85.0, height: 172.5, gender: Sex.MALE, consumptions: [], inProgress: true, deviceId: "12345", shared: false, shareKey: "")
-        sessionRepository.insert(session: session)
+        let session = Session(title: "test title", description: "description", name: "Test Elek", weight: 85.0, height: 172.5, gender: Sex.MALE, consumptions: [], inProgress: false, shareKey: "")
+        sessionRepository!.insert(session: session)
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler())
             .subscribe({_ in
-                self.sessionRepository.getSessions().subscribe(onSuccess: { (sessions) in
+               self.sessionRepository!.getInProgressSession()
+                .subscribe({ (observer) in
+                        switch observer {
+                        case .success(let session):
+                            self.consumptionRepository!.saveConsumption(sessionId: session.id, consumption: Consumption(drink: "Sör", quantity: 0.5, unit: DrinkUnit.L, alcohol: 0.052)).subscribe(onCompleted: {
+                                print("insert completed")
+                            }, onError: { (error) in
+                                print("insert error")
+                            })
+                            self.consumptionRepository!.saveConsumption(sessionId: session.id, consumption: Consumption(drink: "Bor", quantity: 2.0, unit: DrinkUnit.DL, alcohol: 0.12)).subscribe()
+                                break
+                        case .error: break
+                        case .completed: break
+                        }
+                    })
+                 self.sessionRepository!.getSessions().subscribe(onSuccess: { (sessions) in
                     print("sessions loaded")
                 }).disposed(by: self.disposeBag)
             }).disposed(by: disposeBag)
         
-        firebaseCommunicator.loadMinVersionForShare()
+        firebaseCommunicator!.loadMinVersionForShare()
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler())
             .subscribe({ (event) in

@@ -13,6 +13,13 @@
 		422C68E022010F0300F7702A /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C68DF22010F0300F7702A /* Record.swift */; };
 		422C68E2220110E600F7702A /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C68E1220110E600F7702A /* Statistic.swift */; };
 		422C68E52201117E00F7702A /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C68E42201117E00F7702A /* Session.swift */; };
+		422CA97822106E0900BC5401 /* ConsumptionListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422CA97722106E0900BC5401 /* ConsumptionListTableViewController.swift */; };
+		422CA97B22108F4C00BC5401 /* FirebaseSwinject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422CA97A22108F4C00BC5401 /* FirebaseSwinject.swift */; };
+		422CA97E22108FD600BC5401 /* ReportOverviewSwinject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422CA97D22108FD600BC5401 /* ReportOverviewSwinject.swift */; };
+		422CA980221092AF00BC5401 /* CoreDataSwinject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422CA97F221092AF00BC5401 /* CoreDataSwinject.swift */; };
+		422CA9822210933C00BC5401 /* RepositorySwinject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422CA9812210933C00BC5401 /* RepositorySwinject.swift */; };
+		422CA984221094BE00BC5401 /* ApplicationSwinject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422CA983221094BE00BC5401 /* ApplicationSwinject.swift */; };
+		4232DAF22210B56000DCC8DD /* ConsumptionListSwinject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4232DAF12210B56000DCC8DD /* ConsumptionListSwinject.swift */; };
 		4246D7352200583D0066BC01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246D7342200583D0066BC01 /* AppDelegate.swift */; };
 		4246D7372200583D0066BC01 /* ReportsOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246D7362200583D0066BC01 /* ReportsOverviewViewController.swift */; };
 		4246D7392200583D0066BC01 /* ConsumptionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246D7382200583D0066BC01 /* ConsumptionListViewController.swift */; };
@@ -27,6 +34,12 @@
 		42882649220EC87E001A9A5A /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42882648220EC87E001A9A5A /* FirebaseError.swift */; };
 		4288264B220F675D001A9A5A /* DrinkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4288264A220F675D001A9A5A /* DrinkRepository.swift */; };
 		4288264D220F6799001A9A5A /* DrinkRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4288264C220F6799001A9A5A /* DrinkRepositoryImpl.swift */; };
+		42882650220F75BD001A9A5A /* ConsumptionListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4288264F220F75BD001A9A5A /* ConsumptionListPresenter.swift */; };
+		42882653220F75D4001A9A5A /* ConsumptionListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42882652220F75D4001A9A5A /* ConsumptionListInteractor.swift */; };
+		42882656220F7793001A9A5A /* ConsumptionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42882655220F7793001A9A5A /* ConsumptionListView.swift */; };
+		42882658220F87A1001A9A5A /* ConsumptionListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42882657220F87A1001A9A5A /* ConsumptionListRouter.swift */; };
+		4288265A220F897C001A9A5A /* ConsumptionListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42882659220F897C001A9A5A /* ConsumptionListItem.swift */; };
+		4288265E220F8C2A001A9A5A /* ConsumptionListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4288265D220F8C2A001A9A5A /* ConsumptionListItemView.swift */; };
 		428875EE220580DD00EED6BB /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 428875ED220580DD00EED6BB /* Podfile */; };
 		428875F22205FB2200EED6BB /* SessionDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428875F12205FB2200EED6BB /* SessionDAO.swift */; };
 		428875F42206005B00EED6BB /* SessionDAOImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428875F32206005B00EED6BB /* SessionDAOImpl.swift */; };
@@ -82,6 +95,13 @@
 		422C68DF22010F0300F7702A /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		422C68E1220110E600F7702A /* Statistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistic.swift; sourceTree = "<group>"; };
 		422C68E42201117E00F7702A /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		422CA97722106E0900BC5401 /* ConsumptionListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListTableViewController.swift; sourceTree = "<group>"; };
+		422CA97A22108F4C00BC5401 /* FirebaseSwinject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSwinject.swift; sourceTree = "<group>"; };
+		422CA97D22108FD600BC5401 /* ReportOverviewSwinject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportOverviewSwinject.swift; sourceTree = "<group>"; };
+		422CA97F221092AF00BC5401 /* CoreDataSwinject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSwinject.swift; sourceTree = "<group>"; };
+		422CA9812210933C00BC5401 /* RepositorySwinject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySwinject.swift; sourceTree = "<group>"; };
+		422CA983221094BE00BC5401 /* ApplicationSwinject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSwinject.swift; sourceTree = "<group>"; };
+		4232DAF12210B56000DCC8DD /* ConsumptionListSwinject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListSwinject.swift; sourceTree = "<group>"; };
 		4246D7312200583D0066BC01 /* DeliriumOver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeliriumOver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4246D7342200583D0066BC01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4246D7362200583D0066BC01 /* ReportsOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsOverviewViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +122,12 @@
 		42882648220EC87E001A9A5A /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
 		4288264A220F675D001A9A5A /* DrinkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkRepository.swift; sourceTree = "<group>"; };
 		4288264C220F6799001A9A5A /* DrinkRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkRepositoryImpl.swift; sourceTree = "<group>"; };
+		4288264F220F75BD001A9A5A /* ConsumptionListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListPresenter.swift; sourceTree = "<group>"; };
+		42882652220F75D4001A9A5A /* ConsumptionListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListInteractor.swift; sourceTree = "<group>"; };
+		42882655220F7793001A9A5A /* ConsumptionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListView.swift; sourceTree = "<group>"; };
+		42882657220F87A1001A9A5A /* ConsumptionListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListRouter.swift; sourceTree = "<group>"; };
+		42882659220F897C001A9A5A /* ConsumptionListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListItem.swift; sourceTree = "<group>"; };
+		4288265D220F8C2A001A9A5A /* ConsumptionListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListItemView.swift; sourceTree = "<group>"; };
 		428875ED220580DD00EED6BB /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		428875F12205FB2200EED6BB /* SessionDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDAO.swift; sourceTree = "<group>"; };
 		428875F32206005B00EED6BB /* SessionDAOImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDAOImpl.swift; sourceTree = "<group>"; };
@@ -209,6 +235,33 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
+		422CA97922108F2C00BC5401 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				422CA97A22108F4C00BC5401 /* FirebaseSwinject.swift */,
+				422CA97F221092AF00BC5401 /* CoreDataSwinject.swift */,
+				422CA9812210933C00BC5401 /* RepositorySwinject.swift */,
+				422CA983221094BE00BC5401 /* ApplicationSwinject.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		422CA97C22108FBE00BC5401 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				422CA97D22108FD600BC5401 /* ReportOverviewSwinject.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		4232DAF02210B54E00DCC8DD /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				4232DAF12210B56000DCC8DD /* ConsumptionListSwinject.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
 		4246D7282200583D0066BC01 = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +353,7 @@
 		4246D767220059530066BC01 /* Overview */ = {
 			isa = PBXGroup;
 			children = (
+				422CA97C22108FBE00BC5401 /* DI */,
 				4246D769220059850066BC01 /* Interceptor */,
 				4246D7682200597F0066BC01 /* Router */,
 			);
@@ -340,6 +394,10 @@
 		4246D76C220060B00066BC01 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				4232DAF02210B54E00DCC8DD /* DI */,
+				42882654220F7785001A9A5A /* View */,
+				42882651220F75C3001A9A5A /* Interactor */,
+				4288264E220F75AA001A9A5A /* Presenter */,
 				4246D76D220060B50066BC01 /* Router */,
 			);
 			path = List;
@@ -348,7 +406,7 @@
 		4246D76D220060B50066BC01 /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				4246D7382200583D0066BC01 /* ConsumptionListViewController.swift */,
+				42882657220F87A1001A9A5A /* ConsumptionListRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -356,6 +414,7 @@
 		4246D76E220060CB0066BC01 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				422CA97922108F2C00BC5401 /* DI */,
 				4246D7342200583D0066BC01 /* AppDelegate.swift */,
 			);
 			path = Application;
@@ -395,6 +454,34 @@
 				42882648220EC87E001A9A5A /* FirebaseError.swift */,
 			);
 			path = Firebase;
+			sourceTree = "<group>";
+		};
+		4288264E220F75AA001A9A5A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				4288264F220F75BD001A9A5A /* ConsumptionListPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		42882651220F75C3001A9A5A /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				42882652220F75D4001A9A5A /* ConsumptionListInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		42882654220F7785001A9A5A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4246D7382200583D0066BC01 /* ConsumptionListViewController.swift */,
+				42882655220F7793001A9A5A /* ConsumptionListView.swift */,
+				42882659220F897C001A9A5A /* ConsumptionListItem.swift */,
+				4288265D220F8C2A001A9A5A /* ConsumptionListItemView.swift */,
+				422CA97722106E0900BC5401 /* ConsumptionListTableViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		428875EF2205FB0000EED6BB /* Model */ = {
@@ -669,6 +756,8 @@
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
+				"${BUILT_PRODUCTS_DIR}/SwinjectStoryboard/SwinjectStoryboard.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -679,6 +768,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwinjectStoryboard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -712,23 +803,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				422CA97B22108F4C00BC5401 /* FirebaseSwinject.swift in Sources */,
 				42895B2222077AAE00386A21 /* ConsumptionDAO.swift in Sources */,
 				42895B2422077BA000386A21 /* ConsumptionDAOImpl.swift in Sources */,
 				429893B62202265200460356 /* DateProvider.swift in Sources */,
 				42895B2C22078BD100386A21 /* DAO.swift in Sources */,
+				422CA984221094BE00BC5401 /* ApplicationSwinject.swift in Sources */,
 				4288264D220F6799001A9A5A /* DrinkRepositoryImpl.swift in Sources */,
 				42731B022208F9F30048AB83 /* FirebaseDrinksDatabase.swift in Sources */,
+				4288265A220F897C001A9A5A /* ConsumptionListItem.swift in Sources */,
 				4246D7392200583D0066BC01 /* ConsumptionListViewController.swift in Sources */,
 				422C68DE22010EBA00F7702A /* DateExtensions.swift in Sources */,
 				42882647220EC507001A9A5A /* FirebaseCommunicator.swift in Sources */,
 				42895B262207887100386A21 /* ConsumptionRepository.swift in Sources */,
 				42895B2A22078AE600386A21 /* RepositoryError.swift in Sources */,
+				422CA97E22108FD600BC5401 /* ReportOverviewSwinject.swift in Sources */,
 				428875F42206005B00EED6BB /* SessionDAOImpl.swift in Sources */,
 				422C68E022010F0300F7702A /* Record.swift in Sources */,
 				429B93952204E24600B663FD /* SessionRepository.swift in Sources */,
+				42882658220F87A1001A9A5A /* ConsumptionListRouter.swift in Sources */,
 				42146F0A220CCAD100A793A5 /* FirebaseSessionDatabase.swift in Sources */,
 				42895B28220788CE00386A21 /* ConsumptionRepositoryImpl.swift in Sources */,
 				4246D7352200583D0066BC01 /* AppDelegate.swift in Sources */,
+				4288265E220F8C2A001A9A5A /* ConsumptionListItemView.swift in Sources */,
 				429B93902204DEDA00B663FD /* DeliriumOver.xcdatamodeld in Sources */,
 				42895B2E22078BFF00386A21 /* DAOImpl.swift in Sources */,
 				42731B002208D93B0048AB83 /* FirebaseAuthentication.swift in Sources */,
@@ -736,16 +833,23 @@
 				429B93972204E28100B663FD /* SessionRepositoryImpl.swift in Sources */,
 				422C68D922010DC900F7702A /* AlcoholCalculator.swift in Sources */,
 				4246D7372200583D0066BC01 /* ReportsOverviewViewController.swift in Sources */,
+				42882656220F7793001A9A5A /* ConsumptionListView.swift in Sources */,
 				429893BF22031C0400460356 /* DoubleExtension.swift in Sources */,
+				422CA97822106E0900BC5401 /* ConsumptionListTableViewController.swift in Sources */,
 				4288264B220F675D001A9A5A /* DrinkRepository.swift in Sources */,
 				429893B42202233700460356 /* DrinkType.swift in Sources */,
 				429893B82202279700460356 /* SystemDateProvider.swift in Sources */,
 				42E44DE12201C38500F367CB /* DrinkUnit.swift in Sources */,
 				42882649220EC87E001A9A5A /* FirebaseError.swift in Sources */,
+				42882653220F75D4001A9A5A /* ConsumptionListInteractor.swift in Sources */,
+				422CA9822210933C00BC5401 /* RepositorySwinject.swift in Sources */,
 				428875F22205FB2200EED6BB /* SessionDAO.swift in Sources */,
 				42E44DDF2201C23000F367CB /* Consumption.swift in Sources */,
+				4232DAF22210B56000DCC8DD /* ConsumptionListSwinject.swift in Sources */,
+				42882650220F75BD001A9A5A /* ConsumptionListPresenter.swift in Sources */,
 				422C68E2220110E600F7702A /* Statistic.swift in Sources */,
 				429893B2220222C900460356 /* Drink.swift in Sources */,
+				422CA980221092AF00BC5401 /* CoreDataSwinject.swift in Sources */,
 				42E44DDD2201C1F500F367CB /* Sex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -54,6 +54,7 @@ class SessionRepositoryImpl: SessionRepository {
         sessionEntity.name = session.name
         sessionEntity.weight = session.weight
         sessionEntity.gender = Int32(session.gender.rawValue)
+        sessionEntity.inProgress = session.inProgress
         return sessionDAO.save()
     }
     
