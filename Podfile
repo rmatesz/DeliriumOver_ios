@@ -15,4 +15,6 @@ target 'DeliriumOverTests' do
 	pod 'Firebase/Core'
     pod 'RxSwift',  '~> 4.0'
     pod 'RxBlocking',  '~> 4.0'
+    pod 'RxTest',  '~> 4.0'
+    pod 'Cuckoo'
 end

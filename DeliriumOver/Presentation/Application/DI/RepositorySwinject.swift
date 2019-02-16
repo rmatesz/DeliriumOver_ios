@@ -18,5 +18,9 @@ class RepositorySwinject {
         defaultContainer.register(ConsumptionRepository.self) { (resolver) -> ConsumptionRepository in
             ConsumptionRepositoryImpl(consumptionDAO: resolver.resolve(ConsumptionDAO.self)!, sessionDAO: resolver.resolve(SessionDAO.self)!)
         }
+        
+        defaultContainer.register(DrinkRepository.self)  { (resolver) -> DrinkRepository in
+            DrinkRepositoryImpl(sessionRepository: resolver.resolve(SessionRepository.self)!, drinksDatabase: resolver.resolve(FirebaseDrinksDatabase.self)!)
+        }
     }
 }

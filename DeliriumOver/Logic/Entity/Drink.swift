@@ -10,17 +10,28 @@ import Foundation
 
 struct Drink {
     var id: Int = -1
-    var name: String = ""
-    var alcohol: Double = 0.0
-    var defaultQuantity: Double = 0.0
-    var defaultUnit: DrinkUnit = DrinkUnit.DL
-    var drinkType: DrinkType = DrinkType.UNKNOWN
-    var localization: [String: String] = [:]
+    let name: String
+    let alcohol: Double
+    let defaultQuantity: Double
+    let defaultUnit: DrinkUnit
+    let drinkType: DrinkType
+    let localization: [String: String]
     
     init(consumption: Consumption) {
-        name = consumption.drink
-        alcohol = consumption.alcohol
-        defaultQuantity = consumption.quantity
-        defaultUnit = consumption.unit
+        self.init(
+            name: consumption.drink,
+            alcohol: consumption.alcohol,
+            defaultQuantity: consumption.quantity,
+            defaultUnit: consumption.unit
+        )
+    }
+
+    init(name: String = "", alcohol: Double = 0.0, defaultQuantity: Double = 0.0, defaultUnit: DrinkUnit = DrinkUnit.DL, drinkType: DrinkType = DrinkType.UNKNOWN, localization: [String: String] = [:]) {
+        self.name = name
+        self.alcohol = alcohol
+        self.defaultQuantity = defaultQuantity
+        self.defaultUnit = defaultUnit
+        self.drinkType = drinkType
+        self.localization = localization
     }
 }

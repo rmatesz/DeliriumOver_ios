@@ -11,11 +11,10 @@ import RxSwift
 import CoreData
 
 class DAOImpl : DAO {
-    var context: NSManagedObjectContext {
-        get {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            return appDelegate.persistentContainer.viewContext
-        }
+    let context: NSManagedObjectContext
+    
+    init (context: NSManagedObjectContext) {
+        self.context = context
     }
 
     func save() -> Completable {

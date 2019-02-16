@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4204FE31221163C900BBB83E /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4204FE30221163C900BBB83E /* GeneratedMocks.swift */; };
+		4204FE33221220A900BBB83E /* SimpleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4204FE32221220A900BBB83E /* SimpleError.swift */; };
 		42146F0A220CCAD100A793A5 /* FirebaseSessionDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42146F09220CCAD100A793A5 /* FirebaseSessionDatabase.swift */; };
 		422C68D922010DC900F7702A /* AlcoholCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C68D822010DC800F7702A /* AlcoholCalculator.swift */; };
 		422C68DE22010EBA00F7702A /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C68DD22010EBA00F7702A /* DateExtensions.swift */; };
@@ -20,6 +22,8 @@
 		422CA9822210933C00BC5401 /* RepositorySwinject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422CA9812210933C00BC5401 /* RepositorySwinject.swift */; };
 		422CA984221094BE00BC5401 /* ApplicationSwinject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422CA983221094BE00BC5401 /* ApplicationSwinject.swift */; };
 		4232DAF22210B56000DCC8DD /* ConsumptionListSwinject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4232DAF12210B56000DCC8DD /* ConsumptionListSwinject.swift */; };
+		4232DAF82210CCDD00DCC8DD /* ConsumptionListInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4232DAF72210CCDD00DCC8DD /* ConsumptionListInteractorTest.swift */; };
+		4232DAFA2210CF0600DCC8DD /* ConsumptionListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4232DAF92210CF0600DCC8DD /* ConsumptionListInteractor.swift */; };
 		4246D7352200583D0066BC01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246D7342200583D0066BC01 /* AppDelegate.swift */; };
 		4246D7372200583D0066BC01 /* ReportsOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246D7362200583D0066BC01 /* ReportsOverviewViewController.swift */; };
 		4246D7392200583D0066BC01 /* ConsumptionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246D7382200583D0066BC01 /* ConsumptionListViewController.swift */; };
@@ -28,6 +32,8 @@
 		4246D7412200583D0066BC01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4246D73F2200583D0066BC01 /* LaunchScreen.storyboard */; };
 		4246D74C2200583E0066BC01 /* DeliriumOverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246D74B2200583E0066BC01 /* DeliriumOverTests.swift */; };
 		4246D7572200583E0066BC01 /* DeliriumOverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246D7562200583E0066BC01 /* DeliriumOverUITests.swift */; };
+		426AB6C8221344F00061EF0B /* ConsumptionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426AB6C7221344F00061EF0B /* ConsumptionExtension.swift */; };
+		426AB6CA221750BD0061EF0B /* DrinkExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426AB6C9221750BD0061EF0B /* DrinkExtension.swift */; };
 		42731B002208D93B0048AB83 /* FirebaseAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42731AFF2208D93B0048AB83 /* FirebaseAuthentication.swift */; };
 		42731B022208F9F30048AB83 /* FirebaseDrinksDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42731B012208F9F30048AB83 /* FirebaseDrinksDatabase.swift */; };
 		42882647220EC507001A9A5A /* FirebaseCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42882646220EC507001A9A5A /* FirebaseCommunicator.swift */; };
@@ -35,7 +41,7 @@
 		4288264B220F675D001A9A5A /* DrinkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4288264A220F675D001A9A5A /* DrinkRepository.swift */; };
 		4288264D220F6799001A9A5A /* DrinkRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4288264C220F6799001A9A5A /* DrinkRepositoryImpl.swift */; };
 		42882650220F75BD001A9A5A /* ConsumptionListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4288264F220F75BD001A9A5A /* ConsumptionListPresenter.swift */; };
-		42882653220F75D4001A9A5A /* ConsumptionListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42882652220F75D4001A9A5A /* ConsumptionListInteractor.swift */; };
+		42882653220F75D4001A9A5A /* ConsumptionListInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42882652220F75D4001A9A5A /* ConsumptionListInteractorImpl.swift */; };
 		42882656220F7793001A9A5A /* ConsumptionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42882655220F7793001A9A5A /* ConsumptionListView.swift */; };
 		42882658220F87A1001A9A5A /* ConsumptionListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42882657220F87A1001A9A5A /* ConsumptionListRouter.swift */; };
 		4288265A220F897C001A9A5A /* ConsumptionListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42882659220F897C001A9A5A /* ConsumptionListItem.swift */; };
@@ -89,6 +95,8 @@
 		05EC6AAAB1F2E52B9375A76E /* Pods-DeliriumOver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliriumOver.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeliriumOver/Pods-DeliriumOver.debug.xcconfig"; sourceTree = "<group>"; };
 		13B129C7E5EC8374E6B23481 /* Pods_DeliriumOver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeliriumOver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38161ADD0FEC4C46AB918CAF /* Pods-DeliriumOverTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliriumOverTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeliriumOverTests/Pods-DeliriumOverTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4204FE30221163C900BBB83E /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
+		4204FE32221220A900BBB83E /* SimpleError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleError.swift; sourceTree = "<group>"; };
 		42146F09220CCAD100A793A5 /* FirebaseSessionDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSessionDatabase.swift; sourceTree = "<group>"; };
 		422C68D822010DC800F7702A /* AlcoholCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholCalculator.swift; sourceTree = "<group>"; };
 		422C68DD22010EBA00F7702A /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
@@ -102,6 +110,8 @@
 		422CA9812210933C00BC5401 /* RepositorySwinject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySwinject.swift; sourceTree = "<group>"; };
 		422CA983221094BE00BC5401 /* ApplicationSwinject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSwinject.swift; sourceTree = "<group>"; };
 		4232DAF12210B56000DCC8DD /* ConsumptionListSwinject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListSwinject.swift; sourceTree = "<group>"; };
+		4232DAF72210CCDD00DCC8DD /* ConsumptionListInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListInteractorTest.swift; sourceTree = "<group>"; };
+		4232DAF92210CF0600DCC8DD /* ConsumptionListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListInteractor.swift; sourceTree = "<group>"; };
 		4246D7312200583D0066BC01 /* DeliriumOver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeliriumOver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4246D7342200583D0066BC01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4246D7362200583D0066BC01 /* ReportsOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsOverviewViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +126,8 @@
 		4246D7522200583E0066BC01 /* DeliriumOverUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeliriumOverUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4246D7562200583E0066BC01 /* DeliriumOverUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliriumOverUITests.swift; sourceTree = "<group>"; };
 		4246D7582200583E0066BC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		426AB6C7221344F00061EF0B /* ConsumptionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionExtension.swift; sourceTree = "<group>"; };
+		426AB6C9221750BD0061EF0B /* DrinkExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkExtension.swift; sourceTree = "<group>"; };
 		42731AFF2208D93B0048AB83 /* FirebaseAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthentication.swift; sourceTree = "<group>"; };
 		42731B012208F9F30048AB83 /* FirebaseDrinksDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDrinksDatabase.swift; sourceTree = "<group>"; };
 		42882646220EC507001A9A5A /* FirebaseCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCommunicator.swift; sourceTree = "<group>"; };
@@ -123,7 +135,7 @@
 		4288264A220F675D001A9A5A /* DrinkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkRepository.swift; sourceTree = "<group>"; };
 		4288264C220F6799001A9A5A /* DrinkRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkRepositoryImpl.swift; sourceTree = "<group>"; };
 		4288264F220F75BD001A9A5A /* ConsumptionListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListPresenter.swift; sourceTree = "<group>"; };
-		42882652220F75D4001A9A5A /* ConsumptionListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListInteractor.swift; sourceTree = "<group>"; };
+		42882652220F75D4001A9A5A /* ConsumptionListInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListInteractorImpl.swift; sourceTree = "<group>"; };
 		42882655220F7793001A9A5A /* ConsumptionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListView.swift; sourceTree = "<group>"; };
 		42882657220F87A1001A9A5A /* ConsumptionListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListRouter.swift; sourceTree = "<group>"; };
 		42882659220F897C001A9A5A /* ConsumptionListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListItem.swift; sourceTree = "<group>"; };
@@ -208,6 +220,7 @@
 			children = (
 				429893BD22031BC100460356 /* Number */,
 				422C68DB22010EA000F7702A /* Date */,
+				4204FE32221220A900BBB83E /* SimpleError.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -262,6 +275,38 @@
 			path = DI;
 			sourceTree = "<group>";
 		};
+		4232DAF32210CCA500DCC8DD /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				4232DAF42210CCB200DCC8DD /* Consumptions */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		4232DAF42210CCB200DCC8DD /* Consumptions */ = {
+			isa = PBXGroup;
+			children = (
+				4232DAF52210CCBC00DCC8DD /* List */,
+			);
+			path = Consumptions;
+			sourceTree = "<group>";
+		};
+		4232DAF52210CCBC00DCC8DD /* List */ = {
+			isa = PBXGroup;
+			children = (
+				4232DAF62210CCC400DCC8DD /* Interactor */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		4232DAF62210CCC400DCC8DD /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				4232DAF72210CCDD00DCC8DD /* ConsumptionListInteractorTest.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
 		4246D7282200583D0066BC01 = {
 			isa = PBXGroup;
 			children = (
@@ -303,6 +348,8 @@
 		4246D74A2200583E0066BC01 /* DeliriumOverTests */ = {
 			isa = PBXGroup;
 			children = (
+				4204FE30221163C900BBB83E /* GeneratedMocks.swift */,
+				4232DAF32210CCA500DCC8DD /* Presentation */,
 				429893B92203138900460356 /* Logic */,
 				4246D74B2200583E0066BC01 /* DeliriumOverTests.swift */,
 				4246D74D2200583E0066BC01 /* Info.plist */,
@@ -435,6 +482,15 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		426AB6C6221344DD0061EF0B /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				426AB6C7221344F00061EF0B /* ConsumptionExtension.swift */,
+				426AB6C9221750BD0061EF0B /* DrinkExtension.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		42731AFD2208D90F0048AB83 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,7 +523,8 @@
 		42882651220F75C3001A9A5A /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				42882652220F75D4001A9A5A /* ConsumptionListInteractor.swift */,
+				42882652220F75D4001A9A5A /* ConsumptionListInteractorImpl.swift */,
+				4232DAF92210CF0600DCC8DD /* ConsumptionListInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -508,6 +565,7 @@
 		429893B92203138900460356 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				426AB6C6221344DD0061EF0B /* Entity */,
 				429893BA2203139400460356 /* Calculations */,
 			);
 			path = Logic;
@@ -591,6 +649,7 @@
 			buildConfigurationList = 4246D75E2200583E0066BC01 /* Build configuration list for PBXNativeTarget "DeliriumOverTests" */;
 			buildPhases = (
 				297D8D09D06454FBC305C272 /* [CP] Check Pods Manifest.lock */,
+				4232DAFB2210D13600DCC8DD /* Run Script */,
 				4246D7432200583E0066BC01 /* Sources */,
 				4246D7442200583E0066BC01 /* Frameworks */,
 				4246D7452200583E0066BC01 /* Resources */,
@@ -729,7 +788,9 @@
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/Cuckoo/Cuckoo.framework",
 				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
+				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -737,12 +798,28 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cuckoo.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeliriumOverTests/Pods-DeliriumOverTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		4232DAFB2210D13600DCC8DD /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Define output file. Change \"$PROJECT_DIR/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"$PROJECT_DIR/${PROJECT_NAME}Tests/GeneratedMocks.swift\"\necho \"Generated Mocks File = $OUTPUT_FILE\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/${PROJECT_NAME}\"\necho \"Mocks Input Directory = $INPUT_DIR\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PODS_ROOT}/Cuckoo/run\" generate --testable \"$PROJECT_NAME\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"$INPUT_DIR/Logic/Repository/SessionRepository.swift\" \\\n\"$INPUT_DIR/Logic/Repository/ConsumptionRepository.swift\" \\\n\"$INPUT_DIR/Logic/Repository/DrinkRepository.swift\"\n# ... and so forth, the last line should never end with a backslash\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.";
 		};
 		548FBBF4459A07A65B6DF926 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -827,9 +904,11 @@
 				4246D7352200583D0066BC01 /* AppDelegate.swift in Sources */,
 				4288265E220F8C2A001A9A5A /* ConsumptionListItemView.swift in Sources */,
 				429B93902204DEDA00B663FD /* DeliriumOver.xcdatamodeld in Sources */,
+				4204FE33221220A900BBB83E /* SimpleError.swift in Sources */,
 				42895B2E22078BFF00386A21 /* DAOImpl.swift in Sources */,
 				42731B002208D93B0048AB83 /* FirebaseAuthentication.swift in Sources */,
 				422C68E52201117E00F7702A /* Session.swift in Sources */,
+				4232DAFA2210CF0600DCC8DD /* ConsumptionListInteractor.swift in Sources */,
 				429B93972204E28100B663FD /* SessionRepositoryImpl.swift in Sources */,
 				422C68D922010DC900F7702A /* AlcoholCalculator.swift in Sources */,
 				4246D7372200583D0066BC01 /* ReportsOverviewViewController.swift in Sources */,
@@ -841,7 +920,7 @@
 				429893B82202279700460356 /* SystemDateProvider.swift in Sources */,
 				42E44DE12201C38500F367CB /* DrinkUnit.swift in Sources */,
 				42882649220EC87E001A9A5A /* FirebaseError.swift in Sources */,
-				42882653220F75D4001A9A5A /* ConsumptionListInteractor.swift in Sources */,
+				42882653220F75D4001A9A5A /* ConsumptionListInteractorImpl.swift in Sources */,
 				422CA9822210933C00BC5401 /* RepositorySwinject.swift in Sources */,
 				428875F22205FB2200EED6BB /* SessionDAO.swift in Sources */,
 				42E44DDF2201C23000F367CB /* Consumption.swift in Sources */,
@@ -858,9 +937,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4232DAF82210CCDD00DCC8DD /* ConsumptionListInteractorTest.swift in Sources */,
+				426AB6CA221750BD0061EF0B /* DrinkExtension.swift in Sources */,
+				426AB6C8221344F00061EF0B /* ConsumptionExtension.swift in Sources */,
 				42B8D8AF22044F0B0050F0B2 /* TestDateProvider.swift in Sources */,
 				429893BC220313CF00460356 /* AlcoholCalculatorTest.swift in Sources */,
 				4246D74C2200583E0066BC01 /* DeliriumOverTests.swift in Sources */,
+				4204FE31221163C900BBB83E /* GeneratedMocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,7 +27,7 @@ class ConsumptionListSwinject {
         }
 
         container.register(ConsumptionListInteractor.self) { (resolver) -> ConsumptionListInteractor in
-            ConsumptionListInteractor(sessionRepository: resolver.resolve(SessionRepository.self)!, consumptionRepository: resolver.resolve(ConsumptionRepository.self)!)
+            ConsumptionListInteractorImpl(sessionRepository: resolver.resolve(SessionRepository.self)!, consumptionRepository: resolver.resolve(ConsumptionRepository.self)!, drinkRepository: resolver.resolve(DrinkRepository.self)!)
         }
     }
 }
