@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import KxMenu
 import FirebaseDatabase
 import FirebaseAuth
 
 class ConsumptionListViewController: UIViewController, ConsumptionListView {
+    
     var presenter: ConsumptionListPresenter?
     private var consumptionListTableViewController: ConsumptionListTableViewController?
+    private var addMenuItems = [AddMenuItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,37 @@ class ConsumptionListViewController: UIViewController, ConsumptionListView {
         }
     }
 
+    func updateAddMenuItems(menuItems: [MenuItem]) {
+        addMenuItems = menuItems.map({ (menuItem) -> AddMenuItem in
+            AddMenuItem(menuItem, image: UIImage.init(), target: self, action: #selector(onAddItemSelected(_:)))
+        })
+    }
     
+    @IBAction func onAddClicked(_ sender: UIButton) {
+        if (addMenuItems.isEmpty) {
+            presenter?.onAddClicked()
+        } else {
+            KxMenu.show(in: view,
+                        from: sender.superview!.superview!.frame,
+                        menuItems: addMenuItems)
+        }
+        
+    }
+
+    @objc private func onAddItemSelected(_ sender: AddMenuItem) {
+        presenter?.onMenuItemSelected(menuItem: sender.menuItem)
+    }
+
+    class AddMenuItem: KxMenuItem {
+        let menuItem: MenuItem
+        init(_ menuItem: MenuItem, image: UIImage!, target: AnyObject, action: Selector) {
+            self.menuItem = menuItem
+            super.init()
+            super.title = menuItem.title
+            super.image = image
+            super.target = target
+            super.action = action
+        }
+    }
 }
 

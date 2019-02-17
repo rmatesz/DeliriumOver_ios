@@ -14,13 +14,13 @@ class ConsumptionListPresenter {
     private let interactor: ConsumptionListInteractor
     private let router: ConsumptionListRouter
     private let disposeBag = DisposeBag()
+    private var drinks = [Drink]()
     
     init(view: ConsumptionListView, interactor: ConsumptionListInteractor, router: ConsumptionListRouter) {
         self.view = view
         self.interactor = interactor
         self.router = router
     }
-    
     func start() {
         interactor.loadConsumptions()
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
@@ -34,6 +34,49 @@ class ConsumptionListPresenter {
                 print("error")
             })
             .disposed(by: disposeBag)
-            
+        
+        interactor.loadFrequentlyConsumedDrinks()
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler())
+            .subscribe(onNext: { (drinks) in
+                var menuItems = drinks.map({ (drink) -> MenuItem in
+                    MenuItem(title: drink.name, entity: drink)
+                })
+                menuItems.append(MenuItem(title: "Add new...", entity: nil))
+                self.view.updateAddMenuItems(menuItems: menuItems)
+            }, onError: { (error) in
+                print("error")
+            })
+            .disposed(by: disposeBag)
+    }
+
+    public func onAddClicked() {
+        addNewConsumption()
+    }
+
+    public func onMenuItemSelected(menuItem: MenuItem) {
+        let drink = menuItem.entity as? Drink
+        if drink == nil {
+            addNewConsumption()
+        } else {
+            addDrinkAsConsumption(drink: drink!)
+        }
+    }
+    
+    private func addNewConsumption() {
+        // router.openAddConsumption()
+    }
+    
+    private func addDrinkAsConsumption(drink: Drink) {
+        // router.showLoading
+        interactor.add(drink: drink)
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler())
+            .subscribe(onCompleted: {
+                // router.hideLoading
+            }, onError: { (error) in
+                print("")
+            })
+            .disposed(by: disposeBag)
     }
 }

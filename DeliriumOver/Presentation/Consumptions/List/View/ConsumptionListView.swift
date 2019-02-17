@@ -11,5 +11,10 @@ import UIKit
 
 protocol ConsumptionListView {
     func displayConsumptionList(consumptions: [ConsumptionListItem])
+    func updateAddMenuItems(menuItems: [MenuItem])
+}
 
+struct MenuItem {
+    var title: String
+    var entity: Any?
 }

@@ -22,7 +22,7 @@ class ReportsOverviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let session = Session(title: "test title", description: "description", name: "Test Elek", weight: 85.0, height: 172.5, gender: Sex.MALE, consumptions: [], inProgress: false, shareKey: "")
+        let session = Session(title: "test title", description: "description", name: "Test Elek", weight: 85.0, height: 172.5, gender: Sex.MALE, consumptions: [], inProgress: true, shareKey: "")
         sessionRepository!.insert(session: session)
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler())

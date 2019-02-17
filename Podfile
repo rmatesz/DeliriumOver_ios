@@ -4,6 +4,7 @@ use_frameworks!
 target "DeliriumOver" do
     pod 'RxSwift',  '~> 4.0'
     pod 'RxCocoa',  '~> 4.0'
+    pod 'KxMenu'
     pod 'Firebase/Core'
     pod 'Firebase/Auth'
     pod 'Firebase/Database'
