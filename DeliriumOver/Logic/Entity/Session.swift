@@ -29,9 +29,12 @@ public struct Session {
         self.name = sessionEntity.name ?? self.name
         self.weight = sessionEntity.weight
         self.gender = Sex(rawValue: Int(sessionEntity.gender)) ?? self.gender
-        self.consumptions = sessionEntity.consumptions?.allObjects.map({ (any) -> Consumption in
+        self.consumptions = (sessionEntity.consumptions?.allObjects.map({ (any) -> Consumption in
             Consumption(consumptionEntity: (any as! ConsumptionEntity))
-        }) ?? []
+        }) ?? [])
+            .sorted(by: { (first, second) -> Bool in
+                first.date < second.date
+            })
     }
     
     init(

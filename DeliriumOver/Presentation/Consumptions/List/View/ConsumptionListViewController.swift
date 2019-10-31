@@ -22,6 +22,10 @@ class ConsumptionListViewController: UIViewController, ConsumptionListView {
         presenter?.start()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        presenter?.refresh()
+    }
+    
     func displayConsumptionList(consumptions: [ConsumptionListItem]) {
         consumptionListTableViewController?.consumptions = consumptions
     }
@@ -30,6 +34,7 @@ class ConsumptionListViewController: UIViewController, ConsumptionListView {
         switch segue.identifier {
         case "ConsumptionListTableViewController"?:
             consumptionListTableViewController = segue.destination as? ConsumptionListTableViewController
+            consumptionListTableViewController?.presenter = presenter
                 break
         case .none:
             break
@@ -48,8 +53,9 @@ class ConsumptionListViewController: UIViewController, ConsumptionListView {
         if (addMenuItems.isEmpty) {
             presenter?.onAddClicked()
         } else {
-            KxMenu.show(in: view,
-                        from: sender.superview!.superview!.frame,
+            let frame = sender.superview!.superview!.frame
+            KxMenu.show(in: self.view.window,
+                        from: CGRect(x: frame.origin.x, y: view.window?.safeAreaInsets.top ?? 0, width: frame.width, height: frame.height),
                         menuItems: addMenuItems)
         }
         

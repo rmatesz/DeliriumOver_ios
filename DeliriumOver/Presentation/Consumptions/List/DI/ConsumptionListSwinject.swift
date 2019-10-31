@@ -15,6 +15,12 @@ class ConsumptionListSwinject {
             container.register(ConsumptionListView.self, factory: { (resolver) -> ConsumptionListView in
                 controller
             })
+            container.register(UIViewController.self, factory: { (resolver) -> UIViewController in
+                controller
+            })
+            container.register(UIStoryboard.self, factory: { (resolver) -> UIStoryboard in
+                controller.storyboard!
+            })
             controller.presenter = resolver.resolve(ConsumptionListPresenter.self)
         }
         
@@ -23,7 +29,7 @@ class ConsumptionListSwinject {
         }
         
         container.register(ConsumptionListRouter.self) { (resolver) -> ConsumptionListRouter in
-            ConsumptionListRouter()
+            ConsumptionListRouter(resolver.resolve(UIViewController.self)!, resolver.resolve(UIStoryboard.self)!)
         }
 
         container.register(ConsumptionListInteractor.self) { (resolver) -> ConsumptionListInteractor in

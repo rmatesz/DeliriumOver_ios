@@ -1,0 +1,76 @@
+/* 
+  Strings.strings
+  DeliriumOver
+
+  Created by Mate Redecsi on 2019. 09. 06..
+  Copyright © 2019. rmatesz. All rights reserved.
+*/
+
+
+/*<string name="message_alert_termsandconditions">The data displayed by the application is informational. All measurements are an average for a healthy (healthy liver) person. It highly depends on the actual state of mind, emptyness of stomach and drinking habits.
+</string>
+
+
+<string name="message_error_field_empty" type="id">Mandatory to fill</string>
+<string name="message_error_invalid_number_format" type="id">Invalid format</string>
+<string name="message_error_value_zero">The value can\'t be zero</string>
+<string name="message_error_value_negative">The value can\'t be negative</string>
+<string name="message_error_unkown_error">Unknown error</string>
+<string name="drink_unit_cl">cl</string>
+<string name="drink_unit_l">l</string>
+<string name="drink_unit_dl">dl</string>
+<string name="alert_error_title">Error</string>
+<string name="alert_message_error_save_consumption">Unable to save consumption</string>
+<string name="session_add_title">Event title</string>
+<string name="session_add_description">Description (optional)</string>
+<string name="session_add_name">Your name</string>
+<string name="session_add_weight">Weight</string>
+<string name="session_list_start_session">Add new</string>
+<string name="alert_message_error_save_session">Unable to save data</string>
+<string name="date_format">MM/dd/yyyy h:mm a</string>
+
+<string name="thousandths_value">%.2f ‰</string>
+<string name="current_estimated_bac">BAC level</string>
+<string name="current_estimated_bac_value">%.2f ‰</string>
+<string name="estimated_elimination_date">Sober at</string>
+<string name="estimated_elimination_date_value">%1$tm/%1$td/%1$tY</string>
+<string name="estimated_elimination_time_value">%1$tH:%1$tM</string>
+<string name="report_overview_add_consumption">Add a drink</string>
+<string name="notification_channel_name">Alcohol degradation</string>
+<string name="notification_alcohol_eliminated">The consumed alcohol has been probably eliminated from your body! All measurements are an average for a healthy (healthy liver) person. It highly depends on the actual state of mind, emptyness of stomach and drinking habits.
+If you\'d like to drive, wait more than the displayed degradation time, before you can safely sit in the car.</string>
+
+<string name="consumption_time">%1$tH:%1$tM</string>
+<string name="menu_item_save">Save</string>
+<string name="session_in_progress">in progress</string>
+
+<string name="set_up_your_data">Set up your data</string>
+<string name="please_set_up_a_few_information">To make sure calculation results will be precise, please set up a few information.</string>
+
+<string name="start_adding_consumptions_prompt_title">Start adding consumptions</string>
+<string name="start_adding_consumptions_prompt_description">You can add new consumption any time</string>
+<string name="manage_consumptions_prompt_description">You can always check and manage your previously registered consumptions</string>
+<string name="share_with_friends">Share with friends</string>
+<string name="sex_male">Male</string>
+<string name="sex_female">Female</string>
+<string name="menu_item_share">Share</string>
+
+<string name="share_consumptions_prompt_title">Congratulations</string>
+<string name="share_consumptions_prompt_description">You have added your first consumption. You can share it with friends. By doing this you can see and compare each others\' consumptions and blood alcohol level.</string>
+<string name="share_description">Set up same code with your friends to enabled sharing of your consumption data. One of you should generate a unique code and others can read that code with the camera of their device to ensure you are using the same key.</string>
+<string name="menu_reports">Reports</string>
+<string name="menu_consumptions">Consumptions</string>
+<string name="menu_history">History</string>
+<string name="settings">Settings</string>
+<string name="unnamed_session">Unnamed session</string>
+<string name="add_new_consumption">Add new</string>
+<string name="history_warning_message">This drinking session happened in the past, and all of the consumed alcohol has probably eliminated already. You can\'t modify it anymore.</string>
+<string name="read_qr_code">Read code</string>
+<string name="generate_new_code">Generate new code</string>
+<string name="drink_description">%1$.2f %2$s [%3$.2f%%]</string>
+<string name="camera_permission_rationale">We need you to allow access to your camera to read QR codes and enable sharing funcationality.</string>
+<string name="now">Now</string>
+<string name="update_now">Update now</string>
+<string name="update_to_use_share">The application has to be updated to use the share functionality.</string>
+<string name="history_go_live">Jump to current session ></string>
+*/

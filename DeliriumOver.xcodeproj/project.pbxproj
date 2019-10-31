@@ -71,6 +71,23 @@
 		42E44DDF2201C23000F367CB /* Consumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E44DDE2201C23000F367CB /* Consumption.swift */; };
 		42E44DE12201C38500F367CB /* DrinkUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E44DE02201C38500F367CB /* DrinkUnit.swift */; };
 		80239DE305DE6FE952994E34 /* Pods_DeliriumOverTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C99880F8C752445999952D /* Pods_DeliriumOverTests.framework */; };
+		802ABAF423325DEA00DE0306 /* ConsumptionFormRouterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802ABAF323325DEA00DE0306 /* ConsumptionFormRouterImpl.swift */; };
+		80395D67232660A8008120A6 /* HasApply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80395D66232660A8008120A6 /* HasApply.swift */; };
+		80395D6A2326627A008120A6 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80395D692326627A008120A6 /* BasePresenter.swift */; };
+		80395D6E232BDA3F008120A6 /* DatePickerSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80395D6D232BDA3F008120A6 /* DatePickerSheet.xib */; };
+		80395D70232BDB10008120A6 /* DatePickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80395D6F232BDB10008120A6 /* DatePickerSheet.swift */; };
+		8041DB8E23147B6F00BF9964 /* ConsumptionFormRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8041DB8D23147B6F00BF9964 /* ConsumptionFormRouter.swift */; };
+		8041DB922316923A00BF9964 /* ConsumptionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8041DB912316923A00BF9964 /* ConsumptionFormViewController.swift */; };
+		80707E0E2322967A006A6636 /* Strings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80707E102322967A006A6636 /* Strings.strings */; };
+		80707E13232299FB006A6636 /* ConsumptionFormInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80707E12232299FB006A6636 /* ConsumptionFormInteractorImpl.swift */; };
+		80731A7C231FC03300C65C08 /* ConsumptionFormPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80731A7B231FC03300C65C08 /* ConsumptionFormPresenter.swift */; };
+		80731A7E231FC0C800C65C08 /* ConsumptionFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80731A7D231FC0C800C65C08 /* ConsumptionFormView.swift */; };
+		80731A80231FD37B00C65C08 /* ConsumptionFormPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80731A7F231FD37B00C65C08 /* ConsumptionFormPresenterImpl.swift */; };
+		80731A83231FD58C00C65C08 /* ConsumptionFormInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80731A82231FD58C00C65C08 /* ConsumptionFormInteractor.swift */; };
+		80731A85232131CF00C65C08 /* ConsumptionFormSwinject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80731A84232131CF00C65C08 /* ConsumptionFormSwinject.swift */; };
+		80D4B8E5232F918D001E8ABF /* QuantityPickerSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80D4B8E4232F918D001E8ABF /* QuantityPickerSheet.xib */; };
+		80D4B8E7232F93B4001E8ABF /* QuantityPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4B8E6232F93B4001E8ABF /* QuantityPickerSheet.swift */; };
+		80EDF100236AE80F003BA24C /* ConsumptionListPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF0FF236AE80F003BA24C /* ConsumptionListPresenterTest.swift */; };
 		B8B96A0A05D74AAE63584771 /* Pods_DeliriumOver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13B129C7E5EC8374E6B23481 /* Pods_DeliriumOver.framework */; };
 /* End PBXBuildFile section */
 
@@ -167,6 +184,26 @@
 		49C99880F8C752445999952D /* Pods_DeliriumOverTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeliriumOverTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		631CE8ED2BFE7C5CF2CF2492 /* Pods-DeliriumOver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliriumOver.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeliriumOver/Pods-DeliriumOver.release.xcconfig"; sourceTree = "<group>"; };
 		6B7B2E3C799FB3B9A883F8B6 /* Pods-DeliriumOverTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliriumOverTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeliriumOverTests/Pods-DeliriumOverTests.release.xcconfig"; sourceTree = "<group>"; };
+		802ABAF323325DEA00DE0306 /* ConsumptionFormRouterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionFormRouterImpl.swift; sourceTree = "<group>"; };
+		80395D66232660A8008120A6 /* HasApply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasApply.swift; sourceTree = "<group>"; };
+		80395D692326627A008120A6 /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
+		80395D6D232BDA3F008120A6 /* DatePickerSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerSheet.xib; sourceTree = "<group>"; };
+		80395D6F232BDB10008120A6 /* DatePickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerSheet.swift; sourceTree = "<group>"; };
+		8041DB8D23147B6F00BF9964 /* ConsumptionFormRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionFormRouter.swift; sourceTree = "<group>"; };
+		8041DB912316923A00BF9964 /* ConsumptionFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionFormViewController.swift; sourceTree = "<group>"; };
+		80707E0A23229604006A6636 /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Main.strings; sourceTree = "<group>"; };
+		80707E0B23229604006A6636 /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		80707E0F2322967A006A6636 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Strings.strings; sourceTree = "<group>"; };
+		80707E112322967D006A6636 /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Strings.strings; sourceTree = "<group>"; };
+		80707E12232299FB006A6636 /* ConsumptionFormInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionFormInteractorImpl.swift; sourceTree = "<group>"; };
+		80731A7B231FC03300C65C08 /* ConsumptionFormPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionFormPresenter.swift; sourceTree = "<group>"; };
+		80731A7D231FC0C800C65C08 /* ConsumptionFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionFormView.swift; sourceTree = "<group>"; };
+		80731A7F231FD37B00C65C08 /* ConsumptionFormPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionFormPresenterImpl.swift; sourceTree = "<group>"; };
+		80731A82231FD58C00C65C08 /* ConsumptionFormInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionFormInteractor.swift; sourceTree = "<group>"; };
+		80731A84232131CF00C65C08 /* ConsumptionFormSwinject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionFormSwinject.swift; sourceTree = "<group>"; };
+		80D4B8E4232F918D001E8ABF /* QuantityPickerSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuantityPickerSheet.xib; sourceTree = "<group>"; };
+		80D4B8E6232F93B4001E8ABF /* QuantityPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPickerSheet.swift; sourceTree = "<group>"; };
+		80EDF0FF236AE80F003BA24C /* ConsumptionListPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListPresenterTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +255,8 @@
 		422C68DA22010E9800F7702A /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				80395D6C232BDA02008120A6 /* Widget */,
+				80395D6523266095008120A6 /* Common */,
 				429893BD22031BC100460356 /* Number */,
 				422C68DB22010EA000F7702A /* Date */,
 				4204FE32221220A900BBB83E /* SimpleError.swift */,
@@ -294,6 +333,7 @@
 		4232DAF52210CCBC00DCC8DD /* List */ = {
 			isa = PBXGroup;
 			children = (
+				80EDF0FE236AE7F8003BA24C /* Presenter */,
 				4232DAF62210CCC400DCC8DD /* Interactor */,
 			);
 			path = List;
@@ -341,6 +381,7 @@
 				4246D73D2200583D0066BC01 /* Assets.xcassets */,
 				4246D73F2200583D0066BC01 /* LaunchScreen.storyboard */,
 				4246D7422200583D0066BC01 /* Info.plist */,
+				80707E102322967A006A6636 /* Strings.strings */,
 			);
 			path = DeliriumOver;
 			sourceTree = "<group>";
@@ -381,6 +422,7 @@
 		4246D765220059060066BC01 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				80395D6823266270008120A6 /* Common */,
 				4246D76E220060CB0066BC01 /* Application */,
 				4246D76B220060A10066BC01 /* Sessions */,
 				4246D76A2200609A0066BC01 /* Consumptions */,
@@ -425,6 +467,7 @@
 		4246D76A2200609A0066BC01 /* Consumptions */ = {
 			isa = PBXGroup;
 			children = (
+				8041DB8B23147B4200BF9964 /* Form */,
 				4246D76C220060B00066BC01 /* List */,
 			);
 			path = Consumptions;
@@ -611,6 +654,97 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		80395D6523266095008120A6 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				80395D66232660A8008120A6 /* HasApply.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		80395D6823266270008120A6 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				80395D692326627A008120A6 /* BasePresenter.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		80395D6C232BDA02008120A6 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				80395D6D232BDA3F008120A6 /* DatePickerSheet.xib */,
+				80395D6F232BDB10008120A6 /* DatePickerSheet.swift */,
+				80D4B8E4232F918D001E8ABF /* QuantityPickerSheet.xib */,
+				80D4B8E6232F93B4001E8ABF /* QuantityPickerSheet.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		8041DB8B23147B4200BF9964 /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				8041DB8F23147BA900BF9964 /* DI */,
+				8041DB9023147BC300BF9964 /* View */,
+				80731A7A231FBFCF00C65C08 /* Presenter */,
+				80731A81231FD3B100C65C08 /* Interactor */,
+				8041DB8C23147B4D00BF9964 /* Router */,
+			);
+			path = Form;
+			sourceTree = "<group>";
+		};
+		8041DB8C23147B4D00BF9964 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				8041DB8D23147B6F00BF9964 /* ConsumptionFormRouter.swift */,
+				802ABAF323325DEA00DE0306 /* ConsumptionFormRouterImpl.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		8041DB8F23147BA900BF9964 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				80731A84232131CF00C65C08 /* ConsumptionFormSwinject.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		8041DB9023147BC300BF9964 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8041DB912316923A00BF9964 /* ConsumptionFormViewController.swift */,
+				80731A7D231FC0C800C65C08 /* ConsumptionFormView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		80731A7A231FBFCF00C65C08 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				80731A7B231FC03300C65C08 /* ConsumptionFormPresenter.swift */,
+				80731A7F231FD37B00C65C08 /* ConsumptionFormPresenterImpl.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		80731A81231FD3B100C65C08 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				80731A82231FD58C00C65C08 /* ConsumptionFormInteractor.swift */,
+				80707E12232299FB006A6636 /* ConsumptionFormInteractorImpl.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		80EDF0FE236AE7F8003BA24C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				80EDF0FF236AE80F003BA24C /* ConsumptionListPresenterTest.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		F228245A082D87936C3B6BE5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -716,6 +850,7 @@
 			knownRegions = (
 				en,
 				Base,
+				hu,
 			);
 			mainGroup = 4246D7282200583D0066BC01;
 			productRefGroup = 4246D7322200583D0066BC01 /* Products */;
@@ -736,9 +871,12 @@
 			files = (
 				4246D7412200583D0066BC01 /* LaunchScreen.storyboard in Resources */,
 				4246D73E2200583D0066BC01 /* Assets.xcassets in Resources */,
+				80395D6E232BDA3F008120A6 /* DatePickerSheet.xib in Resources */,
 				42895B3022082B9800386A21 /* GoogleService-Info.plist in Resources */,
 				428875EE220580DD00EED6BB /* Podfile in Resources */,
 				4246D73C2200583D0066BC01 /* Main.storyboard in Resources */,
+				80D4B8E5232F918D001E8ABF /* QuantityPickerSheet.xib in Resources */,
+				80707E0E2322967A006A6636 /* Strings.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -783,9 +921,8 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-DeliriumOverTests/Pods-DeliriumOverTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-DeliriumOverTests/Pods-DeliriumOverTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/Cuckoo/Cuckoo.framework",
@@ -795,7 +932,6 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cuckoo.framework",
@@ -804,7 +940,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeliriumOverTests/Pods-DeliriumOverTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DeliriumOverTests/Pods-DeliriumOverTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4232DAFB2210D13600DCC8DD /* Run Script */ = {
@@ -819,7 +955,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Define output file. Change \"$PROJECT_DIR/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"$PROJECT_DIR/${PROJECT_NAME}Tests/GeneratedMocks.swift\"\necho \"Generated Mocks File = $OUTPUT_FILE\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/${PROJECT_NAME}\"\necho \"Mocks Input Directory = $INPUT_DIR\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PODS_ROOT}/Cuckoo/run\" generate --testable \"$PROJECT_NAME\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"$INPUT_DIR/Logic/Repository/SessionRepository.swift\" \\\n\"$INPUT_DIR/Logic/Repository/ConsumptionRepository.swift\" \\\n\"$INPUT_DIR/Logic/Repository/DrinkRepository.swift\"\n# ... and so forth, the last line should never end with a backslash\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.";
+			shellScript = "# Define output file. Change \"$PROJECT_DIR/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"$PROJECT_DIR/${PROJECT_NAME}Tests/GeneratedMocks.swift\"\necho \"Generated Mocks File = $OUTPUT_FILE\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/${PROJECT_NAME}\"\necho \"Mocks Input Directory = $INPUT_DIR\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PODS_ROOT}/Cuckoo/run\" generate --testable \"$PROJECT_NAME\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"$INPUT_DIR/Logic/Repository/SessionRepository.swift\" \\\n\"$INPUT_DIR/Logic/Repository/ConsumptionRepository.swift\" \\\n\"$INPUT_DIR/Logic/Repository/DrinkRepository.swift\"\n# ... and so forth, the last line should never end with a backslash\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.\n";
 		};
 		548FBBF4459A07A65B6DF926 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -827,11 +963,10 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-DeliriumOver/Pods-DeliriumOver-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-DeliriumOver/Pods-DeliriumOver-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/KxMenu/KxMenu.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
@@ -844,7 +979,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KxMenu.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
@@ -854,7 +988,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeliriumOver/Pods-DeliriumOver-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DeliriumOver/Pods-DeliriumOver-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C487B4589E5B6C43001E2D33 /* [CP] Check Pods Manifest.lock */ = {
@@ -882,6 +1016,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8041DB922316923A00BF9964 /* ConsumptionFormViewController.swift in Sources */,
+				80395D6A2326627A008120A6 /* BasePresenter.swift in Sources */,
 				422CA97B22108F4C00BC5401 /* FirebaseSwinject.swift in Sources */,
 				42895B2222077AAE00386A21 /* ConsumptionDAO.swift in Sources */,
 				42895B2422077BA000386A21 /* ConsumptionDAOImpl.swift in Sources */,
@@ -895,20 +1031,29 @@
 				422C68DE22010EBA00F7702A /* DateExtensions.swift in Sources */,
 				42882647220EC507001A9A5A /* FirebaseCommunicator.swift in Sources */,
 				42895B262207887100386A21 /* ConsumptionRepository.swift in Sources */,
+				80731A7E231FC0C800C65C08 /* ConsumptionFormView.swift in Sources */,
+				80395D70232BDB10008120A6 /* DatePickerSheet.swift in Sources */,
 				42895B2A22078AE600386A21 /* RepositoryError.swift in Sources */,
+				80731A83231FD58C00C65C08 /* ConsumptionFormInteractor.swift in Sources */,
 				422CA97E22108FD600BC5401 /* ReportOverviewSwinject.swift in Sources */,
 				428875F42206005B00EED6BB /* SessionDAOImpl.swift in Sources */,
 				422C68E022010F0300F7702A /* Record.swift in Sources */,
 				429B93952204E24600B663FD /* SessionRepository.swift in Sources */,
+				8041DB8E23147B6F00BF9964 /* ConsumptionFormRouter.swift in Sources */,
+				80731A85232131CF00C65C08 /* ConsumptionFormSwinject.swift in Sources */,
 				42882658220F87A1001A9A5A /* ConsumptionListRouter.swift in Sources */,
+				80395D67232660A8008120A6 /* HasApply.swift in Sources */,
 				42146F0A220CCAD100A793A5 /* FirebaseSessionDatabase.swift in Sources */,
 				42895B28220788CE00386A21 /* ConsumptionRepositoryImpl.swift in Sources */,
+				80731A7C231FC03300C65C08 /* ConsumptionFormPresenter.swift in Sources */,
 				4246D7352200583D0066BC01 /* AppDelegate.swift in Sources */,
 				4288265E220F8C2A001A9A5A /* ConsumptionListItemView.swift in Sources */,
+				802ABAF423325DEA00DE0306 /* ConsumptionFormRouterImpl.swift in Sources */,
 				429B93902204DEDA00B663FD /* DeliriumOver.xcdatamodeld in Sources */,
 				4204FE33221220A900BBB83E /* SimpleError.swift in Sources */,
 				42895B2E22078BFF00386A21 /* DAOImpl.swift in Sources */,
 				42731B002208D93B0048AB83 /* FirebaseAuthentication.swift in Sources */,
+				80D4B8E7232F93B4001E8ABF /* QuantityPickerSheet.swift in Sources */,
 				422C68E52201117E00F7702A /* Session.swift in Sources */,
 				4232DAFA2210CF0600DCC8DD /* ConsumptionListInteractor.swift in Sources */,
 				429B93972204E28100B663FD /* SessionRepositoryImpl.swift in Sources */,
@@ -918,10 +1063,12 @@
 				429893BF22031C0400460356 /* DoubleExtension.swift in Sources */,
 				422CA97822106E0900BC5401 /* ConsumptionListTableViewController.swift in Sources */,
 				4288264B220F675D001A9A5A /* DrinkRepository.swift in Sources */,
+				80707E13232299FB006A6636 /* ConsumptionFormInteractorImpl.swift in Sources */,
 				429893B42202233700460356 /* DrinkType.swift in Sources */,
 				429893B82202279700460356 /* SystemDateProvider.swift in Sources */,
 				42E44DE12201C38500F367CB /* DrinkUnit.swift in Sources */,
 				42882649220EC87E001A9A5A /* FirebaseError.swift in Sources */,
+				80731A80231FD37B00C65C08 /* ConsumptionFormPresenterImpl.swift in Sources */,
 				42882653220F75D4001A9A5A /* ConsumptionListInteractorImpl.swift in Sources */,
 				422CA9822210933C00BC5401 /* RepositorySwinject.swift in Sources */,
 				428875F22205FB2200EED6BB /* SessionDAO.swift in Sources */,
@@ -939,6 +1086,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80EDF100236AE80F003BA24C /* ConsumptionListPresenterTest.swift in Sources */,
 				4232DAF82210CCDD00DCC8DD /* ConsumptionListInteractorTest.swift in Sources */,
 				426AB6CA221750BD0061EF0B /* DrinkExtension.swift in Sources */,
 				426AB6C8221344F00061EF0B /* ConsumptionExtension.swift in Sources */,
@@ -977,6 +1125,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				4246D73B2200583D0066BC01 /* Base */,
+				80707E0A23229604006A6636 /* hu */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -985,8 +1134,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				4246D7402200583D0066BC01 /* Base */,
+				80707E0B23229604006A6636 /* hu */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		80707E102322967A006A6636 /* Strings.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80707E0F2322967A006A6636 /* en */,
+				80707E112322967D006A6636 /* hu */,
+			);
+			name = Strings.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -996,6 +1155,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1053,6 +1213,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

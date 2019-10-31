@@ -16,5 +16,6 @@ extension SwinjectStoryboard {
         RepositorySwinject.setup(defaultContainer: defaultContainer)
         ReportsOverviewSwinject.setup(defaultContainer: defaultContainer)
         ConsumptionListSwinject.setup(defaultContainer)
+        ConsumptionFormSwinject.setup(defaultContainer)
     }
 }

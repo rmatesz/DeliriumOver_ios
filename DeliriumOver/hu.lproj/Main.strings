@@ -1,0 +1,60 @@
+
+/* Class = "UINavigationItem"; title = "DeliriumOver"; ObjectID = "3sW-F5-FAV"; */
+"3sW-F5-FAV.title" = "DeliriumOver";
+
+/* Class = "UIButton"; normalTitle = "SAVE"; ObjectID = "490-JA-Wzg"; */
+"490-JA-Wzg.normalTitle" = "SAVE";
+
+/* Class = "UILabel"; text = "Drink is mandatory to be filled!"; ObjectID = "9S7-Mb-AlL"; */
+"9S7-Mb-AlL.text" = "Drink is mandatory to be filled!";
+
+/* Class = "UILabel"; text = "Loaded by FirstViewController"; ObjectID = "A5M-7J-77L"; */
+"A5M-7J-77L.text" = "Loaded by FirstViewController";
+
+/* Class = "UINavigationItem"; title = "DeliriumOver"; ObjectID = "E50-W5-VW8"; */
+"E50-W5-VW8.title" = "DeliriumOver";
+
+/* Class = "UILabel"; text = "First View"; ObjectID = "KQZ-1w-vlD"; */
+"KQZ-1w-vlD.text" = "First View";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "LCJ-LK-xYi"; */
+"LCJ-LK-xYi.title" = " ";
+
+/* Class = "UILabel"; text = "Sör (5.0%)"; ObjectID = "NdM-gu-xlQ"; */
+"NdM-gu-xlQ.text" = "Sör (5.0%)";
+
+/* Class = "UIButton"; normalTitle = "NOW"; ObjectID = "Q05-2j-XOz"; */
+"Q05-2j-XOz.normalTitle" = "NOW";
+
+/* Class = "UILabel"; text = "5.0 dl"; ObjectID = "QSc-oo-KvQ"; */
+"QSc-oo-KvQ.text" = "5.0 dl";
+
+/* Class = "UIButton"; normalTitle = "Add"; ObjectID = "Y8C-ei-UQb"; */
+"Y8C-ei-UQb.normalTitle" = "Add";
+
+/* Class = "UITextField"; placeholder = "Consumed drink"; ObjectID = "abC-4y-G6S"; */
+"abC-4y-G6S.placeholder" = "Consumed drink";
+
+/* Class = "UITabBarItem"; title = "First"; ObjectID = "acW-dT-cKf"; */
+"acW-dT-cKf.title" = "First";
+
+/* Class = "UITextField"; placeholder = "Quantity"; ObjectID = "bJO-oo-KYN"; */
+"bJO-oo-KYN.placeholder" = "Quantity";
+
+/* Class = "UITabBarItem"; title = "Consumptions"; ObjectID = "cPa-gy-q4n"; */
+"cPa-gy-q4n.title" = "Consumptions";
+
+/* Class = "UILabel"; text = "10:55"; ObjectID = "nKg-DF-0pT"; */
+"nKg-DF-0pT.text" = "10:55";
+
+/* Class = "UILabel"; text = "Drink is mandatory to be filled!"; ObjectID = "tr0-qF-aof"; */
+"tr0-qF-aof.text" = "Drink is mandatory to be filled!";
+
+/* Class = "UITextField"; placeholder = "Alcohol content"; ObjectID = "vaa-qr-kwo"; */
+"vaa-qr-kwo.placeholder" = "Alcohol content";
+
+/* Class = "UILabel"; text = "Drink is mandatory to be filled!"; ObjectID = "yEA-Ev-mt6"; */
+"yEA-Ev-mt6.text" = "Drink is mandatory to be filled!";
+
+/* Class = "UITextField"; placeholder = "Consumption time"; ObjectID = "zH6-Td-Ja5"; */
+"zH6-Td-Ja5.placeholder" = "Consumption time";

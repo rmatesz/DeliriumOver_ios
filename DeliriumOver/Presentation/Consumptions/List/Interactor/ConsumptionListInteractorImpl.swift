@@ -24,6 +24,10 @@ class ConsumptionListInteractorImpl: ConsumptionListInteractor {
         self.sessionId = sessionId
     }
 
+    public func refresh() {
+        subject.onNext(nil)
+    }
+    
     public func loadConsumptions() -> Observable<[Consumption]> {
         return subject
             .flatMap { (_) -> Single<Session> in

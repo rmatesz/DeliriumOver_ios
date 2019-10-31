@@ -17,7 +17,7 @@ public class Consumption {
     var date: Date = dateProvider.currentDate
 
     init(
-        id: String = "",
+        _ id: String = "",
         drink: String = "",
         quantity: Double = 0.0,
         unit: DrinkUnit = DrinkUnit.DL,
@@ -36,7 +36,7 @@ public class Consumption {
         self.id = consumptionEntity.objectID.uriRepresentation().absoluteString
         self.drink = consumptionEntity.drink ?? self.drink
         self.quantity = consumptionEntity.quantity
-        self.unit = DrinkUnit(rawValue: Int(consumptionEntity.unit)) ?? self.unit
+//        self.unit = DrinkUnit(rawValue: Int(consumptionEntity.unit)) ?? self.unit
         self.alcohol = consumptionEntity.alcohol
         self.date = consumptionEntity.date ?? self.date
     }

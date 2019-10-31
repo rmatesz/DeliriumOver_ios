@@ -35,7 +35,7 @@ class ConsumptionRepositoryImpl : ConsumptionRepository {
                 consumptionEntity.date = consumption.date
                 consumptionEntity.drink = consumption.drink
                 consumptionEntity.quantity = consumption.quantity
-                consumptionEntity.unit = Int16(consumption.unit.rawValue)
+                consumptionEntity.unit = Int16(consumption.unit.multiplier())
                 return self.consumptionDAO.save()
             }
     }

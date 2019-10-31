@@ -14,4 +14,5 @@ protocol ConsumptionListInteractor {
     func loadFrequentlyConsumedDrinks() -> Observable<[Drink]>
     func delete(consumption: Consumption) -> Completable
     func add(drink: Drink) -> Completable
+    func refresh()
 }

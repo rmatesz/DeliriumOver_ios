@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class ConsumptionListTableViewController: UITableViewController {
+    var presenter: ConsumptionListPresenter?
     
     private var consumptionItems: [ConsumptionListItem] = []
     var consumptions: [ConsumptionListItem]
@@ -37,6 +38,12 @@ class ConsumptionListTableViewController: UITableViewController {
         cell.update(consumption: consumptions[indexPath.row])
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            presenter?.onConsumptionSwiped(index: indexPath.row)
+        }
     }
 
 }

@@ -17,8 +17,8 @@ import RxTest
 class ConsumptionListInteractorImplTest: XCTestCase {
     private static let TEST_ERROR_MESSAGE = "TEST ERROR"
     private static let TEST_ERROR: SimpleError = SimpleError.error(message: TEST_ERROR_MESSAGE)
-    static let TEST_CONSUMPTION_1 = Consumption(id: "1", drink: "test drink", quantity: 2.0, unit: DrinkUnit.DL, alcohol: 10.5)
-    static let TEST_CONSUMPTION_2 = Consumption(id: "2", drink: "test drink 2", quantity: 5.0, unit: DrinkUnit.CL, alcohol: 65.0)
+    static let TEST_CONSUMPTION_1 = Consumption("1", drink: "test drink", quantity: 2.0, unit: DrinkUnit.DL, alcohol: 10.5)
+    static let TEST_CONSUMPTION_2 = Consumption("2", drink: "test drink 2", quantity: 5.0, unit: DrinkUnit.CL, alcohol: 65.0)
     
     static let TEST_SESSION = Session(
         id: "10",

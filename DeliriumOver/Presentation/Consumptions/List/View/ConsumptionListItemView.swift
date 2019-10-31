@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 public class ConsumptionListItemView : UITableViewCell {
+    private static let dateFormatter = DateFormatter().apply { $0.dateFormat = "HH:mm" }
     // MARK: Properties
     @IBOutlet private weak var drink: UILabel!
     @IBOutlet private weak var quantity: UILabel!
@@ -18,6 +19,6 @@ public class ConsumptionListItemView : UITableViewCell {
     func update(consumption: ConsumptionListItem) {
         drink.text = "\(consumption.drink) (\(consumption.alcohol))"
         quantity.text = consumption.quantity
-        date.text = "10:00"
+        date.text = ConsumptionListItemView.dateFormatter.string(from: consumption.date)
     }
 }

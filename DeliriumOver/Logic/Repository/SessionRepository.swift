@@ -13,7 +13,7 @@ protocol SessionRepository {
     func getSessions() -> Maybe<[Session]>
     func getSession(sessionId: String) -> Maybe<Session>
     func getFriendsSessions(shareKey: String) -> Observable<[Session]>
-    func insert(session: Session) -> Completable
+    func insert(session: Session) -> Single<String>
     func update(session: Session) -> Completable
     func delete(session: Session) -> Completable
     func getInProgressSession() -> Maybe<Session>

@@ -47,17 +47,23 @@ class SessionRepositoryImpl: SessionRepository {
             //.map { it.filter { session -> session.shared && session.deviceId != deviceId } }
     }
     
-    func insert(session: Session) -> Completable {
-        let sessionEntity = sessionDAO.createEntity()
-        sessionEntity.title = session.title
-        sessionEntity.desc = session.description
-        sessionEntity.name = session.name
-        sessionEntity.weight = session.weight
-        sessionEntity.gender = Int32(session.gender.rawValue)
-        sessionEntity.inProgress = session.inProgress
-        return sessionDAO.save()
+    func insert(session: Session) -> Single<String> {
+        return Single.deferred { () -> Single<SessionEntity> in
+            let sessionEntity = self.sessionDAO.createEntity()
+            sessionEntity.title = session.title
+            sessionEntity.desc = session.description
+            sessionEntity.name = session.name
+            sessionEntity.weight = session.weight
+            sessionEntity.gender = Int32(session.gender.rawValue)
+            sessionEntity.inProgress = session.inProgress
+            return Single.just(sessionEntity)
+        }
+            .flatMapCompletable({ (SessionEntity) -> Completable in
+                self.sessionDAO.save()
+            })
+            .andThen(Single.just(session.id))
     }
-    
+
     func update(session: Session) -> Completable {
         return sessionDAO.get(session.id)
             .ifEmpty(switchTo: Single.error(RepositoryError(message: "Can't find session in DB.")))

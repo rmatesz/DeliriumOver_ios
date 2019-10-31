@@ -88,7 +88,7 @@ public class AlcoholCalculator {
         drinkUnit: DrinkUnit,
         alcohol: Double
     ) -> Double {
-        return (quantity * Double(drinkUnit.rawValue)) * alcohol * ALCOHOL_DENSITY
+        return (quantity * Double(drinkUnit.multiplier())) * alcohol * ALCOHOL_DENSITY
     }
     
     /**

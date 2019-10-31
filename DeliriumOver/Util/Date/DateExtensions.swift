@@ -8,9 +8,11 @@
 
 import Foundation
 
-public let ONE_HOUR_IN_SECONDS = 60 * 60
 public let ONE_MINUTE_IN_MILLIS = 60 * 1000
-public let ONE_HOUR_IN_MILLIS = 60 * ONE_MINUTE_IN_MILLIS
+public let ONE_HOUR_IN_MINUTES = 60
+public let ONE_MINUTE_IN_SECONDS = 60
+public let ONE_HOUR_IN_MILLIS = ONE_HOUR_IN_MINUTES * ONE_MINUTE_IN_MILLIS
+public let ONE_HOUR_IN_SECONDS = ONE_HOUR_IN_MINUTES * ONE_MINUTE_IN_SECONDS
 
 func createDate(
     _ year: Int,
