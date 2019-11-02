@@ -12,9 +12,11 @@ import Swinject
 class ReportsOverviewSwinject {
     class func setup(defaultContainer: Container) {
         defaultContainer.storyboardInitCompleted(ReportsOverviewViewController.self) { (resolver, controller) in
-            controller.sessionRepository = resolver.resolve(SessionRepository.self)
-            controller.consumptionRepository = resolver.resolve(ConsumptionRepository.self)
-            controller.firebaseCommunicator = resolver.resolve(FirebaseCommunicator.self)
+            controller.presenter = resolver.resolve(ReportOverviewPresenter.self)
+        }
+        
+        defaultContainer.register(ReportOverviewPresenter.self) { (resolver) -> ReportOverviewPresenter in
+            ReportOverviewPresenterImpl()
         }
     }
 }

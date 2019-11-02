@@ -88,6 +88,8 @@
 		80D4B8E5232F918D001E8ABF /* QuantityPickerSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80D4B8E4232F918D001E8ABF /* QuantityPickerSheet.xib */; };
 		80D4B8E7232F93B4001E8ABF /* QuantityPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4B8E6232F93B4001E8ABF /* QuantityPickerSheet.swift */; };
 		80EDF100236AE80F003BA24C /* ConsumptionListPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF0FF236AE80F003BA24C /* ConsumptionListPresenterTest.swift */; };
+		80EDF103236D8DDC003BA24C /* ReportOverviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF102236D8DDC003BA24C /* ReportOverviewPresenter.swift */; };
+		80EDF105236D935D003BA24C /* ReportOverviewPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF104236D935D003BA24C /* ReportOverviewPresenterImpl.swift */; };
 		B8B96A0A05D74AAE63584771 /* Pods_DeliriumOver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13B129C7E5EC8374E6B23481 /* Pods_DeliriumOver.framework */; };
 /* End PBXBuildFile section */
 
@@ -204,6 +206,8 @@
 		80D4B8E4232F918D001E8ABF /* QuantityPickerSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuantityPickerSheet.xib; sourceTree = "<group>"; };
 		80D4B8E6232F93B4001E8ABF /* QuantityPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPickerSheet.swift; sourceTree = "<group>"; };
 		80EDF0FF236AE80F003BA24C /* ConsumptionListPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListPresenterTest.swift; sourceTree = "<group>"; };
+		80EDF102236D8DDC003BA24C /* ReportOverviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportOverviewPresenter.swift; sourceTree = "<group>"; };
+		80EDF104236D935D003BA24C /* ReportOverviewPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportOverviewPresenterImpl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -442,26 +446,27 @@
 		4246D767220059530066BC01 /* Overview */ = {
 			isa = PBXGroup;
 			children = (
+				80EDF101236D8DB2003BA24C /* Presenter */,
 				422CA97C22108FBE00BC5401 /* DI */,
-				4246D769220059850066BC01 /* Interceptor */,
-				4246D7682200597F0066BC01 /* Router */,
+				4246D769220059850066BC01 /* Interactor */,
+				4246D7682200597F0066BC01 /* View */,
 			);
 			path = Overview;
 			sourceTree = "<group>";
 		};
-		4246D7682200597F0066BC01 /* Router */ = {
+		4246D7682200597F0066BC01 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				4246D7362200583D0066BC01 /* ReportsOverviewViewController.swift */,
 			);
-			path = Router;
+			path = View;
 			sourceTree = "<group>";
 		};
-		4246D769220059850066BC01 /* Interceptor */ = {
+		4246D769220059850066BC01 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Interceptor;
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		4246D76A2200609A0066BC01 /* Consumptions */ = {
@@ -745,6 +750,15 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		80EDF101236D8DB2003BA24C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				80EDF102236D8DDC003BA24C /* ReportOverviewPresenter.swift */,
+				80EDF104236D935D003BA24C /* ReportOverviewPresenterImpl.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		F228245A082D87936C3B6BE5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1019,6 +1033,7 @@
 				8041DB922316923A00BF9964 /* ConsumptionFormViewController.swift in Sources */,
 				80395D6A2326627A008120A6 /* BasePresenter.swift in Sources */,
 				422CA97B22108F4C00BC5401 /* FirebaseSwinject.swift in Sources */,
+				80EDF103236D8DDC003BA24C /* ReportOverviewPresenter.swift in Sources */,
 				42895B2222077AAE00386A21 /* ConsumptionDAO.swift in Sources */,
 				42895B2422077BA000386A21 /* ConsumptionDAOImpl.swift in Sources */,
 				429893B62202265200460356 /* DateProvider.swift in Sources */,
@@ -1033,6 +1048,7 @@
 				42895B262207887100386A21 /* ConsumptionRepository.swift in Sources */,
 				80731A7E231FC0C800C65C08 /* ConsumptionFormView.swift in Sources */,
 				80395D70232BDB10008120A6 /* DatePickerSheet.swift in Sources */,
+				80EDF105236D935D003BA24C /* ReportOverviewPresenterImpl.swift in Sources */,
 				42895B2A22078AE600386A21 /* RepositoryError.swift in Sources */,
 				80731A83231FD58C00C65C08 /* ConsumptionFormInteractor.swift in Sources */,
 				422CA97E22108FD600BC5401 /* ReportOverviewSwinject.swift in Sources */,
