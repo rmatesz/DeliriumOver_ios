@@ -16,7 +16,11 @@ class ReportsOverviewSwinject {
         }
         
         defaultContainer.register(ReportOverviewPresenter.self) { (resolver) -> ReportOverviewPresenter in
-            ReportOverviewPresenterImpl()
+            ReportOverviewPresenterImpl(interactor: resolver.resolve(ReportOverviewInteractor.self)!)
+        }
+        
+        defaultContainer.register(ReportOverviewInteractor.self) { (resolver) -> ReportOverviewInteractor in
+            ReportOverviewInteractorImpl()
         }
     }
 }

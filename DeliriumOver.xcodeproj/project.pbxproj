@@ -90,6 +90,10 @@
 		80EDF100236AE80F003BA24C /* ConsumptionListPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF0FF236AE80F003BA24C /* ConsumptionListPresenterTest.swift */; };
 		80EDF103236D8DDC003BA24C /* ReportOverviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF102236D8DDC003BA24C /* ReportOverviewPresenter.swift */; };
 		80EDF105236D935D003BA24C /* ReportOverviewPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF104236D935D003BA24C /* ReportOverviewPresenterImpl.swift */; };
+		80EDF107236D94B2003BA24C /* ReportOverviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF106236D94B2003BA24C /* ReportOverviewInteractor.swift */; };
+		80EDF10A236D95B0003BA24C /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF109236D95B0003BA24C /* Statistics.swift */; };
+		80EDF10C236DAA28003BA24C /* ReportOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF10B236DAA28003BA24C /* ReportOverviewView.swift */; };
+		80EDF10E236DE7F8003BA24C /* ReportOverviewInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF10D236DE7F8003BA24C /* ReportOverviewInteractorImpl.swift */; };
 		B8B96A0A05D74AAE63584771 /* Pods_DeliriumOver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13B129C7E5EC8374E6B23481 /* Pods_DeliriumOver.framework */; };
 /* End PBXBuildFile section */
 
@@ -208,6 +212,10 @@
 		80EDF0FF236AE80F003BA24C /* ConsumptionListPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListPresenterTest.swift; sourceTree = "<group>"; };
 		80EDF102236D8DDC003BA24C /* ReportOverviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportOverviewPresenter.swift; sourceTree = "<group>"; };
 		80EDF104236D935D003BA24C /* ReportOverviewPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportOverviewPresenterImpl.swift; sourceTree = "<group>"; };
+		80EDF106236D94B2003BA24C /* ReportOverviewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReportOverviewInteractor.swift; path = DeliriumOver/Presentation/Reports/Overview/Presenter/ReportOverviewInteractor.swift; sourceTree = SOURCE_ROOT; };
+		80EDF109236D95B0003BA24C /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
+		80EDF10B236DAA28003BA24C /* ReportOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportOverviewView.swift; sourceTree = "<group>"; };
+		80EDF10D236DE7F8003BA24C /* ReportOverviewInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReportOverviewInteractorImpl.swift; path = DeliriumOver/Presentation/Reports/Overview/View/ReportOverviewInteractorImpl.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -446,6 +454,7 @@
 		4246D767220059530066BC01 /* Overview */ = {
 			isa = PBXGroup;
 			children = (
+				80EDF108236D959F003BA24C /* Entity */,
 				80EDF101236D8DB2003BA24C /* Presenter */,
 				422CA97C22108FBE00BC5401 /* DI */,
 				4246D769220059850066BC01 /* Interactor */,
@@ -458,6 +467,7 @@
 			isa = PBXGroup;
 			children = (
 				4246D7362200583D0066BC01 /* ReportsOverviewViewController.swift */,
+				80EDF10B236DAA28003BA24C /* ReportOverviewView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -465,6 +475,8 @@
 		4246D769220059850066BC01 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				80EDF106236D94B2003BA24C /* ReportOverviewInteractor.swift */,
+				80EDF10D236DE7F8003BA24C /* ReportOverviewInteractorImpl.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -759,6 +771,14 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		80EDF108236D959F003BA24C /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				80EDF109236D95B0003BA24C /* Statistics.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		F228245A082D87936C3B6BE5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1042,6 +1062,7 @@
 				4288264D220F6799001A9A5A /* DrinkRepositoryImpl.swift in Sources */,
 				42731B022208F9F30048AB83 /* FirebaseDrinksDatabase.swift in Sources */,
 				4288265A220F897C001A9A5A /* ConsumptionListItem.swift in Sources */,
+				80EDF10A236D95B0003BA24C /* Statistics.swift in Sources */,
 				4246D7392200583D0066BC01 /* ConsumptionListViewController.swift in Sources */,
 				422C68DE22010EBA00F7702A /* DateExtensions.swift in Sources */,
 				42882647220EC507001A9A5A /* FirebaseCommunicator.swift in Sources */,
@@ -1059,6 +1080,7 @@
 				80731A85232131CF00C65C08 /* ConsumptionFormSwinject.swift in Sources */,
 				42882658220F87A1001A9A5A /* ConsumptionListRouter.swift in Sources */,
 				80395D67232660A8008120A6 /* HasApply.swift in Sources */,
+				80EDF107236D94B2003BA24C /* ReportOverviewInteractor.swift in Sources */,
 				42146F0A220CCAD100A793A5 /* FirebaseSessionDatabase.swift in Sources */,
 				42895B28220788CE00386A21 /* ConsumptionRepositoryImpl.swift in Sources */,
 				80731A7C231FC03300C65C08 /* ConsumptionFormPresenter.swift in Sources */,
@@ -1085,6 +1107,7 @@
 				42E44DE12201C38500F367CB /* DrinkUnit.swift in Sources */,
 				42882649220EC87E001A9A5A /* FirebaseError.swift in Sources */,
 				80731A80231FD37B00C65C08 /* ConsumptionFormPresenterImpl.swift in Sources */,
+				80EDF10C236DAA28003BA24C /* ReportOverviewView.swift in Sources */,
 				42882653220F75D4001A9A5A /* ConsumptionListInteractorImpl.swift in Sources */,
 				422CA9822210933C00BC5401 /* RepositorySwinject.swift in Sources */,
 				428875F22205FB2200EED6BB /* SessionDAO.swift in Sources */,
@@ -1093,6 +1116,7 @@
 				42882650220F75BD001A9A5A /* ConsumptionListPresenter.swift in Sources */,
 				422C68E2220110E600F7702A /* Statistic.swift in Sources */,
 				429893B2220222C900460356 /* Drink.swift in Sources */,
+				80EDF10E236DE7F8003BA24C /* ReportOverviewInteractorImpl.swift in Sources */,
 				422CA980221092AF00BC5401 /* CoreDataSwinject.swift in Sources */,
 				42E44DDD2201C1F500F367CB /* Sex.swift in Sources */,
 			);

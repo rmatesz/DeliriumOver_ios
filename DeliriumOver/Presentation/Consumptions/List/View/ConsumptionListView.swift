@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol ConsumptionListView {
+protocol ConsumptionListView: class{
     func displayConsumptionList(consumptions: [ConsumptionListItem])
     func updateAddMenuItems(menuItems: [MenuItem])
 }

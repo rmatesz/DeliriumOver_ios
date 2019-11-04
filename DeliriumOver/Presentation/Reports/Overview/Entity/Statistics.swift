@@ -1,5 +1,5 @@
 //
-//  ReportOverviewPresenter.swift
+//  Statistics.swift
 //  DeliriumOver
 //
 //  Created by Mate Redecsi on 2019. 11. 02..
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ReportOverviewPresenter {
-    func start()
-    func onTitleEdited(title: String)
+struct Statistics {
+    var alcoholEliminationDate: Date = Date()
+    var bloodAlcoholConcentration: Double = 0.0
 }

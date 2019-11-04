@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 class ConsumptionListPresenter: BasePresenter {
-    private let view: ConsumptionListView
+    private weak var view: ConsumptionListView?
     private let interactor: ConsumptionListInteractor
     private let router: ConsumptionListRouter
     private var drinks = [Drink]()
@@ -27,7 +27,7 @@ class ConsumptionListPresenter: BasePresenter {
             .observeOn(MainScheduler())
             .do(onNext: { self.consumptions = $0 })
             .subscribe(onNext: { (consumptions) in
-                self.view.displayConsumptionList(
+                self.view?.displayConsumptionList(
                     consumptions: consumptions.map({ (consumption) -> ConsumptionListItem in
                         ConsumptionListItem(drink: consumption.drink, alcohol: "\(consumption.alcohol*100)%", quantity: "\(consumption.quantity)  \(consumption.unit)", date: consumption.date)
                     }))
@@ -44,7 +44,7 @@ class ConsumptionListPresenter: BasePresenter {
                     MenuItem(title: drink.name, entity: drink)
                 })
                 menuItems.append(MenuItem(title: "Add new...", entity: nil))
-                self.view.updateAddMenuItems(menuItems: menuItems)
+                self.view?.updateAddMenuItems(menuItems: menuItems)
             }, onError: { (error) in
                 print("error")
             })

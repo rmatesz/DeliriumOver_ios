@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J5t-8W-elk">
-                                <rect key="frame" x="206.66666666666666" y="76" width="1" height="91.333333333333314"/>
+                                <rect key="frame" x="206.66666666666666" y="76" width="1" height="108.33333333333331"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1" id="RHL-yg-3np"/>
@@ -34,28 +34,34 @@
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BAC level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KA0-m5-skA">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BAC level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KA0-m5-skA" userLabel="Label - BAC level">
                                 <rect key="frame" x="16" y="84" width="174.66666666666666" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.43‰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDL-gb-vjJ">
-                                <rect key="frame" x="16" y="120.99999999999999" width="174.66666666666666" height="38.333333333333329"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.43‰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDL-gb-vjJ" userLabel="Bac Level value">
+                                <rect key="frame" x="16" y="130" width="174.66666666666666" height="38.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <color key="textColor" red="0.25188085440000002" green="0.42420220380000001" blue="0.36862224339999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:45" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKS-8r-8uB">
-                                <rect key="frame" x="223.66666666666663" y="120.99999999999999" width="174.33333333333337" height="38.333333333333329"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:45" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKS-8r-8uB" userLabel="Alcohol Elimination Time">
+                                <rect key="frame" x="223.66666666666663" y="130" width="174.33333333333337" height="38.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <color key="textColor" red="0.25188085440000002" green="0.42420220380000001" blue="0.36862224339999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sober at" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4Q-qd-v8Q">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sober at" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4Q-qd-v8Q" userLabel="Label - Sober at">
                                 <rect key="frame" x="223.66666666666663" y="84" width="174.33333333333337" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6/12/2020" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="At6-Zq-E6h" userLabel="Alcohol elimination date">
+                                <rect key="frame" x="223.66666666666663" y="109" width="174.33333333333337" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRz-vJ-Zt0">
@@ -68,20 +74,23 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="LDL-gb-vjJ" firstAttribute="top" secondItem="KA0-m5-skA" secondAttribute="bottom" constant="16" id="2H8-Rb-iJJ"/>
+                            <constraint firstItem="LDL-gb-vjJ" firstAttribute="top" secondItem="DKS-8r-8uB" secondAttribute="top" id="2H8-Rb-iJJ"/>
                             <constraint firstItem="Vou-PJ-45t" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" constant="-16" id="Bx1-Di-ZZS"/>
                             <constraint firstItem="J5t-8W-elk" firstAttribute="leading" secondItem="LDL-gb-vjJ" secondAttribute="trailing" constant="16" id="CPY-N0-pxt"/>
                             <constraint firstItem="Vou-PJ-45t" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="16" id="DIx-2v-b9p"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="DKS-8r-8uB" secondAttribute="trailing" constant="16" id="EFJ-lO-KON"/>
                             <constraint firstItem="Vou-PJ-45t" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="16" id="Fwb-bs-KkQ"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="At6-Zq-E6h" secondAttribute="trailing" constant="16" id="HV7-sN-yRZ"/>
                             <constraint firstItem="KA0-m5-skA" firstAttribute="top" secondItem="J5t-8W-elk" secondAttribute="top" constant="8" id="HXC-tF-zWB"/>
                             <constraint firstItem="J5t-8W-elk" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="Ibl-x1-3d9"/>
                             <constraint firstItem="KA0-m5-skA" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="16" id="KDB-Ma-nCb"/>
-                            <constraint firstItem="LDL-gb-vjJ" firstAttribute="bottomMargin" secondItem="J5t-8W-elk" secondAttribute="bottom" constant="-16" id="QUR-S6-2Bh"/>
+                            <constraint firstItem="At6-Zq-E6h" firstAttribute="leading" secondItem="J5t-8W-elk" secondAttribute="trailing" constant="16" id="NKE-fT-4IL"/>
+                            <constraint firstItem="At6-Zq-E6h" firstAttribute="top" secondItem="j4Q-qd-v8Q" secondAttribute="bottom" constant="4" id="Q7n-gO-MfG"/>
+                            <constraint firstItem="DKS-8r-8uB" firstAttribute="bottom" secondItem="J5t-8W-elk" secondAttribute="bottom" constant="-16" id="QUR-S6-2Bh"/>
                             <constraint firstItem="Vou-PJ-45t" firstAttribute="trailing" secondItem="gRz-vJ-Zt0" secondAttribute="trailing" id="X1b-uy-2TY"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="j4Q-qd-v8Q" secondAttribute="trailing" constant="16" id="dgu-Zf-XQi"/>
                             <constraint firstItem="j4Q-qd-v8Q" firstAttribute="top" secondItem="J5t-8W-elk" secondAttribute="top" constant="8" id="hKT-s4-psc"/>
-                            <constraint firstItem="DKS-8r-8uB" firstAttribute="top" secondItem="j4Q-qd-v8Q" secondAttribute="bottom" constant="16" id="hPD-fV-hJG"/>
+                            <constraint firstItem="DKS-8r-8uB" firstAttribute="top" secondItem="At6-Zq-E6h" secondAttribute="bottom" id="hPD-fV-hJG"/>
                             <constraint firstItem="DKS-8r-8uB" firstAttribute="leading" secondItem="J5t-8W-elk" secondAttribute="trailing" constant="16" id="iCf-Fs-jET"/>
                             <constraint firstItem="gRz-vJ-Zt0" firstAttribute="top" secondItem="Vou-PJ-45t" secondAttribute="top" id="jfJ-37-Dtu"/>
                             <constraint firstItem="J5t-8W-elk" firstAttribute="leading" secondItem="KA0-m5-skA" secondAttribute="trailing" constant="16" id="kPy-5T-FXc"/>
@@ -94,7 +103,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf" userLabel="ReportsOverview"/>
                     <connections>
-                        <outlet property="alcoholEliminationDate" destination="DKS-8r-8uB" id="3P2-Zm-G02"/>
+                        <outlet property="alcoholEliminationDate" destination="At6-Zq-E6h" id="Eij-LA-nch"/>
+                        <outlet property="alcoholEliminationTime" destination="DKS-8r-8uB" id="GE5-OU-ZKw"/>
                         <outlet property="bacLevel" destination="LDL-gb-vjJ" id="GEn-6X-FlY"/>
                         <outlet property="sessionTitle" destination="Vou-PJ-45t" id="xN1-09-OKX"/>
                     </connections>

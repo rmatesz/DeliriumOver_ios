@@ -7,11 +7,57 @@
 //
 
 import Foundation
+import RxSwift
 
-class ReportOverviewPresenterImpl: ReportOverviewPresenter {
-    func onTitleEdited(title: String) {
-        
+class ReportOverviewPresenterImpl: BasePresenter, ReportOverviewPresenter {
+    private weak var view: ReportOverviewView?
+    private let interactor: ReportOverviewInteractor
+    
+    private var session: Session? = nil
+    
+    init(interactor: ReportOverviewInteractor) {
+        self.interactor = interactor
     }
     
+    func start() {
+        interactor.loadStatistics()
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler())
+            .subscribe(onNext: { (statistics) in
+                self.update(statistics: statistics)
+            }, onError: { (error) in
+                print(error)
+            })
+            .disposed(by: disposeBag)
+        
+        interactor.loadSession()
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler())
+            .subscribe(onNext: { (session) in
+                self.session = session
+            }, onError: { (error) in
+                print(error)
+            })
+            .disposed(by: disposeBag)
+    }
     
+    func onTitleEdited(title: String) {
+        session?.title = title
+        if let session = self.session {
+            interactor.saveSession(session: session)
+                .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+                .observeOn(MainScheduler())
+                .subscribe(onCompleted: {
+                    // no-op
+                }, onError: { (error) in
+                    print(error)
+                })
+                .disposed(by: disposeBag)
+        }
+    }
+    
+    private func update(statistics: Statistics) {
+        view?.update(bacLevel: Float(statistics.bloodAlcoholConcentration))
+        view?.update(alcoholEliminationDate: statistics.alcoholEliminationDate)
+    }
 }
