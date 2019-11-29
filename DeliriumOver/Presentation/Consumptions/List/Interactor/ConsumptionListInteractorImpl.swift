@@ -30,7 +30,7 @@ class ConsumptionListInteractorImpl: ConsumptionListInteractor {
     
     public func loadConsumptions() -> Observable<[Consumption]> {
         return subject
-            .flatMap { (_) -> Single<Session> in
+            .flatMap { (_) -> Observable<Session> in
                 self.loadSession()
             }
             .map { (session) -> [Consumption] in
@@ -57,29 +57,25 @@ class ConsumptionListInteractorImpl: ConsumptionListInteractor {
     }
     
     public func add(drink: Drink) -> Completable {
-        let getSessionId: Single<String>
-        if (session != nil || sessionId != nil) {
-            getSessionId = Single.just(session?.id ?? sessionId!)
-        } else {
-            getSessionId = loadSession().map( { (session) -> String in session.id } )
-        }
-        return getSessionId.flatMapCompletable({ (sessionId) -> Completable in
-            self.consumptionRepository.saveConsumption(sessionId: sessionId, consumption: Consumption(drink: drink))
+        if let sessionId = session?.id ?? self.sessionId {
+            return self.consumptionRepository.saveConsumption(sessionId: sessionId, consumption: Consumption(drink: drink))
                 .do(onCompleted: {
                     self.subject.onNext(nil)
                 })
-        })
+        } else {
+            return Completable.empty()
+        }
     }
     
-    private func loadSession() -> Single<Session> {
-        let sessionLoader: Maybe<Session>
+    private func loadSession() -> Observable<Session> {
+        let sessionLoader: Observable<Session>
         if (sessionId == nil) {
-            sessionLoader = sessionRepository.getInProgressSession()
+            sessionLoader = sessionRepository.loadInProgressSession()
         } else {
-            sessionLoader = sessionRepository.getSession(sessionId: sessionId!)
+            sessionLoader = sessionRepository.loadSession(sessionId: sessionId!)
         }
-        return sessionLoader.ifEmpty(switchTo: Single.error(SimpleError.error(message: "Session can't be loaded!")))
-            .do(onSuccess: { (session) in
+        return sessionLoader
+            .do(onNext: { (session) in
                 self.session = session
             })
     }

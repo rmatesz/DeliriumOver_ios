@@ -23,6 +23,10 @@ class ReportsOverviewViewController: UIViewController, ReportOverviewView {
     @IBOutlet weak var bacLevel: UILabel!
     @IBOutlet weak var sessionTitle: UITextField!
 
+    override func viewDidLoad() {
+        presenter.start()
+    }
+    
     @IBAction func onSaveBtnClicked(_ sender: UIButton) {
         if isEditing {
             finishTitleEditing()

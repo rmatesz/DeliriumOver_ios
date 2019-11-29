@@ -30,8 +30,15 @@ class SessionRepositoryImpl: SessionRepository {
             })
         }
     }
+
     func getSession(sessionId: String) -> Maybe<Session> {
         return sessionDAO.get(sessionId).map { (sessionEntity) -> Session in
+            Session(sessionEntity: sessionEntity)
+        }
+    }
+    
+    func loadSession(sessionId: String) -> Observable<Session> {
+        return sessionDAO.load(sessionId).map { (sessionEntity) -> Session in
             Session(sessionEntity: sessionEntity)
         }
     }
@@ -48,6 +55,7 @@ class SessionRepositoryImpl: SessionRepository {
     }
     
     func insert(session: Session) -> Single<String> {
+        var session = session
         return Single.deferred { () -> Single<SessionEntity> in
             let sessionEntity = self.sessionDAO.createEntity()
             sessionEntity.title = session.title
@@ -58,10 +66,13 @@ class SessionRepositoryImpl: SessionRepository {
             sessionEntity.inProgress = session.inProgress
             return Single.just(sessionEntity)
         }
-            .flatMapCompletable({ (SessionEntity) -> Completable in
-                self.sessionDAO.save()
+            .flatMapCompletable { (sessionEntity) -> Completable in
+                session.id = sessionEntity.objectID.uriRepresentation().absoluteString
+                return self.sessionDAO.save()
+            }
+            .andThen(Single.deferred { () -> PrimitiveSequence<SingleTrait, String> in
+                Single.just(session.id)
             })
-            .andThen(Single.just(session.id))
     }
 
     func update(session: Session) -> Completable {
@@ -90,22 +101,35 @@ class SessionRepositoryImpl: SessionRepository {
     
     func getInProgressSession() -> Maybe<Session> {
         return sessionDAO.getAll()
-            .flatMap({ (sessionEntities) -> Maybe<SessionEntity> in
-                let sessionEntity = sessionEntities
-                    .filter({ (sessionEntity) -> Bool in
-                        sessionEntity.inProgress
-                    })
-                    .first
-                if sessionEntity != nil {
-                    return Maybe.just(sessionEntity!)
-                } else {
-                    return Maybe.empty()
-                }
+            .filter({ (sessionEntities) -> Bool in
+                sessionEntities.contains(where: { (sessionEntity) -> Bool in
+                    sessionEntity.inProgress
+                })
             })
+            .map { (sessionEntities) -> SessionEntity in
+                sessionEntities.first(where: { (sessionEntity) -> Bool in
+                    sessionEntity.inProgress
+                })!
+            }
+            .map { (sessionEntity) -> Session in
+                Session(sessionEntity: sessionEntity)
+        }
+    }
+    
+    func loadInProgressSession() -> Observable<Session> {
+        return sessionDAO.loadAll()
+            .filter { (sessionEntities) -> Bool in
+                sessionEntities.contains(where: { (sessionEntity) -> Bool in
+                    sessionEntity.inProgress
+                })
+            }
+            .map { (sessionEntities) -> SessionEntity in
+                sessionEntities.first(where: { (sessionEntity) -> Bool in
+                    sessionEntity.inProgress
+                })!
+            }
             .map { (sessionEntity) -> Session in
                 Session(sessionEntity: sessionEntity)
             }
     }
-    
-    
 }

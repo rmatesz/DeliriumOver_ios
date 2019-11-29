@@ -13,7 +13,6 @@
 		422C68D922010DC900F7702A /* AlcoholCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C68D822010DC800F7702A /* AlcoholCalculator.swift */; };
 		422C68DE22010EBA00F7702A /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C68DD22010EBA00F7702A /* DateExtensions.swift */; };
 		422C68E022010F0300F7702A /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C68DF22010F0300F7702A /* Record.swift */; };
-		422C68E2220110E600F7702A /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C68E1220110E600F7702A /* Statistic.swift */; };
 		422C68E52201117E00F7702A /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C68E42201117E00F7702A /* Session.swift */; };
 		422CA97822106E0900BC5401 /* ConsumptionListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422CA97722106E0900BC5401 /* ConsumptionListTableViewController.swift */; };
 		422CA97B22108F4C00BC5401 /* FirebaseSwinject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422CA97A22108F4C00BC5401 /* FirebaseSwinject.swift */; };
@@ -78,6 +77,9 @@
 		80395D70232BDB10008120A6 /* DatePickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80395D6F232BDB10008120A6 /* DatePickerSheet.swift */; };
 		8041DB8E23147B6F00BF9964 /* ConsumptionFormRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8041DB8D23147B6F00BF9964 /* ConsumptionFormRouter.swift */; };
 		8041DB922316923A00BF9964 /* ConsumptionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8041DB912316923A00BF9964 /* ConsumptionFormViewController.swift */; };
+		804B88AE237033E600BBB2C4 /* ConnectableObservableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804B88AD237033E600BBB2C4 /* ConnectableObservableExtension.swift */; };
+		804B88B02370618700BBB2C4 /* AlcoholCalculatorRxDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804B88AF2370618700BBB2C4 /* AlcoholCalculatorRxDecorator.swift */; };
+		804B88B22370704900BBB2C4 /* CalculationsSwinject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804B88B12370704900BBB2C4 /* CalculationsSwinject.swift */; };
 		80707E0E2322967A006A6636 /* Strings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80707E102322967A006A6636 /* Strings.strings */; };
 		80707E13232299FB006A6636 /* ConsumptionFormInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80707E12232299FB006A6636 /* ConsumptionFormInteractorImpl.swift */; };
 		80731A7C231FC03300C65C08 /* ConsumptionFormPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80731A7B231FC03300C65C08 /* ConsumptionFormPresenter.swift */; };
@@ -124,7 +126,6 @@
 		422C68D822010DC800F7702A /* AlcoholCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholCalculator.swift; sourceTree = "<group>"; };
 		422C68DD22010EBA00F7702A /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		422C68DF22010F0300F7702A /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
-		422C68E1220110E600F7702A /* Statistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistic.swift; sourceTree = "<group>"; };
 		422C68E42201117E00F7702A /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		422CA97722106E0900BC5401 /* ConsumptionListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListTableViewController.swift; sourceTree = "<group>"; };
 		422CA97A22108F4C00BC5401 /* FirebaseSwinject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSwinject.swift; sourceTree = "<group>"; };
@@ -197,6 +198,9 @@
 		80395D6F232BDB10008120A6 /* DatePickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerSheet.swift; sourceTree = "<group>"; };
 		8041DB8D23147B6F00BF9964 /* ConsumptionFormRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionFormRouter.swift; sourceTree = "<group>"; };
 		8041DB912316923A00BF9964 /* ConsumptionFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionFormViewController.swift; sourceTree = "<group>"; };
+		804B88AD237033E600BBB2C4 /* ConnectableObservableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectableObservableExtension.swift; sourceTree = "<group>"; };
+		804B88AF2370618700BBB2C4 /* AlcoholCalculatorRxDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholCalculatorRxDecorator.swift; sourceTree = "<group>"; };
+		804B88B12370704900BBB2C4 /* CalculationsSwinject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationsSwinject.swift; sourceTree = "<group>"; };
 		80707E0A23229604006A6636 /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Main.strings; sourceTree = "<group>"; };
 		80707E0B23229604006A6636 /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		80707E0F2322967A006A6636 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Strings.strings; sourceTree = "<group>"; };
@@ -259,7 +263,7 @@
 			children = (
 				422C68D822010DC800F7702A /* AlcoholCalculator.swift */,
 				422C68DF22010F0300F7702A /* Record.swift */,
-				422C68E1220110E600F7702A /* Statistic.swift */,
+				804B88AF2370618700BBB2C4 /* AlcoholCalculatorRxDecorator.swift */,
 			);
 			path = Calculations;
 			sourceTree = "<group>";
@@ -267,6 +271,7 @@
 		422C68DA22010E9800F7702A /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				804B88AC237033CB00BBB2C4 /* RxSwift */,
 				80395D6C232BDA02008120A6 /* Widget */,
 				80395D6523266095008120A6 /* Common */,
 				429893BD22031BC100460356 /* Number */,
@@ -306,6 +311,7 @@
 				422CA97F221092AF00BC5401 /* CoreDataSwinject.swift */,
 				422CA9812210933C00BC5401 /* RepositorySwinject.swift */,
 				422CA983221094BE00BC5401 /* ApplicationSwinject.swift */,
+				804B88B12370704900BBB2C4 /* CalculationsSwinject.swift */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -736,6 +742,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		804B88AC237033CB00BBB2C4 /* RxSwift */ = {
+			isa = PBXGroup;
+			children = (
+				804B88AD237033E600BBB2C4 /* ConnectableObservableExtension.swift */,
+			);
+			path = RxSwift;
+			sourceTree = "<group>";
+		};
 		80731A7A231FBFCF00C65C08 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -1059,6 +1073,7 @@
 				429893B62202265200460356 /* DateProvider.swift in Sources */,
 				42895B2C22078BD100386A21 /* DAO.swift in Sources */,
 				422CA984221094BE00BC5401 /* ApplicationSwinject.swift in Sources */,
+				804B88B22370704900BBB2C4 /* CalculationsSwinject.swift in Sources */,
 				4288264D220F6799001A9A5A /* DrinkRepositoryImpl.swift in Sources */,
 				42731B022208F9F30048AB83 /* FirebaseDrinksDatabase.swift in Sources */,
 				4288265A220F897C001A9A5A /* ConsumptionListItem.swift in Sources */,
@@ -1091,6 +1106,7 @@
 				4204FE33221220A900BBB83E /* SimpleError.swift in Sources */,
 				42895B2E22078BFF00386A21 /* DAOImpl.swift in Sources */,
 				42731B002208D93B0048AB83 /* FirebaseAuthentication.swift in Sources */,
+				804B88AE237033E600BBB2C4 /* ConnectableObservableExtension.swift in Sources */,
 				80D4B8E7232F93B4001E8ABF /* QuantityPickerSheet.swift in Sources */,
 				422C68E52201117E00F7702A /* Session.swift in Sources */,
 				4232DAFA2210CF0600DCC8DD /* ConsumptionListInteractor.swift in Sources */,
@@ -1114,11 +1130,11 @@
 				42E44DDF2201C23000F367CB /* Consumption.swift in Sources */,
 				4232DAF22210B56000DCC8DD /* ConsumptionListSwinject.swift in Sources */,
 				42882650220F75BD001A9A5A /* ConsumptionListPresenter.swift in Sources */,
-				422C68E2220110E600F7702A /* Statistic.swift in Sources */,
 				429893B2220222C900460356 /* Drink.swift in Sources */,
 				80EDF10E236DE7F8003BA24C /* ReportOverviewInteractorImpl.swift in Sources */,
 				422CA980221092AF00BC5401 /* CoreDataSwinject.swift in Sources */,
 				42E44DDD2201C1F500F367CB /* Sex.swift in Sources */,
+				804B88B02370618700BBB2C4 /* AlcoholCalculatorRxDecorator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

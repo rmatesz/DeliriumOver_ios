@@ -15,7 +15,8 @@ class ReportOverviewPresenterImpl: BasePresenter, ReportOverviewPresenter {
     
     private var session: Session? = nil
     
-    init(interactor: ReportOverviewInteractor) {
+    init(view: ReportOverviewView, interactor: ReportOverviewInteractor) {
+        self.view = view
         self.interactor = interactor
     }
     
@@ -39,6 +40,10 @@ class ReportOverviewPresenterImpl: BasePresenter, ReportOverviewPresenter {
                 print(error)
             })
             .disposed(by: disposeBag)
+    }
+    
+    func refresh() {
+        
     }
     
     func onTitleEdited(title: String) {

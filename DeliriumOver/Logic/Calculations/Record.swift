@@ -9,6 +9,11 @@
 import Foundation
 
 public struct Record {
+    public var name: String
+    public var records: [Data]
+}
+
+public struct Data {
     public var time: Date
     public var bacLevel: Double
 }

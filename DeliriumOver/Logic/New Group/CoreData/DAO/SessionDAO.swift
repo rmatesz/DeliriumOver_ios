@@ -17,6 +17,8 @@ protocol SessionDAO : DAO {
     func getAllSync() throws -> [SessionEntity]
 
     func get(_ sessionId: String) -> Maybe<SessionEntity>
+    
+    func load(_ sessionId: String) -> Observable<SessionEntity>
 
     func delete(_ session: SessionEntity) -> Completable
 

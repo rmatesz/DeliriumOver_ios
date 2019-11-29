@@ -127,15 +127,15 @@ public class AlcoholCalculator {
         })
     }
     
-    func generateRecords(session: Session) -> [Record] {
-        var records = session.consumptions.flatMap({ (consumption) -> [Record] in
+    func generateRecords(session: Session) -> [Data] {
+        var records = session.consumptions.flatMap({ (consumption) -> [Data] in
             [generateRecord(session: session, date: consumption.date),
              generateRecord(session: session, date: Date(timeIntervalSince1970: consumption.date.timeIntervalSince1970.advanced(by: ALCOHOL_ABSORPTION_TIME)))]
         })
         let timeOfZeroBac = calcTimeOfZeroBAC(session)
         let currentTime = dateProvider.currentDate
         if (!session.consumptions.isEmpty) {
-            records.append(Record(time: timeOfZeroBac, bacLevel: 0.0))
+            records.append(Data(time: timeOfZeroBac, bacLevel: 0.0))
             if (timeOfZeroBac > currentTime
                 && session.consumptions.min(by:
                     { (left, right) -> Bool in
@@ -149,8 +149,8 @@ public class AlcoholCalculator {
         })
     }
     
-    private func generateRecord(session: Session, date: Date) -> Record {
-        return Record(time: date, bacLevel: calcBloodAlcoholConcentration(session: session, date: date))
+    private func generateRecord(session: Session, date: Date) -> Data {
+        return Data(time: date, bacLevel: calcBloodAlcoholConcentration(session: session, date: date))
     }
     
     private func getWeight(_ session: Session) -> Double {

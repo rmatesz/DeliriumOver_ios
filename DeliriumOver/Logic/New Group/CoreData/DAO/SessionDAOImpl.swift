@@ -11,7 +11,7 @@ import RxSwift
 import CoreData
 
 class SessionDAOImpl: DAOImpl, SessionDAO {
-
+    
     func loadAll() -> Observable<[SessionEntity]> {
         return Observable<[SessionEntity]>.create { (observer) -> Disposable in
             let contextObjectsDidChangeObserver = NotificationCenter.default.addObserver(forName: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil, queue: OperationQueue.current, using: { (notification) in
@@ -40,7 +40,7 @@ class SessionDAOImpl: DAOImpl, SessionDAO {
     
     func getAll() -> Maybe<[SessionEntity]> {
         return Maybe<[SessionEntity]>.create { (observer: (MaybeEvent<[SessionEntity]>) -> ()) -> Disposable in
-
+            
             do {
                 let sessions = try self.getAllSync()
                 observer(MaybeEvent.success(sessions))
@@ -67,13 +67,51 @@ class SessionDAOImpl: DAOImpl, SessionDAO {
                 observer(.completed)
             } else {
                 do {
-                    let sessionEntity = try self.context.existingObject(with: objectId!) as! SessionEntity
-                        observer(.success(sessionEntity))
+                    let sessionEntity = try self.getSync(objectId!)
+                    observer(.success(sessionEntity))
                 } catch {
                     observer(.error(error))
                 }
             }
             return Disposables.create()
+        }
+    }
+    
+    private func getSync(_ objectId: NSManagedObjectID) throws -> SessionEntity {
+        return try self.context.existingObject(with: objectId) as! SessionEntity
+    }
+    
+    func load(_ sessionId: String) -> Observable<SessionEntity> {
+        return Observable<SessionEntity>.create { (observer) -> Disposable in
+            guard let objectId = self.context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: URL(string: sessionId)!)
+            else {
+                observer.onCompleted()
+                return Disposables.create()
+            }
+            do {
+                observer.onNext(try self.getSync(objectId))
+            } catch {
+                observer.onError(error)
+            }
+            let contextObjectsDidChangeObserver = NotificationCenter.default.addObserver(forName: Notification.Name.NSManagedObjectContextObjectsDidChange, object: objectId, queue: OperationQueue.current, using: { (notification) in
+                do {
+                    observer.onNext(try self.getSync(objectId))
+                } catch {
+                    observer.onError(error)
+                }
+            })
+            let contextDidSaveObserver = NotificationCenter.default.addObserver(forName: Notification.Name.NSManagedObjectContextDidSave, object: nil, queue: OperationQueue.current, using: { (notification) in
+                do {
+                    observer.onNext(try self.getSync(objectId))
+                } catch {
+                    observer.onError(error)
+                }
+            })
+            return Disposables.create {
+                NotificationCenter.default.removeObserver(contextObjectsDidChangeObserver)
+                NotificationCenter.default.removeObserver(contextDidSaveObserver)
+            }
+            
         }
     }
     
