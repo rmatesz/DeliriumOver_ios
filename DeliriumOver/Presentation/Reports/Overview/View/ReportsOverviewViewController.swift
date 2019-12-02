@@ -22,17 +22,19 @@ class ReportsOverviewViewController: UIViewController, ReportOverviewView {
     @IBOutlet weak var alcoholEliminationTime: UILabel!
     @IBOutlet weak var bacLevel: UILabel!
     @IBOutlet weak var sessionTitle: UITextField!
-
+    @IBOutlet weak var edit: UIButton!
+    @IBOutlet weak var save: UIButton!
+    
     override func viewDidLoad() {
         presenter.start()
     }
     
+    @IBAction func onEditBtnClicked() {
+        startTitleEditing()
+    }
     @IBAction func onSaveBtnClicked(_ sender: UIButton) {
-        if isEditing {
-            finishTitleEditing()
-        } else {
-            startTitleEditing()
-        }
+        finishTitleEditing()
+        presenter.onTitleEdited(title: sessionTitle.text ?? "")
     }
     
     func update(sessionTitle: String) {
@@ -50,14 +52,17 @@ class ReportsOverviewViewController: UIViewController, ReportOverviewView {
     
     private func startTitleEditing() {
         isEditing = true
+        edit.isEnabled = false
+        save.isEnabled = true
         sessionTitle.isEnabled = true
         sessionTitle.becomeFirstResponder()
     }
     
     private func finishTitleEditing() {
         isEditing = false
+        edit.isEnabled = true
+        save.isEnabled = false
         sessionTitle.isEnabled = false
-        presenter.onTitleEdited(title: sessionTitle.text ?? "")
     }
     
 }

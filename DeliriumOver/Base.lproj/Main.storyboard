@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J5t-8W-elk">
-                                <rect key="frame" x="206.66666666666666" y="76" width="1" height="108.33333333333331"/>
+                                <rect key="frame" x="206.66666666666666" y="76" width="1" height="108"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1" id="RHL-yg-3np"/>
@@ -41,13 +41,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.43‰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDL-gb-vjJ" userLabel="Bac Level value">
-                                <rect key="frame" x="16" y="130" width="174.66666666666666" height="38.333333333333343"/>
+                                <rect key="frame" x="16" y="130" width="174.66666666666666" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <color key="textColor" red="0.25188085440000002" green="0.42420220380000001" blue="0.36862224339999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:45" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKS-8r-8uB" userLabel="Alcohol Elimination Time">
-                                <rect key="frame" x="223.66666666666663" y="130" width="174.33333333333337" height="38.333333333333343"/>
+                                <rect key="frame" x="223.66666666666663" y="130" width="174.33333333333337" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <color key="textColor" red="0.25188085440000002" green="0.42420220380000001" blue="0.36862224339999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -67,14 +67,25 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRz-vJ-Zt0">
                                 <rect key="frame" x="368" y="36" width="30" height="32"/>
                                 <state key="normal" title="Edit"/>
+                                <state key="disabled" title=" "/>
                                 <connections>
-                                    <action selector="onSaveBtnClicked:" destination="9pv-A4-QxB" eventType="touchUpInside" id="iKF-q8-yab"/>
+                                    <action selector="onEditBtnClicked" destination="9pv-A4-QxB" eventType="touchUpInside" id="lZa-dq-Ud6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OUE-FR-VTq">
+                                <rect key="frame" x="368" y="36" width="30" height="32"/>
+                                <state key="normal" title="Save"/>
+                                <state key="disabled" title=" "/>
+                                <connections>
+                                    <action selector="onSaveBtnClicked:" destination="9pv-A4-QxB" eventType="touchUpInside" id="qHP-yR-lbq"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="LDL-gb-vjJ" firstAttribute="top" secondItem="DKS-8r-8uB" secondAttribute="top" id="2H8-Rb-iJJ"/>
+                            <constraint firstItem="OUE-FR-VTq" firstAttribute="trailing" secondItem="gRz-vJ-Zt0" secondAttribute="trailing" id="38t-7D-tsC"/>
+                            <constraint firstItem="OUE-FR-VTq" firstAttribute="top" secondItem="gRz-vJ-Zt0" secondAttribute="top" id="5y0-M8-Hjy"/>
                             <constraint firstItem="Vou-PJ-45t" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" constant="-16" id="Bx1-Di-ZZS"/>
                             <constraint firstItem="J5t-8W-elk" firstAttribute="leading" secondItem="LDL-gb-vjJ" secondAttribute="trailing" constant="16" id="CPY-N0-pxt"/>
                             <constraint firstItem="Vou-PJ-45t" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="16" id="DIx-2v-b9p"/>
@@ -82,6 +93,7 @@
                             <constraint firstItem="Vou-PJ-45t" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="16" id="Fwb-bs-KkQ"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="At6-Zq-E6h" secondAttribute="trailing" constant="16" id="HV7-sN-yRZ"/>
                             <constraint firstItem="KA0-m5-skA" firstAttribute="top" secondItem="J5t-8W-elk" secondAttribute="top" constant="8" id="HXC-tF-zWB"/>
+                            <constraint firstItem="OUE-FR-VTq" firstAttribute="firstBaseline" secondItem="gRz-vJ-Zt0" secondAttribute="baseline" id="I1K-fw-TGr"/>
                             <constraint firstItem="J5t-8W-elk" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="Ibl-x1-3d9"/>
                             <constraint firstItem="KA0-m5-skA" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="16" id="KDB-Ma-nCb"/>
                             <constraint firstItem="At6-Zq-E6h" firstAttribute="leading" secondItem="J5t-8W-elk" secondAttribute="trailing" constant="16" id="NKE-fT-4IL"/>
@@ -106,6 +118,8 @@
                         <outlet property="alcoholEliminationDate" destination="At6-Zq-E6h" id="Eij-LA-nch"/>
                         <outlet property="alcoholEliminationTime" destination="DKS-8r-8uB" id="GE5-OU-ZKw"/>
                         <outlet property="bacLevel" destination="LDL-gb-vjJ" id="GEn-6X-FlY"/>
+                        <outlet property="edit" destination="gRz-vJ-Zt0" id="4x3-f7-AXD"/>
+                        <outlet property="save" destination="OUE-FR-VTq" id="faP-D5-Sa1"/>
                         <outlet property="sessionTitle" destination="Vou-PJ-45t" id="xN1-09-OKX"/>
                     </connections>
                 </viewController>

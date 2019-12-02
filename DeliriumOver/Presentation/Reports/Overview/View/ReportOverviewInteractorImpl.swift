@@ -38,7 +38,7 @@ class ReportOverviewInteractorImpl: ReportOverviewInteractor {
     
     
     func saveSession(session: Session) -> Completable {
-        return Completable.empty()
+        return sessionRepository.update(session: session)
     }
     
     private func loadInProgressSession() -> Observable<Session> {

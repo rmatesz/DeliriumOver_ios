@@ -35,7 +35,7 @@ class ReportOverviewPresenterImpl: BasePresenter, ReportOverviewPresenter {
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler())
             .subscribe(onNext: { (session) in
-                self.session = session
+                self.update(session: session)
             }, onError: { (error) in
                 print(error)
             })
@@ -64,5 +64,10 @@ class ReportOverviewPresenterImpl: BasePresenter, ReportOverviewPresenter {
     private func update(statistics: Statistics) {
         view?.update(bacLevel: Float(statistics.bloodAlcoholConcentration))
         view?.update(alcoholEliminationDate: statistics.alcoholEliminationDate)
+    }
+    
+    private func update(session: Session) {
+        self.session = session
+        view?.update(sessionTitle: session.title)
     }
 }
