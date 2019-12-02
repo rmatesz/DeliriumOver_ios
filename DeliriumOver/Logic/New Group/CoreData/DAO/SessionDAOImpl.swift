@@ -11,9 +11,13 @@ import RxSwift
 import CoreData
 
 class SessionDAOImpl: DAOImpl, SessionDAO {
-    
     func loadAll() -> Observable<[SessionEntity]> {
         return Observable<[SessionEntity]>.create { (observer) -> Disposable in
+            do {
+                observer.onNext(try self.getAllSync())
+            } catch {
+                observer.onError(error)
+            }
             let contextObjectsDidChangeObserver = NotificationCenter.default.addObserver(forName: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil, queue: OperationQueue.current, using: { (notification) in
                 do {
                     observer.onNext(try self.getAllSync())
@@ -84,9 +88,9 @@ class SessionDAOImpl: DAOImpl, SessionDAO {
     func load(_ sessionId: String) -> Observable<SessionEntity> {
         return Observable<SessionEntity>.create { (observer) -> Disposable in
             guard let objectId = self.context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: URL(string: sessionId)!)
-            else {
-                observer.onCompleted()
-                return Disposables.create()
+                else {
+                    observer.onCompleted()
+                    return Disposables.create()
             }
             do {
                 observer.onNext(try self.getSync(objectId))
@@ -148,8 +152,20 @@ class SessionDAOImpl: DAOImpl, SessionDAO {
         })
     }
     
-    func createEntity() -> SessionEntity {
-        return NSEntityDescription.insertNewObject(forEntityName: "SessionEntity", into: super.context) as! SessionEntity
+    func createEntity(fillEntity: @escaping (SessionEntity) -> ()) -> Single<SessionEntity> {
+        return Single<SessionEntity>.create { (observer) -> Disposable in
+            let sessionEntity = NSEntityDescription.insertNewObject(forEntityName: "SessionEntity", into: super.context) as! SessionEntity
+            
+            fillEntity(sessionEntity)
+            do {
+                try self.context.obtainPermanentIDs(for: [sessionEntity])
+                try super.context.save()
+                observer(SingleEvent.success(sessionEntity))
+            } catch {
+                observer(SingleEvent.error(error))
+            }
+            return Disposables.create()
+        }
         
     }
     

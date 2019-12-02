@@ -91,6 +91,7 @@ class ReportOverviewInteractorImpl: ReportOverviewInteractor {
                     var newSession = session.clone()
                     oldSession.inProgress = false
                     newSession.inProgress = true
+                    self.sessionId = nil
                     return self.sessionRepository.update(session: oldSession)
                         .andThen(self.sessionRepository.insert(session: newSession))
                         .map({ (sessionId) -> Session in

@@ -30,7 +30,7 @@ class SessionRepositoryImpl: SessionRepository {
             })
         }
     }
-
+    
     func getSession(sessionId: String) -> Maybe<Session> {
         return sessionDAO.get(sessionId).map { (sessionEntity) -> Session in
             Session(sessionEntity: sessionEntity)
@@ -51,30 +51,23 @@ class SessionRepositoryImpl: SessionRepository {
                 })
             })
         
-            //.map { it.filter { session -> session.shared && session.deviceId != deviceId } }
+        //.map { it.filter { session -> session.shared && session.deviceId != deviceId } }
     }
     
     func insert(session: Session) -> Single<String> {
-        var session = session
-        return Single.deferred { () -> Single<SessionEntity> in
-            let sessionEntity = self.sessionDAO.createEntity()
+        return sessionDAO.createEntity{ (sessionEntity) -> () in
             sessionEntity.title = session.title
             sessionEntity.desc = session.description
             sessionEntity.name = session.name
             sessionEntity.weight = session.weight
             sessionEntity.gender = Int32(session.gender.rawValue)
             sessionEntity.inProgress = session.inProgress
-            return Single.just(sessionEntity)
-        }
-            .flatMapCompletable { (sessionEntity) -> Completable in
-                session.id = sessionEntity.objectID.uriRepresentation().absoluteString
-                return self.sessionDAO.save()
             }
-            .andThen(Single.deferred { () -> PrimitiveSequence<SingleTrait, String> in
-                Single.just(session.id)
-            })
+        .map { sessionEntity -> String in
+            sessionEntity.objectID.uriRepresentation().absoluteString
+        }
     }
-
+    
     func update(session: Session) -> Completable {
         return sessionDAO.get(session.id)
             .ifEmpty(switchTo: Single.error(RepositoryError(message: "Can't find session in DB.")))
@@ -84,12 +77,13 @@ class SessionRepositoryImpl: SessionRepository {
                 sessionEntity.name = session.name
                 sessionEntity.weight = session.weight
                 sessionEntity.gender = Int32(session.gender.rawValue)
+                sessionEntity.inProgress = session.inProgress
                 return sessionEntity
             }.flatMapCompletable { (sessionEntity) -> Completable in
                 self.sessionDAO.save()
-            }
+        }
     }
-
+    
     func delete(session: Session) -> Completable {
         return sessionDAO.get(session.id)
             .ifEmpty(switchTo: Single.error(RepositoryError(message: "Can't find session in DB.")))
@@ -130,6 +124,6 @@ class SessionRepositoryImpl: SessionRepository {
             }
             .map { (sessionEntity) -> Session in
                 Session(sessionEntity: sessionEntity)
-            }
+        }
     }
 }

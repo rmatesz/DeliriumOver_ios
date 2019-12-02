@@ -26,5 +26,5 @@ protocol SessionDAO : DAO {
 
     func deleteAll() -> Completable
     
-    func createEntity() -> SessionEntity
+    func createEntity(fillEntity: @escaping (SessionEntity) -> ()) -> Single<SessionEntity>
 }

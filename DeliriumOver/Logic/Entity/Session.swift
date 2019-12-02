@@ -29,6 +29,7 @@ public struct Session {
         self.name = sessionEntity.name ?? self.name
         self.weight = sessionEntity.weight
         self.gender = Sex(rawValue: Int(sessionEntity.gender)) ?? self.gender
+        self.inProgress = sessionEntity.inProgress
         self.consumptions = (sessionEntity.consumptions?.allObjects.map({ (any) -> Consumption in
             Consumption(consumptionEntity: (any as! ConsumptionEntity))
         }) ?? [])
