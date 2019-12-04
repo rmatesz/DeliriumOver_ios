@@ -9,10 +9,11 @@
 import Foundation
 import UIKit
 
-class SessionListViewController : UITableViewController {
+class SessionListViewController : UITableViewController, SessionListView {
+    var presenter: SessionListPresenter!
     
     private var sessionItems: [SessionListItem] = []
-    var sessions: [SessionListItem]
+    private var sessions: [SessionListItem]
     {
         get {
             return sessionItems
@@ -21,6 +22,14 @@ class SessionListViewController : UITableViewController {
             sessionItems = newValue
             tableView.reloadData()
         }
+    }
+
+    func displaySessions(sessions: [SessionListItem]) {
+        self.sessions = sessions
+    }
+    
+    override func viewDidLoad() {
+        presenter.start()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

@@ -13,17 +13,17 @@ import FirebaseAuth
 
 class ConsumptionListViewController: UIViewController, ConsumptionListView {
     
-    var presenter: ConsumptionListPresenter?
+    var presenter: ConsumptionListPresenter!
     private var consumptionListTableViewController: ConsumptionListTableViewController?
     private var addMenuItems = [AddMenuItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter?.start()
+        presenter.start()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        presenter?.refresh()
+        presenter.refresh()
     }
     
     func displayConsumptionList(consumptions: [ConsumptionListItem]) {

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class ConsumptionListTableViewController: UITableViewController {
-    weak var presenter: ConsumptionListPresenter!
+    var presenter: ConsumptionListPresenter!
     
     private var consumptionItems: [ConsumptionListItem] = []
     var consumptions: [ConsumptionListItem]

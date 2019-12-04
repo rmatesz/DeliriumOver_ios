@@ -1,5 +1,5 @@
 //
-//  SessionListPresenter.swift
+//  SessionListView.swift
 //  DeliriumOver
 //
 //  Created by Mate Redecsi on 2019. 12. 04..
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol SessionListPresenter {
-    func start()
+protocol SessionListView: class {
+    func displaySessions(sessions: [SessionListItem])
 }
