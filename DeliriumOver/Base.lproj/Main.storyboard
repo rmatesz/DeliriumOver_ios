@@ -10,10 +10,63 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--First-->
+        <!--History-->
+        <scene sceneID="HW4-GV-DLg">
+            <objects>
+                <tableViewController id="UNL-O5-jNb" customClass="SessionListViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="KhY-pB-Y6g">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionListItemView" rowHeight="83" id="PRa-EO-PlO" customClass="SessionListItemView">
+                                <rect key="frame" x="0.0" y="28" width="414" height="83"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PRa-EO-PlO" id="gt2-qm-nPf">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="82.666666666666671"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLM-Qz-27y">
+                                            <rect key="frame" x="28" y="19" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="in progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNm-S9-kcU">
+                                            <rect key="frame" x="320.66666666666669" y="8" width="85.333333333333314" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.25188085440000002" green="0.42420220380000001" blue="0.36862224339999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="KNm-S9-kcU" firstAttribute="top" secondItem="gt2-qm-nPf" secondAttribute="top" constant="8" id="2jm-gY-lFg"/>
+                                        <constraint firstItem="iLM-Qz-27y" firstAttribute="top" secondItem="gt2-qm-nPf" secondAttribute="topMargin" constant="8" id="6F3-tZ-uIq"/>
+                                        <constraint firstItem="iLM-Qz-27y" firstAttribute="leading" secondItem="gt2-qm-nPf" secondAttribute="leadingMargin" constant="8" id="HLX-qG-XYC"/>
+                                        <constraint firstAttribute="trailing" secondItem="KNm-S9-kcU" secondAttribute="trailing" constant="8" id="T3x-9e-WrS"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="inProgress" destination="KNm-S9-kcU" id="s85-1G-hra"/>
+                                    <outlet property="title" destination="iLM-Qz-27y" id="NYF-lT-1xu"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="UNL-O5-jNb" id="hUj-IK-e17"/>
+                            <outlet property="delegate" destination="UNL-O5-jNb" id="9We-zJ-J9C"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="History" id="z0S-Qk-bFC"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oLM-ZK-NRx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="771.01449275362324" y="-1024.7282608695652"/>
+        </scene>
+        <!--ReportOverview-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="ReportsOverviewViewController" customModule="DeliriumOver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Reports" id="9pv-A4-QxB" userLabel="ReportOverview" customClass="ReportsOverviewViewController" customModule="DeliriumOver" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -113,7 +166,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf" userLabel="ReportsOverview"/>
+                    <tabBarItem key="tabBarItem" title="Reports" image="first" id="acW-dT-cKf" userLabel="ReportsOverview"/>
                     <connections>
                         <outlet property="alcoholEliminationDate" destination="At6-Zq-E6h" id="Eij-LA-nch"/>
                         <outlet property="alcoholEliminationTime" destination="DKS-8r-8uB" id="GE5-OU-ZKw"/>
@@ -368,11 +421,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConsumptionListItemView" id="Z53-hT-7Zh" customClass="ConsumptionListItemView" customModule="DeliriumOver" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConsumptionListItemView" rowHeight="81" id="Z53-hT-7Zh" customClass="ConsumptionListItemView" customModule="DeliriumOver" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z53-hT-7Zh" id="zLC-tp-cfZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80.666666666666671"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="drink" text="Sör (5.0%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NdM-gu-xlQ">
@@ -413,7 +466,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sh0-ot-cBK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="673" y="1107"/>
+            <point key="canvasLocation" x="672.46376811594212" y="1106.6576086956522"/>
         </scene>
         <!--DeliriumOver-->
         <scene sceneID="yl2-sM-qoP">
@@ -428,6 +481,7 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="EJf-nZ-M9h" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="UNL-O5-jNb" kind="relationship" relationship="viewControllers" id="Wel-iF-fle"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>

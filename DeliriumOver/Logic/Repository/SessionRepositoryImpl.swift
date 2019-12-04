@@ -55,16 +55,16 @@ class SessionRepositoryImpl: SessionRepository {
     }
     
     func insert(session: Session) -> Single<String> {
-        return sessionDAO.createEntity{ (sessionEntity) -> () in
+        return sessionDAO.createEntity { (sessionEntity) -> () in
             sessionEntity.title = session.title
             sessionEntity.desc = session.description
             sessionEntity.name = session.name
             sessionEntity.weight = session.weight
             sessionEntity.gender = Int32(session.gender.rawValue)
             sessionEntity.inProgress = session.inProgress
-            }
+        }
         .map { sessionEntity -> String in
-            sessionEntity.objectID.uriRepresentation().absoluteString
+                sessionEntity.objectID.uriRepresentation().absoluteString
         }
     }
     

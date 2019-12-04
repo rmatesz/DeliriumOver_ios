@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class ConsumptionListTableViewController: UITableViewController {
-    var presenter: ConsumptionListPresenter?
+    weak var presenter: ConsumptionListPresenter!
     
     private var consumptionItems: [ConsumptionListItem] = []
     var consumptions: [ConsumptionListItem]
@@ -42,7 +42,7 @@ class ConsumptionListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            presenter?.onConsumptionSwiped(index: indexPath.row)
+            presenter.onConsumptionSwiped(index: indexPath.row)
         }
     }
 

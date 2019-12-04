@@ -87,6 +87,10 @@
 		80731A80231FD37B00C65C08 /* ConsumptionFormPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80731A7F231FD37B00C65C08 /* ConsumptionFormPresenterImpl.swift */; };
 		80731A83231FD58C00C65C08 /* ConsumptionFormInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80731A82231FD58C00C65C08 /* ConsumptionFormInteractor.swift */; };
 		80731A85232131CF00C65C08 /* ConsumptionFormSwinject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80731A84232131CF00C65C08 /* ConsumptionFormSwinject.swift */; };
+		80D45AB42397AA9F00D999D9 /* SessionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D45AB32397AA9F00D999D9 /* SessionListViewController.swift */; };
+		80D45AB62397ABA000D999D9 /* SessionListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D45AB52397ABA000D999D9 /* SessionListItemView.swift */; };
+		80D45AB82397BD8B00D999D9 /* SessionListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D45AB72397BD8B00D999D9 /* SessionListItem.swift */; };
+		80D45ABB2397EC9E00D999D9 /* SessionListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D45ABA2397EC9E00D999D9 /* SessionListPresenter.swift */; };
 		80D4B8E5232F918D001E8ABF /* QuantityPickerSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80D4B8E4232F918D001E8ABF /* QuantityPickerSheet.xib */; };
 		80D4B8E7232F93B4001E8ABF /* QuantityPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4B8E6232F93B4001E8ABF /* QuantityPickerSheet.swift */; };
 		80EDF100236AE80F003BA24C /* ConsumptionListPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF0FF236AE80F003BA24C /* ConsumptionListPresenterTest.swift */; };
@@ -211,6 +215,10 @@
 		80731A7F231FD37B00C65C08 /* ConsumptionFormPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionFormPresenterImpl.swift; sourceTree = "<group>"; };
 		80731A82231FD58C00C65C08 /* ConsumptionFormInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionFormInteractor.swift; sourceTree = "<group>"; };
 		80731A84232131CF00C65C08 /* ConsumptionFormSwinject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionFormSwinject.swift; sourceTree = "<group>"; };
+		80D45AB32397AA9F00D999D9 /* SessionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionListViewController.swift; path = List/View/SessionListViewController.swift; sourceTree = SOURCE_ROOT; };
+		80D45AB52397ABA000D999D9 /* SessionListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionListItemView.swift; path = List/View/SessionListItemView.swift; sourceTree = SOURCE_ROOT; };
+		80D45AB72397BD8B00D999D9 /* SessionListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionListItem.swift; path = List/View/SessionListItem.swift; sourceTree = SOURCE_ROOT; };
+		80D45ABA2397EC9E00D999D9 /* SessionListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionListPresenter.swift; path = List/Presenter/SessionListPresenter.swift; sourceTree = SOURCE_ROOT; };
 		80D4B8E4232F918D001E8ABF /* QuantityPickerSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuantityPickerSheet.xib; sourceTree = "<group>"; };
 		80D4B8E6232F93B4001E8ABF /* QuantityPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPickerSheet.swift; sourceTree = "<group>"; };
 		80EDF0FF236AE80F003BA24C /* ConsumptionListPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListPresenterTest.swift; sourceTree = "<group>"; };
@@ -536,6 +544,8 @@
 		4246D770220061010066BC01 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				80D45AB92397EC8E00D999D9 /* Presenter */,
+				80D45AB22397AA8400D999D9 /* View */,
 				4246D771220061070066BC01 /* Router */,
 			);
 			path = List;
@@ -766,6 +776,24 @@
 				80707E12232299FB006A6636 /* ConsumptionFormInteractorImpl.swift */,
 			);
 			path = Interactor;
+			sourceTree = "<group>";
+		};
+		80D45AB22397AA8400D999D9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				80D45AB32397AA9F00D999D9 /* SessionListViewController.swift */,
+				80D45AB52397ABA000D999D9 /* SessionListItemView.swift */,
+				80D45AB72397BD8B00D999D9 /* SessionListItem.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		80D45AB92397EC8E00D999D9 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				80D45ABA2397EC9E00D999D9 /* SessionListPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		80EDF0FE236AE7F8003BA24C /* Presenter */ = {
@@ -1087,6 +1115,7 @@
 				80EDF105236D935D003BA24C /* ReportOverviewPresenterImpl.swift in Sources */,
 				42895B2A22078AE600386A21 /* RepositoryError.swift in Sources */,
 				80731A83231FD58C00C65C08 /* ConsumptionFormInteractor.swift in Sources */,
+				80D45AB82397BD8B00D999D9 /* SessionListItem.swift in Sources */,
 				422CA97E22108FD600BC5401 /* ReportOverviewSwinject.swift in Sources */,
 				428875F42206005B00EED6BB /* SessionDAOImpl.swift in Sources */,
 				422C68E022010F0300F7702A /* Record.swift in Sources */,
@@ -1113,6 +1142,7 @@
 				429B93972204E28100B663FD /* SessionRepositoryImpl.swift in Sources */,
 				422C68D922010DC900F7702A /* AlcoholCalculator.swift in Sources */,
 				4246D7372200583D0066BC01 /* ReportsOverviewViewController.swift in Sources */,
+				80D45ABB2397EC9E00D999D9 /* SessionListPresenter.swift in Sources */,
 				42882656220F7793001A9A5A /* ConsumptionListView.swift in Sources */,
 				429893BF22031C0400460356 /* DoubleExtension.swift in Sources */,
 				422CA97822106E0900BC5401 /* ConsumptionListTableViewController.swift in Sources */,
@@ -1121,10 +1151,12 @@
 				429893B42202233700460356 /* DrinkType.swift in Sources */,
 				429893B82202279700460356 /* SystemDateProvider.swift in Sources */,
 				42E44DE12201C38500F367CB /* DrinkUnit.swift in Sources */,
+				80D45AB42397AA9F00D999D9 /* SessionListViewController.swift in Sources */,
 				42882649220EC87E001A9A5A /* FirebaseError.swift in Sources */,
 				80731A80231FD37B00C65C08 /* ConsumptionFormPresenterImpl.swift in Sources */,
 				80EDF10C236DAA28003BA24C /* ReportOverviewView.swift in Sources */,
 				42882653220F75D4001A9A5A /* ConsumptionListInteractorImpl.swift in Sources */,
+				80D45AB62397ABA000D999D9 /* SessionListItemView.swift in Sources */,
 				422CA9822210933C00BC5401 /* RepositorySwinject.swift in Sources */,
 				428875F22205FB2200EED6BB /* SessionDAO.swift in Sources */,
 				42E44DDF2201C23000F367CB /* Consumption.swift in Sources */,
