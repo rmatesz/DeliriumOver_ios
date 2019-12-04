@@ -91,6 +91,8 @@
 		80D45AB62397ABA000D999D9 /* SessionListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D45AB52397ABA000D999D9 /* SessionListItemView.swift */; };
 		80D45AB82397BD8B00D999D9 /* SessionListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D45AB72397BD8B00D999D9 /* SessionListItem.swift */; };
 		80D45ABB2397EC9E00D999D9 /* SessionListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D45ABA2397EC9E00D999D9 /* SessionListPresenter.swift */; };
+		80D45ABE2397EDC400D999D9 /* SessionListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D45ABD2397EDC400D999D9 /* SessionListInteractor.swift */; };
+		80D45AC02397EE1100D999D9 /* SessionListInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D45ABF2397EE1100D999D9 /* SessionListInteractorImpl.swift */; };
 		80D4B8E5232F918D001E8ABF /* QuantityPickerSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80D4B8E4232F918D001E8ABF /* QuantityPickerSheet.xib */; };
 		80D4B8E7232F93B4001E8ABF /* QuantityPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4B8E6232F93B4001E8ABF /* QuantityPickerSheet.swift */; };
 		80EDF100236AE80F003BA24C /* ConsumptionListPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF0FF236AE80F003BA24C /* ConsumptionListPresenterTest.swift */; };
@@ -219,6 +221,8 @@
 		80D45AB52397ABA000D999D9 /* SessionListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionListItemView.swift; path = List/View/SessionListItemView.swift; sourceTree = SOURCE_ROOT; };
 		80D45AB72397BD8B00D999D9 /* SessionListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionListItem.swift; path = List/View/SessionListItem.swift; sourceTree = SOURCE_ROOT; };
 		80D45ABA2397EC9E00D999D9 /* SessionListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionListPresenter.swift; path = List/Presenter/SessionListPresenter.swift; sourceTree = SOURCE_ROOT; };
+		80D45ABD2397EDC400D999D9 /* SessionListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionListInteractor.swift; path = List/Interactor/SessionListInteractor.swift; sourceTree = SOURCE_ROOT; };
+		80D45ABF2397EE1100D999D9 /* SessionListInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionListInteractorImpl.swift; path = List/Interactor/SessionListInteractorImpl.swift; sourceTree = SOURCE_ROOT; };
 		80D4B8E4232F918D001E8ABF /* QuantityPickerSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuantityPickerSheet.xib; sourceTree = "<group>"; };
 		80D4B8E6232F93B4001E8ABF /* QuantityPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPickerSheet.swift; sourceTree = "<group>"; };
 		80EDF0FF236AE80F003BA24C /* ConsumptionListPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListPresenterTest.swift; sourceTree = "<group>"; };
@@ -544,6 +548,7 @@
 		4246D770220061010066BC01 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				80D45ABC2397EDAE00D999D9 /* Interactor */,
 				80D45AB92397EC8E00D999D9 /* Presenter */,
 				80D45AB22397AA8400D999D9 /* View */,
 				4246D771220061070066BC01 /* Router */,
@@ -794,6 +799,15 @@
 				80D45ABA2397EC9E00D999D9 /* SessionListPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		80D45ABC2397EDAE00D999D9 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				80D45ABD2397EDC400D999D9 /* SessionListInteractor.swift */,
+				80D45ABF2397EE1100D999D9 /* SessionListInteractorImpl.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		80EDF0FE236AE7F8003BA24C /* Presenter */ = {
@@ -1105,6 +1119,7 @@
 				4288264D220F6799001A9A5A /* DrinkRepositoryImpl.swift in Sources */,
 				42731B022208F9F30048AB83 /* FirebaseDrinksDatabase.swift in Sources */,
 				4288265A220F897C001A9A5A /* ConsumptionListItem.swift in Sources */,
+				80D45ABE2397EDC400D999D9 /* SessionListInteractor.swift in Sources */,
 				80EDF10A236D95B0003BA24C /* Statistics.swift in Sources */,
 				4246D7392200583D0066BC01 /* ConsumptionListViewController.swift in Sources */,
 				422C68DE22010EBA00F7702A /* DateExtensions.swift in Sources */,
@@ -1124,6 +1139,7 @@
 				80731A85232131CF00C65C08 /* ConsumptionFormSwinject.swift in Sources */,
 				42882658220F87A1001A9A5A /* ConsumptionListRouter.swift in Sources */,
 				80395D67232660A8008120A6 /* HasApply.swift in Sources */,
+				80D45AC02397EE1100D999D9 /* SessionListInteractorImpl.swift in Sources */,
 				80EDF107236D94B2003BA24C /* ReportOverviewInteractor.swift in Sources */,
 				42146F0A220CCAD100A793A5 /* FirebaseSessionDatabase.swift in Sources */,
 				42895B28220788CE00386A21 /* ConsumptionRepositoryImpl.swift in Sources */,
