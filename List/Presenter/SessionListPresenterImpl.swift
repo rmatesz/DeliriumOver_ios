@@ -13,8 +13,9 @@ class SessionListPresenterImpl: BasePresenter, SessionListPresenter {
     private weak var view: SessionListView?
     private let interactor: SessionListInteractor
     
-    init(interactor: SessionListInteractor) {
+    init(view: SessionListView, interactor: SessionListInteractor) {
         self.interactor = interactor
+        self.view = view
     }
     
     func start() {

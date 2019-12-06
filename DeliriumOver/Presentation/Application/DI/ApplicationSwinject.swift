@@ -18,6 +18,7 @@ extension SwinjectStoryboard {
         ReportsOverviewSwinject.setup(defaultContainer: defaultContainer)
         ConsumptionListSwinject.setup(defaultContainer)
         ConsumptionFormSwinject.setup(defaultContainer)
+        SessionListSwinject.setup(defaultContainer)
     }
 }
 

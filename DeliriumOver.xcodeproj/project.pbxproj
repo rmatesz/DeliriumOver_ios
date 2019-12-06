@@ -95,6 +95,10 @@
 		80D45AC02397EE1100D999D9 /* SessionListInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D45ABF2397EE1100D999D9 /* SessionListInteractorImpl.swift */; };
 		80D45AC22397EEFB00D999D9 /* SessionListPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D45AC12397EEFB00D999D9 /* SessionListPresenterImpl.swift */; };
 		80D45AC42397F00800D999D9 /* SessionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D45AC32397F00800D999D9 /* SessionListView.swift */; };
+		80D45AC72397F18300D999D9 /* SessionListSwinject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D45AC62397F18300D999D9 /* SessionListSwinject.swift */; };
+		80D45ACB2399154600D999D9 /* SessionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D45ACA2399154600D999D9 /* SessionFormViewController.swift */; };
+		80D45ACE239915ED00D999D9 /* SessionFormPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D45ACD239915ED00D999D9 /* SessionFormPresenter.swift */; };
+		80D45AD02399171800D999D9 /* LoadingIndicator.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80D45ACF2399171800D999D9 /* LoadingIndicator.xib */; };
 		80D4B8E5232F918D001E8ABF /* QuantityPickerSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80D4B8E4232F918D001E8ABF /* QuantityPickerSheet.xib */; };
 		80D4B8E7232F93B4001E8ABF /* QuantityPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4B8E6232F93B4001E8ABF /* QuantityPickerSheet.swift */; };
 		80EDF100236AE80F003BA24C /* ConsumptionListPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF0FF236AE80F003BA24C /* ConsumptionListPresenterTest.swift */; };
@@ -227,6 +231,10 @@
 		80D45ABF2397EE1100D999D9 /* SessionListInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionListInteractorImpl.swift; path = List/Interactor/SessionListInteractorImpl.swift; sourceTree = SOURCE_ROOT; };
 		80D45AC12397EEFB00D999D9 /* SessionListPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionListPresenterImpl.swift; path = List/Presenter/SessionListPresenterImpl.swift; sourceTree = SOURCE_ROOT; };
 		80D45AC32397F00800D999D9 /* SessionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionListView.swift; path = List/View/SessionListView.swift; sourceTree = SOURCE_ROOT; };
+		80D45AC62397F18300D999D9 /* SessionListSwinject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionListSwinject.swift; path = List/DI/SessionListSwinject.swift; sourceTree = SOURCE_ROOT; };
+		80D45ACA2399154600D999D9 /* SessionFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionFormViewController.swift; sourceTree = "<group>"; };
+		80D45ACD239915ED00D999D9 /* SessionFormPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionFormPresenter.swift; sourceTree = "<group>"; };
+		80D45ACF2399171800D999D9 /* LoadingIndicator.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingIndicator.xib; sourceTree = "<group>"; };
 		80D4B8E4232F918D001E8ABF /* QuantityPickerSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuantityPickerSheet.xib; sourceTree = "<group>"; };
 		80D4B8E6232F93B4001E8ABF /* QuantityPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPickerSheet.swift; sourceTree = "<group>"; };
 		80EDF0FF236AE80F003BA24C /* ConsumptionListPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListPresenterTest.swift; sourceTree = "<group>"; };
@@ -515,6 +523,7 @@
 		4246D76B220060A10066BC01 /* Sessions */ = {
 			isa = PBXGroup;
 			children = (
+				80D45AC82399153400D999D9 /* Form */,
 				4246D770220061010066BC01 /* List */,
 			);
 			path = Sessions;
@@ -552,6 +561,7 @@
 		4246D770220061010066BC01 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				80D45AC52397F16F00D999D9 /* DI */,
 				80D45ABC2397EDAE00D999D9 /* Interactor */,
 				80D45AB92397EC8E00D999D9 /* Presenter */,
 				80D45AB22397AA8400D999D9 /* View */,
@@ -719,6 +729,7 @@
 				80395D6F232BDB10008120A6 /* DatePickerSheet.swift */,
 				80D4B8E4232F918D001E8ABF /* QuantityPickerSheet.xib */,
 				80D4B8E6232F93B4001E8ABF /* QuantityPickerSheet.swift */,
+				80D45ACF2399171800D999D9 /* LoadingIndicator.xib */,
 			);
 			path = Widget;
 			sourceTree = "<group>";
@@ -814,6 +825,39 @@
 				80D45ABF2397EE1100D999D9 /* SessionListInteractorImpl.swift */,
 			);
 			path = Interactor;
+			sourceTree = "<group>";
+		};
+		80D45AC52397F16F00D999D9 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				80D45AC62397F18300D999D9 /* SessionListSwinject.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		80D45AC82399153400D999D9 /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				80D45ACC239915E100D999D9 /* Presenter */,
+				80D45AC92399153900D999D9 /* View */,
+			);
+			path = Form;
+			sourceTree = "<group>";
+		};
+		80D45AC92399153900D999D9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				80D45ACA2399154600D999D9 /* SessionFormViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		80D45ACC239915E100D999D9 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				80D45ACD239915ED00D999D9 /* SessionFormPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		80EDF0FE236AE7F8003BA24C /* Presenter */ = {
@@ -967,6 +1011,7 @@
 			files = (
 				4246D7412200583D0066BC01 /* LaunchScreen.storyboard in Resources */,
 				4246D73E2200583D0066BC01 /* Assets.xcassets in Resources */,
+				80D45AD02399171800D999D9 /* LoadingIndicator.xib in Resources */,
 				80395D6E232BDA3F008120A6 /* DatePickerSheet.xib in Resources */,
 				42895B3022082B9800386A21 /* GoogleService-Info.plist in Resources */,
 				428875EE220580DD00EED6BB /* Podfile in Resources */,
@@ -1123,6 +1168,7 @@
 				422CA984221094BE00BC5401 /* ApplicationSwinject.swift in Sources */,
 				804B88B22370704900BBB2C4 /* CalculationsSwinject.swift in Sources */,
 				4288264D220F6799001A9A5A /* DrinkRepositoryImpl.swift in Sources */,
+				80D45AC72397F18300D999D9 /* SessionListSwinject.swift in Sources */,
 				42731B022208F9F30048AB83 /* FirebaseDrinksDatabase.swift in Sources */,
 				4288265A220F897C001A9A5A /* ConsumptionListItem.swift in Sources */,
 				80D45ABE2397EDC400D999D9 /* SessionListInteractor.swift in Sources */,
@@ -1130,6 +1176,7 @@
 				4246D7392200583D0066BC01 /* ConsumptionListViewController.swift in Sources */,
 				422C68DE22010EBA00F7702A /* DateExtensions.swift in Sources */,
 				42882647220EC507001A9A5A /* FirebaseCommunicator.swift in Sources */,
+				80D45ACB2399154600D999D9 /* SessionFormViewController.swift in Sources */,
 				42895B262207887100386A21 /* ConsumptionRepository.swift in Sources */,
 				80731A7E231FC0C800C65C08 /* ConsumptionFormView.swift in Sources */,
 				80395D70232BDB10008120A6 /* DatePickerSheet.swift in Sources */,
@@ -1157,6 +1204,7 @@
 				429B93902204DEDA00B663FD /* DeliriumOver.xcdatamodeld in Sources */,
 				4204FE33221220A900BBB83E /* SimpleError.swift in Sources */,
 				42895B2E22078BFF00386A21 /* DAOImpl.swift in Sources */,
+				80D45ACE239915ED00D999D9 /* SessionFormPresenter.swift in Sources */,
 				42731B002208D93B0048AB83 /* FirebaseAuthentication.swift in Sources */,
 				804B88AE237033E600BBB2C4 /* ConnectableObservableExtension.swift in Sources */,
 				80D4B8E7232F93B4001E8ABF /* QuantityPickerSheet.swift in Sources */,

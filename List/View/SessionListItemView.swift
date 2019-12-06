@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 class SessionListItemView : UITableViewCell {
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var inProgress: UILabel!
+    @IBOutlet private weak var title: UILabel!
+    @IBOutlet private weak var inProgress: UILabel!
     
     func update(sessionListItem: SessionListItem) {
         title.text = sessionListItem.title
