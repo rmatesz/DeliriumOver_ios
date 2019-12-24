@@ -12,5 +12,6 @@ import RxSwift
 protocol ReportOverviewInteractor {
     func loadSession() -> Observable<Session>
     func loadStatistics() -> Observable<Statistics>
+    func loadRecords() -> Observable<[Record]>
     func saveSession(session: Session) -> Completable
 }

@@ -10,7 +10,7 @@ import Foundation
 
 public struct Record {
     public var name: String
-    public var records: [Data]
+    public var data: [Data]
 }
 
 public struct Data {

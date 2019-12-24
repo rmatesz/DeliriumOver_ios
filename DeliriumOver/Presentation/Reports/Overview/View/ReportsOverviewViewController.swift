@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Charts
 import CoreData
 import RxSwift
 import FirebaseDatabase
@@ -17,13 +18,14 @@ class ReportsOverviewViewController: UIViewController, ReportOverviewView {
     private static let dateFormatter = DateFormatter().apply { $0.dateFormat = "dd/MM/yyyy" }
     private static let timeFormatter = DateFormatter().apply { $0.dateFormat = "HH:mm" }
     var presenter: ReportOverviewPresenter!
-
+    
     @IBOutlet weak var alcoholEliminationDate: UILabel!
     @IBOutlet weak var alcoholEliminationTime: UILabel!
     @IBOutlet weak var bacLevel: UILabel!
     @IBOutlet weak var sessionTitle: UITextField!
     @IBOutlet weak var edit: UIButton!
     @IBOutlet weak var save: UIButton!
+    @IBOutlet weak var chart: LineChartView!
     
     override func viewDidLoad() {
         presenter.start()
@@ -50,6 +52,21 @@ class ReportsOverviewViewController: UIViewController, ReportOverviewView {
         self.alcoholEliminationTime.text = ReportsOverviewViewController.timeFormatter.string(from: alcoholEliminationDate)
     }
     
+    func setupChart(stats: [Record]) {
+        let data = LineChartData()
+        stats.filter { (record) -> Bool in
+            !record.data.isEmpty
+        }
+        .map { (record) -> LineChartDataSet in
+            createLineDataSet(stat: record)
+        }.forEach { (dataSet) in
+            data.addDataSet(dataSet)
+        }
+        data.setValueFormatter(ThousandthsValueFormatter())
+        chart.xAxis.valueFormatter = DateAxisValueFormatter(formatString: "HH:mm")
+        chart.data = data
+    }
+    
     private func startTitleEditing() {
         isEditing = true
         edit.isEnabled = false
@@ -63,6 +80,13 @@ class ReportsOverviewViewController: UIViewController, ReportOverviewView {
         edit.isEnabled = true
         save.isEnabled = false
         sessionTitle.isEnabled = false
+    }
+    
+    private func createLineDataSet(stat: Record) -> LineChartDataSet {
+        let entries = stat.data.map { (record) -> ChartDataEntry in
+            ChartDataEntry(x: record.time.timeIntervalSince1970 as Double, y: record.bacLevel)
+        }
+        return LineChartDataSet(entries: entries, label: stat.name)
     }
     
 }

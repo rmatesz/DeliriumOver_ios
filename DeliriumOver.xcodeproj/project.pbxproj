@@ -87,6 +87,7 @@
 		80731A80231FD37B00C65C08 /* ConsumptionFormPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80731A7F231FD37B00C65C08 /* ConsumptionFormPresenterImpl.swift */; };
 		80731A83231FD58C00C65C08 /* ConsumptionFormInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80731A82231FD58C00C65C08 /* ConsumptionFormInteractor.swift */; };
 		80731A85232131CF00C65C08 /* ConsumptionFormSwinject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80731A84232131CF00C65C08 /* ConsumptionFormSwinject.swift */; };
+		80ADB18B23B1F9AA002210DA /* ValueFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80ADB18A23B1F9AA002210DA /* ValueFormatters.swift */; };
 		80D45AB42397AA9F00D999D9 /* SessionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D45AB32397AA9F00D999D9 /* SessionListViewController.swift */; };
 		80D45AB62397ABA000D999D9 /* SessionListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D45AB52397ABA000D999D9 /* SessionListItemView.swift */; };
 		80D45AB82397BD8B00D999D9 /* SessionListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D45AB72397BD8B00D999D9 /* SessionListItem.swift */; };
@@ -223,6 +224,7 @@
 		80731A7F231FD37B00C65C08 /* ConsumptionFormPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionFormPresenterImpl.swift; sourceTree = "<group>"; };
 		80731A82231FD58C00C65C08 /* ConsumptionFormInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionFormInteractor.swift; sourceTree = "<group>"; };
 		80731A84232131CF00C65C08 /* ConsumptionFormSwinject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionFormSwinject.swift; sourceTree = "<group>"; };
+		80ADB18A23B1F9AA002210DA /* ValueFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueFormatters.swift; sourceTree = "<group>"; };
 		80D45AB32397AA9F00D999D9 /* SessionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionListViewController.swift; path = List/View/SessionListViewController.swift; sourceTree = SOURCE_ROOT; };
 		80D45AB52397ABA000D999D9 /* SessionListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionListItemView.swift; path = List/View/SessionListItemView.swift; sourceTree = SOURCE_ROOT; };
 		80D45AB72397BD8B00D999D9 /* SessionListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionListItem.swift; path = List/View/SessionListItem.swift; sourceTree = SOURCE_ROOT; };
@@ -725,6 +727,7 @@
 		80395D6C232BDA02008120A6 /* Widget */ = {
 			isa = PBXGroup;
 			children = (
+				80ADB18923B1F99A002210DA /* Chart */,
 				80395D6D232BDA3F008120A6 /* DatePickerSheet.xib */,
 				80395D6F232BDB10008120A6 /* DatePickerSheet.swift */,
 				80D4B8E4232F918D001E8ABF /* QuantityPickerSheet.xib */,
@@ -796,6 +799,14 @@
 				80707E12232299FB006A6636 /* ConsumptionFormInteractorImpl.swift */,
 			);
 			path = Interactor;
+			sourceTree = "<group>";
+		};
+		80ADB18923B1F99A002210DA /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				80ADB18A23B1F9AA002210DA /* ValueFormatters.swift */,
+			);
+			path = Chart;
 			sourceTree = "<group>";
 		};
 		80D45AB22397AA8400D999D9 /* View */ = {
@@ -1105,6 +1116,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-DeliriumOver/Pods-DeliriumOver-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/KxMenu/KxMenu.framework",
@@ -1117,6 +1129,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KxMenu.framework",
@@ -1180,6 +1193,7 @@
 				42895B262207887100386A21 /* ConsumptionRepository.swift in Sources */,
 				80731A7E231FC0C800C65C08 /* ConsumptionFormView.swift in Sources */,
 				80395D70232BDB10008120A6 /* DatePickerSheet.swift in Sources */,
+				80ADB18B23B1F9AA002210DA /* ValueFormatters.swift in Sources */,
 				80EDF105236D935D003BA24C /* ReportOverviewPresenterImpl.swift in Sources */,
 				42895B2A22078AE600386A21 /* RepositoryError.swift in Sources */,
 				80731A83231FD58C00C65C08 /* ConsumptionFormInteractor.swift in Sources */,

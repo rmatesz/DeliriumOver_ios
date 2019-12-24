@@ -31,11 +31,40 @@ class ReportOverviewInteractorImpl: ReportOverviewInteractor {
                 self.alcoholCalculator.calcBloodAlcoholConcentration(session: session, date: dateProvider.currentDate).asObservable(),
                 resultSelector: { (alcoholEliminationDate, bloodAlcoholConcentration) -> Statistics in
                     return Statistics(alcoholEliminationDate: alcoholEliminationDate, bloodAlcoholConcentration: bloodAlcoholConcentration)
-                }
+            }
             )
         }.asObservable()
     }
     
+    func loadRecords() -> Observable<[Record]> {
+        return loadSession().flatMap { (session) ->Observable<[Record]> in
+//            sessionRepository.getFriendsSessions(shareKey: session.shareKey)
+//                .map { (sessions) -> R in
+//                    <#code#>
+//            }
+            Single.zip(
+                Single.just(session.name),
+                self.alcoholCalculator.generateRecords(session: session)
+            ).map { (name, data) -> Record in
+                Record(name: name, data: data)
+                }.asObservable().toArray()
+        }
+        //        sessionRepository.getFriendsSessions(session.shareKey)
+        //            .onErrorReturnItem(emptyList<Session>())
+        //            .firstElement()
+        //            .filter { session.shared }
+        //            .defaultIfEmpty(emptyList())
+        //            .flattenAsFlowable { it }
+        //            .startWith(session)
+        //            .flatMapSingle {
+        //                Single.zip(
+        //                    just(it.name),
+        //                    alcoholCalculator.generateRecords(it),
+        //                    BiFunction<String, List<Data>, Record> { name, records -> Record(name, records) }
+        //                )
+        //            }
+        //            .toList()
+    }
     
     func saveSession(session: Session) -> Completable {
         return sessionRepository.update(session: session)
@@ -48,35 +77,35 @@ class ReportOverviewInteractorImpl: ReportOverviewInteractor {
         return sessionRepository.getInProgressSession()
             .flatMap { (session) -> PrimitiveSequence<MaybeTrait, Session> in
                 self.createNewSessionIfExpired(session: session)
-            }
-            .map { session -> String in session.id }
-            .do(onNext: { (sessionId) in
-                self.sessionId = sessionId
-            })
+        }
+        .map { session -> String in session.id }
+        .do(onNext: { (sessionId) in
+            self.sessionId = sessionId
+        })
             .asObservable()
             .flatMap { (sessionId) -> Observable<Session> in
                 self.loadInProgressSession()
+        }
+        .ifEmpty(switchTo:
+            createNewSession()
+                .do(onSuccess: { (sessionId) in
+                    self.sessionId = sessionId
+                })
+                .asObservable()
+                .flatMap { (sessionId) -> Observable<Session> in
+                    self.loadInProgressSession()
             }
-            .ifEmpty(switchTo:
-                createNewSession()
-                    .do(onSuccess: { (sessionId) in
-                        self.sessionId = sessionId
-                    })
-                    .asObservable()
-                    .flatMap { (sessionId) -> Observable<Session> in
-                        self.loadInProgressSession()
-                    }
-            )
+        )
         
-
         
-//            .doOnSuccess { this.sessionId = it }
-//            .flatMapPublisher { loadSession(it) }
-//            .switchIfEmpty(
-//                createNewSession()
-//                    .doOnSuccess { this.sessionId = it }
-//                    .flatMapPublisher { loadSession(it) }
-    
+        
+        //            .doOnSuccess { this.sessionId = it }
+        //            .flatMapPublisher { loadSession(it) }
+        //            .switchIfEmpty(
+        //                createNewSession()
+        //                    .doOnSuccess { this.sessionId = it }
+        //                    .flatMapPublisher { loadSession(it) }
+        
     }
     
     private func createNewSession() -> Single<String> {
@@ -103,20 +132,20 @@ class ReportOverviewInteractorImpl: ReportOverviewInteractor {
                     return Maybe.just(session)
                 }
         }
-//    alcoholCalculator.calcTimeOfZeroBAC(session)
-//    .flatMapMaybe { timeOfZeroBAC ->
-//    if (session.consumptions.isNotEmpty() && DateProvider.currentDate.after(timeOfZeroBAC)) {
-//    val newSession = session.clone()
-//    session.inProgress = false
-//    newSession.inProgress = true
-//    sessionRepository.update(session)
-//    .andThen(sessionRepository.insert(newSession))
-//    .map {
-//    newSession.id = it
-//    newSession
-//    }
-//    } else {
-//    Maybe.just(session)
-//    }
+        //    alcoholCalculator.calcTimeOfZeroBAC(session)
+        //    .flatMapMaybe { timeOfZeroBAC ->
+        //    if (session.consumptions.isNotEmpty() && DateProvider.currentDate.after(timeOfZeroBAC)) {
+        //    val newSession = session.clone()
+        //    session.inProgress = false
+        //    newSession.inProgress = true
+        //    sessionRepository.update(session)
+        //    .andThen(sessionRepository.insert(newSession))
+        //    .map {
+        //    newSession.id = it
+        //    newSession
+        //    }
+        //    } else {
+        //    Maybe.just(session)
+        //    }
     }
 }

@@ -12,4 +12,5 @@ protocol ReportOverviewView: class {
     func update(sessionTitle: String)
     func update(bacLevel: Float)
     func update(alcoholEliminationDate: Date)
+    func setupChart(stats: [Record])
 }

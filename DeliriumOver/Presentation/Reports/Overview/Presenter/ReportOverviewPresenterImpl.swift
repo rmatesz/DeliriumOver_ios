@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import Charts
 
 class ReportOverviewPresenterImpl: BasePresenter, ReportOverviewPresenter {
     private weak var view: ReportOverviewView?
@@ -36,6 +37,16 @@ class ReportOverviewPresenterImpl: BasePresenter, ReportOverviewPresenter {
             .observeOn(MainScheduler())
             .subscribe(onNext: { (session) in
                 self.update(session: session)
+            }, onError: { (error) in
+                print(error)
+            })
+            .disposed(by: disposeBag)
+        
+        interactor.loadRecords()
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler())
+            .subscribe(onNext: { (records) in
+                self.update(stats: records)
             }, onError: { (error) in
                 print(error)
             })
@@ -70,4 +81,27 @@ class ReportOverviewPresenterImpl: BasePresenter, ReportOverviewPresenter {
         self.session = session
         view?.update(sessionTitle: session.title)
     }
+    
+    private func update(stats: [Record]) {
+        view?.setupChart(stats: stats)
+    }
+    
+    
+    //        LineChartDataSet(
+    //            stat.data.map { record ->
+    //                Entry(
+    //                    record.time.time.toFloat(),
+    //                    record.bacLevel.toFloat()
+    //                )
+    //            },
+    //            stat.name
+    //        )
+    //            .apply {
+    //                color = COLORS.elementAtOrElse(index) { randomColor() }
+    //            }
+    
+    //    private func randomColor() =
+    //        Random().let {
+    //            Color.argb(RGB_MAX, it.nextInt(RGB_MAX + 1), it.nextInt(RGB_MAX + 1), it.nextInt(RGB_MAX + 1))
+    //        }
 }
