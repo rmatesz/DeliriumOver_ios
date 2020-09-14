@@ -75,13 +75,14 @@ class ConsumptionFormInteractorImpl : ConsumptionFormInteractor {
             date: date
         )
     
-        return sessionRepository.getInProgressSession().map { (session: Session) -> String in session.id }
-            .ifEmpty(switchTo: sessionRepository.insert(session: Session(inProgress: true)))
+        return sessionRepository.inProgressSession.map { (session: Session) -> String in session.id }
+            .take(1)
+            .asSingle()
             .flatMapCompletable { (sessionId: String) -> Completable in
                 self.consumptionRepository.saveConsumption(sessionId: sessionId, consumption: consumption)
             }
     }
-    
+
     func saveConsumption(drink: String, alcohol: Double, quantity: Double, unit: DrinkUnit) -> Completable {
         return saveConsumption(drink: drink, alcohol: alcohol, quantity: quantity, unit: unit, date: Date())
     }

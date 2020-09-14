@@ -23,8 +23,8 @@ class DrinkRepositoryImpl : DrinkRepository {
         return drinksDatabase.getDrinks()
     }
     
-    func getFrequentlyConsumedDrinks() -> Single<[Drink]> {
-        return sessionRepository.getSessions()
+    func getFrequentlyConsumedDrinks() -> Observable<[Drink]> {
+        return sessionRepository.sessions
             .map({ (it) -> [Drink] in
                 return Dictionary(grouping: it
                     .flatMap({ (session) -> [Consumption] in
@@ -45,7 +45,6 @@ class DrinkRepositoryImpl : DrinkRepository {
                         Drink(consumption: consumption)
                     })
             })
-            .ifEmpty(default: [])
     }
 }
 

@@ -74,7 +74,7 @@ class ReportOverviewInteractorImpl: ReportOverviewInteractor {
         if let sessionId = self.sessionId {
             return sessionRepository.loadSession(sessionId: sessionId)
         }
-        return sessionRepository.getInProgressSession()
+        return sessionRepository.inProgressSession
             .flatMap { (session) -> PrimitiveSequence<MaybeTrait, Session> in
                 self.createNewSessionIfExpired(session: session)
         }

@@ -12,7 +12,7 @@ import Swinject
 class RepositorySwinject {
     class func setup(defaultContainer: Container) {
         defaultContainer.register(SessionRepository.self) { (resolver) -> SessionRepository in
-            SessionRepositoryImpl(sessionDAO: resolver.resolve(SessionDAO.self)!, firebaseCommunicator: resolver.resolve(FirebaseCommunicator.self)!, deviceId: "DEVICE_ID")
+            SessionRepositoryImpl(sessionDAO: resolver.resolve(SessionDAO.self)!, firebaseCommunicator: resolver.resolve(FirebaseCommunicator.self)!, alcoholCalculator: resolver.resolve(AlcoholCalculatorRxDecorator.self)!, deviceId: "DEVICE_ID")
         }
         
         defaultContainer.register(ConsumptionRepository.self) { (resolver) -> ConsumptionRepository in

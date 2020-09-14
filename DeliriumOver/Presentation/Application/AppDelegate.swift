@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Firebase
+import SwinjectStoryboard
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,12 +17,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     override init() {
+        Logger.plant(OsLogLogger.instance)
+        FirebaseApp.configure()
+    }
+
+    func setupRemoteLogger() {
+        let remoteLogger = SwinjectStoryboard.defaultContainer.resolve(RemoteLogger.self)!
+        let sumoUploader = SwinjectStoryboard.defaultContainer.resolve(SumoUploader.self)!
+        remoteLogger.attach(uploader: sumoUploader)
+        Logger.plant(remoteLogger)
+    }
+
+    func applicationDidFinishLaunching(_ application: UIApplication) {
         FirebaseApp.configure()
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+        setupRemoteLogger()
         return true
     }
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -559,23 +559,46 @@
             </objects>
             <point key="canvasLocation" x="748" y="-354"/>
         </scene>
-        <!--Session Form View Controlelr-->
+        <!--Session Form View Controller-->
         <scene sceneID="LBE-EY-2KZ">
             <objects>
-                <viewController id="hid-Fu-kKo" customClass="SessionFormViewControlelr" customModule="DeliriumOver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hid-Fu-kKo" customClass="SessionFormViewController" customModule="DeliriumOver" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XoH-4X-Rm2" customClass="SettingsViewController" customModule="DeliriumOver" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZo-la-vQB">
-                                <rect key="frame" x="175" y="358" width="64" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="09M-7K-O7e">
+                                <rect key="frame" x="16" y="72" width="382" height="123"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UOu-EM-pjO">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" textContentType="nickname"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Weight" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bry-7c-3vW">
+                                        <rect key="frame" x="0.0" y="46" width="382" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="hid-Fu-kKo" id="RtL-YP-pjy"/>
+                                        </connections>
+                                    </textField>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aVW-O6-WQV">
+                                        <rect key="frame" x="0.0" y="92" width="382" height="32"/>
+                                        <segments>
+                                            <segment title="Male"/>
+                                            <segment title="Female"/>
+                                        </segments>
+                                    </segmentedControl>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="09M-7K-O7e" firstAttribute="top" secondItem="5zB-FG-zEs" secondAttribute="top" constant="16" id="CbA-qK-kRY"/>
+                            <constraint firstItem="09M-7K-O7e" firstAttribute="leading" secondItem="5zB-FG-zEs" secondAttribute="leading" constant="16" id="Hri-eR-c3f"/>
+                            <constraint firstItem="5zB-FG-zEs" firstAttribute="trailing" secondItem="09M-7K-O7e" secondAttribute="trailing" constant="16" id="U1O-d4-jSu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5zB-FG-zEs"/>
                     </view>
                     <navigationItem key="navigationItem" id="aBT-qL-zG9">
@@ -591,6 +614,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="gender" destination="aVW-O6-WQV" id="CdX-9H-T8G"/>
+                        <outlet property="name" destination="UOu-EM-pjO" id="b8U-GU-KXR"/>
+                        <outlet property="weight" destination="Bry-7c-3vW" id="lx0-Tp-UM8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cpF-vQ-euR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

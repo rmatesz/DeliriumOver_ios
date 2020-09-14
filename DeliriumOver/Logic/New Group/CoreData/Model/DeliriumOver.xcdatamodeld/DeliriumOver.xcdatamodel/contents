@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18G87" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ConsumptionEntity" representedClassName="ConsumptionEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="alcohol" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="drink" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="quantity" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="unit" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="session" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SessionEntity" inverseName="consumptions" inverseEntity="SessionEntity" syncable="YES"/>
+        <attribute name="alcohol" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="drink" optional="YES" attributeType="String"/>
+        <attribute name="quantity" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="unit" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="session" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SessionEntity" inverseName="consumptions" inverseEntity="SessionEntity"/>
+    </entity>
+    <entity name="LogEntity" representedClassName="LogEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="data" attributeType="String" defaultValueString=""/>
+        <attribute name="timestamp" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="SessionEntity" representedClassName="SessionEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="deviceId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="gender" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="height" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="inProgress" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="pinKey" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="shared" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="consumptions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ConsumptionEntity" inverseName="session" inverseEntity="ConsumptionEntity" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="deviceId" optional="YES" attributeType="String"/>
+        <attribute name="gender" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="height" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="inProgress" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="pinKey" optional="YES" attributeType="String"/>
+        <attribute name="shared" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="consumptions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ConsumptionEntity" inverseName="session" inverseEntity="ConsumptionEntity"/>
     </entity>
     <elements>
         <element name="ConsumptionEntity" positionX="-63" positionY="-18" width="128" height="135"/>
         <element name="SessionEntity" positionX="-54" positionY="36" width="128" height="210"/>
+        <element name="LogEntity" positionX="-63" positionY="99" width="128" height="73"/>
     </elements>
 </model>

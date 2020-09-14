@@ -10,6 +10,8 @@ target "DeliriumOver" do
     pod 'Firebase/Core'
     pod 'Firebase/Auth'
     pod 'Firebase/Database'
+    pod 'Firebase/Crashlytics'
+    pod 'Firebase/Analytics'
     pod 'Swinject', '~> 2.6.0'
     pod 'SwinjectStoryboard'
     pod 'Charts'

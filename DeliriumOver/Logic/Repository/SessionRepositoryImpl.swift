@@ -12,28 +12,25 @@ import CoreData
 import RxSwift
 
 class SessionRepositoryImpl: SessionRepository {
+
     
     private let sessionDAO: SessionDAO
     private let firebaseCommunicator: FirebaseCommunicator
+    private let alcoholCalculator: AlcoholCalculatorRxDecorator
     private let deviceId: String
     
-    init(sessionDAO: SessionDAO, firebaseCommunicator: FirebaseCommunicator, deviceId: String) {
+    init(sessionDAO: SessionDAO, firebaseCommunicator: FirebaseCommunicator, alcoholCalculator: AlcoholCalculatorRxDecorator, deviceId: String) {
         self.sessionDAO = sessionDAO
         self.firebaseCommunicator = firebaseCommunicator
+        self.alcoholCalculator = alcoholCalculator
         self.deviceId = deviceId
     }
     
-    func getSessions() -> Maybe<[Session]> {
-        return sessionDAO.getAll().map { (sessionEntities) -> [Session] in
+    var sessions: Observable<[Session]> {
+        return sessionDAO.loadAll().map { (sessionEntities) -> [Session] in
             sessionEntities.map({ (sessionEntity) -> Session in
                 Session(sessionEntity: sessionEntity)
             })
-        }
-    }
-    
-    func getSession(sessionId: String) -> Maybe<Session> {
-        return sessionDAO.get(sessionId).map { (sessionEntity) -> Session in
-            Session(sessionEntity: sessionEntity)
         }
     }
     
@@ -64,7 +61,7 @@ class SessionRepositoryImpl: SessionRepository {
             sessionEntity.inProgress = session.inProgress
         }
         .map { sessionEntity -> String in
-                sessionEntity.objectID.uriRepresentation().absoluteString
+            sessionEntity.objectID.uriRepresentation().absoluteString
         }
     }
     
@@ -79,8 +76,8 @@ class SessionRepositoryImpl: SessionRepository {
                 sessionEntity.gender = Int32(session.gender.rawValue)
                 sessionEntity.inProgress = session.inProgress
                 return sessionEntity
-            }.flatMapCompletable { (sessionEntity) -> Completable in
-                self.sessionDAO.save()
+        }.flatMapCompletable { (sessionEntity) -> Completable in
+            self.sessionDAO.save()
         }
     }
     
@@ -92,22 +89,40 @@ class SessionRepositoryImpl: SessionRepository {
         }
         
     }
-    
-    func getInProgressSession() -> Maybe<Session> {
-        return sessionDAO.getAll()
+
+    var inProgressSession: Observable<Session> {
+        return sessionDAO.loadAll()
+            .flatMap({ (entities) -> Observable<[SessionEntity]> in
+                if entities.isEmpty {
+                    Logger.i(category: "DATABASE", message: "No session found in DB, creating session...")
+                    return self.createNewSession().asObservable().map { _ in entities }
+                }
+                return Observable.just(entities)
+            })
             .filter({ (sessionEntities) -> Bool in
-                sessionEntities.contains(where: { (sessionEntity) -> Bool in
+                let filter = sessionEntities.contains(where: { (sessionEntity) -> Bool in
                     sessionEntity.inProgress
                 })
+                if !filter {
+                    Logger.w(category: "DATABASE", message: "No inProgress session found in DB --> result filtered out")
+                }
+                return filter
             })
             .map { (sessionEntities) -> SessionEntity in
                 sessionEntities.first(where: { (sessionEntity) -> Bool in
                     sessionEntity.inProgress
                 })!
-            }
-            .map { (sessionEntity) -> Session in
-                Session(sessionEntity: sessionEntity)
         }
+        .map { (sessionEntity) -> Session in
+            Session(sessionEntity: sessionEntity)
+        }
+        .flatMap { (session) -> PrimitiveSequence<SingleTrait, Session> in
+            self.createNewSessionIfExpired(session: session)
+                .do(onSuccess: {
+                    Logger.i(message: "In progress session loaded. \($0)")
+                })
+        }
+
     }
     
     func loadInProgressSession() -> Observable<Session> {
@@ -116,14 +131,39 @@ class SessionRepositoryImpl: SessionRepository {
                 sessionEntities.contains(where: { (sessionEntity) -> Bool in
                     sessionEntity.inProgress
                 })
-            }
-            .map { (sessionEntities) -> SessionEntity in
-                sessionEntities.first(where: { (sessionEntity) -> Bool in
-                    sessionEntity.inProgress
-                })!
-            }
-            .map { (sessionEntity) -> Session in
-                Session(sessionEntity: sessionEntity)
+        }
+        .map { (sessionEntities) -> SessionEntity in
+            sessionEntities.first(where: { (sessionEntity) -> Bool in
+                sessionEntity.inProgress
+            })!
+        }
+        .map { (sessionEntity) -> Session in
+            Session(sessionEntity: sessionEntity)
+        }
+    }
+
+    private func createNewSession() -> Single<String> {
+        return insert(session: Session(inProgress: true))
+    }
+
+    private func createNewSessionIfExpired(session: Session) -> Single<Session> {
+        return alcoholCalculator.calcTimeOfZeroBAC(session: session)
+            .flatMap { (timeOfZeroBAC) -> PrimitiveSequence<SingleTrait, Session> in
+                if !session.consumptions.isEmpty && dateProvider.currentDate > timeOfZeroBAC {
+                    Logger.i(category: "DATABASE", message: "Alcohol is already eliminated. Creating new session...")
+                    var oldSession = session
+                    var newSession = session.clone()
+                    oldSession.inProgress = false
+                    newSession.inProgress = true
+                    return self.update(session: oldSession)
+                        .andThen(self.insert(session: newSession))
+                        .map { (sessionId) -> Session in
+                            newSession.id = sessionId
+                            return newSession
+                    }
+                } else {
+                    return Single.just(session)
+                }
         }
     }
 }

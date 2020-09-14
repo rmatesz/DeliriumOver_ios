@@ -8,20 +8,64 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
-class SessionFormViewControlelr : UIViewController {
-    var presenter: SessionFormPresenter!
-    
+class SessionFormViewController : UIViewController {
+    var presenter: SessionFormViewModel!
+
+    @IBOutlet weak var name: UITextField!
+    @IBOutlet weak var weight: UITextField!
+    @IBOutlet weak var gender: UISegmentedControl!
+    private var disposeBag: DisposeBag!
+
     func onSaveFinished() {
         // TODO: hide progress
     }
-    
+
+    override func viewDidAppear(_ animated: Bool) {
+        let genders = [Sex.MALE, Sex.FEMALE]
+        disposeBag = DisposeBag()
+        presenter.name.bind(to: name.rx.text).disposed(by: disposeBag)
+        name.rx.text.orEmpty.bind(to: presenter.name).disposed(by: disposeBag)
+        presenter.weight.bind(to: weight.rx.text).disposed(by: disposeBag)
+        weight.rx.text.orEmpty.bind(to: presenter.weight).disposed(by: disposeBag)
+        presenter.gender.map { genders.index(of: $0) ?? 0 }.bind(to: gender.rx.selectedSegmentIndex).disposed(by: disposeBag)
+        gender.rx.selectedSegmentIndex.map { genders[$0] }.bind(to: presenter.gender).disposed(by: disposeBag)
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        disposeBag = nil
+    }
+
     @IBAction func onSaveClicked(_ sender: Any) {
-        presenter.saveSession(name: "", weight: 85, gender: Sex.MALE)
+        presenter.saveSession()
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler())
+            .subscribe()
+            .disposed(by: disposeBag)
         // TODO: show progress
     }
 
     @IBAction func onCancelClicked(_ sender: Any) {
         presentingViewController?.dismiss(animated: true)
     }
+}
+
+extension SessionFormViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        let formatter = NumberFormatter()
+        let candidate = (textField.safeText as NSString).replacingCharacters(in: range, with: string)
+        let separator = formatter.decimalSeparator!
+
+        if candidate == "" { return true }
+
+        let isWellFormatted = candidate.range(of: "^[0-9]+([\(separator)][0-9]*)?$", options: .regularExpression) != nil
+
+        return isWellFormatted
+    }
+
+
 }

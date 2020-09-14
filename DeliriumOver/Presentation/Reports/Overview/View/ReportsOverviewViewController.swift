@@ -26,6 +26,7 @@ class ReportsOverviewViewController: UIViewController, ReportOverviewView {
     @IBOutlet weak var edit: UIButton!
     @IBOutlet weak var save: UIButton!
     @IBOutlet weak var chart: LineChartView!
+    weak var test: UILabel!
     
     override func viewDidLoad() {
         presenter.start()
@@ -36,7 +37,6 @@ class ReportsOverviewViewController: UIViewController, ReportOverviewView {
     }
     @IBAction func onSaveBtnClicked(_ sender: UIButton) {
         finishTitleEditing()
-        presenter.onTitleEdited(title: sessionTitle.text ?? "")
     }
     
     func update(sessionTitle: String) {

@@ -22,7 +22,7 @@ class SessionListPresenterImpl: BasePresenter, SessionListPresenter {
         interactor.loadSessions()
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler())
-            .subscribe(onSuccess: { (sessions) in
+            .subscribe(onNext: { (sessions) in
                 self.view?.displaySessions(sessions: sessions.map { (session) -> SessionListItem in
                     SessionListItem(title: session.title, inProgress: session.inProgress)
                 })

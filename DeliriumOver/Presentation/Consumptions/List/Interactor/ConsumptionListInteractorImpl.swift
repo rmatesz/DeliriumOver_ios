@@ -40,9 +40,9 @@ class ConsumptionListInteractorImpl: ConsumptionListInteractor {
 
     public func loadFrequentlyConsumedDrinks() -> Observable<[Drink]> {
         return subject
-            .flatMap({ (_) -> Single<[Drink]> in
+            .flatMap { _ in
                 self.drinkRepository.getFrequentlyConsumedDrinks()
-            })
+            }
             .map({ (drinks) -> [Drink] in
                 Array(drinks.prefix(3))
             })
@@ -70,7 +70,7 @@ class ConsumptionListInteractorImpl: ConsumptionListInteractor {
     private func loadSession() -> Observable<Session> {
         let sessionLoader: Observable<Session>
         if (sessionId == nil) {
-            sessionLoader = sessionRepository.loadInProgressSession()
+            sessionLoader = sessionRepository.inProgressSession
         } else {
             sessionLoader = sessionRepository.loadSession(sessionId: sessionId!)
         }

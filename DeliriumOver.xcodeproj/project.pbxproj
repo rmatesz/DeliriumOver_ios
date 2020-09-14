@@ -69,8 +69,12 @@
 		42E44DDD2201C1F500F367CB /* Sex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E44DDC2201C1F500F367CB /* Sex.swift */; };
 		42E44DDF2201C23000F367CB /* Consumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E44DDE2201C23000F367CB /* Consumption.swift */; };
 		42E44DE12201C38500F367CB /* DrinkUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E44DE02201C38500F367CB /* DrinkUnit.swift */; };
+		800120D524F51C33002BA889 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800120D424F51C33002BA889 /* UITextField.swift */; };
+		800120D724F522D9002BA889 /* SessionFormViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800120D624F522D9002BA889 /* SessionFormViewModelImpl.swift */; };
+		800120DA24F69FD7002BA889 /* SessionFormSwinject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800120D924F69FD7002BA889 /* SessionFormSwinject.swift */; };
 		80239DE305DE6FE952994E34 /* Pods_DeliriumOverTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C99880F8C752445999952D /* Pods_DeliriumOverTests.framework */; };
 		802ABAF423325DEA00DE0306 /* ConsumptionFormRouterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802ABAF323325DEA00DE0306 /* ConsumptionFormRouterImpl.swift */; };
+		8038257025090D9200F9C81E /* LoggingSwinject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038256F25090D9200F9C81E /* LoggingSwinject.swift */; };
 		80395D67232660A8008120A6 /* HasApply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80395D66232660A8008120A6 /* HasApply.swift */; };
 		80395D6A2326627A008120A6 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80395D692326627A008120A6 /* BasePresenter.swift */; };
 		80395D6E232BDA3F008120A6 /* DatePickerSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80395D6D232BDA3F008120A6 /* DatePickerSheet.xib */; };
@@ -80,6 +84,10 @@
 		804B88AE237033E600BBB2C4 /* ConnectableObservableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804B88AD237033E600BBB2C4 /* ConnectableObservableExtension.swift */; };
 		804B88B02370618700BBB2C4 /* AlcoholCalculatorRxDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804B88AF2370618700BBB2C4 /* AlcoholCalculatorRxDecorator.swift */; };
 		804B88B22370704900BBB2C4 /* CalculationsSwinject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804B88B12370704900BBB2C4 /* CalculationsSwinject.swift */; };
+		805517812507683000FE0F17 /* LogRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805517802507683000FE0F17 /* LogRepository.swift */; };
+		805517832507687800FE0F17 /* LogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805517822507687800FE0F17 /* LogModel.swift */; };
+		80551785250796B200FE0F17 /* RemoteLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80551784250796B200FE0F17 /* RemoteLogger.swift */; };
+		8055178725079B6C00FE0F17 /* SumoUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8055178625079B6C00FE0F17 /* SumoUploader.swift */; };
 		80707E0E2322967A006A6636 /* Strings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80707E102322967A006A6636 /* Strings.strings */; };
 		80707E13232299FB006A6636 /* ConsumptionFormInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80707E12232299FB006A6636 /* ConsumptionFormInteractorImpl.swift */; };
 		80731A7C231FC03300C65C08 /* ConsumptionFormPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80731A7B231FC03300C65C08 /* ConsumptionFormPresenter.swift */; };
@@ -98,10 +106,11 @@
 		80D45AC42397F00800D999D9 /* SessionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D45AC32397F00800D999D9 /* SessionListView.swift */; };
 		80D45AC72397F18300D999D9 /* SessionListSwinject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D45AC62397F18300D999D9 /* SessionListSwinject.swift */; };
 		80D45ACB2399154600D999D9 /* SessionFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D45ACA2399154600D999D9 /* SessionFormViewController.swift */; };
-		80D45ACE239915ED00D999D9 /* SessionFormPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D45ACD239915ED00D999D9 /* SessionFormPresenter.swift */; };
+		80D45ACE239915ED00D999D9 /* SessionFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D45ACD239915ED00D999D9 /* SessionFormViewModel.swift */; };
 		80D45AD02399171800D999D9 /* LoadingIndicator.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80D45ACF2399171800D999D9 /* LoadingIndicator.xib */; };
 		80D4B8E5232F918D001E8ABF /* QuantityPickerSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80D4B8E4232F918D001E8ABF /* QuantityPickerSheet.xib */; };
 		80D4B8E7232F93B4001E8ABF /* QuantityPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4B8E6232F93B4001E8ABF /* QuantityPickerSheet.swift */; };
+		80E514A1250675A60092ECB3 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E514A0250675A60092ECB3 /* Logger.swift */; };
 		80EDF100236AE80F003BA24C /* ConsumptionListPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF0FF236AE80F003BA24C /* ConsumptionListPresenterTest.swift */; };
 		80EDF103236D8DDC003BA24C /* ReportOverviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF102236D8DDC003BA24C /* ReportOverviewPresenter.swift */; };
 		80EDF105236D935D003BA24C /* ReportOverviewPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF104236D935D003BA24C /* ReportOverviewPresenterImpl.swift */; };
@@ -204,7 +213,11 @@
 		49C99880F8C752445999952D /* Pods_DeliriumOverTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeliriumOverTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		631CE8ED2BFE7C5CF2CF2492 /* Pods-DeliriumOver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliriumOver.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeliriumOver/Pods-DeliriumOver.release.xcconfig"; sourceTree = "<group>"; };
 		6B7B2E3C799FB3B9A883F8B6 /* Pods-DeliriumOverTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliriumOverTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeliriumOverTests/Pods-DeliriumOverTests.release.xcconfig"; sourceTree = "<group>"; };
+		800120D424F51C33002BA889 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		800120D624F522D9002BA889 /* SessionFormViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionFormViewModelImpl.swift; sourceTree = "<group>"; };
+		800120D924F69FD7002BA889 /* SessionFormSwinject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionFormSwinject.swift; sourceTree = "<group>"; };
 		802ABAF323325DEA00DE0306 /* ConsumptionFormRouterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionFormRouterImpl.swift; sourceTree = "<group>"; };
+		8038256F25090D9200F9C81E /* LoggingSwinject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingSwinject.swift; sourceTree = "<group>"; };
 		80395D66232660A8008120A6 /* HasApply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasApply.swift; sourceTree = "<group>"; };
 		80395D692326627A008120A6 /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		80395D6D232BDA3F008120A6 /* DatePickerSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerSheet.xib; sourceTree = "<group>"; };
@@ -214,6 +227,10 @@
 		804B88AD237033E600BBB2C4 /* ConnectableObservableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectableObservableExtension.swift; sourceTree = "<group>"; };
 		804B88AF2370618700BBB2C4 /* AlcoholCalculatorRxDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholCalculatorRxDecorator.swift; sourceTree = "<group>"; };
 		804B88B12370704900BBB2C4 /* CalculationsSwinject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationsSwinject.swift; sourceTree = "<group>"; };
+		805517802507683000FE0F17 /* LogRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogRepository.swift; sourceTree = "<group>"; };
+		805517822507687800FE0F17 /* LogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogModel.swift; sourceTree = "<group>"; };
+		80551784250796B200FE0F17 /* RemoteLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLogger.swift; sourceTree = "<group>"; };
+		8055178625079B6C00FE0F17 /* SumoUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumoUploader.swift; sourceTree = "<group>"; };
 		80707E0A23229604006A6636 /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Main.strings; sourceTree = "<group>"; };
 		80707E0B23229604006A6636 /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		80707E0F2322967A006A6636 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Strings.strings; sourceTree = "<group>"; };
@@ -235,10 +252,11 @@
 		80D45AC32397F00800D999D9 /* SessionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionListView.swift; path = List/View/SessionListView.swift; sourceTree = SOURCE_ROOT; };
 		80D45AC62397F18300D999D9 /* SessionListSwinject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionListSwinject.swift; path = List/DI/SessionListSwinject.swift; sourceTree = SOURCE_ROOT; };
 		80D45ACA2399154600D999D9 /* SessionFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionFormViewController.swift; sourceTree = "<group>"; };
-		80D45ACD239915ED00D999D9 /* SessionFormPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionFormPresenter.swift; sourceTree = "<group>"; };
+		80D45ACD239915ED00D999D9 /* SessionFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionFormViewModel.swift; sourceTree = "<group>"; };
 		80D45ACF2399171800D999D9 /* LoadingIndicator.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingIndicator.xib; sourceTree = "<group>"; };
 		80D4B8E4232F918D001E8ABF /* QuantityPickerSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuantityPickerSheet.xib; sourceTree = "<group>"; };
 		80D4B8E6232F93B4001E8ABF /* QuantityPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityPickerSheet.swift; sourceTree = "<group>"; };
+		80E514A0250675A60092ECB3 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		80EDF0FF236AE80F003BA24C /* ConsumptionListPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionListPresenterTest.swift; sourceTree = "<group>"; };
 		80EDF102236D8DDC003BA24C /* ReportOverviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportOverviewPresenter.swift; sourceTree = "<group>"; };
 		80EDF104236D935D003BA24C /* ReportOverviewPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportOverviewPresenterImpl.swift; sourceTree = "<group>"; };
@@ -297,6 +315,8 @@
 		422C68DA22010E9800F7702A /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				80E5149F250675870092ECB3 /* Logging */,
+				800120D324F51C20002BA889 /* UIKit */,
 				804B88AC237033CB00BBB2C4 /* RxSwift */,
 				80395D6C232BDA02008120A6 /* Widget */,
 				80395D6523266095008120A6 /* Common */,
@@ -338,6 +358,7 @@
 				422CA9812210933C00BC5401 /* RepositorySwinject.swift */,
 				422CA983221094BE00BC5401 /* ApplicationSwinject.swift */,
 				804B88B12370704900BBB2C4 /* CalculationsSwinject.swift */,
+				8038256F25090D9200F9C81E /* LoggingSwinject.swift */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -708,6 +729,22 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		800120D324F51C20002BA889 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				800120D424F51C33002BA889 /* UITextField.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		800120D824F69FB9002BA889 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				800120D924F69FD7002BA889 /* SessionFormSwinject.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
 		80395D6523266095008120A6 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -783,6 +820,25 @@
 			path = RxSwift;
 			sourceTree = "<group>";
 		};
+		8055177A2507663000FE0F17 /* Sumo */ = {
+			isa = PBXGroup;
+			children = (
+				8055178625079B6C00FE0F17 /* SumoUploader.swift */,
+			);
+			path = Sumo;
+			sourceTree = "<group>";
+		};
+		8055177B2507663C00FE0F17 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				8055177A2507663000FE0F17 /* Sumo */,
+				805517802507683000FE0F17 /* LogRepository.swift */,
+				805517822507687800FE0F17 /* LogModel.swift */,
+				80551784250796B200FE0F17 /* RemoteLogger.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
 		80731A7A231FBFCF00C65C08 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -849,6 +905,7 @@
 		80D45AC82399153400D999D9 /* Form */ = {
 			isa = PBXGroup;
 			children = (
+				800120D824F69FB9002BA889 /* DI */,
 				80D45ACC239915E100D999D9 /* Presenter */,
 				80D45AC92399153900D999D9 /* View */,
 			);
@@ -866,9 +923,19 @@
 		80D45ACC239915E100D999D9 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				80D45ACD239915ED00D999D9 /* SessionFormPresenter.swift */,
+				80D45ACD239915ED00D999D9 /* SessionFormViewModel.swift */,
+				800120D624F522D9002BA889 /* SessionFormViewModelImpl.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		80E5149F250675870092ECB3 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				8055177B2507663C00FE0F17 /* Remote */,
+				80E514A0250675A60092ECB3 /* Logger.swift */,
+			);
+			path = Logging;
 			sourceTree = "<group>";
 		};
 		80EDF0FE236AE7F8003BA24C /* Presenter */ = {
@@ -919,6 +986,7 @@
 				4246D72E2200583D0066BC01 /* Frameworks */,
 				4246D72F2200583D0066BC01 /* Resources */,
 				548FBBF4459A07A65B6DF926 /* [CP] Embed Pods Frameworks */,
+				80E5149E250656AD0092ECB3 /* Crashlytics setup */,
 			);
 			buildRules = (
 			);
@@ -1075,6 +1143,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-DeliriumOverTests/Pods-DeliriumOverTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/Cuckoo/Cuckoo.framework",
@@ -1084,6 +1153,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cuckoo.framework",
@@ -1120,6 +1190,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/KxMenu/KxMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
@@ -1133,6 +1204,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KxMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
@@ -1144,6 +1216,26 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DeliriumOver/Pods-DeliriumOver-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		80E5149E250656AD0092ECB3 /* Crashlytics setup */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "Crashlytics setup";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 		C487B4589E5B6C43001E2D33 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1176,14 +1268,18 @@
 				80EDF103236D8DDC003BA24C /* ReportOverviewPresenter.swift in Sources */,
 				42895B2222077AAE00386A21 /* ConsumptionDAO.swift in Sources */,
 				42895B2422077BA000386A21 /* ConsumptionDAOImpl.swift in Sources */,
+				800120D724F522D9002BA889 /* SessionFormViewModelImpl.swift in Sources */,
 				429893B62202265200460356 /* DateProvider.swift in Sources */,
 				42895B2C22078BD100386A21 /* DAO.swift in Sources */,
 				422CA984221094BE00BC5401 /* ApplicationSwinject.swift in Sources */,
 				804B88B22370704900BBB2C4 /* CalculationsSwinject.swift in Sources */,
+				80551785250796B200FE0F17 /* RemoteLogger.swift in Sources */,
 				4288264D220F6799001A9A5A /* DrinkRepositoryImpl.swift in Sources */,
+				8038257025090D9200F9C81E /* LoggingSwinject.swift in Sources */,
 				80D45AC72397F18300D999D9 /* SessionListSwinject.swift in Sources */,
 				42731B022208F9F30048AB83 /* FirebaseDrinksDatabase.swift in Sources */,
 				4288265A220F897C001A9A5A /* ConsumptionListItem.swift in Sources */,
+				805517812507683000FE0F17 /* LogRepository.swift in Sources */,
 				80D45ABE2397EDC400D999D9 /* SessionListInteractor.swift in Sources */,
 				80EDF10A236D95B0003BA24C /* Statistics.swift in Sources */,
 				4246D7392200583D0066BC01 /* ConsumptionListViewController.swift in Sources */,
@@ -1196,6 +1292,7 @@
 				80ADB18B23B1F9AA002210DA /* ValueFormatters.swift in Sources */,
 				80EDF105236D935D003BA24C /* ReportOverviewPresenterImpl.swift in Sources */,
 				42895B2A22078AE600386A21 /* RepositoryError.swift in Sources */,
+				805517832507687800FE0F17 /* LogModel.swift in Sources */,
 				80731A83231FD58C00C65C08 /* ConsumptionFormInteractor.swift in Sources */,
 				80D45AB82397BD8B00D999D9 /* SessionListItem.swift in Sources */,
 				422CA97E22108FD600BC5401 /* ReportOverviewSwinject.swift in Sources */,
@@ -1203,6 +1300,7 @@
 				422C68E022010F0300F7702A /* Record.swift in Sources */,
 				429B93952204E24600B663FD /* SessionRepository.swift in Sources */,
 				8041DB8E23147B6F00BF9964 /* ConsumptionFormRouter.swift in Sources */,
+				80E514A1250675A60092ECB3 /* Logger.swift in Sources */,
 				80731A85232131CF00C65C08 /* ConsumptionFormSwinject.swift in Sources */,
 				80D45AC22397EEFB00D999D9 /* SessionListPresenterImpl.swift in Sources */,
 				42882658220F87A1001A9A5A /* ConsumptionListRouter.swift in Sources */,
@@ -1218,10 +1316,11 @@
 				429B93902204DEDA00B663FD /* DeliriumOver.xcdatamodeld in Sources */,
 				4204FE33221220A900BBB83E /* SimpleError.swift in Sources */,
 				42895B2E22078BFF00386A21 /* DAOImpl.swift in Sources */,
-				80D45ACE239915ED00D999D9 /* SessionFormPresenter.swift in Sources */,
+				80D45ACE239915ED00D999D9 /* SessionFormViewModel.swift in Sources */,
 				42731B002208D93B0048AB83 /* FirebaseAuthentication.swift in Sources */,
 				804B88AE237033E600BBB2C4 /* ConnectableObservableExtension.swift in Sources */,
 				80D4B8E7232F93B4001E8ABF /* QuantityPickerSheet.swift in Sources */,
+				800120D524F51C33002BA889 /* UITextField.swift in Sources */,
 				422C68E52201117E00F7702A /* Session.swift in Sources */,
 				4232DAFA2210CF0600DCC8DD /* ConsumptionListInteractor.swift in Sources */,
 				429B93972204E28100B663FD /* SessionRepositoryImpl.swift in Sources */,
@@ -1229,6 +1328,7 @@
 				4246D7372200583D0066BC01 /* ReportsOverviewViewController.swift in Sources */,
 				80D45ABB2397EC9E00D999D9 /* SessionListPresenter.swift in Sources */,
 				42882656220F7793001A9A5A /* ConsumptionListView.swift in Sources */,
+				8055178725079B6C00FE0F17 /* SumoUploader.swift in Sources */,
 				429893BF22031C0400460356 /* DoubleExtension.swift in Sources */,
 				422CA97822106E0900BC5401 /* ConsumptionListTableViewController.swift in Sources */,
 				4288264B220F675D001A9A5A /* DrinkRepository.swift in Sources */,
@@ -1253,6 +1353,7 @@
 				42E44DDD2201C1F500F367CB /* Sex.swift in Sources */,
 				804B88B02370618700BBB2C4 /* AlcoholCalculatorRxDecorator.swift in Sources */,
 				80D45AC42397F00800D999D9 /* SessionListView.swift in Sources */,
+				800120DA24F69FD7002BA889 /* SessionFormSwinject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1357,7 +1458,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;

@@ -16,7 +16,7 @@ class SessionListInteractorImpl: SessionListInteractor {
         self.sessionRepository = sessionRepository
     }
     
-    func loadSessions() -> Maybe<[Session]> {
-        return sessionRepository.getSessions()
+    func loadSessions() -> Observable<[Session]> {
+        return sessionRepository.sessions
     }
 }

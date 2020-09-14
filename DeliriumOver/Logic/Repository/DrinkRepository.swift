@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol DrinkRepository {
-    func getFrequentlyConsumedDrinks() -> Single<[Drink]>
+    func getFrequentlyConsumedDrinks() -> Observable<[Drink]>
     
     func getDrinks() -> Single<[Drink]>
 }
