@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum DrinkUnit: Int, CaseIterable, CustomStringConvertible {
+enum DrinkUnit: Int, CaseIterable, CustomStringConvertible, Equatable {
     case CL = 10
     case DL = 100
     case L = 1000

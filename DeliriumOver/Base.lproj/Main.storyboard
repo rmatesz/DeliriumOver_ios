@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -134,7 +134,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ntu-1f-ce1" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="16" y="224" width="382" height="463"/>
+                                <rect key="frame" x="16" y="224" width="382" height="447"/>
                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
@@ -167,7 +167,7 @@
                             <constraint firstItem="J5t-8W-elk" firstAttribute="leading" secondItem="KA0-m5-skA" secondAttribute="trailing" constant="16" id="kPy-5T-FXc"/>
                             <constraint firstItem="J5t-8W-elk" firstAttribute="top" secondItem="Vou-PJ-45t" secondAttribute="bottomMargin" constant="16" id="lot-ta-JM2"/>
                             <constraint firstItem="LDL-gb-vjJ" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="16" id="nkY-06-4Th"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="ntu-1f-ce1" secondAttribute="bottom" id="qvM-g4-UNW"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="ntu-1f-ce1" secondAttribute="bottom" constant="16" id="qvM-g4-UNW"/>
                             <constraint firstItem="j4Q-qd-v8Q" firstAttribute="leading" secondItem="J5t-8W-elk" secondAttribute="trailing" constant="16" id="s7g-WV-3Fi"/>
                             <constraint firstItem="ntu-1f-ce1" firstAttribute="leading" secondItem="LDL-gb-vjJ" secondAttribute="leading" id="uCk-0g-fnm"/>
                             <constraint firstItem="Vou-PJ-45t" firstAttribute="bottom" secondItem="gRz-vJ-Zt0" secondAttribute="bottom" id="x7C-GT-iMu"/>
@@ -225,7 +225,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add"/>
                                 <connections>
-                                    <action selector="onAddClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="KWZ-d8-w1C"/>
+                                    <action selector="onAddClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="nS0-Is-nNm"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -510,7 +510,7 @@
         <scene sceneID="pku-Tr-vWL">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EJf-nZ-M9h" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Consumptions" image="second" id="cPa-gy-q4n" userLabel="Consumptions"/>
+                    <tabBarItem key="tabBarItem" title="Consumptions" image="cart.fill" catalog="system" id="cPa-gy-q4n" userLabel="Consumptions"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ede-17-lt0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -529,7 +529,7 @@
         <scene sceneID="fCh-EZ-Qes">
             <objects>
                 <navigationController id="TqV-aE-ujm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="History" id="FLM-w7-z1j"/>
+                    <tabBarItem key="tabBarItem" title="History" image="folder.fill" catalog="system" id="FLM-w7-z1j"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kxb-1a-PzD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -546,7 +546,7 @@
         <scene sceneID="Dcz-Ke-SgY">
             <objects>
                 <navigationController id="IbC-XD-ZBX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Reports" id="BdV-nz-zCD"/>
+                    <tabBarItem key="tabBarItem" title="Reports" image="doc.fill" catalog="system" id="BdV-nz-zCD"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hqt-df-yiL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -644,6 +644,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="second" width="30" height="30"/>
+        <image name="cart.fill" catalog="system" width="128" height="102"/>
+        <image name="doc.fill" catalog="system" width="115" height="128"/>
+        <image name="folder.fill" catalog="system" width="128" height="95"/>
     </resources>
 </document>

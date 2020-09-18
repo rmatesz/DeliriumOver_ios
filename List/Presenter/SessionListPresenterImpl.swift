@@ -24,7 +24,7 @@ class SessionListPresenterImpl: BasePresenter, SessionListPresenter {
             .observeOn(MainScheduler())
             .subscribe(onNext: { (sessions) in
                 self.view?.displaySessions(sessions: sessions.map { (session) -> SessionListItem in
-                    SessionListItem(title: session.title, inProgress: session.inProgress)
+                    SessionListItem(title: session.title.isEmpty ? "<unnamed session>" : session.title, inProgress: session.inProgress)
                 })
             }, onError: { (error) in
                 print(error)

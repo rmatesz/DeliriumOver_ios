@@ -4,8 +4,8 @@ use_frameworks!
 source 'https://github.com/CocoaPods/Specs.git'
 
 target "DeliriumOver" do
-    pod 'RxSwift',  '~> 4.0'
-    pod 'RxCocoa',  '~> 4.0'
+    pod 'RxSwift',  '~> 5.0'
+    pod 'RxCocoa',  '~> 5.0'
     pod 'KxMenu'
     pod 'Firebase/Core'
     pod 'Firebase/Auth'
@@ -19,8 +19,8 @@ end
 
 target 'DeliriumOverTests' do
 	pod 'Firebase/Core'
-    pod 'RxSwift',  '~> 4.0'
-    pod 'RxBlocking',  '~> 4.0'
-    pod 'RxTest',  '~> 4.0'
+    pod 'RxSwift',  '~> 5.0'
+    pod 'RxBlocking',  '~> 5.0'
+    pod 'RxTest',  '~> 5.0'
     pod 'Cuckoo'
 end

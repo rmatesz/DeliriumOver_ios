@@ -35,7 +35,7 @@ class RemoteLogger: ILogger {
     }
 
     private func needLogUpload(logs: [LogModel]) -> Bool {
-        return logs.count > 5 || logs.contains { $0.level == LogLevel.ERROR  }
+        return logs.count > 500 || logs.contains { $0.level == LogLevel.ERROR  }
     }
 
     private func upload(logs: [LogModel]) -> Completable {

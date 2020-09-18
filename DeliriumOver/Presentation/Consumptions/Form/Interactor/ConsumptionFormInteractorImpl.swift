@@ -76,9 +76,9 @@ class ConsumptionFormInteractorImpl : ConsumptionFormInteractor {
         )
     
         return sessionRepository.inProgressSession.map { (session: Session) -> String in session.id }
-            .take(1)
-            .asSingle()
-            .flatMapCompletable { (sessionId: String) -> Completable in
+            .first()
+            .map { $0! }
+            .flatMapCompletable { (sessionId) -> Completable in
                 self.consumptionRepository.saveConsumption(sessionId: sessionId, consumption: consumption)
             }
     }

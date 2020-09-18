@@ -50,10 +50,6 @@ class ConsumptionListPresenter: BasePresenter {
             })
             .disposed(by: disposeBag)
     }
-    
-    public func refresh() {
-        interactor.refresh()
-    }
 
     public func onAddClicked() {
         addNewConsumption()

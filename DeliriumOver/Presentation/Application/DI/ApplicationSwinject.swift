@@ -16,6 +16,8 @@ extension SwinjectStoryboard {
         LoggingSwinject.setup(defaultContainer: defaultContainer)
         CalculationsSwinject.setup(defaultContainer: defaultContainer)
         RepositorySwinject.setup(defaultContainer: defaultContainer)
+        NotificationsSwinject.setup(defaultContainer: defaultContainer)
+        SessionManagersSwinject.setup(defaultContainer: defaultContainer)
         ReportsOverviewSwinject.setup(defaultContainer: defaultContainer)
         ConsumptionListSwinject.setup(defaultContainer)
         ConsumptionFormSwinject.setup(defaultContainer)

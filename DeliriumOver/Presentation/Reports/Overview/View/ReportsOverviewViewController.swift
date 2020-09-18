@@ -37,6 +37,8 @@ class ReportsOverviewViewController: UIViewController, ReportOverviewView {
     }
     @IBAction func onSaveBtnClicked(_ sender: UIButton) {
         finishTitleEditing()
+        guard let title = sessionTitle.text else { return }
+        presenter.onTitleEdited(title: title)
     }
     
     func update(sessionTitle: String) {

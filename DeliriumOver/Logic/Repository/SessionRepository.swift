@@ -15,6 +15,5 @@ protocol SessionRepository {
     func getFriendsSessions(shareKey: String) -> Observable<[Session]>
     func insert(session: Session) -> Single<String>
     func update(session: Session) -> Completable
-    func delete(session: Session) -> Completable
     var inProgressSession: Observable<Session> { get }
 }

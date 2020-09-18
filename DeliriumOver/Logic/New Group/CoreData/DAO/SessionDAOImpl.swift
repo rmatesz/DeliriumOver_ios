@@ -11,158 +11,102 @@ import RxSwift
 import CoreData
 
 class SessionDAOImpl: DAOImpl, SessionDAO {
-    func loadAll() -> Observable<[SessionEntity]> {
-        return Observable<[SessionEntity]>.create { (observer) -> Disposable in
-            do {
-                observer.onNext(try self.getAllSync())
-            } catch {
-                observer.onError(error)
+
+    func loadAll() -> Observable<[Session]> {
+        return Observable<[Session]>.create { (observer) -> Disposable in
+            let fetch = { () -> [SessionEntity] in
+                let request = NSFetchRequest<NSFetchRequestResult>(entityName: "SessionEntity")
+                request.returnsObjectsAsFaults = false
+
+                let result = try super.context.fetch(request)
+                return result as! [SessionEntity]
             }
-            let contextObjectsDidChangeObserver = NotificationCenter.default.addObserver(forName: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil, queue: OperationQueue.current, using: { (notification) in
-                do {
-                    observer.onNext(try self.getAllSync())
-                } catch {
-                    observer.onError(error)
+
+            let emit = {
+                DispatchQueue.main.async {
+                    do {
+                        let result = try fetch().map { (entity) -> Session in
+                            Session(sessionEntity: entity)
+                        }
+                        observer.onNext(result)
+                    } catch {
+                        observer.onError(error)
+                    }
                 }
-            })
-            let contextDidSaveObserver = NotificationCenter.default.addObserver(forName: Notification.Name.NSManagedObjectContextDidSave, object: nil, queue: OperationQueue.current, using: { (notification) in
-                do {
-                    observer.onNext(try self.getAllSync())
-                } catch {
-                    observer.onError(error)
-                }
-            })
+            }
+
+            emit()
+
+            let contextObserver = { (notification: Notification) in
+                emit()
+            }
+
+            let contextObjectsDidChangeObserver = NotificationCenter.default.addObserver(forName: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil, queue: OperationQueue.current, using: contextObserver)
+            let contextObjectsDidSaveObserver = NotificationCenter.default.addObserver(forName: Notification.Name.NSManagedObjectContextDidSave, object: nil, queue: OperationQueue.current, using: contextObserver)
             return Disposables.create {
                 NotificationCenter.default.removeObserver(contextObjectsDidChangeObserver)
-                NotificationCenter.default.removeObserver(contextDidSaveObserver)
+                NotificationCenter.default.removeObserver(contextObjectsDidSaveObserver)
             }
-        }
+        }.distinctUntilChanged()
     }
-    
-    func conextObjectsDidChange(_ notification: Notification, observer: AnyObserver<[SessionEntity]>) {
-    }
-    
-    func getAll() -> Maybe<[SessionEntity]> {
-        return Maybe<[SessionEntity]>.create { (observer: (MaybeEvent<[SessionEntity]>) -> ()) -> Disposable in
-            
-            do {
-                let sessions = try self.getAllSync()
-                observer(MaybeEvent.success(sessions))
-            } catch {
-                observer(MaybeEvent.error(error))
-            }
-            return Disposables.create()
-        }
-    }
-    
-    func getAllSync() throws -> [SessionEntity] {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "SessionEntity")
-        request.returnsObjectsAsFaults = false
-        
-        let result = try super.context.fetch(request)
-        return result as! [SessionEntity]
-    }
-    
-    func get(_ sessionId: String) -> Maybe<SessionEntity> {
-        return Maybe<SessionEntity>.create { (observer: (MaybeEvent<SessionEntity>) -> ()) -> Disposable in
-            let objectId = self.context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: URL(string: sessionId)!)
-            
-            if (objectId == nil) {
-                observer(.completed)
-            } else {
-                do {
-                    let sessionEntity = try self.getSync(objectId!)
-                    observer(.success(sessionEntity))
-                } catch {
-                    observer(.error(error))
-                }
-            }
-            return Disposables.create()
-        }
-    }
-    
-    private func getSync(_ objectId: NSManagedObjectID) throws -> SessionEntity {
-        return try self.context.existingObject(with: objectId) as! SessionEntity
-    }
-    
-    func load(_ sessionId: String) -> Observable<SessionEntity> {
-        return Observable<SessionEntity>.create { (observer) -> Disposable in
-            guard let objectId = self.context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: URL(string: sessionId)!)
-                else {
-                    observer.onCompleted()
-                    return Disposables.create()
-            }
-            do {
-                observer.onNext(try self.getSync(objectId))
-            } catch {
-                observer.onError(error)
-            }
-            let contextObjectsDidChangeObserver = NotificationCenter.default.addObserver(forName: Notification.Name.NSManagedObjectContextObjectsDidChange, object: objectId, queue: OperationQueue.current, using: { (notification) in
-                do {
-                    observer.onNext(try self.getSync(objectId))
-                } catch {
-                    observer.onError(error)
-                }
+
+    func get(_ sessionId: String) -> Maybe<Session> {
+        return loadAll().first().flatMapMaybe({ (sessions) -> Maybe<Session> in
+            let session = sessions?.first(where: { (session) -> Bool in
+                session.id == sessionId
             })
-            let contextDidSaveObserver = NotificationCenter.default.addObserver(forName: Notification.Name.NSManagedObjectContextDidSave, object: nil, queue: OperationQueue.current, using: { (notification) in
-                do {
-                    observer.onNext(try self.getSync(objectId))
-                } catch {
-                    observer.onError(error)
-                }
-            })
-            return Disposables.create {
-                NotificationCenter.default.removeObserver(contextObjectsDidChangeObserver)
-                NotificationCenter.default.removeObserver(contextDidSaveObserver)
+            guard let safeSession = session else {
+                return Maybe.empty()
             }
-            
-        }
-    }
-    
-    func delete(_ session: SessionEntity) -> Completable {
-        return Completable.create(subscribe: { (observer) -> Disposable in
-            do {
-                try self.deleteSync(session)
-                observer(CompletableEvent.completed)
-            } catch {
-                observer(CompletableEvent.error(error))
-            }
-            return Disposables.create()
+            return Maybe.just(safeSession)
+
         })
     }
-    
-    func deleteSync(_ session: SessionEntity) throws {
-        super.context.delete(session)
-        try super.context.save()
+
+    func insert(session: Session) -> Single<String> {
+        return createEntity { (sessionEntity) -> () in
+            sessionEntity.title = session.title
+            sessionEntity.desc = session.description
+            sessionEntity.name = session.name
+            sessionEntity.weight = session.weight
+            sessionEntity.gender = Int32(session.gender.rawValue)
+            sessionEntity.inProgress = session.inProgress
+        }.map { (sessionEntity) -> String in
+            sessionEntity.objectID.uriRepresentation().absoluteString
+        }
     }
-    
-    func deleteAll() -> Completable {
-        return Completable.create(subscribe: { (observer) -> Disposable in
-            do {
-                let sessions = try self.getAllSync()
-                for session in sessions {
-                    self.context.delete(session)
-                }
-                try self.context.save()
-                observer(CompletableEvent.completed)
-            } catch {
-                observer(CompletableEvent.error(error))
-            }
-            return Disposables.create()
-        })
+
+    func update(session: Session) -> Completable {
+        let getSession: Maybe<SessionEntity> = getEntity(id: session.id)
+        return getSession
+            .ifEmpty(switchTo: Single.error(RepositoryError(message: "Can't find session in DB.")))
+            .map { (sessionEntity) -> SessionEntity in
+                sessionEntity.title = session.title
+                sessionEntity.desc = session.description
+                sessionEntity.name = session.name
+                sessionEntity.weight = session.weight
+                sessionEntity.gender = Int32(session.gender.rawValue)
+                sessionEntity.inProgress = session.inProgress
+                return sessionEntity
+        }.flatMapCompletable { (sessionEntity) -> Completable in
+            self.save()
+        }
     }
-    
-    func createEntity(fillEntity: @escaping (SessionEntity) -> ()) -> Single<SessionEntity> {
+
+    private func createEntity(fillEntity: @escaping (SessionEntity) -> ()) -> Single<SessionEntity> {
         return Single<SessionEntity>.create { (observer) -> Disposable in
-            let sessionEntity = NSEntityDescription.insertNewObject(forEntityName: "SessionEntity", into: super.context) as! SessionEntity
-            
-            fillEntity(sessionEntity)
-            do {
-                try self.context.obtainPermanentIDs(for: [sessionEntity])
-                try super.context.save()
-                observer(SingleEvent.success(sessionEntity))
-            } catch {
-                observer(SingleEvent.error(error))
+            DispatchQueue.main.async {
+                let sessionEntity = NSEntityDescription.insertNewObject(forEntityName: "SessionEntity", into: super.context) as! SessionEntity
+
+                fillEntity(sessionEntity)
+                do {
+
+                    try self.context.obtainPermanentIDs(for: [sessionEntity])
+                    try super.context.save()
+                    observer(SingleEvent.success(sessionEntity))
+                } catch {
+                    observer(SingleEvent.error(error))
+                }
             }
             return Disposables.create()
         }

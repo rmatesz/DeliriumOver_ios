@@ -22,10 +22,6 @@ class ConsumptionListViewController: UIViewController, ConsumptionListView {
         presenter.start()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        presenter.refresh()
-    }
-    
     func displayConsumptionList(consumptions: [ConsumptionListItem]) {
         consumptionListTableViewController?.consumptions = consumptions
     }

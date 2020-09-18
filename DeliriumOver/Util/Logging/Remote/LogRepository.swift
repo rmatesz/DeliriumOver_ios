@@ -50,23 +50,26 @@ class LogRepositoryImpl: LogRepository {
             } catch {
                 observer.onError(error)
             }
-            let contextObjectsDidChangeObserver = NotificationCenter.default.addObserver(forName: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil, queue: OperationQueue.current, using: { (notification) in
+
+            let contextObserver = { (notification: Notification) in
                 do {
-                    observer.onNext(try self.getAllSync())
+                    let result = try self.context.registeredObjects.filter {
+                        $0 is LogEntity
+                    }.map { $0 as! LogEntity }
+                        .map {
+                            try self.decoder.decode(LogModel.self, from: $0.data!.data(using: .utf8)!)
+                    }
+                    observer.onNext(result)
                 } catch {
                     observer.onError(error)
                 }
-            })
-            let contextDidSaveObserver = NotificationCenter.default.addObserver(forName: Notification.Name.NSManagedObjectContextDidSave, object: nil, queue: OperationQueue.current, using: { (notification) in
-                do {
-                    observer.onNext(try self.getAllSync())
-                } catch {
-                    observer.onError(error)
-                }
-            })
+            }
+
+            let contextObjectsDidChangeObserver = NotificationCenter.default.addObserver(forName: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil, queue: OperationQueue.current, using: contextObserver)
+            let contextObjectsDidSaveObserver = NotificationCenter.default.addObserver(forName: Notification.Name.NSManagedObjectContextDidSave, object: nil, queue: OperationQueue.current, using: contextObserver)
             return Disposables.create {
                 NotificationCenter.default.removeObserver(contextObjectsDidChangeObserver)
-                NotificationCenter.default.removeObserver(contextDidSaveObserver)
+                NotificationCenter.default.removeObserver(contextObjectsDidSaveObserver)
             }
         }
     }

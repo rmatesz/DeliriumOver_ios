@@ -10,13 +10,9 @@ import Foundation
 import RxSwift
 
 protocol ConsumptionDAO : DAO {
-    func get(_ consumptionId: String) -> Maybe<ConsumptionEntity>
     
-    func getAll(sessionId: String) -> Maybe<[ConsumptionEntity]>
     
-    func delete(consumptions: ConsumptionEntity ...) -> Completable
+    func delete(consumptions: Consumption ...) -> Completable
     
-    func deleteAll(sessionId: String) -> Completable
-    
-    func createEntity() -> ConsumptionEntity
+    func insert(sessionId: String, consumption: Consumption) -> Completable
 }

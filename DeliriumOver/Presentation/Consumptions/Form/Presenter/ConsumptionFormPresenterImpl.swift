@@ -65,7 +65,7 @@ class ConsumptionFormPresenterImpl : BasePresenter, ConsumptionFormPresenter {
     }
 
     func onSaveClicked() {
-        interactor.saveConsumption(drink: drink, alcohol: alcohol! / 100.0, quantity: quantity!, unit: drinkUnit)
+        interactor.saveConsumption(drink: drink, alcohol: alcohol! / 100.0, quantity: quantity!, unit: drinkUnit, date: time ?? Date())
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler())
             .subscribe(onCompleted: {

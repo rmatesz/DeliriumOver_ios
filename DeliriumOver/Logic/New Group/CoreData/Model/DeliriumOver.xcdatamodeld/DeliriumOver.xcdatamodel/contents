@@ -8,10 +8,6 @@
         <attribute name="unit" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="session" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SessionEntity" inverseName="consumptions" inverseEntity="SessionEntity"/>
     </entity>
-    <entity name="LogEntity" representedClassName="LogEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="data" attributeType="String" defaultValueString=""/>
-        <attribute name="timestamp" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
-    </entity>
     <entity name="SessionEntity" representedClassName="SessionEntity" syncable="YES" codeGenerationType="class">
         <attribute name="desc" optional="YES" attributeType="String"/>
         <attribute name="deviceId" optional="YES" attributeType="String"/>
@@ -28,6 +24,5 @@
     <elements>
         <element name="ConsumptionEntity" positionX="-63" positionY="-18" width="128" height="135"/>
         <element name="SessionEntity" positionX="-54" positionY="36" width="128" height="210"/>
-        <element name="LogEntity" positionX="-63" positionY="99" width="128" height="73"/>
     </elements>
 </model>

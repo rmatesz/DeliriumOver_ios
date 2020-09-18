@@ -12,8 +12,6 @@ import CoreData
 import RxSwift
 
 class SessionRepositoryImpl: SessionRepository {
-
-    
     private let sessionDAO: SessionDAO
     private let firebaseCommunicator: FirebaseCommunicator
     private let alcoholCalculator: AlcoholCalculatorRxDecorator
@@ -27,17 +25,11 @@ class SessionRepositoryImpl: SessionRepository {
     }
     
     var sessions: Observable<[Session]> {
-        return sessionDAO.loadAll().map { (sessionEntities) -> [Session] in
-            sessionEntities.map({ (sessionEntity) -> Session in
-                Session(sessionEntity: sessionEntity)
-            })
-        }
+        return sessionDAO.loadAll()
     }
     
     func loadSession(sessionId: String) -> Observable<Session> {
-        return sessionDAO.load(sessionId).map { (sessionEntity) -> Session in
-            Session(sessionEntity: sessionEntity)
-        }
+        return sessionDAO.get(sessionId).asObservable()
     }
     
     func getFriendsSessions(shareKey: String) -> Observable<[Session]> {
@@ -47,123 +39,32 @@ class SessionRepositoryImpl: SessionRepository {
                     session.shared && session.deviceId != self.deviceId
                 })
             })
-        
+
         //.map { it.filter { session -> session.shared && session.deviceId != deviceId } }
     }
     
     func insert(session: Session) -> Single<String> {
-        return sessionDAO.createEntity { (sessionEntity) -> () in
-            sessionEntity.title = session.title
-            sessionEntity.desc = session.description
-            sessionEntity.name = session.name
-            sessionEntity.weight = session.weight
-            sessionEntity.gender = Int32(session.gender.rawValue)
-            sessionEntity.inProgress = session.inProgress
-        }
-        .map { sessionEntity -> String in
-            sessionEntity.objectID.uriRepresentation().absoluteString
-        }
+        return sessionDAO.insert(session: session)
     }
     
     func update(session: Session) -> Completable {
-        return sessionDAO.get(session.id)
-            .ifEmpty(switchTo: Single.error(RepositoryError(message: "Can't find session in DB.")))
-            .map { (sessionEntity) -> SessionEntity in
-                sessionEntity.title = session.title
-                sessionEntity.desc = session.description
-                sessionEntity.name = session.name
-                sessionEntity.weight = session.weight
-                sessionEntity.gender = Int32(session.gender.rawValue)
-                sessionEntity.inProgress = session.inProgress
-                return sessionEntity
-        }.flatMapCompletable { (sessionEntity) -> Completable in
-            self.sessionDAO.save()
-        }
-    }
-    
-    func delete(session: Session) -> Completable {
-        return sessionDAO.get(session.id)
-            .ifEmpty(switchTo: Single.error(RepositoryError(message: "Can't find session in DB.")))
-            .flatMapCompletable { (sessionEntity) -> Completable in
-                self.sessionDAO.delete(sessionEntity)
-        }
-        
+        return sessionDAO.update(session: session)
     }
 
     var inProgressSession: Observable<Session> {
-        return sessionDAO.loadAll()
-            .flatMap({ (entities) -> Observable<[SessionEntity]> in
-                if entities.isEmpty {
-                    Logger.i(category: "DATABASE", message: "No session found in DB, creating session...")
-                    return self.createNewSession().asObservable().map { _ in entities }
-                }
-                return Observable.just(entities)
-            })
-            .filter({ (sessionEntities) -> Bool in
-                let filter = sessionEntities.contains(where: { (sessionEntity) -> Bool in
-                    sessionEntity.inProgress
+        return sessionDAO.loadAll().distinctUntilChanged()
+            .filter({ (sessions) -> Bool in
+                let filter = sessions.contains(where: { (session) -> Bool in
+                    session.inProgress
                 })
-                if !filter {
-                    Logger.w(category: "DATABASE", message: "No inProgress session found in DB --> result filtered out")
-                }
                 return filter
             })
-            .map { (sessionEntities) -> SessionEntity in
-                sessionEntities.first(where: { (sessionEntity) -> Bool in
-                    sessionEntity.inProgress
+            .map { (sessions) -> Session in
+                sessions.first(where: { (session) -> Bool in
+                    session.inProgress
                 })!
         }
-        .map { (sessionEntity) -> Session in
-            Session(sessionEntity: sessionEntity)
-        }
-        .flatMap { (session) -> PrimitiveSequence<SingleTrait, Session> in
-            self.createNewSessionIfExpired(session: session)
-                .do(onSuccess: {
-                    Logger.i(message: "In progress session loaded. \($0)")
-                })
-        }
-
     }
+
     
-    func loadInProgressSession() -> Observable<Session> {
-        return sessionDAO.loadAll()
-            .filter { (sessionEntities) -> Bool in
-                sessionEntities.contains(where: { (sessionEntity) -> Bool in
-                    sessionEntity.inProgress
-                })
-        }
-        .map { (sessionEntities) -> SessionEntity in
-            sessionEntities.first(where: { (sessionEntity) -> Bool in
-                sessionEntity.inProgress
-            })!
-        }
-        .map { (sessionEntity) -> Session in
-            Session(sessionEntity: sessionEntity)
-        }
-    }
-
-    private func createNewSession() -> Single<String> {
-        return insert(session: Session(inProgress: true))
-    }
-
-    private func createNewSessionIfExpired(session: Session) -> Single<Session> {
-        return alcoholCalculator.calcTimeOfZeroBAC(session: session)
-            .flatMap { (timeOfZeroBAC) -> PrimitiveSequence<SingleTrait, Session> in
-                if !session.consumptions.isEmpty && dateProvider.currentDate > timeOfZeroBAC {
-                    Logger.i(category: "DATABASE", message: "Alcohol is already eliminated. Creating new session...")
-                    var oldSession = session
-                    var newSession = session.clone()
-                    oldSession.inProgress = false
-                    newSession.inProgress = true
-                    return self.update(session: oldSession)
-                        .andThen(self.insert(session: newSession))
-                        .map { (sessionId) -> Session in
-                            newSession.id = sessionId
-                            return newSession
-                    }
-                } else {
-                    return Single.just(session)
-                }
-        }
-    }
 }

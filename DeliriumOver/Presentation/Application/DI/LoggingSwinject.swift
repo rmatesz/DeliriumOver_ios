@@ -13,7 +13,7 @@ import Swinject
 class LoggingSwinject {
     class func setup(defaultContainer: Container) {
         defaultContainer.register(LogRepository.self) { (resolver) -> LogRepository in
-            LogRepositoryImpl(context: resolver.resolve(NSManagedObjectContext.self)!)
+            LogRepositoryImpl(context: resolver.resolve(NSManagedObjectContext.self, name: CoreDataSwinject.logDataModelContainerName)!)
         }
 
         defaultContainer.register(RemoteLogger.self) { (resolver) -> RemoteLogger in

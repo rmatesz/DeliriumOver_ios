@@ -19,24 +19,10 @@ class ConsumptionRepositoryImpl : ConsumptionRepository {
     }
 
     func delete(consumption: Consumption) -> Completable {
-        return consumptionDAO.get(consumption.id)
-            .ifEmpty(switchTo: Single.error(RepositoryError(message: "Object Not found in DB")))
-            .flatMapCompletable { (consumptionEntity) -> Completable in
-                self.consumptionDAO.delete(consumptions: consumptionEntity)
-            }
+        return consumptionDAO.delete(consumptions: consumption)
     }
     
     func saveConsumption(sessionId: String, consumption: Consumption) -> Completable {
-        return sessionDAO.get(sessionId).ifEmpty(switchTo: Single.error(RepositoryError(message: "session not found in DB")))
-            .flatMapCompletable { (session) -> Completable in
-                let consumptionEntity = self.consumptionDAO.createEntity()
-                consumptionEntity.session = session
-                consumptionEntity.alcohol = consumption.alcohol
-                consumptionEntity.date = consumption.date
-                consumptionEntity.drink = consumption.drink
-                consumptionEntity.quantity = consumption.quantity
-                consumptionEntity.unit = Int16(consumption.unit.multiplier())
-                return self.consumptionDAO.save()
-            }
+        return self.consumptionDAO.insert(sessionId: sessionId, consumption: consumption)
     }
 }

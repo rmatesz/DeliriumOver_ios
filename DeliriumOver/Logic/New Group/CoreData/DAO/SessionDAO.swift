@@ -10,21 +10,11 @@ import Foundation
 import RxSwift
 
 protocol SessionDAO : DAO {
-    func loadAll() -> Observable<[SessionEntity]>
+    func loadAll() -> Observable<[Session]>
 
-    func getAll() -> Maybe<[SessionEntity]>
-    
-    func getAllSync() throws -> [SessionEntity]
+    func get(_ sessionId: String) -> Maybe<Session>
 
-    func get(_ sessionId: String) -> Maybe<SessionEntity>
-    
-    func load(_ sessionId: String) -> Observable<SessionEntity>
+    func insert(session: Session) -> Single<String>
 
-    func delete(_ session: SessionEntity) -> Completable
-
-    func deleteSync(_ session: SessionEntity) throws
-
-    func deleteAll() -> Completable
-    
-    func createEntity(fillEntity: @escaping (SessionEntity) -> ()) -> Single<SessionEntity>
+    func update(session: Session) -> Completable
 }

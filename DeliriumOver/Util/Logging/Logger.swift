@@ -44,7 +44,7 @@ class OsLogLogger: ILogger {
 
     func handleLog(logLevel: LogLevel, tag: String?, category: String?, message: String?, error: Error?) {
         let log = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "DeliriumOver/\(category)")
-        os_log("%@", log: log, type: logLevel.toOSLogType(), message ?? "")
+        os_log("%@", log: log, type: logLevel.toOSLogType(), "Message: \(message). Stacktrace: \(error.debugDescription)")
     }
 }
 

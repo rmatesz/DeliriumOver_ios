@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Session {
+public struct Session: Equatable {
     var id: String = ""
     var title: String = ""
     var description: String = ""
@@ -30,12 +30,13 @@ public struct Session {
         self.weight = sessionEntity.weight
         self.gender = Sex(rawValue: Int(sessionEntity.gender)) ?? self.gender
         self.inProgress = sessionEntity.inProgress
-        self.consumptions = (sessionEntity.consumptions?.allObjects.map({ (any) -> Consumption in
-            Consumption(consumptionEntity: (any as! ConsumptionEntity))
-        }) ?? [])
-            .sorted(by: { (first, second) -> Bool in
+        if let consumptionEntities = sessionEntity.consumptions?.allObjects {
+            self.consumptions = consumptionEntities.map { (any) -> Consumption in
+                Consumption(consumptionEntity: (any as! ConsumptionEntity))
+            }.sorted(by: { (first, second) -> Bool in
                 first.date < second.date
             })
+        }
     }
     
     init(
