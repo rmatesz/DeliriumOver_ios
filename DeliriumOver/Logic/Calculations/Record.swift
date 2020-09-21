@@ -10,10 +10,10 @@ import Foundation
 
 public struct Record {
     public var name: String
-    public var data: [Data]
+    public var data: [RecordData]
 }
 
-public struct Data {
+public struct RecordData {
     public var time: Date
     public var bacLevel: Double
 }

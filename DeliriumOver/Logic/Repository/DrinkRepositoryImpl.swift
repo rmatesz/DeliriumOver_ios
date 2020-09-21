@@ -25,8 +25,8 @@ class DrinkRepositoryImpl : DrinkRepository {
     
     func getFrequentlyConsumedDrinks() -> Observable<[Drink]> {
         return sessionRepository.sessions
-            .map({ (it) -> [Drink] in
-                return Dictionary(grouping: it
+            .map {
+                return Dictionary(grouping: $0
                     .flatMap({ (session) -> [Consumption] in
                         session.consumptions
                     }), by: {$0.drink})
@@ -44,7 +44,7 @@ class DrinkRepositoryImpl : DrinkRepository {
                     .map({ (consumption) -> Drink in
                         Drink(consumption: consumption)
                     })
-            })
+            }
     }
 }
 

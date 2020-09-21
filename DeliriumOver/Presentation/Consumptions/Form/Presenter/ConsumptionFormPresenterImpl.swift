@@ -31,7 +31,7 @@ class ConsumptionFormPresenterImpl : BasePresenter, ConsumptionFormPresenter {
             view.saveIsEnabled = mandatoryFieldsFilled && !hasError
         }
     }
-    private var drinkUnit: DrinkUnit = DrinkUnit.CL
+    private var drinkUnit: DrinkUnit = DrinkUnit.centiliter
     private var time: Date? {
         didSet {
             if (time != nil) {

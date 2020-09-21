@@ -34,11 +34,11 @@ class SessionRepositoryImpl: SessionRepository {
     
     func getFriendsSessions(shareKey: String) -> Observable<[Session]> {
         return firebaseCommunicator.getSessions(shareKey: shareKey)
-            .map({ (it) -> [Session] in
-                it.filter({ (session) -> Bool in
+            .map {
+                $0.filter({ (session) -> Bool in
                     session.shared && session.deviceId != self.deviceId
                 })
-            })
+            }
 
         //.map { it.filter { session -> session.shared && session.deviceId != deviceId } }
     }

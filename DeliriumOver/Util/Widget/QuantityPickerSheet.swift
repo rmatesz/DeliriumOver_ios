@@ -42,7 +42,7 @@ class QuantityPickerSheet<Unit: CustomStringConvertible>: UIView, UIPickerViewDe
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return unit.count > 0 ? 2 : 1
+        return unit.isEmpty ? 1 : 2
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {

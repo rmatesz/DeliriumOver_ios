@@ -15,6 +15,7 @@ target "DeliriumOver" do
     pod 'Swinject', '~> 2.6.0'
     pod 'SwinjectStoryboard'
     pod 'Charts'
+    pod 'SwiftLint'
 end
 
 target 'DeliriumOverTests' do

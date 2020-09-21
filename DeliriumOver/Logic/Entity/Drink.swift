@@ -26,7 +26,7 @@ struct Drink {
         )
     }
 
-    init(name: String = "", alcohol: Double = 0.0, defaultQuantity: Double = 0.0, defaultUnit: DrinkUnit = DrinkUnit.DL, drinkType: DrinkType = DrinkType.UNKNOWN, localization: [String: String] = [:]) {
+    init(name: String = "", alcohol: Double = 0.0, defaultQuantity: Double = 0.0, defaultUnit: DrinkUnit = DrinkUnit.deciliter, drinkType: DrinkType = DrinkType.UNKNOWN, localization: [String: String] = [:]) {
         self.name = name
         self.alcohol = alcohol
         self.defaultQuantity = defaultQuantity

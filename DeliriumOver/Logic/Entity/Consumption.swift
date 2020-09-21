@@ -12,7 +12,7 @@ public struct Consumption: Equatable {
     var id: String = ""
     var drink: String = ""
     var quantity: Double = 0.0
-    var unit: DrinkUnit = DrinkUnit.DL
+    var unit: DrinkUnit = DrinkUnit.deciliter
     var alcohol: Double = 0.0
     var date: Date = dateProvider.currentDate
 
@@ -20,7 +20,7 @@ public struct Consumption: Equatable {
         _ id: String = "",
         drink: String = "",
         quantity: Double = 0.0,
-        unit: DrinkUnit = DrinkUnit.DL,
+        unit: DrinkUnit = DrinkUnit.deciliter,
         alcohol: Double = 0.0,
         date: Date = dateProvider.currentDate
     ) {

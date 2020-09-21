@@ -11,8 +11,8 @@ import RxSwift
 import FirebaseDatabase
 
 class FirebaseSessionDatabase {
-    private let SESSIONS_NODE = "share_sessions"
-    private let SHARE_VERSION = "share_version"
+    private let kSessionsNode = "share_sessions"
+    private let kShareVersion = "share_version"
     private let firebaseDatabase: DatabaseReference
     
     init(firebaseDatabase: DatabaseReference) {
@@ -25,7 +25,7 @@ class FirebaseSessionDatabase {
         } else {
             return Observable.create({ (observer) -> Disposable in
                 let databaseRef = self.firebaseDatabase
-                    .child(self.SESSIONS_NODE)
+                    .child(self.kSessionsNode)
                     .child(shareKey)
                 databaseRef.keepSynced(true)
                 let databaseObserver = databaseRef.observe(DataEventType.value, with: { (snapshot) in
@@ -49,7 +49,7 @@ class FirebaseSessionDatabase {
         } else {
             return Maybe.create(subscribe: { (observer) -> Disposable in
                 self.firebaseDatabase
-                    .child(self.SESSIONS_NODE)
+                    .child(self.kSessionsNode)
                     .child(shareKey)
                     .observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
                         let data = snapshot.value as? [String:Session]
@@ -66,7 +66,7 @@ class FirebaseSessionDatabase {
     
     func update(session: Session?, shareKey: String, userId: String) -> Completable {
         return Completable.create(subscribe: { (observer) -> Disposable in
-            self.firebaseDatabase.child(self.SESSIONS_NODE).child(shareKey).child(userId)
+            self.firebaseDatabase.child(self.kSessionsNode).child(shareKey).child(userId)
                 .setValue(session, withCompletionBlock: { (databaseError, databaseRef) in
                     if (databaseError == nil) {
                         observer(.completed)
@@ -80,7 +80,7 @@ class FirebaseSessionDatabase {
 
     func getMinVersionForShare() -> Single<Int> {
         return Single.create(subscribe: { (observer) -> Disposable in
-            self.firebaseDatabase.child(self.SHARE_VERSION)
+            self.firebaseDatabase.child(self.kShareVersion)
                 .observeSingleEvent(of: DataEventType.value, with: { (dataSnapshot) in
                     observer(.success(dataSnapshot.value as? Int ?? 0))
                 }, withCancel: { (error) in

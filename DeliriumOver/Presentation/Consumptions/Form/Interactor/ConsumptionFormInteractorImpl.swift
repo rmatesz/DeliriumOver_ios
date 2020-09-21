@@ -10,9 +10,9 @@ import Foundation
 import RxSwift
 
 class ConsumptionFormInteractorImpl : ConsumptionFormInteractor {
-    private static let HOUR_OFFSET = 4
-    private static let MINUTE_OFFSET = HOUR_OFFSET * ONE_HOUR_IN_MINUTES
-    private static let DAY_IN_MINUTES = 24 * ONE_HOUR_IN_MINUTES
+    private static let kHourOffset = 4
+    private static let kMinuteOffset = kHourOffset * kOneHourInMinutes
+    private static let kDayInMinutes = 24 * kOneHourInMinutes
     
     private let consumptionRepository: ConsumptionRepository
     private let sessionRepository: SessionRepository
@@ -50,9 +50,9 @@ class ConsumptionFormInteractorImpl : ConsumptionFormInteractor {
         let timeDiffInMinutes = (timeDiff / 60) % 60
         
         var dayOffset = 0
-        if (timeDiffInMinutes < ConsumptionFormInteractorImpl.MINUTE_OFFSET) {
+        if (timeDiffInMinutes < ConsumptionFormInteractorImpl.kMinuteOffset) {
             dayOffset = -1
-        } else if (timeDiffInMinutes > ConsumptionFormInteractorImpl.DAY_IN_MINUTES - ConsumptionFormInteractorImpl.MINUTE_OFFSET) {
+        } else if (timeDiffInMinutes > ConsumptionFormInteractorImpl.kDayInMinutes - ConsumptionFormInteractorImpl.kMinuteOffset) {
             dayOffset = 1
         }
         

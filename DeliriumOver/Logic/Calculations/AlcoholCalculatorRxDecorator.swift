@@ -28,8 +28,8 @@ class AlcoholCalculatorRxDecorator {
         }
     }
     
-    func generateRecords(session: Session) -> Single<[Data]> {
-        return Single.deferred { () -> Single<[Data]> in
+    func generateRecords(session: Session) -> Single<[RecordData]> {
+        return Single.deferred { () -> Single<[RecordData]> in
             return Single.just(self.alcoholCalculator.generateRecords(session: session))
         }
     }

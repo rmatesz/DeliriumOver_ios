@@ -9,5 +9,5 @@
 import Foundation
 
 enum FirebaseError: Error {
-    case AUTHENTICATION_ERROR
+    case authenticationError
 }

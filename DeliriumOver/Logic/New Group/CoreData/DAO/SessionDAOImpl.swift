@@ -64,7 +64,7 @@ class SessionDAOImpl: DAOImpl, SessionDAO {
     }
 
     func insert(session: Session) -> Single<String> {
-        return createEntity { (sessionEntity) -> () in
+        return createEntity { sessionEntity in
             sessionEntity.title = session.title
             sessionEntity.desc = session.description
             sessionEntity.name = session.name

@@ -9,18 +9,18 @@
 import Foundation
 
 enum DrinkUnit: Int, CaseIterable, CustomStringConvertible, Equatable {
-    case CL = 10
-    case DL = 100
-    case L = 1000
+    case centiliter = 10
+    case deciliter = 100
+    case liter = 1000
     
     func multiplier() -> Int {
         return rawValue
     }
     func label() -> String {
         switch self {
-        case .CL: return "cl"
-        case .DL: return "dl"
-        case .L: return "l"
+        case .centiliter: return "cl"
+        case .deciliter: return "dl"
+        case .liter: return "l"
         }
     }
     
@@ -32,6 +32,6 @@ enum DrinkUnit: Int, CaseIterable, CustomStringConvertible, Equatable {
                 drinkUnit.label() == label
             }
             .first
-            ?? CL
+            ?? centiliter
     }
 }

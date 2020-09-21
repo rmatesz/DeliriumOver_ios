@@ -17,8 +17,8 @@ import RxTest
 class ConsumptionListInteractorImplTest: XCTestCase {
     private static let TEST_ERROR_MESSAGE = "TEST ERROR"
     private static let TEST_ERROR: SimpleError = SimpleError.error(message: TEST_ERROR_MESSAGE)
-    static let TEST_CONSUMPTION_1 = Consumption("1", drink: "test drink", quantity: 2.0, unit: DrinkUnit.DL, alcohol: 10.5)
-    static let TEST_CONSUMPTION_2 = Consumption("2", drink: "test drink 2", quantity: 5.0, unit: DrinkUnit.CL, alcohol: 65.0)
+    static let TEST_CONSUMPTION_1 = Consumption("1", drink: "test drink", quantity: 2.0, unit: DrinkUnit.deciliter, alcohol: 10.5)
+    static let TEST_CONSUMPTION_2 = Consumption("2", drink: "test drink 2", quantity: 5.0, unit: DrinkUnit.centiliter, alcohol: 65.0)
     
     static let TEST_SESSION = Session(
         id: "10",
@@ -43,7 +43,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
     
     func testLoadConsumptionsWhenLoadSessionFailure() {
         stub(sessionRepository) { (stub) in
-            when(stub.getInProgressSession()).thenReturn(Maybe.error(ConsumptionListInteractorImplTest.TEST_ERROR))
+            when(stub.inProgressSession).get.thenReturn(Observable.error(ConsumptionListInteractorImplTest.TEST_ERROR))
         }
 
         do {
@@ -60,7 +60,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
 
     func testLoadConsumptionsWhenNoSession() throws {
         stub(sessionRepository) { (stub) in
-            when(stub.getInProgressSession()).thenReturn(Maybe.empty())
+            when(stub.inProgressSession).get.thenReturn(Observable.empty())
         }
     
         do {
@@ -77,7 +77,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
 
     func testLoadConsumptionsWhenInProgressSession() throws {
         stub(sessionRepository) { (stub) in
-            when(stub.getInProgressSession()).thenReturn(Maybe.just(ConsumptionListInteractorImplTest.TEST_SESSION))
+            when(stub.inProgressSession).get.thenReturn(Observable.just(ConsumptionListInteractorImplTest.TEST_SESSION))
         }
     
         let result = try underTest!.loadConsumptions().toBlocking().first()
@@ -89,7 +89,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
         underTest = ConsumptionListInteractorImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "10")
     
         stub(sessionRepository) { (stub) in
-            when(stub.getSession(sessionId: "10")).thenReturn(Maybe.just(ConsumptionListInteractorImplTest.TEST_SESSION))
+            when(stub.loadSession(sessionId: "10")).thenReturn(Observable.just(ConsumptionListInteractorImplTest.TEST_SESSION))
         }
     
         let result = try underTest!.loadConsumptions().toBlocking().first()
@@ -101,7 +101,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
         underTest = ConsumptionListInteractorImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "10")
     
         stub(sessionRepository) { (stub) in
-            when(stub.getSession(sessionId: "10")).thenReturn(Maybe.error(ConsumptionListInteractorImplTest.TEST_ERROR))
+            when(stub.loadSession(sessionId: "10")).thenReturn(Observable.error(ConsumptionListInteractorImplTest.TEST_ERROR))
         }
     
         do {
@@ -119,7 +119,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
     func testDeleteConsumptionWhenSuccess() throws {
         underTest = ConsumptionListInteractorImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "10")
         stub(sessionRepository) { (stub) in
-            when(stub.getSession(sessionId: "10")).thenReturn(Maybe.just(ConsumptionListInteractorImplTest.TEST_SESSION))
+            when(stub.loadSession(sessionId: "10")).thenReturn(Observable.just(ConsumptionListInteractorImplTest.TEST_SESSION))
         }
         stub(consumptionRepository) { (stub) in
             when(stub.delete(consumption: ConsumptionListInteractorImplTest.TEST_CONSUMPTION_1)).thenReturn(Completable.empty())
@@ -156,19 +156,19 @@ class ConsumptionListInteractorImplTest: XCTestCase {
     func testAddDrinkWhenSessionIdIsNil() throws {
         // GIVEN
         underTest = ConsumptionListInteractorImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: nil)
-        let testDrink = Drink(name: "test", alcohol: 10.0, defaultQuantity: 5.0, defaultUnit: DrinkUnit.DL)
+        let testDrink = Drink(name: "test", alcohol: 10.0, defaultQuantity: 5.0, defaultUnit: DrinkUnit.deciliter)
         let testDate = createDate(2019, 1, 24, 13, 9, 32)
         dateProvider = TestDateProvider(date: testDate)
         
         let consumption = Consumption(drink: testDrink.name, quantity: testDrink.defaultQuantity, unit: testDrink.defaultUnit, alcohol: testDrink.alcohol, date: testDate)
         stub(drinkRepository) { (stub) in
-            when(stub.getFrequentlyConsumedDrinks()).thenReturn(Single.never())
+            when(stub.getFrequentlyConsumedDrinks()).thenReturn(Observable.never())
         }
         stub(consumptionRepository) { (stub) in
             when(stub.saveConsumption(sessionId: ConsumptionListInteractorImplTest.TEST_SESSION.id, consumption: consumption)).thenReturn(Completable.empty())
         }
     
-        stub(sessionRepository) { (stub) in when(stub.getInProgressSession()).thenReturn(Maybe.just(ConsumptionListInteractorImplTest.TEST_SESSION))
+        stub(sessionRepository) { (stub) in when(stub.inProgressSession).get.thenReturn(Observable.just(ConsumptionListInteractorImplTest.TEST_SESSION))
         }
     
         // WHEN
@@ -181,18 +181,18 @@ class ConsumptionListInteractorImplTest: XCTestCase {
     func testAddDrinkWhenSessionIdIsNotNil() throws {
         // GIVEN
         underTest = ConsumptionListInteractorImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "12")
-        let testDrink = Drink(name: "test", alcohol: 10.0, defaultQuantity: 5.0, defaultUnit: DrinkUnit.DL)
+        let testDrink = Drink(name: "test", alcohol: 10.0, defaultQuantity: 5.0, defaultUnit: DrinkUnit.deciliter)
         let testDate = createDate(2019, 1, 24, 13, 9, 32)
         dateProvider = TestDateProvider(date: testDate)
         let consumption = Consumption(drink: testDrink.name, quantity: testDrink.defaultQuantity, unit: testDrink.defaultUnit, alcohol: testDrink.alcohol, date: testDate)
         stub(drinkRepository) { (stub) in
-            when(stub.getFrequentlyConsumedDrinks()).thenReturn(Single.never())
+            when(stub.getFrequentlyConsumedDrinks()).thenReturn(Observable.never())
         }
         stub(consumptionRepository) { (stub) in
             when(stub.saveConsumption(sessionId: "12", consumption: consumption)).thenReturn(Completable.empty())
         }
         stub(sessionRepository) { (stub) in
-            when(stub.getSession(sessionId: "12")).thenReturn(Maybe<Session>.just(ConsumptionListInteractorImplTest.TEST_SESSION))
+            when(stub.loadSession(sessionId: "12")).thenReturn(Observable<Session>.just(ConsumptionListInteractorImplTest.TEST_SESSION))
         }
     
         // WHEN
@@ -206,7 +206,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
         // GIVEN
         underTest = ConsumptionListInteractorImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "12")
         stub(drinkRepository) { (stub) in
-            when(stub.getFrequentlyConsumedDrinks()).thenReturn(Single.error(ConsumptionListInteractorImplTest.TEST_ERROR))
+            when(stub.getFrequentlyConsumedDrinks()).thenReturn(Observable.error(ConsumptionListInteractorImplTest.TEST_ERROR))
         }
     
         // WHEN
@@ -227,7 +227,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
         underTest = ConsumptionListInteractorImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "12")
     
         stub(drinkRepository) { (stub) in
-            when(stub.getFrequentlyConsumedDrinks()).thenReturn(Single.just([]))
+            when(stub.getFrequentlyConsumedDrinks()).thenReturn(Observable.just([]))
         }
     
         // WHEN
@@ -245,7 +245,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
         let testDrinks = [testDrink]
     
         stub(drinkRepository) { (stub) in
-            when(stub.getFrequentlyConsumedDrinks()).thenReturn(Single.just(testDrinks))
+            when(stub.getFrequentlyConsumedDrinks()).thenReturn(Observable.just(testDrinks))
         }
     
         // WHEN
@@ -263,7 +263,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
         let testDrinks = [testDrink1, testDrink2, testDrink3]
     
         stub(drinkRepository) { (stub) in
-            when(stub.getFrequentlyConsumedDrinks()).thenReturn(Single.just(testDrinks))
+            when(stub.getFrequentlyConsumedDrinks()).thenReturn(Observable.just(testDrinks))
         }
     
         // WHEN
@@ -283,7 +283,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
         let limitedList = [testDrink1, testDrink2, testDrink3]
     
         stub(drinkRepository) { (stub) in
-            when(stub.getFrequentlyConsumedDrinks()).thenReturn(Single.just(testDrinks))
+            when(stub.getFrequentlyConsumedDrinks()).thenReturn(Observable.just(testDrinks))
         }
     
         // WHEN
@@ -307,10 +307,10 @@ class ConsumptionListInteractorImplTest: XCTestCase {
         let limitedListAfterChange2 = [testDrink1, testDrink3, testDrink4]
         
         stub(drinkRepository) { (stub) in
-            when(stub.getFrequentlyConsumedDrinks()).thenReturn(Single.just(testDrinks), Single.just(testDrinksAfterChange), Single.just(testDrinksAfterChange2))
+            when(stub.getFrequentlyConsumedDrinks()).thenReturn(Observable.just(testDrinks), Observable.just(testDrinksAfterChange), Observable.just(testDrinksAfterChange2))
         }
         stub(sessionRepository) { (stub) in
-            when(stub.getInProgressSession()).thenReturn(Maybe.just(ConsumptionListInteractorImplTest.TEST_SESSION))
+            when(stub.inProgressSession).get.thenReturn(Observable.just(ConsumptionListInteractorImplTest.TEST_SESSION))
         }
         stub(consumptionRepository) { (stub) in
             when(stub.saveConsumption(sessionId: anyString(), consumption: any(Consumption.self))).thenReturn(Completable.empty())
@@ -359,10 +359,10 @@ class ConsumptionListInteractorImplTest: XCTestCase {
         let limitedListAfterChange2 = [testDrink1, testDrink3, testDrink4]
         
         stub(drinkRepository) { (stub) in
-            when(stub.getFrequentlyConsumedDrinks()).thenReturn(Single.just(testDrinks), Single.just(testDrinksAfterChange), Single.just(testDrinksAfterChange2))
+            when(stub.getFrequentlyConsumedDrinks()).thenReturn(Observable.just(testDrinks), Observable.just(testDrinksAfterChange), Observable.just(testDrinksAfterChange2))
         }
         stub(sessionRepository) { (stub) in
-            when(stub.getInProgressSession()).thenReturn(Maybe.just(ConsumptionListInteractorImplTest.TEST_SESSION))
+            when(stub.inProgressSession).get.thenReturn(Observable.just(ConsumptionListInteractorImplTest.TEST_SESSION))
         }
         stub(consumptionRepository) { (stub) in
             when(stub.saveConsumption(sessionId: anyString(), consumption: any(Consumption.self))).thenReturn(Completable.empty())

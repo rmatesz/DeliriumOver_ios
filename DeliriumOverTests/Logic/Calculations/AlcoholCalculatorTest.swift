@@ -48,14 +48,14 @@ class AlcoholCalculatorTest: XCTestCase {
     }
 
     func testCalcAlcoholWeight() {
-        let beer = underTest.calcAlcoholWeight(quantity: 0.5, drinkUnit: DrinkUnit.L, alcohol: BEER_ALCOHOL_P)
-        let beerStrong = underTest.calcAlcoholWeight(quantity: 0.5, drinkUnit: DrinkUnit.L, alcohol: BEER_STRONG_ALCOHOL_P)
-        let wine = underTest.calcAlcoholWeight(quantity: 2.0, drinkUnit: DrinkUnit.DL, alcohol: WINE_ALCOHOL_P)
-        let palinka = underTest.calcAlcoholWeight(quantity: 5.0, drinkUnit: DrinkUnit.CL, alcohol: PALINKA_ALCOHOL_P)
-        let martini = underTest.calcAlcoholWeight(quantity: 1.0, drinkUnit: DrinkUnit.DL, alcohol: MARTINI_ALCOHOL_P)
-        let whisky = underTest.calcAlcoholWeight(quantity: 1.0, drinkUnit: DrinkUnit.DL, alcohol: WHISKY_ALCOHOL_P)
-        let vodka = underTest.calcAlcoholWeight(quantity: 0.5, drinkUnit: DrinkUnit.DL, alcohol: VODKA_ALCOHOL_P)
-        let champagne = underTest.calcAlcoholWeight(quantity: 1.0, drinkUnit: DrinkUnit.DL, alcohol: CHAMPAGNE_ALCOHOL_P)
+        let beer = underTest.calcAlcoholWeight(quantity: 0.5, drinkUnit: DrinkUnit.liter, alcohol: BEER_ALCOHOL_P)
+        let beerStrong = underTest.calcAlcoholWeight(quantity: 0.5, drinkUnit: DrinkUnit.liter, alcohol: BEER_STRONG_ALCOHOL_P)
+        let wine = underTest.calcAlcoholWeight(quantity: 2.0, drinkUnit: DrinkUnit.deciliter, alcohol: WINE_ALCOHOL_P)
+        let palinka = underTest.calcAlcoholWeight(quantity: 5.0, drinkUnit: DrinkUnit.centiliter, alcohol: PALINKA_ALCOHOL_P)
+        let martini = underTest.calcAlcoholWeight(quantity: 1.0, drinkUnit: DrinkUnit.deciliter, alcohol: MARTINI_ALCOHOL_P)
+        let whisky = underTest.calcAlcoholWeight(quantity: 1.0, drinkUnit: DrinkUnit.deciliter, alcohol: WHISKY_ALCOHOL_P)
+        let vodka = underTest.calcAlcoholWeight(quantity: 0.5, drinkUnit: DrinkUnit.deciliter, alcohol: VODKA_ALCOHOL_P)
+        let champagne = underTest.calcAlcoholWeight(quantity: 1.0, drinkUnit: DrinkUnit.deciliter, alcohol: CHAMPAGNE_ALCOHOL_P)
         XCTAssertEqual(BEER_ALCOHOL_G, beer, accuracy: DELTA)
         XCTAssertEqual(BEER_STRONG_ALCOHOL_G, beerStrong)
         XCTAssertEqual(WINE_ALCOHOL_G, wine)
@@ -241,8 +241,8 @@ class AlcoholCalculatorTest: XCTestCase {
     func getZeroBacDate(_ params: [Any]) -> Date {
         return params[8] as! Date
     }
-    func getRecords(_ params: [Any]) -> [Record] {
-        return params[9] as! [Record]
+    func getRecords(_ params: [Any]) -> [RecordData] {
+        return params[9] as! [RecordData]
     }
     
     static func setupParams() -> [[Any]] {
@@ -258,14 +258,14 @@ class AlcoholCalculatorTest: XCTestCase {
         var bacDuringElimination: Double
         var afterEliminationDate: Date
         var zeroBacDate: Date
-        var records: [Record]
+        var records: [RecordData]
         
         // One Beer
         consumptions = [Consumption(
-                id: "0",
+                "0",
                 drink: "sör",
                 quantity: 0.5,
-                unit: DrinkUnit.L,
+                unit: DrinkUnit.liter,
                 alcohol: BEER_ALCOHOL_P,
                 date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
             )]
@@ -281,12 +281,12 @@ class AlcoholCalculatorTest: XCTestCase {
             createDate(2018, 1, 26, 16, 0, timezone: TimeZone(abbreviation: "UTC")!)
         zeroBacDate = createDate(2018, 1, 26, 14, 46, 5, timezone: TimeZone(abbreviation: "UTC")!)
         records = [
-            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-            Record(
+            RecordData(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            RecordData(
                 time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 0.1902100840336135
             ),
-            Record(time: zeroBacDate, bacLevel: 0.0)
+            RecordData(time: zeroBacDate, bacLevel: 0.0)
         ]
         params.append(
             [
@@ -306,10 +306,10 @@ class AlcoholCalculatorTest: XCTestCase {
         // One beer - zero weight
         consumptions = [
             Consumption(
-                id: "0",
+                "0",
                 drink: "sör",
                 quantity: 0.5,
-                unit: DrinkUnit.L,
+                unit: DrinkUnit.liter,
                 alcohol: BEER_ALCOHOL_P,
                 date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
             )
@@ -328,12 +328,12 @@ class AlcoholCalculatorTest: XCTestCase {
         zeroBacDate =
             createDate(2018, 1, 26, 14, 48, 38, timezone: TimeZone(abbreviation: "UTC")!)
         records = [
-            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-            Record(
+            RecordData(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            RecordData(
                 time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 0.19660068846815837
             ),
-            Record(time: zeroBacDate, bacLevel: 0.0)
+            RecordData(time: zeroBacDate, bacLevel: 0.0)
         ]
         params.append(
             [
@@ -352,10 +352,10 @@ class AlcoholCalculatorTest: XCTestCase {
 
         consumptions = [
             Consumption(
-                id: "0",
+                "0",
                 drink: "sör",
                 quantity: 0.5,
-                unit: DrinkUnit.L,
+                unit: DrinkUnit.liter,
                 alcohol: BEER_ALCOHOL_P,
                 date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
             )
@@ -378,12 +378,12 @@ class AlcoholCalculatorTest: XCTestCase {
         zeroBacDate =
             createDate(2018, 1, 26, 15, 32, 27, timezone: TimeZone(abbreviation: "UTC")!)
         records = [
-            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-            Record(
+            RecordData(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            RecordData(
                 time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 0.3061594202898551
             ),
-            Record(time: zeroBacDate, bacLevel: 0.0)
+            RecordData(time: zeroBacDate, bacLevel: 0.0)
         ]
         params.append(
             [
@@ -403,10 +403,10 @@ class AlcoholCalculatorTest: XCTestCase {
         // One Beer - Female
         consumptions = [
             Consumption(
-                id: "0",
+                "0",
                 drink: "sör",
                 quantity: 0.5,
-                unit: DrinkUnit.L,
+                unit: DrinkUnit.liter,
                 alcohol: BEER_ALCOHOL_P,
                 date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
             )
@@ -428,12 +428,12 @@ class AlcoholCalculatorTest: XCTestCase {
             createDate(2018, 1, 26, 15, 30, 46, timezone: TimeZone(abbreviation: "UTC")!)
         zeroBacDate = createDate(2018, 1, 26, 15, 3, 46, timezone: TimeZone(abbreviation: "UTC")!)
         records = [
-            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-            Record(
+            RecordData(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            RecordData(
                 time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 0.23441176470588238
             ),
-            Record(time: zeroBacDate, bacLevel: 0.0)
+            RecordData(time: zeroBacDate, bacLevel: 0.0)
         ]
         params.append(
             [
@@ -453,10 +453,10 @@ class AlcoholCalculatorTest: XCTestCase {
         // One sip
         consumptions = [
             Consumption(
-                id: "0",
+                "0",
                 drink: "sör",
                 quantity: 1.0,
-                unit: DrinkUnit.DL,
+                unit: DrinkUnit.deciliter,
                 alcohol: 0.02,
                 date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
             )
@@ -473,12 +473,12 @@ class AlcoholCalculatorTest: XCTestCase {
             createDate(2018, 1, 26, 14, 0, timezone: TimeZone(abbreviation: "UTC")!)
         zeroBacDate = createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!)
         records = [
-            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-            Record(
+            RecordData(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            RecordData(
                 time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 0.0
             ),
-            Record(time: zeroBacDate, bacLevel: 0.0)
+            RecordData(time: zeroBacDate, bacLevel: 0.0)
         ]
         params.append(
             [
@@ -497,18 +497,18 @@ class AlcoholCalculatorTest: XCTestCase {
 
         consumptions = [
             Consumption(
-                id: "0",
+                "0",
                 drink: "sör",
                 quantity: 5.0,
-                unit: DrinkUnit.DL,
+                unit: DrinkUnit.deciliter,
                 alcohol: BEER_ALCOHOL_P,
                 date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
             ),
             Consumption(
-                id: "0",
+                "0",
                 drink: "palinka",
                 quantity: 5.0,
-                unit: DrinkUnit.CL,
+                unit: DrinkUnit.centiliter,
                 alcohol: PALINKA_ALCOHOL_P,
                 date: createDate(2018, 1, 26, 13, 10, timezone: TimeZone(abbreviation: "UTC")!)
             )
@@ -530,20 +530,20 @@ class AlcoholCalculatorTest: XCTestCase {
         zeroBacDate =
             createDate(2018, 1, 26, 18, 46, 49, timezone: TimeZone(abbreviation: "UTC")!)
         records = [
-            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-            Record(
+            RecordData(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            RecordData(
                 time: createDate(2018, 1, 26, 13, 10, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 0.09060439560439561
             ),
-            Record(
+            RecordData(
                 time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 0.6186263736263737
             ),
-            Record(
+            RecordData(
                 time: createDate(2018, 1, 26, 13, 40, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 0.7670329670329671
             ),
-            Record(time: zeroBacDate, bacLevel: 0.0)
+            RecordData(time: zeroBacDate, bacLevel: 0.0)
         ]
         params.append(
             [
@@ -562,18 +562,18 @@ class AlcoholCalculatorTest: XCTestCase {
 
         consumptions = [
             Consumption(
-                id: "0",
+                "0",
                 drink: "sör",
                 quantity: 5.0,
-                unit: DrinkUnit.DL,
+                unit: DrinkUnit.deciliter,
                 alcohol: BEER_ALCOHOL_P,
                 date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
             ),
             Consumption(
-                id: "0",
+                "0",
                 drink: "palinka",
                 quantity: 5.0,
-                unit: DrinkUnit.CL,
+                unit: DrinkUnit.centiliter,
                 alcohol: PALINKA_ALCOHOL_P,
                 date: createDate(2018, 1, 26, 13, 10, timezone: TimeZone(abbreviation: "UTC")!)
             )
@@ -596,20 +596,20 @@ class AlcoholCalculatorTest: XCTestCase {
         zeroBacDate =
             createDate(2018, 1, 26, 19, 44, 37, timezone: TimeZone(abbreviation: "UTC")!)
         records = [
-            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-            Record(
+            RecordData(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            RecordData(
                 time: createDate(2018, 1, 26, 13, 10, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 0.10987179487179488
             ),
-            Record(
+            RecordData(
                 time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 0.7342307692307694
             ),
-            Record(
+            RecordData(
                 time: createDate(2018, 1, 26, 13, 40, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 0.9115384615384617
             ),
-            Record(time: zeroBacDate, bacLevel: 0.0)
+            RecordData(time: zeroBacDate, bacLevel: 0.0)
         ]
         params.append(
             [
@@ -628,18 +628,18 @@ class AlcoholCalculatorTest: XCTestCase {
 
         consumptions = [
             Consumption(
-                id: "0",
+                "0",
                 drink: "sör",
                 quantity: 5.0,
-                unit: DrinkUnit.DL,
+                unit: DrinkUnit.deciliter,
                 alcohol: BEER_ALCOHOL_P,
                 date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
             ),
             Consumption(
-                id: "0",
+                "0",
                 drink: "sör",
                 quantity: 5.0,
-                unit: DrinkUnit.DL,
+                unit: DrinkUnit.deciliter,
                 alcohol: BEER_STRONG_ALCOHOL_P,
                 date: createDate(2018, 1, 26, 14, 0, timezone: TimeZone(abbreviation: "UTC")!)
             )
@@ -661,20 +661,20 @@ class AlcoholCalculatorTest: XCTestCase {
         zeroBacDate =
             createDate(2018, 1, 26, 17, 25, 12, timezone: TimeZone(abbreviation: "UTC")!)
         records = [
-            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-            Record(
+            RecordData(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            RecordData(
                 time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 0.1902100840336135
             ),
-            Record(
+            RecordData(
                 time: createDate(2018, 1, 26, 14, 0, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 0.11521008403361352
             ),
-            Record(
+            RecordData(
                 time: createDate(2018, 1, 26, 14, 30, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 0.4380252100840337
             ),
-            Record(time: zeroBacDate, bacLevel: 0.0)
+            RecordData(time: zeroBacDate, bacLevel: 0.0)
         ]
         params.append(
             [
@@ -693,18 +693,18 @@ class AlcoholCalculatorTest: XCTestCase {
 
         consumptions = [
             Consumption(
-                id: "0",
+                "0",
                 drink: "sör",
                 quantity: 5.0,
-                unit: DrinkUnit.DL,
+                unit: DrinkUnit.deciliter,
                 alcohol: BEER_ALCOHOL_P,
                 date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
             ),
             Consumption(
-                id: "0",
+                "0",
                 drink: "sör",
                 quantity: 5.0,
-                unit: DrinkUnit.DL,
+                unit: DrinkUnit.deciliter,
                 alcohol: BEER_STRONG_ALCOHOL_P,
                 date: createDate(2018, 1, 26, 18, 0, timezone: TimeZone(abbreviation: "UTC")!)
             )
@@ -725,17 +725,17 @@ class AlcoholCalculatorTest: XCTestCase {
             createDate(2018, 1, 26, 22, 0, timezone: TimeZone(abbreviation: "UTC")!)
         zeroBacDate = createDate(2018, 1, 26, 21, 28, 6, timezone: TimeZone(abbreviation: "UTC")!)
         records = [
-            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-            Record(
+            RecordData(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            RecordData(
                 time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 0.27181318681318684
             ),
-            Record(time: createDate(2018, 1, 26, 18, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-            Record(
+            RecordData(time: createDate(2018, 1, 26, 18, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            RecordData(
                 time: createDate(2018, 1, 26, 18, 30, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 0.4452197802197802
             ),
-            Record(time: zeroBacDate, bacLevel: 0.0)
+            RecordData(time: zeroBacDate, bacLevel: 0.0)
         ]
         params.append(
             [
@@ -754,18 +754,18 @@ class AlcoholCalculatorTest: XCTestCase {
 
         consumptions = [
             Consumption(
-                id: "0",
+                "0",
                 drink: "sör",
                 quantity: 5.0,
-                unit: DrinkUnit.DL,
+                unit: DrinkUnit.deciliter,
                 alcohol: BEER_STRONG_ALCOHOL_P,
                 date: createDate(2018, 1, 26, 18, 0, timezone: TimeZone(abbreviation: "UTC")!)
             ),
             Consumption(
-                id: "0",
+                "0",
                 drink: "sör",
                 quantity: 5.0,
-                unit: DrinkUnit.DL,
+                unit: DrinkUnit.deciliter,
                 alcohol: BEER_ALCOHOL_P,
                 date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
             )
@@ -786,17 +786,17 @@ class AlcoholCalculatorTest: XCTestCase {
             createDate(2018, 1, 26, 22, 0, timezone: TimeZone(abbreviation: "UTC")!)
         zeroBacDate = createDate(2018, 1, 26, 21, 28, 6, timezone: TimeZone(abbreviation: "UTC")!)
         records = [
-            Record(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-            Record(
+            RecordData(time: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            RecordData(
                 time: createDate(2018, 1, 26, 13, 30, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 0.27181318681318684
             ),
-            Record(time: createDate(2018, 1, 26, 18, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-            Record(
+            RecordData(time: createDate(2018, 1, 26, 18, 0, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            RecordData(
                 time: createDate(2018, 1, 26, 18, 30, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 0.4452197802197802
             ),
-            Record(time: zeroBacDate, bacLevel: 0.0)
+            RecordData(time: zeroBacDate, bacLevel: 0.0)
         ]
         params.append(
             [
@@ -815,26 +815,26 @@ class AlcoholCalculatorTest: XCTestCase {
 
         consumptions = [
             Consumption(
-                id: "2361",
+                "2361",
                 drink: "sör",
                 quantity: 10.0,
-                unit: DrinkUnit.L,
+                unit: DrinkUnit.liter,
                 alcohol: 0.045,
                 date: createDate(2018, 9, 5, 17, 5, timezone: TimeZone(abbreviation: "UTC")!)
             ),
             Consumption(
-                id: "2362",
+                "2362",
                 drink: "palinka",
                 quantity: 2.0,
-                unit: DrinkUnit.DL,
+                unit: DrinkUnit.deciliter,
                 alcohol: 0.5,
                 date: createDate(2018, 9, 5, 17, 5, timezone: TimeZone(abbreviation: "UTC")!)
             ),
             Consumption(
-                id: "2367",
+                "2367",
                 drink: "sör",
                 quantity: 1.0,
-                unit: DrinkUnit.L,
+                unit: DrinkUnit.liter,
                 alcohol: 0.045,
                 date: createDate(2018, 9, 5, 17, 5, 27, timezone: TimeZone(abbreviation: "UTC")!)
             )
@@ -852,25 +852,25 @@ class AlcoholCalculatorTest: XCTestCase {
             createDate(2018, 9, 8, 18, 0, timezone: TimeZone(abbreviation: "UTC")!)
         zeroBacDate = createDate(2018, 9, 8, 13, 52, 5, timezone: TimeZone(abbreviation: "UTC")!)
         records = [
-            Record(time: createDate(2018, 9, 5, 17, 5, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-            Record(time: createDate(2018, 9, 5, 17, 5, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-            Record(
+            RecordData(time: createDate(2018, 9, 5, 17, 5, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            RecordData(time: createDate(2018, 9, 5, 17, 5, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            RecordData(
                 time: createDate(2018, 9, 5, 17, 5, 27, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 0.14193543956043958
             ),
-            Record(
+            RecordData(
                 time: createDate(2018, 9, 5, 17, 35, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 10.230987362637364
             ),
-            Record(
+            RecordData(
                 time: createDate(2018, 9, 5, 17, 35, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 10.230987362637364
             ),
-            Record(
+            RecordData(
                 time: createDate(2018, 9, 5, 17, 35, 27, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 10.241567307692309
             ),
-            Record(time: zeroBacDate, bacLevel: 0.0)
+            RecordData(time: zeroBacDate, bacLevel: 0.0)
         ]
         params.append(
             [
@@ -889,26 +889,26 @@ class AlcoholCalculatorTest: XCTestCase {
 
         consumptions = [
             Consumption(
-                id: "2361",
+                "2361",
                 drink: "sör",
                 quantity: 10.0,
-                unit: DrinkUnit.L,
+                unit: DrinkUnit.liter,
                 alcohol: 0.045,
                 date: createDate(2018, 1, 26, 17, 5, timezone: TimeZone(abbreviation: "UTC")!)
             ),
             Consumption(
-                id: "2362",
+                "2362",
                 drink: "palinka",
                 quantity: 2.0,
-                unit: DrinkUnit.DL,
+                unit: DrinkUnit.deciliter,
                 alcohol: 0.5,
                 date: createDate(2018, 1, 26, 17, 5, timezone: TimeZone(abbreviation: "UTC")!)
             ),
             Consumption(
-                id: "2367",
+                "2367",
                 drink: "sör",
                 quantity: 1.0,
-                unit: DrinkUnit.L,
+                unit: DrinkUnit.liter,
                 alcohol: 0.045,
                 date: createDate(2018, 1, 27, 1, 5, 27, timezone: TimeZone(abbreviation: "UTC")!)
             )
@@ -926,26 +926,26 @@ class AlcoholCalculatorTest: XCTestCase {
             createDate(2018, 1, 29, 18, 0, timezone: TimeZone(abbreviation: "UTC")!)
         zeroBacDate = createDate(2018, 1, 29, 13, 52, 5, timezone: TimeZone(abbreviation: "UTC")!)
         records = [
-            Record(time: createDate(2018, 1, 26, 17, 5, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-            Record(time: createDate(2018, 1, 26, 17, 5, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
-            Record(
+            RecordData(time: createDate(2018, 1, 26, 17, 5, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            RecordData(time: createDate(2018, 1, 26, 17, 5, timezone: TimeZone(abbreviation: "UTC")!), bacLevel: 0.0),
+            RecordData(
                 time: createDate(2018, 1, 26, 17, 35, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 9.46236263736264
             ),
-            Record(
+            RecordData(
                 time: createDate(2018, 1, 26, 17, 35, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 9.46236263736264
             ),
-            Record(time: DATE_NOW, bacLevel: 8.502362637362639),
-            Record(
+            RecordData(time: DATE_NOW, bacLevel: 8.502362637362639),
+            RecordData(
                 time: createDate(2018, 1, 27, 1, 5, 27, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 8.33623763736264
             ),
-            Record(
+            RecordData(
                 time: createDate(2018, 1, 27, 1, 35, 27, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 9.041567307692308
             ),
-            Record(time: zeroBacDate, bacLevel: 0.0)
+            RecordData(time: zeroBacDate, bacLevel: 0.0)
         ]
         params.append(
             [

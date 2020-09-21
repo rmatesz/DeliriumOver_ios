@@ -30,7 +30,7 @@ class FirebaseAuthentication {
                     } else if (error != nil) {
                         observer(.error(error!))
                     } else {
-                        observer(.error(FirebaseError.AUTHENTICATION_ERROR))
+                        observer(.error(FirebaseError.authenticationError))
                     }
                 })
                 return Disposables.create()

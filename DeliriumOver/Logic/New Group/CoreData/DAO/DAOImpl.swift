@@ -20,12 +20,12 @@ class DAOImpl : DAO {
     func save() -> Completable {
         return Completable.create(subscribe: { (observer) -> Disposable in
             DispatchQueue.main.async {
-            do {
-                try self.context.save()
-                observer(CompletableEvent.completed)
-            } catch {
-                observer(CompletableEvent.error(error))
-            }
+                do {
+                    try self.context.save()
+                    observer(CompletableEvent.completed)
+                } catch {
+                    observer(CompletableEvent.error(error))
+                }
             }
             return Disposables.create()
         })
