@@ -53,6 +53,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         autoSessionCloser = SwinjectStoryboard.defaultContainer.resolve(AutoSessionCloserImpl.self)
         autoSessionOpener.start()
         autoSessionCloser.start()
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("SESSION_EXPIRED"), object: nil, queue: .main) { _ in
+            let alert = UIAlertController(title: "Delirium Over!", message: "The consumed alcohol has been probably eliminated from your body! All measurements are an average for a healthy (healthy liver) person. It highly depends on the actual state of mind, emptyness of stomach and drinking habits. If you'd like to drive, wait more than the displayed degradation time, before you can safely sit in the car.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

@@ -79,23 +79,35 @@ class ConsumptionDAOImpl : DAOImpl, ConsumptionDAO {
         let getSession: Maybe<SessionEntity> = getEntity(id: sessionId)
         return getSession
             .ifEmpty(switchTo: Single.error(RepositoryError(message: "Can't find session in DB.")))
-            .flatMapCompletable { session in
-                DispatchQueue.main.async {
-                    let consumptionEntity = self.createEntity()
+            .flatMap { session in
+                self.createEntity(fillEntity: { consumptionEntity in
                     consumptionEntity.session = session
                     consumptionEntity.alcohol = consumption.alcohol
                     consumptionEntity.date = consumption.date
                     consumptionEntity.drink = consumption.drink
                     consumptionEntity.quantity = consumption.quantity
                     consumptionEntity.unit = Int16(consumption.unit.multiplier())
-                }
-                return self.save()
-        }
+                })
+        }.asCompletable()
     }
 
-    private func createEntity() -> ConsumptionEntity {
-            return NSEntityDescription.insertNewObject(forEntityName: "ConsumptionEntity", into: super.context) as! ConsumptionEntity
+    private func createEntity(fillEntity: @escaping (ConsumptionEntity) -> ()) -> Single<ConsumptionEntity> {
+        return Single<ConsumptionEntity>.create { (observer) -> Disposable in
+            DispatchQueue.main.async {
+                let consumptionEntity = NSEntityDescription.insertNewObject(forEntityName: "ConsumptionEntity", into: super.context) as! ConsumptionEntity
+
+                fillEntity(consumptionEntity)
+                do {
+                    try self.context.obtainPermanentIDs(for: [consumptionEntity])
+                    try super.context.save()
+                    observer(SingleEvent.success(consumptionEntity))
+                } catch {
+                    observer(SingleEvent.error(error))
+                }
+            }
+            return Disposables.create()
+        }
+
     }
-    
     
 }

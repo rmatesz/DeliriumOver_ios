@@ -12,6 +12,7 @@ import RxSwift
 class AutoSessionCloserImpl {
     private let sessionRepository: SessionRepository
     private let alcoholCalculator: AlcoholCalculatorRxDecorator
+    private let timeTrigger = BehaviorSubject<Void?>(value: nil)
     private let disposeBag = DisposeBag()
 
     init(sessionRepository: SessionRepository, alcoholCalculator: AlcoholCalculatorRxDecorator) {
@@ -20,9 +21,13 @@ class AutoSessionCloserImpl {
     }
 
     func start() {
-        sessionRepository.inProgressSession
-            .flatMap { self.createNewSessionIfExpired(session: $0) }
-            .subscribe(onError: { Logger.w(category: "DATABASE", message: "Auto session closer failed.", error: $0) })
+        Observable.combineLatest(sessionRepository.inProgressSession, timeTrigger.asObservable())
+            .flatMap { self.createNewSessionIfExpired(session: $0.0).andThen(Single.just($0.0)) }
+            .subscribe(onNext: { _ in
+                NotificationCenter.default.post(name: NSNotification.Name("SESSION_EXPIRED"), object: nil)
+            }, onError: {
+                Logger.w(category: "DATABASE", message: "Auto session closer failed.", error: $0)
+            })
             .disposed(by: disposeBag)
     }
 
@@ -34,8 +39,16 @@ class AutoSessionCloserImpl {
                         var mutableSession = session
                         mutableSession.inProgress = false
                         return self.sessionRepository.update(session: mutableSession)
+//                        return Completable.never()
                     } else {
-                        return Completable.empty()
+                        if !session.consumptions.isEmpty {
+                            let queue = DispatchQueue.global(qos: .background)
+                            let distance = timeOfZeroBAC.timeIntervalSince1970 - dateProvider.currentDate.timeIntervalSince1970
+                            queue.asyncAfter(deadline: .now() + distance) {
+                                self.timeTrigger.onNext(nil)
+                            }
+                        }
+                        return Completable.never()
                     }
             }
         }
