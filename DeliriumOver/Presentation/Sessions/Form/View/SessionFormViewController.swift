@@ -42,13 +42,9 @@ class SessionFormViewController : UIViewController {
         presenter.saveSession()
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler())
-            .subscribe()
+            .subscribe { self.presentingViewController?.dismiss(animated: true) }
             .disposed(by: disposeBag)
         // TODO: show progress
-    }
-
-    @IBAction func onCancelClicked(_ sender: Any) {
-        presentingViewController?.dismiss(animated: true)
     }
 }
 

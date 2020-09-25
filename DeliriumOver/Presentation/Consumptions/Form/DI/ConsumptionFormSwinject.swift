@@ -27,13 +27,9 @@ class ConsumptionFormSwinject {
         container.register(ConsumptionFormPresenter.self) { (resolver) -> ConsumptionFormPresenter in
             ConsumptionFormPresenterImpl(router: resolver.resolve(ConsumptionFormRouter.self)!, view: resolver.resolve(ConsumptionFormView.self)!, interactor: resolver.resolve(ConsumptionFormInteractor.self)!)
         }
-
-        container.register(UINavigationController.self) { (resolver) -> UINavigationController in
-            resolver.resolve(UIViewController.self)!.navigationController!
-        }
         
         container.register(ConsumptionFormRouter.self) { (resolver) -> ConsumptionFormRouter in
-            ConsumptionFormRouterImpl(navigationController: resolver.resolve(Lazy<UINavigationController>.self)!)
+            ConsumptionFormRouterImpl(presentingViewController: resolver.resolve(Lazy<UIViewController>.self)!)
         }
         
         container.register(ConsumptionFormInteractor.self) { (resolver) -> ConsumptionFormInteractor in

@@ -31,10 +31,9 @@ class ConsumptionListViewController: UIViewController, ConsumptionListView {
         case "ConsumptionListTableViewController"?:
             consumptionListTableViewController = segue.destination as? ConsumptionListTableViewController
             consumptionListTableViewController?.presenter = presenter
-                break
         case .none:
             break
-        case .some(_):
+        case .some:
             break
         }
     }
@@ -44,7 +43,7 @@ class ConsumptionListViewController: UIViewController, ConsumptionListView {
             AddMenuItem(menuItem, image: UIImage.init(), target: self, action: #selector(onAddItemSelected(_:)))
         })
     }
-    
+
     @IBAction func onAddClicked(_ sender: UIButton) {
         if (addMenuItems.isEmpty) {
             presenter?.onAddClicked()
@@ -54,7 +53,7 @@ class ConsumptionListViewController: UIViewController, ConsumptionListView {
                         from: CGRect(x: frame.origin.x, y: view.window?.safeAreaInsets.top ?? 0, width: frame.width, height: frame.height),
                         menuItems: addMenuItems)
         }
-        
+
     }
 
     @objc private func onAddItemSelected(_ sender: AddMenuItem) {

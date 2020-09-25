@@ -11,13 +11,13 @@ import UIKit
 import Swinject
 
 class ConsumptionFormRouterImpl: ConsumptionFormRouter {
-    private final let navigationController: Lazy<UINavigationController>
+    private final let presentingViewController: Lazy<UIViewController>
     
-    init(navigationController: Lazy<UINavigationController>) {
-        self.navigationController = navigationController
+    init(presentingViewController: Lazy<UIViewController>) {
+        self.presentingViewController = presentingViewController
     }
     
     func finish() {
-        navigationController.instance.popViewController(animated: true)
+        presentingViewController.instance.dismiss(animated: true)
     }
 }

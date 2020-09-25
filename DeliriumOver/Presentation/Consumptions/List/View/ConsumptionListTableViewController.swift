@@ -23,6 +23,11 @@ class ConsumptionListTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
+
+    override func viewDidLoad() {
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 90
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
