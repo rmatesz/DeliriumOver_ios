@@ -24,10 +24,6 @@ class ConsumptionListSwinject {
         container.register(ConsumptionListViewModel.self) { (resolver) -> ConsumptionListViewModel in
             ConsumptionListViewModelImpl(interactor: resolver.resolve(ConsumptionListInteractor.self)!)
         }
-        
-        container.register(ConsumptionListRouter.self) { (resolver) -> ConsumptionListRouter in
-            ConsumptionListRouter(resolver.resolve(UIViewController.self)!, resolver.resolve(UIStoryboard.self)!)
-        }
 
         container.register(ConsumptionListInteractor.self) { (resolver) -> ConsumptionListInteractor in
             ConsumptionListInteractorImpl(sessionRepository: resolver.resolve(SessionRepository.self)!, consumptionRepository: resolver.resolve(ConsumptionRepository.self)!, drinkRepository: resolver.resolve(DrinkRepository.self)!)
