@@ -10,27 +10,34 @@ import UIKit
 import KxMenu
 import FirebaseDatabase
 import FirebaseAuth
+import RxSwift
 
-class ConsumptionListViewController: UIViewController, ConsumptionListView {
-    
-    var presenter: ConsumptionListPresenter!
+class ConsumptionListViewController: UIViewController {
+
+    var viewModel: ConsumptionListViewModel!
     private var consumptionListTableViewController: ConsumptionListTableViewController?
     private var addMenuItems = [AddMenuItem]()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        presenter.start()
+    @IBOutlet weak var listContainer: UIView!
+    @IBOutlet var emptyState: [UIView]!
+    private var disposeBag: DisposeBag!
+
+    override func viewDidAppear(_ animated: Bool) {
+        disposeBag = DisposeBag()
+        viewModel.consumptions.map { $0.isEmpty }.bind(to: listContainer.rx.isHidden).disposed(by: disposeBag)
+        emptyState.forEach { view in
+            viewModel.consumptions.map { !$0.isEmpty }.bind(to: view.rx.isHidden).disposed(by: disposeBag)
+        }
     }
-    
-    func displayConsumptionList(consumptions: [ConsumptionListItem]) {
-        consumptionListTableViewController?.consumptions = consumptions
+
+    override func viewDidDisappear(_ animated: Bool) {
+        disposeBag = nil
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "ConsumptionListTableViewController"?:
             consumptionListTableViewController = segue.destination as? ConsumptionListTableViewController
-            consumptionListTableViewController?.presenter = presenter
+            consumptionListTableViewController?.viewModel = viewModel
         case .none:
             break
         case .some:
@@ -38,27 +45,8 @@ class ConsumptionListViewController: UIViewController, ConsumptionListView {
         }
     }
 
-    func updateAddMenuItems(menuItems: [MenuItem]) {
-        addMenuItems = menuItems.map({ (menuItem) -> AddMenuItem in
-            AddMenuItem(menuItem, image: UIImage.init(), target: self, action: #selector(onAddItemSelected(_:)))
-        })
-    }
 
-    @IBAction func onAddClicked(_ sender: UIButton) {
-        if (addMenuItems.isEmpty) {
-            presenter?.onAddClicked()
-        } else {
-            let frame = sender.superview!.superview!.frame
-            KxMenu.show(in: self.view.window,
-                        from: CGRect(x: frame.origin.x, y: view.window?.safeAreaInsets.top ?? 0, width: frame.width, height: frame.height),
-                        menuItems: addMenuItems)
-        }
 
-    }
-
-    @objc private func onAddItemSelected(_ sender: AddMenuItem) {
-        presenter?.onMenuItemSelected(menuItem: sender.menuItem)
-    }
 
     class AddMenuItem: KxMenuItem {
         let menuItem: MenuItem
@@ -73,3 +61,7 @@ class ConsumptionListViewController: UIViewController, ConsumptionListView {
     }
 }
 
+struct MenuItem {
+    var title: String
+    var entity: Any?
+}

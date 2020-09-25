@@ -14,10 +14,11 @@ import FirebaseDatabase
 import FirebaseAuth
 import SwinjectStoryboard
 
-class ReportsOverviewViewController: UIViewController, ReportOverviewView {
+class ReportsOverviewViewController: UIViewController {
     private static let dateFormatter = DateFormatter().apply { $0.dateFormat = "dd/MM/yyyy" }
     private static let timeFormatter = DateFormatter().apply { $0.dateFormat = "HH:mm" }
-    var presenter: ReportOverviewPresenter!
+    var viewModel: ReportOverviewViewModel!
+    private var disposeBag: DisposeBag!
     
     @IBOutlet weak var alcoholEliminationDate: UILabel!
     @IBOutlet weak var alcoholEliminationTime: UILabel!
@@ -26,10 +27,32 @@ class ReportsOverviewViewController: UIViewController, ReportOverviewView {
     @IBOutlet weak var edit: UIButton!
     @IBOutlet weak var save: UIButton!
     @IBOutlet weak var chart: LineChartView!
+    @IBOutlet var emptyState: [UIView]!
+    @IBOutlet var contentState: [UIView]!
     weak var test: UILabel!
-    
-    override func viewDidLoad() {
-        presenter.start()
+
+    override func viewDidAppear(_ animated: Bool) {
+        disposeBag = DisposeBag()
+        viewModel.bacLevel.map { String(format: "%1.2f ‰", $0) }
+            .bind(to: bacLevel.rx.text).disposed(by: disposeBag)
+        viewModel.sessionTitle.bind(to: sessionTitle.rx.text).disposed(by: disposeBag)
+        viewModel.alcoholEliminationDate.map { ReportsOverviewViewController.dateFormatter.string(from: $0) }
+            .bind(to: alcoholEliminationDate.rx.text).disposed(by: disposeBag)
+        viewModel.alcoholEliminationDate.map { ReportsOverviewViewController.timeFormatter.string(from: $0) }
+            .bind(to: alcoholEliminationTime.rx.text).disposed(by: disposeBag)
+        viewModel.chartData.subscribe { self.setupChart(stats: $0) }.disposed(by: disposeBag)
+        emptyState.forEach { view in
+            viewModel.chartData.map { !$0.filter { !$0.data.isEmpty }.isEmpty }
+                .bind(to: view.rx.isHidden).disposed(by: disposeBag)
+        }
+        contentState.forEach { view in
+            viewModel.chartData.map { $0.filter { !$0.data.isEmpty }.isEmpty }
+                .bind(to: view.rx.isHidden).disposed(by: disposeBag)
+        }
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        disposeBag = nil
     }
     
     @IBAction func onEditBtnClicked() {
@@ -38,22 +61,9 @@ class ReportsOverviewViewController: UIViewController, ReportOverviewView {
     @IBAction func onSaveBtnClicked(_ sender: UIButton) {
         finishTitleEditing()
         guard let title = sessionTitle.text else { return }
-        presenter.onTitleEdited(title: title)
+        viewModel.onTitleEdited(title: title)
     }
-    
-    func update(sessionTitle: String) {
-        self.sessionTitle.text = sessionTitle
-    }
-    
-    func update(bacLevel: Float) {
-        self.bacLevel.text = String(format: "%1.2f ‰", bacLevel)
-    }
-    
-    func update(alcoholEliminationDate: Date) {
-        self.alcoholEliminationDate.text = ReportsOverviewViewController.dateFormatter.string(from: alcoholEliminationDate)
-        self.alcoholEliminationTime.text = ReportsOverviewViewController.timeFormatter.string(from: alcoholEliminationDate)
-    }
-    
+
     func setupChart(stats: [Record]) {
         let data = LineChartData()
         stats.filter { (record) -> Bool in
@@ -68,7 +78,7 @@ class ReportsOverviewViewController: UIViewController, ReportOverviewView {
         chart.xAxis.valueFormatter = DateAxisValueFormatter(formatString: "HH:mm")
         chart.data = data
     }
-    
+
     private func startTitleEditing() {
         isEditing = true
         edit.isEnabled = false
@@ -83,7 +93,7 @@ class ReportsOverviewViewController: UIViewController, ReportOverviewView {
         save.isEnabled = false
         sessionTitle.isEnabled = false
     }
-    
+
     private func createLineDataSet(stat: Record) -> LineChartDataSet {
         let entries = stat.data.map { (record) -> ChartDataEntry in
             ChartDataEntry(x: record.time.timeIntervalSince1970 as Double, y: record.bacLevel)
@@ -92,4 +102,3 @@ class ReportsOverviewViewController: UIViewController, ReportOverviewView {
     }
     
 }
-

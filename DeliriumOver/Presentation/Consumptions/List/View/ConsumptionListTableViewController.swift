@@ -8,18 +8,15 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 class ConsumptionListTableViewController: UITableViewController {
-    var presenter: ConsumptionListPresenter!
+    var viewModel: ConsumptionListViewModel!
+    private var disposeBag: DisposeBag!
     
     private var consumptionItems: [ConsumptionListItem] = []
-    var consumptions: [ConsumptionListItem]
     {
-        get {
-            return consumptionItems
-        }
-        set {
-            consumptionItems = newValue
+        didSet {
             tableView.reloadData()
         }
     }
@@ -28,26 +25,43 @@ class ConsumptionListTableViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 90
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        disposeBag = DisposeBag()
+        viewModel.consumptions
+            .map {
+                $0.map { (consumption) -> ConsumptionListItem in
+                    ConsumptionListItem(drink: consumption.drink, alcohol: "\(consumption.alcohol*100)%", quantity: "\(consumption.quantity)  \(consumption.unit)", date: consumption.date)
+                }
+
+            }
+            .subscribe { self.consumptionItems = $0 }
+            .disposed(by: disposeBag)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        disposeBag = nil
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return consumptions.count
+        return consumptionItems.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ConsumptionListItemView", for: indexPath) as! ConsumptionListItemView
         
-        cell.update(consumption: consumptions[indexPath.row])
+        cell.update(consumption: consumptionItems[indexPath.row])
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            presenter.onConsumptionSwiped(index: indexPath.row)
+            viewModel.onConsumptionSwiped(index: indexPath.row)
         }
     }
 

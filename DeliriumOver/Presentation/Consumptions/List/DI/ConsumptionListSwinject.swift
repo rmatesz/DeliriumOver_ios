@@ -12,20 +12,17 @@ import Swinject
 class ConsumptionListSwinject {
     class func setup(_ container: Container) {
         container.storyboardInitCompleted(ConsumptionListViewController.self) { (resolver, controller) in
-            container.register(ConsumptionListView.self, factory: { (resolver) -> ConsumptionListView in
-                controller
-            })
             container.register(UIViewController.self, factory: { (resolver) -> UIViewController in
                 controller
             })
             container.register(UIStoryboard.self, factory: { (resolver) -> UIStoryboard in
                 controller.storyboard!
             })
-            controller.presenter = resolver.resolve(ConsumptionListPresenter.self)
+            controller.viewModel = resolver.resolve(ConsumptionListViewModel.self)
         }
         
-        container.register(ConsumptionListPresenter.self) { (resolver) -> ConsumptionListPresenter in
-            ConsumptionListPresenter(view: resolver.resolve(ConsumptionListView.self)!, interactor: resolver.resolve(ConsumptionListInteractor.self)!, router: resolver.resolve(ConsumptionListRouter.self)!)
+        container.register(ConsumptionListViewModel.self) { (resolver) -> ConsumptionListViewModel in
+            ConsumptionListViewModelImpl(interactor: resolver.resolve(ConsumptionListInteractor.self)!)
         }
         
         container.register(ConsumptionListRouter.self) { (resolver) -> ConsumptionListRouter in

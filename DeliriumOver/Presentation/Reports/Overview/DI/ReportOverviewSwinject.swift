@@ -12,14 +12,11 @@ import Swinject
 class ReportsOverviewSwinject {
     class func setup(defaultContainer: Container) {
         defaultContainer.storyboardInitCompleted(ReportsOverviewViewController.self) { (resolver, controller) in
-            defaultContainer.register(ReportOverviewView.self) { (resolver) -> ReportOverviewView in
-                return controller
-            }
-            controller.presenter = resolver.resolve(ReportOverviewPresenter.self)
+            controller.viewModel = resolver.resolve(ReportOverviewViewModel.self)
         }
         
-        defaultContainer.register(ReportOverviewPresenter.self) { (resolver) -> ReportOverviewPresenter in
-            ReportOverviewPresenterImpl(view: resolver.resolve(ReportOverviewView.self)!, interactor: resolver.resolve(ReportOverviewInteractor.self)!)
+        defaultContainer.register(ReportOverviewViewModel.self) { (resolver) -> ReportOverviewViewModel in
+            ReportOverviewViewModelImpl(interactor: resolver.resolve(ReportOverviewInteractor.self)!)
         }
         
         defaultContainer.register(ReportOverviewInteractor.self) { (resolver) -> ReportOverviewInteractor in
