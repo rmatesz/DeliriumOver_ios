@@ -10,9 +10,9 @@ import Foundation
 import RxSwift
 
 class ConsumptionFormInteractorImpl : ConsumptionFormInteractor {
-    private static let kHourOffset = 4
-    private static let kMinuteOffset = kHourOffset * kOneHourInMinutes
-    private static let kDayInMinutes = 24 * kOneHourInMinutes
+    private let kHourOffset = 4
+    private lazy var kMinuteOffset: Int = kHourOffset * kOneHourInMinutes
+    private let kDayInMinutes = 24 * kOneHourInMinutes
     
     private let consumptionRepository: ConsumptionRepository
     private let sessionRepository: SessionRepository
@@ -37,10 +37,15 @@ class ConsumptionFormInteractorImpl : ConsumptionFormInteractor {
     }
     
     func validateQuantity(quantity: Double?) -> ConsumptionFormValidationResult {
-        if (quantity == nil) { return ConsumptionFormValidationResult.EMPTY }
-        else if (quantity! < 0) { return ConsumptionFormValidationResult.NEGATIVE }
-        else if (quantity == 0.0) { return ConsumptionFormValidationResult.ZERO }
-        else { return ConsumptionFormValidationResult.SUCCESS }
+        if (quantity == nil) {
+            return ConsumptionFormValidationResult.EMPTY
+        } else if (quantity! < 0) {
+            return ConsumptionFormValidationResult.NEGATIVE
+        } else if (quantity == 0.0) {
+            return ConsumptionFormValidationResult.ZERO
+        } else {
+            return ConsumptionFormValidationResult.SUCCESS
+        }
     }
     
     func resolveDate(currentDate: Date, newDate: Date) -> Date {
@@ -48,17 +53,17 @@ class ConsumptionFormInteractorImpl : ConsumptionFormInteractor {
 
         let timeDiff = Int(newDate.timeIntervalSince(currentDate))
         let timeDiffInMinutes = (timeDiff / 60) % 60
-        
+
         var dayOffset = 0
-        if (timeDiffInMinutes < ConsumptionFormInteractorImpl.kMinuteOffset) {
+        if (timeDiffInMinutes < kMinuteOffset) {
             dayOffset = -1
-        } else if (timeDiffInMinutes > ConsumptionFormInteractorImpl.kDayInMinutes - ConsumptionFormInteractorImpl.kMinuteOffset) {
+        } else if (timeDiffInMinutes > kDayInMinutes - kMinuteOffset) {
             dayOffset = 1
         }
-        
+
         return calendar.date(byAdding: Calendar.Component.day, value: dayOffset, to: newDate) ?? newDate
     }
-    
+
     func saveConsumption(
         drink: String,
         alcohol: Double,
@@ -66,7 +71,7 @@ class ConsumptionFormInteractorImpl : ConsumptionFormInteractor {
         unit: DrinkUnit,
         date: Date = Date()
     ) -> Completable {
-    
+
         let consumption = Consumption(
             drink: drink,
             quantity: quantity,
@@ -74,7 +79,7 @@ class ConsumptionFormInteractorImpl : ConsumptionFormInteractor {
             alcohol: alcohol,
             date: date
         )
-    
+
         return sessionRepository.inProgressSession.map { (session: Session) -> String in session.id }
             .first()
             .map { $0! }
@@ -86,7 +91,7 @@ class ConsumptionFormInteractorImpl : ConsumptionFormInteractor {
     func saveConsumption(drink: String, alcohol: Double, quantity: Double, unit: DrinkUnit) -> Completable {
         return saveConsumption(drink: drink, alcohol: alcohol, quantity: quantity, unit: unit, date: Date())
     }
-    
+
     func loadDrinks() -> Single<[Drink]> {
         return drinkRepository.getDrinks()
     }

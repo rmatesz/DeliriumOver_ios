@@ -43,14 +43,10 @@ class ConsumptionFormPresenterImpl : BasePresenter, ConsumptionFormPresenter {
     private var alcoholError = false
     private var quantityError = false
     private var hasError: Bool {
-        get {
-            return drinkError || alcoholError || quantityError
-        }
+        return drinkError || alcoholError || quantityError
     }
     private var mandatoryFieldsFilled: Bool {
-        get {
-            return drink != "" && quantity != nil && alcohol != nil
-        }
+        return drink != "" && quantity != nil && alcohol != nil
     }
 
     init(router: ConsumptionFormRouter, view: ConsumptionFormView, interactor: ConsumptionFormInteractor) {
@@ -65,38 +61,45 @@ class ConsumptionFormPresenterImpl : BasePresenter, ConsumptionFormPresenter {
     }
 
     func onSaveClicked() {
-        interactor.saveConsumption(drink: drink, alcohol: alcohol! / 100.0, quantity: quantity!, unit: drinkUnit, date: time ?? Date())
+        interactor.saveConsumption(drink: drink,
+                                   alcohol: alcohol! / 100.0,
+                                   quantity: quantity!,
+                                   unit: drinkUnit,
+                                   date: time ?? currentDate)
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler())
             .subscribe(onCompleted: {
                 self.router.finish()
-            }, onError: { (error: Error) in
-                
+            }, onError: {
+                Logger.w(tag: "ConsumptionForm",
+                         category: "Consumption registry",
+                         message: "Error during saving consumption.",
+                         error: $0)
             })
             .disposed(by: disposeBag)
     }
-    
+
     // MARK: field changes from UI
     func onDrinkChanged(_ value: String) {
         drink = value
     }
-    
+
     func onAlcoholChanged(_ value: Double) {
         alcohol = value
     }
-    
+
     func onQuantityChanged(_ value: Double) {
         quantity = value
     }
-    
+
     func onDrinkUnitChanged(_ value: DrinkUnit) {
         drinkUnit = value
     }
 
     func onTimeChanged(_ value: Date) {
-        time = value
+        time = interactor.resolveDate(currentDate: currentDate, newDate: value)
     }
-    
+
     // MARK: Validating fields
     private func validate(drink: String) {
         switch (interactor.validateDrink(drink: drink)) {
@@ -108,5 +111,4 @@ class ConsumptionFormPresenterImpl : BasePresenter, ConsumptionFormPresenter {
             view.showDrinkError("Unknown error")
         }
     }
-    
 }
