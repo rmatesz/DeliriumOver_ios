@@ -15,9 +15,9 @@ class ConsumptionFormPresenterImpl : BasePresenter, ConsumptionFormPresenter {
     private let interactor: ConsumptionFormInteractor
     private let router: ConsumptionFormRouter
 
-    private var drink: String = "" {
+    private var drink: String? = nil {
         didSet {
-            validate(drink: drink)
+            validate(drink: drink!)
             view.saveIsEnabled = mandatoryFieldsFilled && !hasError
         }
     }
@@ -31,7 +31,7 @@ class ConsumptionFormPresenterImpl : BasePresenter, ConsumptionFormPresenter {
             view.saveIsEnabled = mandatoryFieldsFilled && !hasError
         }
     }
-    private var drinkUnit: DrinkUnit = DrinkUnit.centiliter
+    private var drinkUnit: DrinkUnit? = nil
     private var time: Date? {
         didSet {
             if (time != nil) {
@@ -56,14 +56,18 @@ class ConsumptionFormPresenterImpl : BasePresenter, ConsumptionFormPresenter {
     }
 
     func loadData() {
-        time = Date()
+        time = dateProvider.currentDate
         view.saveIsEnabled = mandatoryFieldsFilled && !hasError
     }
 
     func onSaveClicked() {
+        guard let drink = drink, let alcohol = alcohol, let quantity = quantity, let drinkUnit = drinkUnit else {
+            return
+        }
+
         interactor.saveConsumption(drink: drink,
-                                   alcohol: alcohol! / 100.0,
-                                   quantity: quantity!,
+                                   alcohol: alcohol / 100.0,
+                                   quantity: quantity,
                                    unit: drinkUnit,
                                    date: time ?? currentDate)
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))

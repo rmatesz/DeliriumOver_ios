@@ -9,7 +9,6 @@
 import Foundation
 
 protocol ConsumptionFormView {
-    func updateDrink(_ drink: String)
     func updateTime(_ time: Date)
     
     func showDrinkError(_ error: String)

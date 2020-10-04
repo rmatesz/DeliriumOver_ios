@@ -20,7 +20,7 @@ class ReportsOverviewSwinject {
         }
         
         defaultContainer.register(ReportOverviewInteractor.self) { (resolver) -> ReportOverviewInteractor in
-            ReportOverviewInteractorImpl(sessionRepository: resolver.resolve(SessionRepository.self)!, alcoholCalculator: resolver.resolve(AlcoholCalculatorRxDecorator.self)!)
+            ReportOverviewInteractorImpl(sessionRepository: resolver.resolve(SessionRepository.self)!, consumptionRepository: resolver.resolve(ConsumptionRepository.self)!, drinkRepository: resolver.resolve(DrinkRepository.self)!, alcoholCalculator: resolver.resolve(AlcoholCalculatorRxDecorator.self)!)
         }
     }
 }

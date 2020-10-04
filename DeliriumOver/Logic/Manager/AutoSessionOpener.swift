@@ -26,7 +26,7 @@ class AutoSessionOpenerImpl {
                 }
                 return Completable.empty()
             })
-            .subscribe(onError: { Logger.w(category: "DATABASE", message: "Auto session opener failed.", error: $0) })
+            .subscribe(onError: { Logger.w(category: "DATABASE", message: "Auto session opener failed. Unable to recover from this error!", error: $0) })
             .disposed(by: disposeBag)
     }
 
@@ -37,5 +37,7 @@ class AutoSessionOpenerImpl {
         var newSession = session.clone()
         newSession.inProgress = true
         return sessionRepository.insert(session: newSession)
+            .do(onError: { Logger.w(category: "DATABASE", message: "Auto session opener failed.", error: $0) })
+            .catchError { _ in Single.never() }
     }
 }

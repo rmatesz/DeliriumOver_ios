@@ -13,36 +13,19 @@ import CoreData
 class ConsumptionDAOImpl : DAOImpl, ConsumptionDAO {
 
     func get(_ consumptionId: String) -> Maybe<Consumption> {
-        return Maybe<Consumption>.create { (observer: @escaping (MaybeEvent<Consumption>) -> ()) -> Disposable in
-            DispatchQueue.main.async {
-                let objectId = self.context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: URL(string: consumptionId)!)
-
-                if (objectId == nil) {
-                    observer(.completed)
-                } else {
-                    do {
-                        let consumptionEntity = try self.context.existingObject(with: objectId!) as! ConsumptionEntity
-                        observer(.success(Consumption(consumptionEntity: consumptionEntity)))
-                    } catch {
-                        observer(.error(error))
-                    }
-                }
-            }
-            return Disposables.create()
-        }
+        return getEntity(id: consumptionId).map { Consumption(consumptionEntity: $0) }
     }
-    
+
     func getAll(sessionId: String) -> Maybe<[Consumption]> {
-        return Maybe<[Consumption]>.create { (observer: @escaping (MaybeEvent<[Consumption]>) -> ()) -> Disposable in
+        return Maybe<[Consumption]>.create { (observer: @escaping (MaybeEvent<[Consumption]>) -> Void) -> Disposable in
             DispatchQueue.main.async {
                 do {
-                    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ConsumptionEntity")
+                    let request = NSFetchRequest<ConsumptionEntity>(entityName: "ConsumptionEntity")
                     request.predicate = NSPredicate(format: "sessionId == %@", sessionId)
                     request.returnsObjectsAsFaults = false
 
                     let result = try self.context.fetch(request)
-                    let consumptions = result as! [ConsumptionEntity]
-                    observer(MaybeEvent.success(consumptions.map { Consumption(consumptionEntity: $0) }))
+                    observer(MaybeEvent.success(result.map { Consumption(consumptionEntity: $0) }))
                 } catch {
                     observer(MaybeEvent.error(error))
                 }
@@ -50,12 +33,12 @@ class ConsumptionDAOImpl : DAOImpl, ConsumptionDAO {
             return Disposables.create()
         }
     }
-    
+
     func delete(consumptions: Consumption...) -> Completable {
         return Completable.concat(consumptions.map { consumption -> Completable in
             let getConsumption: Maybe<ConsumptionEntity> = getEntity(id: consumption.id)
             return getConsumption
-                .ifEmpty(switchTo: Single.error(RepositoryError(message: "Can't find consumption in DB.")))
+                .ifEmpty(switchTo: Single.error(DatabaseError(message: "Can't find consumption in DB.")))
                 .flatMapCompletable { self.delete(consumption: $0) }
         })
     }
@@ -80,7 +63,11 @@ class ConsumptionDAOImpl : DAOImpl, ConsumptionDAO {
         return getSession
             .ifEmpty(switchTo: Single.error(RepositoryError(message: "Can't find session in DB.")))
             .flatMap { session in
-                self.createEntity(fillEntity: { consumptionEntity in
+                self.coreDataAdapter.insertNewObject(forEntityName: "ConsumptionEntity", into: self.context)
+                    .map { (session, $0 as! ConsumptionEntity) }
+            }
+            .flatMap { (session: SessionEntity, consumptionEntity: ConsumptionEntity) in
+                self.finaliseEntity(entity: consumptionEntity, fillEntity: { consumptionEntity in
                     consumptionEntity.session = session
                     consumptionEntity.alcohol = consumption.alcohol
                     consumptionEntity.date = consumption.date
@@ -88,26 +75,6 @@ class ConsumptionDAOImpl : DAOImpl, ConsumptionDAO {
                     consumptionEntity.quantity = consumption.quantity
                     consumptionEntity.unit = Int16(consumption.unit.multiplier())
                 })
-        }.asCompletable()
+            }.asCompletable()
     }
-
-    private func createEntity(fillEntity: @escaping (ConsumptionEntity) -> ()) -> Single<ConsumptionEntity> {
-        return Single<ConsumptionEntity>.create { (observer) -> Disposable in
-            DispatchQueue.main.async {
-                let consumptionEntity = NSEntityDescription.insertNewObject(forEntityName: "ConsumptionEntity", into: super.context) as! ConsumptionEntity
-
-                fillEntity(consumptionEntity)
-                do {
-                    try self.context.obtainPermanentIDs(for: [consumptionEntity])
-                    try super.context.save()
-                    observer(SingleEvent.success(consumptionEntity))
-                } catch {
-                    observer(SingleEvent.error(error))
-                }
-            }
-            return Disposables.create()
-        }
-
-    }
-    
 }

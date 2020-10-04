@@ -28,9 +28,7 @@ class SessionFormViewModelImpl: SessionFormViewModel {
     }
 
     func saveSession() -> Completable {
-        return sessionRepository.inProgressSession
-            .take(1)
-            .asSingle()
+        return sessionRepository.singleInProgressSession
             .flatMapCompletable { (session) in
                 var updatedSession = session
                 updatedSession.name = self.name.value
@@ -41,6 +39,20 @@ class SessionFormViewModelImpl: SessionFormViewModel {
     }
 }
 
+extension SessionRepository {
+    var singleInProgressSession: Single<Session> {
+        inProgressSession
+            .do(onError: { Logger.w(category: "DATABASE", message: "Error while reading in progress session from DB.", error: $0) })
+            .first()
+            .timeout(10, scheduler: MainScheduler.instance)
+            .do(onError: { Logger.e(category: "DATABASE", message: "InProgress session did not emit anything in 10 seconds!", error: $0) })
+            .catchErrorJustReturn(nil)
+            .map {
+                guard let session = $0 else { throw RepositoryError(message: "In progress session not found in DB.") }
+                return session
+            }
+    }
+}
 
 extension Double {
     func removeZerosFromEnd() -> String {

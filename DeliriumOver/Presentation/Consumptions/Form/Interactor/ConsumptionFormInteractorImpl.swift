@@ -52,12 +52,12 @@ class ConsumptionFormInteractorImpl : ConsumptionFormInteractor {
         let calendar = Calendar.init(identifier: Calendar.Identifier.gregorian)
 
         let timeDiff = Int(newDate.timeIntervalSince(currentDate))
-        let timeDiffInMinutes = (timeDiff / 60) % 60
+        let timeDiffInMinutes = timeDiff / 60
 
         var dayOffset = 0
-        if (timeDiffInMinutes < kMinuteOffset) {
+        if (timeDiffInMinutes > kMinuteOffset) {
             dayOffset = -1
-        } else if (timeDiffInMinutes > kDayInMinutes - kMinuteOffset) {
+        } else if (timeDiffInMinutes < kMinuteOffset - kDayInMinutes) {
             dayOffset = 1
         }
 
@@ -69,7 +69,7 @@ class ConsumptionFormInteractorImpl : ConsumptionFormInteractor {
         alcohol: Double,
         quantity: Double,
         unit: DrinkUnit,
-        date: Date = Date()
+        date: Date = dateProvider.currentDate
     ) -> Completable {
 
         let consumption = Consumption(
@@ -80,16 +80,16 @@ class ConsumptionFormInteractorImpl : ConsumptionFormInteractor {
             date: date
         )
 
-        return sessionRepository.inProgressSession.map { (session: Session) -> String in session.id }
-            .first()
-            .map { $0! }
+        return sessionRepository
+            .singleInProgressSession
+            .map { (session: Session) -> String in session.id }
             .flatMapCompletable { (sessionId) -> Completable in
                 self.consumptionRepository.saveConsumption(sessionId: sessionId, consumption: consumption)
             }
     }
 
     func saveConsumption(drink: String, alcohol: Double, quantity: Double, unit: DrinkUnit) -> Completable {
-        return saveConsumption(drink: drink, alcohol: alcohol, quantity: quantity, unit: unit, date: Date())
+        return saveConsumption(drink: drink, alcohol: alcohol, quantity: quantity, unit: unit, date: dateProvider.currentDate)
     }
 
     func loadDrinks() -> Single<[Drink]> {

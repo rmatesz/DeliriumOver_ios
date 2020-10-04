@@ -15,6 +15,7 @@ protocol ConsumptionListViewModel {
     var consumptions: BehaviorRelay<[Consumption]> { get }
 
     func onConsumptionSwiped(index: Int)
+    func addDrinkAsConsumption(drink: Drink) -> Completable
 }
 
 class ConsumptionListViewModelImpl: ConsumptionListViewModel {
@@ -50,17 +51,10 @@ class ConsumptionListViewModelImpl: ConsumptionListViewModel {
             })
             .disposed(by: disposeBag)
     }
-    
-    private func addDrinkAsConsumption(drink: Drink) {
-        // router.showLoading
-        interactor.add(drink: drink)
+
+    public func addDrinkAsConsumption(drink: Drink) -> Completable {
+        return interactor.add(drink: drink)
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler())
-            .subscribe(onCompleted: {
-                // router.hideLoading
-            }, onError: { (error) in
-                print("")
-            })
-            .disposed(by: disposeBag)
     }
 }

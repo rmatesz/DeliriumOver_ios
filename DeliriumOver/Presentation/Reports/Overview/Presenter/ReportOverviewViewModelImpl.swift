@@ -20,6 +20,7 @@ class ReportOverviewViewModelImpl: ReportOverviewViewModel {
     let alcoholEliminationDate = BehaviorRelay<Date>(value: Date())
     let sessionTitle = BehaviorRelay<String>(value: "")
     let chartData = BehaviorRelay<[Record]>(value: [])
+    let drinks = BehaviorRelay<[Drink]>(value: [])
     
     init(interactor: ReportOverviewInteractor) {
         self.interactor = interactor
@@ -46,6 +47,12 @@ class ReportOverviewViewModelImpl: ReportOverviewViewModel {
             .observeOn(MainScheduler())
             .bind(to: chartData)
             .disposed(by: disposeBag)
+
+        interactor.loadFrequentlyConsumedDrinks()
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler())
+            .bind(to: drinks)
+            .disposed(by: disposeBag)
     }
     
     func onTitleEdited(title: String) {
@@ -61,6 +68,13 @@ class ReportOverviewViewModelImpl: ReportOverviewViewModel {
                 })
                 .disposed(by: disposeBag)
         }
+    }
+
+
+    public func addDrinkAsConsumption(drink: Drink) -> Completable {
+        return interactor.add(drink: drink)
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .observeOn(MainScheduler())
     }
     
     

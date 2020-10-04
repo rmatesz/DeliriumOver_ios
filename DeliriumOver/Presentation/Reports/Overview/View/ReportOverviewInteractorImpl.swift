@@ -11,12 +11,16 @@ import RxSwift
 
 class ReportOverviewInteractorImpl: ReportOverviewInteractor {
     private let sessionRepository: SessionRepository
+    private let consumptionRepository: ConsumptionRepository
+    private let drinkRepository: DrinkRepository
     private let alcoholCalculator: AlcoholCalculatorRxDecorator
     private lazy var loadSessionTask: Observable<Session> = loadInProgressSession().replay(1).autoconnect()
     private var sessionId: String?
     
-    init(sessionRepository: SessionRepository, alcoholCalculator: AlcoholCalculatorRxDecorator) {
+    init(sessionRepository: SessionRepository, consumptionRepository: ConsumptionRepository, drinkRepository: DrinkRepository, alcoholCalculator: AlcoholCalculatorRxDecorator) {
         self.sessionRepository = sessionRepository
+        self.consumptionRepository = consumptionRepository
+        self.drinkRepository = drinkRepository
         self.alcoholCalculator = alcoholCalculator
     }
     
@@ -65,6 +69,13 @@ class ReportOverviewInteractorImpl: ReportOverviewInteractor {
         //            }
         //            .toList()
     }
+
+    public func loadFrequentlyConsumedDrinks() -> Observable<[Drink]> {
+        return drinkRepository.getFrequentlyConsumedDrinks()
+            .map({ (drinks) -> [Drink] in
+                Array(drinks.prefix(3))
+            })
+    }
     
     func saveSession(session: Session) -> Completable {
         return sessionRepository.update(session: session)
@@ -85,5 +96,16 @@ class ReportOverviewInteractorImpl: ReportOverviewInteractor {
         //                    .doOnSuccess { this.sessionId = it }
         //                    .flatMapPublisher { loadSession(it) }
         
+    }
+
+    public func add(drink: Drink) -> Completable {
+        return loadInProgressSession().first()
+            .flatMapCompletable {
+                guard let session = $0 else {
+                    return Completable.empty()
+                }
+
+                return self.consumptionRepository.saveConsumption(sessionId: session.id, consumption: Consumption(drink: drink))
+            }
     }
 }

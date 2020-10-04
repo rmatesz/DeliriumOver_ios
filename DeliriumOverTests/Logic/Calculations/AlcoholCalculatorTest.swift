@@ -33,7 +33,6 @@ let DATE_NOW = createDate(2018, 1, 26, 23, 59, timezone: TimeZone(abbreviation: 
 
 class AlcoholCalculatorTest: XCTestCase {
 
-
     private var underTest: AlcoholCalculator = AlcoholCalculator()
     private let params: [[Any]] = setupParams()
     

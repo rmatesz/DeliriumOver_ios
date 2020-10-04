@@ -24,6 +24,8 @@ class FirebaseDrinksDatabase {
                 if (data != nil) {
                     observer(.success(data!))
                 }
+            }, withCancel: { (error) in
+                observer(.error(error))
             })
             return Disposables.create()
         })

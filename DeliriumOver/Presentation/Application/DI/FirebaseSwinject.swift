@@ -22,11 +22,11 @@ class FirebaseSwinject {
         }
         
         defaultContainer.register(FirebaseAuthentication.self) { (resolver) -> FirebaseAuthentication in
-            FirebaseAuthentication(firebaseAuth: resolver.resolve(Auth.self)!)
+            FirebaseAuthenticationImpl(firebaseAuth: resolver.resolve(Auth.self)!)
         }
         
         defaultContainer.register(FirebaseSessionDatabase.self) { (resolver) -> FirebaseSessionDatabase in
-            FirebaseSessionDatabase(firebaseDatabase: resolver.resolve(DatabaseReference.self)!)
+            FirebaseSessionDatabaseImpl(firebaseDatabase: resolver.resolve(DatabaseReference.self)!)
         }
         
         defaultContainer.register(FirebaseCommunicator.self) { (resolver) -> FirebaseCommunicator in

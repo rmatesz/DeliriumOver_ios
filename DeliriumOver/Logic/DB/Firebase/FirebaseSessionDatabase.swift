@@ -10,15 +10,21 @@ import Foundation
 import RxSwift
 import FirebaseDatabase
 
-class FirebaseSessionDatabase {
+protocol FirebaseSessionDatabase {
+    func loadData(shareKey: String) -> Observable<[Session]>
+    func update(session: Session?, shareKey: String, userId: String) -> Completable
+    func getMinVersionForShare() -> Single<Int>
+}
+
+class FirebaseSessionDatabaseImpl: FirebaseSessionDatabase {
     private let kSessionsNode = "share_sessions"
     private let kShareVersion = "share_version"
     private let firebaseDatabase: DatabaseReference
-    
+
     init(firebaseDatabase: DatabaseReference) {
         self.firebaseDatabase = firebaseDatabase
     }
-    
+
     func loadData(shareKey: String) -> Observable<[Session]> {
         if (shareKey.isEmpty) {
             return Observable.just([])
@@ -29,37 +35,19 @@ class FirebaseSessionDatabase {
                     .child(shareKey)
                 databaseRef.keepSynced(true)
                 let databaseObserver = databaseRef.observe(DataEventType.value, with: { (snapshot) in
-                    let data = snapshot.value as? [String:Session]
-                    observer.onNext(data?.map({ (key, value) -> Session in
+                    guard let data = snapshot.value as? [String:Session] else {
+                        observer.onError(DatabaseError(message: "Data returned from Firebase database is in invalid format. Expected [String:Session]. Actual \(type(of: snapshot.value).self)"))
+                        return
+                    }
+                    observer.onNext(data.map({ (key, value) -> Session in
                         value
-                    }) ?? [])
+                    }))
                 }, withCancel: { (error) in
                     observer.onError(error)
                 })
                 return Disposables.create {
                     databaseRef.removeObserver(withHandle: databaseObserver)
                 }
-            })
-        }
-    }
-    
-    func getData(shareKey: String) -> Maybe<[Session]> {
-        if (shareKey.isEmpty) {
-            return Maybe.just([])
-        } else {
-            return Maybe.create(subscribe: { (observer) -> Disposable in
-                self.firebaseDatabase
-                    .child(self.kSessionsNode)
-                    .child(shareKey)
-                    .observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
-                        let data = snapshot.value as? [String:Session]
-                        observer(.success(data?.map({ (key, value) -> Session in
-                            value
-                        }) ?? []))
-                    }, withCancel: { (error) in
-                        observer(.error(error))
-                    })
-                return Disposables.create()
             })
         }
     }

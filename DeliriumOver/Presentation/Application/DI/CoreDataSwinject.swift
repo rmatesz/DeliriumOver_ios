@@ -86,12 +86,16 @@ class CoreDataSwinject {
             return resolver.resolve(NSPersistentContainer.self, name: logDataModelContainerName)!.viewContext
         }
 
+        defaultContainer.register(CoreDataAdapter.self) { _ -> CoreDataAdapter in
+            return CoreDataAdapterImpl()
+        }
+
         defaultContainer.register(SessionDAO.self) { (resolver) -> SessionDAO in
-            SessionDAOImpl(context: resolver.resolve(NSManagedObjectContext.self, name: deliriumOverContainerName)!)
+            SessionDAOImpl(context: resolver.resolve(NSManagedObjectContext.self, name: deliriumOverContainerName)!, coreDataAdapter: resolver.resolve(CoreDataAdapter.self)!)
         }
         
         defaultContainer.register(ConsumptionDAO.self) { (resolver) -> ConsumptionDAO in
-            ConsumptionDAOImpl(context: resolver.resolve(NSManagedObjectContext.self, name: deliriumOverContainerName)!)
+            ConsumptionDAOImpl(context: resolver.resolve(NSManagedObjectContext.self, name: deliriumOverContainerName)!, coreDataAdapter: resolver.resolve(CoreDataAdapter.self)!)
         }
     }
 }

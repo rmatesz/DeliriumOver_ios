@@ -20,8 +20,13 @@ end
 
 target 'DeliriumOverTests' do
 	pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Crashlytics'
+  pod 'Firebase/Analytics'
     pod 'RxSwift',  '~> 5.0'
     pod 'RxBlocking',  '~> 5.0'
     pod 'RxTest',  '~> 5.0'
+    pod 'RxCocoa',  '~> 5.0'
     pod 'Cuckoo'
 end

@@ -26,7 +26,7 @@ class FirebaseCommunicator {
                 self.firebaseSessionDatabase.loadData(shareKey: shareKey)
             })
     }
-    
+
     func updateSessions(sessions: [Session]) {
         firebaseAuthentication.authenticate()
             .subscribe(onSuccess: { (user) in
@@ -53,7 +53,7 @@ class FirebaseCommunicator {
                 self.firebaseSessionDatabase.update(session: nil, shareKey: shareKey, userId: user.uid)
         })
     }
-    
+
     func loadMinVersionForShare() -> Single<Int> {
         return firebaseSessionDatabase.getMinVersionForShare()
     }

@@ -31,6 +31,6 @@ func createDate(
     dateComponents.minute = minute
     dateComponents.second = seconds
     dateComponents.timeZone = timezone
-    
-    return Calendar.current.date(from: dateComponents)!
+    let date = Calendar.current.date(from: dateComponents)!
+    return date
 }

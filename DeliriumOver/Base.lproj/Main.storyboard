@@ -185,7 +185,7 @@
                                     <color key="titleShadowColor" systemColor="opaqueSeparatorColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="b38-HD-C30" kind="presentation" id="q57-Bm-clx"/>
+                                    <action selector="onAddClicked:" destination="9pv-A4-QxB" eventType="touchUpInside" id="tB1-xr-DPu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -264,6 +264,7 @@
                         <outletCollection property="contentState" destination="LDL-gb-vjJ" collectionClass="NSMutableArray" id="BxX-aR-wpv"/>
                         <outletCollection property="contentState" destination="gRz-vJ-Zt0" collectionClass="NSMutableArray" id="eHh-dw-lqK"/>
                         <outletCollection property="contentState" destination="OUE-FR-VTq" collectionClass="NSMutableArray" id="7Bc-I7-bFh"/>
+                        <segue destination="b38-HD-C30" kind="presentation" identifier="ShowConsumptionForm" id="yNe-8y-jV8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -296,7 +297,7 @@
                                     <color key="titleShadowColor" systemColor="opaqueSeparatorColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="b38-HD-C30" kind="presentation" id="656-Ln-Nxc"/>
+                                    <action selector="onAddClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="OaT-HZ-YKj"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delirium_over" translatesAutoresizingMaskIntoConstraints="NO" id="hrq-AF-tjl">
@@ -352,7 +353,7 @@
                         <outletCollection property="emptyState" destination="hrq-AF-tjl" collectionClass="NSMutableArray" id="dSF-nn-8PD"/>
                         <outletCollection property="emptyState" destination="53b-Ef-5kR" collectionClass="NSMutableArray" id="F9b-k4-T9t"/>
                         <outletCollection property="emptyState" destination="B4A-be-mgv" collectionClass="NSMutableArray" id="tog-2i-8cC"/>
-                        <segue destination="b38-HD-C30" kind="show" identifier="openConsumptionForm" id="lyq-aA-lio"/>
+                        <segue destination="b38-HD-C30" kind="presentation" identifier="ShowConsumptionForm" id="lyq-aA-lio"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -766,7 +767,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Vdg-8J-X65"/>
-        <segue reference="q57-Bm-clx"/>
+        <segue reference="yNe-8y-jV8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name=" " width="128" height="128"/>

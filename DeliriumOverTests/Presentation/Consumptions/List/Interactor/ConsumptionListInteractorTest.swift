@@ -64,8 +64,8 @@ class ConsumptionListInteractorImplTest: XCTestCase {
         }
     
         do {
-            _ = try underTest!.loadConsumptions().toBlocking().first()
-            XCTFail("Error have to be thrown!")
+            let consumptions = try underTest!.loadConsumptions().toBlocking().first()
+            XCTAssertNil(consumptions)
         } catch {
             if case SimpleError.error(let message) = error {
                 XCTAssertEqual("Session can't be loaded!", message)
@@ -153,7 +153,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
         verify(consumptionRepository).delete(consumption: ConsumptionListInteractorImplTest.TEST_CONSUMPTION_1)
     }
     
-    func testAddDrinkWhenSessionIdIsNil() throws {
+    func testAddDrinkWhenNoInProgressSession() throws {
         // GIVEN
         underTest = ConsumptionListInteractorImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: nil)
         let testDrink = Drink(name: "test", alcohol: 10.0, defaultQuantity: 5.0, defaultUnit: DrinkUnit.deciliter)
@@ -168,14 +168,15 @@ class ConsumptionListInteractorImplTest: XCTestCase {
             when(stub.saveConsumption(sessionId: ConsumptionListInteractorImplTest.TEST_SESSION.id, consumption: consumption)).thenReturn(Completable.empty())
         }
     
-        stub(sessionRepository) { (stub) in when(stub.inProgressSession).get.thenReturn(Observable.just(ConsumptionListInteractorImplTest.TEST_SESSION))
+        stub(sessionRepository) { (stub) in when(stub.inProgressSession).get.thenReturn(Observable.never())
         }
     
         // WHEN
         _ = try underTest!.add(drink: testDrink).toBlocking().first()
     
         // THEN
-        verify(consumptionRepository).saveConsumption(sessionId: ConsumptionListInteractorImplTest.TEST_SESSION.id, consumption: Consumption(drink: testDrink.name, quantity: testDrink.defaultQuantity, unit: testDrink.defaultUnit, alcohol: testDrink.alcohol))
+        verifyNoMoreInteractions(consumptionRepository)
+//        verify(consumptionRepository).saveConsumption(sessionId: ConsumptionListInteractorImplTest.TEST_SESSION.id, consumption: Consumption(drink: testDrink.name, quantity: testDrink.defaultQuantity, unit: testDrink.defaultUnit, alcohol: testDrink.alcohol))
     }
 
     func testAddDrinkWhenSessionIdIsNotNil() throws {
@@ -291,110 +292,5 @@ class ConsumptionListInteractorImplTest: XCTestCase {
     
         // THEN
         XCTAssertEqual(limitedList, result!)
-    }
-    
-    func testLoadFrequentlyConsumedDrinksAfterAddingConsumption() throws {
-        // GIVEN
-        let testDrink1 = Drink(name: "test1")
-        let testDrink2 = Drink(name: "test2")
-        let testDrink3 = Drink(name: "test3")
-        let testDrink4 = Drink(name: "test4")
-        let testDrinks = [testDrink1, testDrink2]
-        let testDrinksAfterChange = [testDrink1, testDrink2, testDrink4, testDrink3]
-        let testDrinksAfterChange2 = [testDrink1, testDrink3, testDrink4, testDrink2]
-        let limitedList = [testDrink1, testDrink2]
-        let limitedListAfterChange = [testDrink1, testDrink2, testDrink4]
-        let limitedListAfterChange2 = [testDrink1, testDrink3, testDrink4]
-        
-        stub(drinkRepository) { (stub) in
-            when(stub.getFrequentlyConsumedDrinks()).thenReturn(Observable.just(testDrinks), Observable.just(testDrinksAfterChange), Observable.just(testDrinksAfterChange2))
-        }
-        stub(sessionRepository) { (stub) in
-            when(stub.inProgressSession).get.thenReturn(Observable.just(ConsumptionListInteractorImplTest.TEST_SESSION))
-        }
-        stub(consumptionRepository) { (stub) in
-            when(stub.saveConsumption(sessionId: anyString(), consumption: any(Consumption.self))).thenReturn(Completable.empty())
-        }
-        
-        let disposeBag = DisposeBag()
-        let scheduler = TestScheduler(initialClock: 0)
-        let observer = scheduler.createObserver(DrinkArray.self)
-        
-        underTest!.loadFrequentlyConsumedDrinks()
-            .map({ (drinks) -> DrinkArray in
-                DrinkArray(drinks)
-            })
-            .subscribe(observer)
-            .disposed(by: disposeBag)
-        
-        let trigger = scheduler.createHotObservable([next(10, testDrink1), next(100, testDrink2)])
-        
-        trigger.flatMap { (drink) -> Completable in
-            self.underTest!.add(drink: drink)
-        }
-            .subscribe()
-            .disposed(by: disposeBag)
-        
-        scheduler.start()
-        
-        // WHEN
-        XCTAssertEqual([
-                next(0, DrinkArray(limitedList)),
-                next(10, DrinkArray(limitedListAfterChange)),
-                next(100, DrinkArray(limitedListAfterChange2))
-            ], observer.events)
-    }
-    
-    func testLoadFrequentlyConsumedDrinksAfterDeleteConsumption() throws {
-        // GIVEN
-        let testDrink1 = Drink(name: "test1")
-        let testDrink2 = Drink(name: "test2")
-        let testDrink3 = Drink(name: "test3")
-        let testDrink4 = Drink(name: "test4")
-        let testDrinks = [testDrink1, testDrink2]
-        let testDrinksAfterChange = [testDrink1, testDrink2, testDrink4, testDrink3]
-        let testDrinksAfterChange2 = [testDrink1, testDrink3, testDrink4, testDrink2]
-        let limitedList = [testDrink1, testDrink2]
-        let limitedListAfterChange = [testDrink1, testDrink2, testDrink4]
-        let limitedListAfterChange2 = [testDrink1, testDrink3, testDrink4]
-        
-        stub(drinkRepository) { (stub) in
-            when(stub.getFrequentlyConsumedDrinks()).thenReturn(Observable.just(testDrinks), Observable.just(testDrinksAfterChange), Observable.just(testDrinksAfterChange2))
-        }
-        stub(sessionRepository) { (stub) in
-            when(stub.inProgressSession).get.thenReturn(Observable.just(ConsumptionListInteractorImplTest.TEST_SESSION))
-        }
-        stub(consumptionRepository) { (stub) in
-            when(stub.saveConsumption(sessionId: anyString(), consumption: any(Consumption.self))).thenReturn(Completable.empty())
-            when(stub.delete(consumption: any(Consumption.self))).thenReturn(Completable.empty())
-        }
-        
-        let disposeBag = DisposeBag()
-        let scheduler = TestScheduler(initialClock: 0)
-        let observer = scheduler.createObserver(DrinkArray.self)
-        
-        underTest!.loadFrequentlyConsumedDrinks()
-            .map({ (drinks) -> DrinkArray in
-                DrinkArray(drinks)
-            })
-            .subscribe(observer)
-            .disposed(by: disposeBag)
-        
-        let trigger = scheduler.createHotObservable([next(10, Consumption()), next(100, Consumption())])
-        
-        trigger.flatMap { (consumption) -> Completable in
-            self.underTest!.delete(consumption: consumption)
-            }
-            .subscribe()
-            .disposed(by: disposeBag)
-        
-        scheduler.start()
-        
-        // WHEN
-        XCTAssertEqual([
-            next(0, DrinkArray(limitedList)),
-            next(10, DrinkArray(limitedListAfterChange)),
-            next(100, DrinkArray(limitedListAfterChange2))
-            ], observer.events)
     }
 }

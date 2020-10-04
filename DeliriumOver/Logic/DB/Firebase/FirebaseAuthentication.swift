@@ -11,7 +11,11 @@ import Firebase
 import RxSwift
 import FirebaseAuth
 
-class FirebaseAuthentication {
+protocol FirebaseAuthentication {
+    func authenticate() -> Single<User>
+}
+
+class FirebaseAuthenticationImpl: FirebaseAuthentication {
     let firebaseAuth: Auth
     
     init(firebaseAuth: Auth) {
@@ -21,17 +25,18 @@ class FirebaseAuthentication {
     func authenticate() -> Single<User> {
         if (firebaseAuth.currentUser != nil) {
             return Single.just(firebaseAuth.currentUser!)
-        }
-        else {
+        } else {
             return Single<User>.create { (observer: @escaping (SingleEvent<User>) -> ()) -> Disposable in
                 self.firebaseAuth.signInAnonymously(completion: { (result, error) in
-                    if (result != nil) {
-                        observer(.success(result!.user))
-                    } else if (error != nil) {
-                        observer(.error(error!))
-                    } else {
-                        observer(.error(FirebaseError.authenticationError))
+                    guard let result = result else {
+                        guard let error = error else {
+                            observer(.error(FirebaseError.authenticationError))
+                            return
+                        }
+                        observer(.error(error))
+                        return
                     }
+                    observer(.success(result.user))
                 })
                 return Disposables.create()
             }
