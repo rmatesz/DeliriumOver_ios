@@ -238,11 +238,12 @@
                         <barButtonItem key="rightBarButtonItem" title="Settings" image="person.fill" catalog="system" id="YhA-B5-oDM">
                             <color key="tintColor" red="0.25098039220000001" green="0.42352941179999998" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
-                                <segue destination="hid-Fu-kKo" kind="presentation" id="Vdg-8J-X65"/>
+                                <segue destination="hid-Fu-kKo" kind="presentation" identifier="ShowSessionForm" id="Vdg-8J-X65"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addDrinkBtn" destination="hdu-7M-S63" id="Mqa-Fl-qHu"/>
                         <outlet property="alcoholEliminationDate" destination="At6-Zq-E6h" id="Eij-LA-nch"/>
                         <outlet property="alcoholEliminationTime" destination="DKS-8r-8uB" id="GE5-OU-ZKw"/>
                         <outlet property="bacLevel" destination="LDL-gb-vjJ" id="GEn-6X-FlY"/>
@@ -343,7 +344,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Settings" image="person.fill" catalog="system" id="MIZ-J2-RdV">
                             <color key="tintColor" red="0.25098039220000001" green="0.42352941179999998" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
-                                <segue destination="hid-Fu-kKo" kind="presentation" id="idX-OA-TC7"/>
+                                <segue destination="hid-Fu-kKo" kind="presentation" identifier="ShowSessionForm" id="idX-OA-TC7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

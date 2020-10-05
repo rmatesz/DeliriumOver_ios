@@ -16,7 +16,7 @@ class ReportsOverviewSwinject {
         }
         
         defaultContainer.register(ReportOverviewViewModel.self) { (resolver) -> ReportOverviewViewModel in
-            ReportOverviewViewModelImpl(interactor: resolver.resolve(ReportOverviewInteractor.self)!)
+            ReportOverviewViewModelImpl(interactor: resolver.resolve(ReportOverviewInteractor.self)!, onboardingManager: resolver.resolve(OnboardingManager.self)!)
         }
         
         defaultContainer.register(ReportOverviewInteractor.self) { (resolver) -> ReportOverviewInteractor in

@@ -13,7 +13,6 @@ import SwinjectStoryboard
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
     private var notificationScheduler: NotificationScheduler!
     private var autoSessionOpener: AutoSessionOpenerImpl!

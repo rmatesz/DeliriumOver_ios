@@ -12,6 +12,7 @@ import CoreData
 import RxSwift
 import FirebaseDatabase
 import FirebaseAuth
+import MaterialTapTargetPrompt_iOS
 import SwinjectStoryboard
 import KxMenu
 
@@ -29,6 +30,7 @@ class ReportsOverviewViewController: UIViewController {
     @IBOutlet weak var edit: UIButton!
     @IBOutlet weak var save: UIButton!
     @IBOutlet weak var chart: LineChartView!
+    @IBOutlet weak var addDrinkBtn: UIButton!
     @IBOutlet var emptyState: [UIView]!
     @IBOutlet var contentState: [UIView]!
     weak var test: UILabel!
@@ -58,6 +60,10 @@ class ReportsOverviewViewController: UIViewController {
             menuItems.append(MenuItem(title: "Add new...", entity: nil))
             return menuItems
         }.subscribe { self.updateAddMenuItems(menuItems: $0) }.disposed(by: disposeBag)
+        viewModel.onboardingTrigger
+            .filter { !$0.isEmpty }
+            .subscribe { onboarding in self.displayOnboarding(onboarding[0]) }
+            .disposed(by: disposeBag)
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -109,7 +115,47 @@ class ReportsOverviewViewController: UIViewController {
         }
         return LineChartDataSet(entries: entries, label: stat.name)
     }
-    
+
+    private func displayOnboarding(_ onboarding: OnboardingManager.Onboarding) {
+        switch onboarding {
+        case .setupSessionData:
+            performSegue(withIdentifier: "ShowSessionForm", sender: self)
+            viewModel.setOnboardingDone(onboarding)
+        case .disclaimer:
+            let alert = UIAlertController(title: "Delirium Over!", message: "The data displayed by the application is informational. All measurements are an average for a healthy (healthy liver) person. It highly depends on the actual state of mind, emptyness of stomach and drinking habits. If you'd like to drive, wait more than the displayed degradation time, before you can safely sit in the car.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { _ in
+                self.viewModel.setOnboardingDone(onboarding)
+            }))
+            present(alert, animated: true, completion: nil)
+        case .manageConsumptions:
+            let targetView = (tabBarController?.tabBar.subviews.filter { String(describing: $0).contains("UITabBarButton") })![1]
+            let tapTargetPrompt = MaterialTapTargetPrompt(target: targetView)
+            tapTargetPrompt.action = {
+                self.viewModel.setOnboardingDone(onboarding)
+                self.tabBarController?.selectedIndex = 1
+            }
+            tapTargetPrompt.dismissed = {
+                self.viewModel.setOnboardingDone(onboarding)
+            }
+            tapTargetPrompt.circleColor = UIColor(red: 0.204, green: 0.467, blue: 0.396, alpha: 1)
+            tapTargetPrompt.primaryText = ""
+            tapTargetPrompt.secondaryText = "You can always check and manage your previously registered consumptions"
+            tapTargetPrompt.textPostion = .centerTop
+        case .addConsumption:
+            let tapTargetPrompt = MaterialTapTargetPrompt(target: addDrinkBtn)
+            tapTargetPrompt.action = {
+                self.viewModel.setOnboardingDone(onboarding)
+                self.addDrinkBtn.sendActions(for: .touchUpInside)
+            }
+            tapTargetPrompt.dismissed = {
+                self.viewModel.setOnboardingDone(onboarding)
+            }
+            tapTargetPrompt.circleColor = UIColor(red: 0.204, green: 0.467, blue: 0.396, alpha: 1)
+            tapTargetPrompt.primaryText = "Start adding consumptions"
+            tapTargetPrompt.secondaryText = "You can add new consumption any time"
+            tapTargetPrompt.textPostion = .topLeft
+        }
+    }
 }
 
 extension ReportsOverviewViewController {

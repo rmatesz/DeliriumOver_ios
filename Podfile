@@ -16,6 +16,7 @@ target "DeliriumOver" do
     pod 'SwinjectStoryboard'
     pod 'Charts'
     pod 'SwiftLint'
+    pod 'MaterialTapTargetPrompt-iOS'
 end
 
 target 'DeliriumOverTests' do
