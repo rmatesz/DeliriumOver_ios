@@ -21,7 +21,7 @@ class ReportsOverviewViewController: UIViewController {
     private static let timeFormatter = DateFormatter().apply { $0.dateFormat = "HH:mm" }
     var viewModel: ReportOverviewViewModel!
     private var disposeBag: DisposeBag!
-    private var addMenuItems = [AddMenuItem]()
+    private var addConsumptionDecorator: AddConsumptionDecorator?
     
     @IBOutlet weak var alcoholEliminationDate: UILabel!
     @IBOutlet weak var alcoholEliminationTime: UILabel!
@@ -37,6 +37,7 @@ class ReportsOverviewViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         disposeBag = DisposeBag()
+        addConsumptionDecorator = AddConsumptionDecorator(viewController: self, viewModel: viewModel)
         viewModel.bacLevel.map { String(format: "%1.2f ‰", $0) }
             .bind(to: bacLevel.rx.text).disposed(by: disposeBag)
         viewModel.sessionTitle.bind(to: sessionTitle.rx.text).disposed(by: disposeBag)
@@ -53,13 +54,6 @@ class ReportsOverviewViewController: UIViewController {
             viewModel.chartData.map { $0.filter { !$0.data.isEmpty }.isEmpty }
                 .bind(to: view.rx.isHidden).disposed(by: disposeBag)
         }
-        viewModel.drinks.map {
-            var menuItems = $0.map { (drink) -> MenuItem in
-                MenuItem(title: drink.name, entity: drink)
-            }
-            menuItems.append(MenuItem(title: "Add new...", entity: nil))
-            return menuItems
-        }.subscribe { self.updateAddMenuItems(menuItems: $0) }.disposed(by: disposeBag)
         viewModel.onboardingTrigger
             .filter { !$0.isEmpty }
             .subscribe { onboarding in self.displayOnboarding(onboarding[0]) }
@@ -67,9 +61,10 @@ class ReportsOverviewViewController: UIViewController {
     }
 
     override func viewDidDisappear(_ animated: Bool) {
+        addConsumptionDecorator = nil
         disposeBag = nil
     }
-    
+
     @IBAction func onEditBtnClicked() {
         startTitleEditing()
     }
@@ -156,49 +151,14 @@ class ReportsOverviewViewController: UIViewController {
             tapTargetPrompt.textPostion = .topLeft
         }
     }
-}
-
-extension ReportsOverviewViewController {
-
-    private func updateAddMenuItems(menuItems: [MenuItem]) {
-        addMenuItems = menuItems.map({ (menuItem) -> AddMenuItem in
-            AddMenuItem(menuItem, image: UIImage.init(), target: self, action: #selector(onAddItemSelected(_:)))
-        })
-    }
 
     @IBAction func onAddClicked(_ sender: UIButton) {
-        if (addMenuItems.isEmpty) {
-            performSegue(withIdentifier: "ShowConsumptionForm", sender: self)
-        } else {
-            KxMenu.show(in: self.view.window,
-                        from: CGRect(x: sender.frame.origin.x,
-                                     y: sender.frame.origin.y,
-                                     width: sender.frame.width,
-                                     height: sender.frame.height),
-                        menuItems: addMenuItems)
-        }
+        addConsumptionDecorator?.addConsumption(sender: sender)
     }
+}
 
-    @objc private func onAddItemSelected(_ sender: AddMenuItem) {
-        guard let drink = sender.menuItem.entity as? Drink else {
-            performSegue(withIdentifier: "ShowConsumptionForm", sender: self)
-            return
-        }
-
-        viewModel.addDrinkAsConsumption(drink: drink)
-            .subscribe()
-            .disposed(by: disposeBag)
-    }
-
-    class AddMenuItem: KxMenuItem {
-        let menuItem: MenuItem
-        init(_ menuItem: MenuItem, image: UIImage!, target: AnyObject, action: Selector) {
-            self.menuItem = menuItem
-            super.init()
-            super.title = menuItem.title
-            super.image = image
-            super.target = target
-            super.action = action
-        }
+extension ReportsOverviewViewController: AddConsumptionViewController {
+    func openAddConsumptionForm() {
+        performSegue(withIdentifier: "ShowConsumptionForm", sender: self)
     }
 }

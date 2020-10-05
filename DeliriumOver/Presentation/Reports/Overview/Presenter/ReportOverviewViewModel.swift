@@ -10,7 +10,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-protocol ReportOverviewViewModel {
+protocol ReportOverviewViewModel: AddConsumptionViewModel {
     var bacLevel: BehaviorRelay<Float> { get }
     var alcoholEliminationDate: BehaviorRelay<Date> { get }
     var sessionTitle: BehaviorRelay<String> { get }

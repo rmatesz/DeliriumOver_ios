@@ -8,7 +8,10 @@ protocol ILogger {
 fileprivate var loggers: [ILogger] = []
 
 class Logger {
-    private init() { }
+    private init() {
+        // contains only static functions
+        // so therefore an instance will be never initiatated
+    }
 
     static func e(tag: String? = nil, category: String? = nil, message: String? = nil, error: Error? = nil) {
         log(logLevel: .ERROR, tag: tag, category: category, message: message, error: error)
@@ -40,7 +43,9 @@ class Logger {
 class OsLogLogger: ILogger {
     static let instance = OsLogLogger()
 
-    private init() { }
+    private init() {
+        // has no state. initializer needed only because of visibility
+    }
 
     func handleLog(logLevel: LogLevel, tag: String?, category: String?, message: String?, error: Error?) {
         let log = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "DeliriumOver/\(category)")

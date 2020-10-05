@@ -22,9 +22,9 @@ class FirebaseCommunicator {
     func getSessions(shareKey: String) -> Observable<[Session]> {
         return firebaseAuthentication.authenticate()
             .asObservable()
-            .flatMap({ (user) -> Observable<[Session]> in
+            .flatMap { _ -> Observable<[Session]> in
                 self.firebaseSessionDatabase.loadData(shareKey: shareKey)
-            })
+            }
     }
 
     func updateSessions(sessions: [Session]) {
@@ -34,16 +34,26 @@ class FirebaseCommunicator {
                     !session.shareKey.isEmpty
                 })
                 for session in filteredSessions {
-                    self.firebaseSessionDatabase.update(session: session, shareKey: session.shareKey, userId: user.uid)
+                    self.firebaseSessionDatabase.update(
+                        session: session,
+                        shareKey: session.shareKey,
+                        userId: user.uid
+                    )
                         .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
                         .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-                        .subscribe(onCompleted: { }, onError: { (error) in
-                            // TODO: log
+                        .subscribe(onError: { (error) in
+                            Logger.w(tag: "FirebaseCommunicator",
+                                     category: "Firebase",
+                                     message: "Unable to update session to Firebase database",
+                                     error: error)
                         })
                         .disposed(by: self.disposeBag)
                 }
             }, onError: { (error) in
-                // TODO: log
+                Logger.w(tag: "FirebaseCommunicator",
+                         category: "Firebase",
+                         message: "Unable to authenticate to Firebase!",
+                         error: error)
             }).disposed(by: disposeBag)
     }
     

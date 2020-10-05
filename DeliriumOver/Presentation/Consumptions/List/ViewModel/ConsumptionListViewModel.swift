@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol ConsumptionListViewModel {
+protocol ConsumptionListViewModel: AddConsumptionViewModel {
     var drinks: BehaviorRelay<[Drink]> { get }
     var consumptions: BehaviorRelay<[Consumption]> { get }
 
@@ -44,10 +44,11 @@ class ConsumptionListViewModelImpl: ConsumptionListViewModel {
         interactor.delete(consumption: consumptions.value[index])
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler())
-            .subscribe(onCompleted: {
-                
-            }, onError: { (error) in
-                print(error)
+            .subscribe(onError: { (error) in
+                Logger.w(tag: "ConsumptionList",
+                         category: "ViewModel",
+                         message: "Unable to delete consumption!",
+                         error: error)
             })
             .disposed(by: disposeBag)
     }

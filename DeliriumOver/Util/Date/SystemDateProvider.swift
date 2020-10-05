@@ -14,6 +14,4 @@ class SystemDateProvider: DateProvider {
             return Date()
         }
     }
-    
-    public init() {}
 }
