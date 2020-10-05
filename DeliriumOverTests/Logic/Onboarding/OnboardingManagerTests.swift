@@ -43,7 +43,7 @@ class OnboardingManagerTests: XCTestCase {
         disposable.dispose()
 
         waitForExpectations(timeout: 2) { (error) in
-            guard let error = error else { return }
+            guard error != nil else { return }
             assertionFailure("expectation has not been fullfilled")
         }
     }
