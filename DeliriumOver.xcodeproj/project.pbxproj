@@ -88,6 +88,7 @@
 		801EF405252BB4200036A678 /* OnboardingManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801EF404252BB41F0036A678 /* OnboardingManagerTests.swift */; };
 		801EF40A252C5AD50036A678 /* MaybeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801EF409252C5AD30036A678 /* MaybeExtensions.swift */; };
 		801EF40F252C5B1D0036A678 /* CompletableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801EF40E252C5B1D0036A678 /* CompletableExtensions.swift */; };
+		801EF417252CFCCC0036A678 /* NumberPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801EF416252CFCCB0036A678 /* NumberPickerSheet.swift */; };
 		80239DE305DE6FE952994E34 /* Pods_DeliriumOverTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C99880F8C752445999952D /* Pods_DeliriumOverTests.framework */; };
 		802ABAF423325DEA00DE0306 /* ConsumptionFormRouterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802ABAF323325DEA00DE0306 /* ConsumptionFormRouterImpl.swift */; };
 		8038257025090D9200F9C81E /* LoggingSwinject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038256F25090D9200F9C81E /* LoggingSwinject.swift */; };
@@ -258,6 +259,7 @@
 		801EF404252BB41F0036A678 /* OnboardingManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingManagerTests.swift; sourceTree = "<group>"; };
 		801EF409252C5AD30036A678 /* MaybeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaybeExtensions.swift; sourceTree = "<group>"; };
 		801EF40E252C5B1D0036A678 /* CompletableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletableExtensions.swift; sourceTree = "<group>"; };
+		801EF416252CFCCB0036A678 /* NumberPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerSheet.swift; sourceTree = "<group>"; };
 		802ABAF323325DEA00DE0306 /* ConsumptionFormRouterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionFormRouterImpl.swift; sourceTree = "<group>"; };
 		8038256F25090D9200F9C81E /* LoggingSwinject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingSwinject.swift; sourceTree = "<group>"; };
 		80395D66232660A8008120A6 /* HasApply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasApply.swift; sourceTree = "<group>"; };
@@ -879,6 +881,7 @@
 				80D4B8E4232F918D001E8ABF /* QuantityPickerSheet.xib */,
 				80D4B8E6232F93B4001E8ABF /* QuantityPickerSheet.swift */,
 				80D45ACF2399171800D999D9 /* LoadingIndicator.xib */,
+				801EF416252CFCCB0036A678 /* NumberPickerSheet.swift */,
 			);
 			path = Widget;
 			sourceTree = "<group>";
@@ -1507,6 +1510,7 @@
 				8000E40825120182000612C3 /* NotificationScheduler.swift in Sources */,
 				801EF3D7252B442A0036A678 /* OnboardingManager.swift in Sources */,
 				800120D724F522D9002BA889 /* SessionFormViewModelImpl.swift in Sources */,
+				801EF417252CFCCC0036A678 /* NumberPickerSheet.swift in Sources */,
 				801EF387252755F00036A678 /* FirebaseCommunicator.swift in Sources */,
 				429893B62202265200460356 /* DateProvider.swift in Sources */,
 				8000E4162517EBA4000612C3 /* AutoSessionOpener.swift in Sources */,

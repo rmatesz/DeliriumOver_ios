@@ -9,38 +9,17 @@
 import Foundation
 import UIKit
 
-class QuantityPickerSheet<Unit: CustomStringConvertible>: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
+class QuantityPickerSheet<Unit: CustomStringConvertible>: NumberPickerSheetBase, UIPickerViewDelegate, UIPickerViewDataSource {
+    override var xibFilename: String { "QuantityPickerSheet" }
     
     @IBOutlet weak var numberPicker: UIPickerView!
-    var onQuantitySelected: ((Double, Unit) -> ())?
-    var onApplyClicked: (() -> ())?
+    var onQuantitySelected: ((Double, Unit) -> Void)?
+    var onApplyClicked: (() -> Void)?
     var minimum: Double = 0.0
     var maximum: Double = 100.0
     var step: Double = 0.1
     var unit: [Unit] = []
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        initializeSubviews()
-    }
-    
-    convenience init() {
-        self.init(frame: CGRect(x: 0, y: 0, width: 0, height: 240))
-        initializeSubviews()
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        initializeSubviews()
-    }
-    
-    func initializeSubviews() {
-        let xibFileName = "QuantityPickerSheet" // xib extention not included
-        let view = Bundle.main.loadNibNamed(xibFileName, owner: self, options: nil)![0] as! UIView
-        self.addSubview(view)
-        view.frame = self.bounds
-    }
-    
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return unit.isEmpty ? 1 : 2
     }
@@ -52,7 +31,7 @@ class QuantityPickerSheet<Unit: CustomStringConvertible>: UIView, UIPickerViewDe
             return unit.count
         }
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if (component == 0) {
             return String(format:"%.1f", minimum + step * Double(row))
@@ -60,21 +39,19 @@ class QuantityPickerSheet<Unit: CustomStringConvertible>: UIView, UIPickerViewDe
             return unit[row].description
         }
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         notifyQuantitySelected()
     }
-    
+
     @IBAction func onApplyBtnClicked() {
         notifyQuantitySelected()
         onApplyClicked?()
     }
-    
+
     private func notifyQuantitySelected() {
         let quantity = minimum + Double(numberPicker.selectedRow(inComponent: 0)) * step
         let unit = self.unit[numberPicker.selectedRow(inComponent: 1)]
         onQuantitySelected?(quantity, unit)
     }
 }
-
-
