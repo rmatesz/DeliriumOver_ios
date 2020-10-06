@@ -118,7 +118,7 @@ class ConsumptionDAOTests : XCTestCase {
 
         do {
             _ = try underTest.getAll(sessionId: sessionId).toBlocking().first()
-            assertionFailure("Error should be thrown")
+            XCTFail()
         } catch let e {
             XCTAssertEqual(error, e as! String)
         }
@@ -136,7 +136,7 @@ class ConsumptionDAOTests : XCTestCase {
     func testGetWhenInvalidObjectID() throws {
         do {
             _ = try underTest.get("id1<Str>").toBlocking().first()
-            assertionFailure("Error should be thrown")
+            XCTFail()
         } catch {
             XCTAssertEqual(DatabaseError(message: "Invalid objectID: id1<Str>"), error as! DatabaseError)
         }
@@ -162,7 +162,7 @@ class ConsumptionDAOTests : XCTestCase {
 
         do {
             _ = try underTest.get(id1Str).toBlocking().first()
-            assertionFailure("Error should be thrown")
+            XCTFail()
         } catch let e {
             XCTAssertEqual(error, e as! String)
         }
@@ -179,7 +179,7 @@ class ConsumptionDAOTests : XCTestCase {
 
         do {
             _ = try underTest.get(id1Str).toBlocking().first()
-            assertionFailure("Error should be thrown")
+            XCTFail()
         } catch {
             XCTAssertEqual(DatabaseError(message: "The id(\(id1Str) doesn't represent the expected entity \(ConsumptionEntity.Type.self). The returned object is: \(invalidEntity)"), error as! DatabaseError)
         }
@@ -204,7 +204,7 @@ class ConsumptionDAOTests : XCTestCase {
     func testDeleteWhenInvalidObjectID() throws {
         do {
             _ = try underTest.delete(consumptions: Consumption("id1<Str>")).toBlocking().first()
-            assertionFailure("Error should be thrown")
+            XCTFail()
         } catch {
             XCTAssertEqual(DatabaseError(message: "Invalid objectID: id1<Str>"), error as! DatabaseError)
         }
@@ -234,7 +234,7 @@ class ConsumptionDAOTests : XCTestCase {
 
         do {
             _ = try underTest.delete(consumptions: consumption1).toBlocking().first()
-            assertionFailure("Error should be thrown")
+            XCTFail()
         } catch let e {
             XCTAssertEqual(error, e as! String)
         }
@@ -251,7 +251,7 @@ class ConsumptionDAOTests : XCTestCase {
 
         do {
             _ = try underTest.delete(consumptions: consumption1).toBlocking().first()
-            assertionFailure("Error should be thrown")
+            XCTFail()
         } catch {
             XCTAssertEqual(DatabaseError(message: "The id(\(id1Str) doesn't represent the expected entity \(ConsumptionEntity.Type.self). The returned object is: \(invalidEntity)"), error as! DatabaseError)
         }
@@ -268,7 +268,8 @@ class ConsumptionDAOTests : XCTestCase {
             mock.save().thenThrow(error)
         }
         do {
-        _ = try underTest.delete(consumptions: consumption1).toBlocking().toArray()
+            _ = try underTest.delete(consumptions: consumption1).toBlocking().toArray()
+            XCTFail()
         } catch let e {
             XCTAssertEqual(error, e as! String)
         }
@@ -312,7 +313,8 @@ class ConsumptionDAOTests : XCTestCase {
             mock.save().thenDoNothing()
         }
         do {
-        _ = try underTest.insert(sessionId: sessionId, consumption: consumption1).toBlocking().toArray()
+            _ = try underTest.insert(sessionId: sessionId, consumption: consumption1).toBlocking().toArray()
+            XCTFail()
         } catch let e {
             XCTAssertEqual(error, e as! String)
         }
@@ -332,7 +334,8 @@ class ConsumptionDAOTests : XCTestCase {
             mock.save().thenDoNothing()
         }
         do {
-        _ = try underTest.insert(sessionId: sessionId, consumption: consumption1).toBlocking().toArray()
+            _ = try underTest.insert(sessionId: sessionId, consumption: consumption1).toBlocking().toArray()
+            XCTFail()
         } catch let e {
             XCTAssertEqual(error, e as! String)
         }
@@ -352,7 +355,8 @@ class ConsumptionDAOTests : XCTestCase {
             mock.save().thenThrow(error)
         }
         do {
-        _ = try underTest.insert(sessionId: sessionId, consumption: consumption1).toBlocking().toArray()
+            _ = try underTest.insert(sessionId: sessionId, consumption: consumption1).toBlocking().toArray()
+            XCTFail()
         } catch let e {
             XCTAssertEqual(error, e as! String)
         }

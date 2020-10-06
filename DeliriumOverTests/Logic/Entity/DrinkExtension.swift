@@ -17,7 +17,7 @@ class DrinkArray : Equatable {
         self.data = data
     }
     
-    public static func ==(lhs: DrinkArray, rhs: DrinkArray) -> Bool {
+    public static func == (lhs: DrinkArray, rhs: DrinkArray) -> Bool {
         if (lhs.data.count != rhs.data.count) {
             return false
         }

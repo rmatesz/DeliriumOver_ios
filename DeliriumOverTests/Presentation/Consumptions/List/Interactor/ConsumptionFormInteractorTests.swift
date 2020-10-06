@@ -48,7 +48,7 @@ class ConsumptionFormInteractorTests: XCTestCase {
             _ = try underTest.loadDrinks().toBlocking().single()
 
             // THEN
-            assertionFailure("Error should be thrown")
+            XCTFail()
         } catch let e {
             // THEN
             XCTAssertEqual(error, e as! String)
@@ -103,9 +103,9 @@ class ConsumptionFormInteractorTests: XCTestCase {
         // WHEN
         do {
             _ = try underTest.saveConsumption(drink: "Beer", alcohol: 0.053, quantity: 5.1, unit: .deciliter).toBlocking().toArray()
-            assertionFailure("Error should be thrown!")
+            XCTFail()
         } catch {
-            assert(error is RepositoryError)
+            XCTAssert(error is RepositoryError)
         }
     }
 
@@ -119,9 +119,9 @@ class ConsumptionFormInteractorTests: XCTestCase {
         // WHEN
         do {
             _ = try underTest.saveConsumption(drink: "Beer", alcohol: 0.053, quantity: 5.1, unit: .deciliter).toBlocking().toArray()
-            assertionFailure("Error should be thrown!")
+            XCTFail()
         } catch {
-            assert(error is RepositoryError)
+            XCTAssert(error is RepositoryError)
         }
     }
 
@@ -138,7 +138,7 @@ class ConsumptionFormInteractorTests: XCTestCase {
         // WHEN
         do {
             _ = try underTest.saveConsumption(drink: "Beer", alcohol: 0.053, quantity: 5.1, unit: .deciliter).toBlocking().toArray()
-            assertionFailure("Error should be thrown!")
+            XCTFail()
         } catch let e {
             XCTAssertEqual(error, e as! String)
         }

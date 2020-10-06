@@ -59,10 +59,7 @@ class FirebaseSessionDatabaseTests: XCTestCase {
         successfulHandler.value!(MockDataSnapshot(mockData: [sessionId:session]))
 
         verify(shareKeyNode).keepSynced(true)
-        waitForExpectations(timeout: 2) { (error) in
-            if error == nil { return }
-            assertionFailure("Session has not been emitted in time")
-        }
+        waitForExpectations(timeout: 2)
     }
 
     func testLoadDataWhenShareKeyIsEmpty() throws {
@@ -94,10 +91,7 @@ class FirebaseSessionDatabaseTests: XCTestCase {
         successfulHandler.value!(MockDataSnapshot(mockData: [sessionId:session,sessionId2:session2]))
 
         verify(shareKeyNode).keepSynced(true)
-        waitForExpectations(timeout: 2) { (error) in
-            if error == nil { return }
-            assertionFailure("Session has not been emitted in time")
-        }
+        waitForExpectations(timeout: 2)
     }
 
     func testLoadDataDoesNotEmitAfterDisposed() throws {
@@ -116,7 +110,7 @@ class FirebaseSessionDatabaseTests: XCTestCase {
                 XCTAssertEqual([self.session], result)
                 counter = counter + 1
             } else {
-                assertionFailure("Already disposed!")
+                XCTFail("Already disposed!")
             }
         }, onDisposed: { sessionEmitted.fulfill() })
         successfulHandler.value!(MockDataSnapshot(mockData: [sessionId:session]))
@@ -124,10 +118,7 @@ class FirebaseSessionDatabaseTests: XCTestCase {
         successfulHandler.value!(MockDataSnapshot(mockData: [sessionId:session,sessionId2:session2]))
 
         verify(shareKeyNode).keepSynced(true)
-        waitForExpectations(timeout: 2) { (error) in
-            if error == nil { return }
-            assertionFailure("Session has not been emitted in time")
-        }
+        waitForExpectations(timeout: 2)
     }
 
     func testLoadDataWhenError() throws {
@@ -149,10 +140,7 @@ class FirebaseSessionDatabaseTests: XCTestCase {
         cancelHandler.value!!(error)
 
         verify(shareKeyNode).keepSynced(true)
-        waitForExpectations(timeout: 2) { (error) in
-            if error == nil { return }
-            assertionFailure("Session has not been emitted in time")
-        }
+        waitForExpectations(timeout: 2)
     }
 
     func testLoadDataWhenInvalidDataReturnedFromDB() throws {
@@ -172,10 +160,7 @@ class FirebaseSessionDatabaseTests: XCTestCase {
         successfulHandler.value!(MockDataSnapshot(mockData: [sessionId,session]))
 
         verify(shareKeyNode).keepSynced(true)
-        waitForExpectations(timeout: 2) { (error) in
-            if error == nil { return }
-            assertionFailure("Session has not been emitted in time")
-        }
+        waitForExpectations(timeout: 2)
     }
 
     // update
@@ -198,10 +183,7 @@ class FirebaseSessionDatabaseTests: XCTestCase {
         verify(userNode).setValue(sessionCaptor.capture(), withCompletionBlock: completionHandler.capture())
         XCTAssertEqual(session, sessionCaptor.value!! as! Session)
 
-        waitForExpectations(timeout: 2) { (error) in
-            if error == nil { return }
-            assertionFailure("Emission has not happened in time")
-        }
+        waitForExpectations(timeout: 2)
     }
 
     func testUpdateWhenError() {
@@ -225,10 +207,7 @@ class FirebaseSessionDatabaseTests: XCTestCase {
         verify(userNode).setValue(sessionCaptor.capture(), withCompletionBlock: completionHandler.capture())
         XCTAssertEqual(session, sessionCaptor.value!! as! Session)
 
-        waitForExpectations(timeout: 2) { (error) in
-            if error == nil { return }
-            assertionFailure("Emission has not happened in time")
-        }
+        waitForExpectations(timeout: 2)
     }
 
     // getMinVersionForShare
@@ -251,10 +230,7 @@ class FirebaseSessionDatabaseTests: XCTestCase {
 
         successfulHandler.value!(MockDataSnapshot(mockData: version))
 
-        waitForExpectations(timeout: 2) { (error) in
-            if error == nil { return }
-            assertionFailure("Emission has not happened in time")
-        }
+        waitForExpectations(timeout: 2)
     }
 
     func testGetMinVersionForShareWhenError() {
@@ -276,10 +252,7 @@ class FirebaseSessionDatabaseTests: XCTestCase {
 
         cancelHandler.value!!(error)
 
-        waitForExpectations(timeout: 2) { (error) in
-            if error == nil { return }
-            assertionFailure("Emission has not happened in time")
-        }
+        waitForExpectations(timeout: 2)
     }
 }
 

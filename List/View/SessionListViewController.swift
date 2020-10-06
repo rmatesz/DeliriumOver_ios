@@ -47,10 +47,4 @@ class SessionListViewController : UITableViewController, SessionListView {
         
         return cell
     }
-    
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            presenter?.onConsumptionSwiped(index: indexPath.row)
-//        }
-//    }
 }

@@ -30,10 +30,6 @@ class FirebaseDatabaseReference: DatabaseReference {
     override func setValue(_ value: Any?, withCompletionBlock block: @escaping (Error?, DatabaseReference) -> Void) {
         super.setValue(value, withCompletionBlock: block)
     }
-
-//    override func setValue(_ value: Any?, withCompletionBlock block: @escaping (Error?, DatabaseReference) -> Void) {
-//        super.setValue(value, withCompletionBlock: block)
-//    }
 }
 
 class MockDataSnapshot: DataSnapshot {

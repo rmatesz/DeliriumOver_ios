@@ -37,17 +37,20 @@ class FirebaseCommunicatorTests: XCTestCase {
 
     func testGetSessionsWhenAuthenticationError() throws {
         let shareKey = "SHAREKEY"
-        let userId = "UserId"
+        let error = "error"
         stub(firebaseAuthentication) { mock in
-            mock.authenticate().thenReturn(Single.just(FirebaseUser(forTest: true, uid: userId)))
+            mock.authenticate().thenReturn(Single.error(error))
         }
         stub(firebaseSessionDatabase) { mock in
             mock.loadData(shareKey: shareKey).thenReturn(Observable.from([[session1],[session1, session3]]))
         }
 
-        let result = try underTest.getSessions(shareKey: shareKey).toBlocking().toArray()
-
-        XCTAssertEqual([[session1], [session1, session3]], result)
+        do {
+            _ = try underTest.getSessions(shareKey: shareKey).toBlocking().toArray()
+            XCTFail()
+        } catch let e {
+            XCTAssertEqual(error, e as! String)
+        }
     }
 
     func testGetSessionsWhenLoadError() throws {
@@ -67,7 +70,7 @@ class FirebaseCommunicatorTests: XCTestCase {
 
         do {
             _ = try getSessions.toArray()
-            assertionFailure("error should be thrown")
+            XCTFail()
         } catch let e {
             XCTAssertEqual(error, e as! String)
         }
@@ -155,6 +158,7 @@ class FirebaseCommunicatorTests: XCTestCase {
 
         do {
             _ = try underTest.deleteSession(shareKey: shareKey).toBlocking().toArray()
+            XCTFail()
         } catch let e {
             XCTAssertEqual(error, e as! String)
         }
@@ -176,6 +180,7 @@ class FirebaseCommunicatorTests: XCTestCase {
 
         do {
             _ = try underTest.deleteSession(shareKey: shareKey).toBlocking().toArray()
+            XCTFail()
         } catch let e {
             XCTAssertEqual(error, e as! String)
         }
@@ -198,6 +203,7 @@ class FirebaseCommunicatorTests: XCTestCase {
         }
         do {
             _ = try underTest.loadMinVersionForShare().toBlocking().single()
+            XCTFail()
         } catch let e {
             XCTAssertEqual(error, e as! String)
         }

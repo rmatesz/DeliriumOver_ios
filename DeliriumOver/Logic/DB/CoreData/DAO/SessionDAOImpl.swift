@@ -14,31 +14,10 @@ class SessionDAOImpl: DAOImpl, SessionDAO {
 
     func loadAll() -> Observable<[Session]> {
         return Observable<[Session]>.create { (observer) -> Disposable in
-            let fetch = { () -> [SessionEntity] in
-                let request = NSFetchRequest<NSFetchRequestResult>(entityName: "SessionEntity")
-                request.returnsObjectsAsFaults = false
-
-                let result = try super.context.fetch(request)
-                return result as! [SessionEntity]
-            }
-
-            let emit = {
-                DispatchQueue.main.async {
-                    do {
-                        let result = try fetch().map { (entity) -> Session in
-                            Session(sessionEntity: entity)
-                        }
-                        observer.onNext(result)
-                    } catch {
-                        observer.onError(error)
-                    }
-                }
-            }
-
-            emit()
+            self.emit(observer)
 
             let contextObserver = { (notification: Notification) in
-                emit()
+                self.emit(observer)
             }
 
             let contextObjectsDidChangeObserver = NotificationCenter.default.addObserver(forName: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil, queue: OperationQueue.current, using: contextObserver)
@@ -48,6 +27,27 @@ class SessionDAOImpl: DAOImpl, SessionDAO {
                 NotificationCenter.default.removeObserver(contextObjectsDidSaveObserver)
             }
         }.distinctUntilChanged()
+    }
+
+    private func emit(_ observer: AnyObserver<[Session]>) {
+        let fetch = { () -> [SessionEntity] in
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "SessionEntity")
+            request.returnsObjectsAsFaults = false
+
+            let result = try super.context.fetch(request)
+            return result as! [SessionEntity]
+        }
+
+        DispatchQueue.main.async {
+            do {
+                let result = try fetch().map { (entity) -> Session in
+                    Session(sessionEntity: entity)
+                }
+                observer.onNext(result)
+            } catch {
+                observer.onError(error)
+            }
+        }
     }
 
     func get(_ sessionId: String) -> Maybe<Session> {

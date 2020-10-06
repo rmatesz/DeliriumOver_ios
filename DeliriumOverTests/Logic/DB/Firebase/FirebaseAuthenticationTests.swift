@@ -45,10 +45,7 @@ class FirebaseAuthenticationTests: XCTestCase {
 
         completionHandler.value!!(FirebaseAuthDataResult(user: user), nil)
 
-        waitForExpectations(timeout: 2) { (error) in
-            if error == nil { return }
-            assertionFailure("Emission has not happened in time")
-        }
+        waitForExpectations(timeout: 2)
     }
 
     func testAuthenticateWhenNoResultAndNoError() {
@@ -68,10 +65,7 @@ class FirebaseAuthenticationTests: XCTestCase {
 
         completionHandler.value!!(nil, nil)
 
-        waitForExpectations(timeout: 2) { (error) in
-            if error == nil { return }
-            assertionFailure("Emission has not happened in time")
-        }
+        waitForExpectations(timeout: 2)
     }
 
     func testAuthenticateWhenError() {
@@ -92,9 +86,6 @@ class FirebaseAuthenticationTests: XCTestCase {
 
         completionHandler.value!!(nil, error)
 
-        waitForExpectations(timeout: 2) { (error) in
-            if error == nil { return }
-            assertionFailure("Emission has not happened in time")
-        }
+        waitForExpectations(timeout: 2)
     }
 }

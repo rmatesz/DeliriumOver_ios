@@ -46,10 +46,7 @@ class FirebaseDrinksDatabaseTests: XCTestCase {
 
         successfulHandler.value!(MockDataSnapshot(mockData: drinks))
 
-        waitForExpectations(timeout: 2) { (error) in
-            if error == nil { return }
-            assertionFailure("Emission has not happened in time")
-        }
+        waitForExpectations(timeout: 2)
     }
 
     func testGetDrinksWhenError() {
@@ -71,9 +68,6 @@ class FirebaseDrinksDatabaseTests: XCTestCase {
 
         cancelHandler.value!!(error)
 
-        waitForExpectations(timeout: 2) { (error) in
-            if error == nil { return }
-            assertionFailure("Emission has not happened in time")
-        }
+        waitForExpectations(timeout: 2)
     }
 }
