@@ -49,7 +49,7 @@ class NotificationScheduler {
 
                 self.notificationCenter.add(request, withCompletionHandler: { (error) in
                     if let error = error {
-                        // Something went wrong
+                        Logger.w(tag: "NotificationScheduler", category: "Notification", message: "Error when adding request to notification center!", error: error)
                     }
                 })
             }
@@ -61,7 +61,7 @@ class NotificationScheduler {
 
         notificationCenter.requestAuthorization(options: options) { (granted, error) in
             if !granted {
-                print("Something went wrong")
+                Logger.w(tag: "NotificationScheduler", category: "Notification", message: "Notification permission has not been granted!", error: error)
             }
         }
     }

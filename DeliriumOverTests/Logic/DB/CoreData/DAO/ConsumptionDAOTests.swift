@@ -361,63 +361,6 @@ class ConsumptionDAOTests : XCTestCase {
             XCTAssertEqual(error, e as! String)
         }
     }
-
-//    func testDeleteWhenInvalidObjectID() throws {
-//        do {
-//            _ = try underTest.delete(consumptions: Consumption("id1<Str>")).toBlocking().first()
-//            assertionFailure("Error should be thrown")
-//        } catch {
-//            XCTAssertEqual(DatabaseError(message: "Invalid objectID: id1<Str>"), error as! DatabaseError)
-//        }
-//    }
-//
-//    func testDeleteWhenObjectIDNotFound() throws {
-//        stub(persistentStoreCoordinator) { mock in
-//            mock.managedObjectID(forURIRepresentation: id1).thenReturn(nil)
-//        }
-//
-//        do{
-//            _ = try underTest.delete(consumptions: consumption1).toBlocking().first()
-//        } catch {
-//            XCTAssert(error is DatabaseError)
-//            XCTAssertEqual(DatabaseError(message: "Can't find consumption in DB."), error as! DatabaseError)
-//        }
-//    }
-//
-//    func testDeleteWhenGetExistingObjectFailure() throws {
-//        let error = "Database IO error"
-//        stub(persistentStoreCoordinator) { mock in
-//            mock.managedObjectID(forURIRepresentation: id1).thenReturn(consumptionId1)
-//        }
-//        stub(context) { mock in
-//            mock.existingObject(with: consumptionId1 as NSManagedObjectID).thenThrow(error)
-//        }
-//
-//        do {
-//            _ = try underTest.delete(consumptions: consumption1).toBlocking().first()
-//            assertionFailure("Error should be thrown")
-//        } catch let e {
-//            XCTAssertEqual(error, e as! String)
-//        }
-//    }
-//
-//    func testDeleteWhenGetExistingObjectReturnsInvalidEntity() throws {
-//        let invalidEntity = SessionEntity()
-//        stub(persistentStoreCoordinator) { mock in
-//            mock.managedObjectID(forURIRepresentation: id1).thenReturn(consumptionId1)
-//        }
-//        stub(context) { mock in
-//            mock.existingObject(with: consumptionId1 as NSManagedObjectID).thenReturn(invalidEntity)
-//        }
-//
-//        do {
-//            _ = try underTest.delete(consumptions: consumption1).toBlocking().first()
-//            assertionFailure("Error should be thrown")
-//        } catch {
-//            XCTAssertEqual(DatabaseError(message: "The id(\(id1Str) doesn't represent the expected entity \(ConsumptionEntity.Type.self). The returned object is: \(invalidEntity)"), error as! DatabaseError)
-//        }
-//    }
-
 }
 
 extension Date: OptionalMatchable { }

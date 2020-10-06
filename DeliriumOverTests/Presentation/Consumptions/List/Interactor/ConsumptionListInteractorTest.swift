@@ -64,13 +64,13 @@ class ConsumptionListInteractorImplTest: XCTestCase {
         }
     
         do {
-            let consumptions = try underTest!.loadConsumptions().toBlocking().first()
-            XCTAssertNil(consumptions)
+            _ = try underTest!.loadConsumptions().toBlocking().first()
+            XCTFail()
         } catch {
             if case SimpleError.error(let message) = error {
                 XCTAssertEqual("Session can't be loaded!", message)
             } else {
-                XCTFail("Invalid error type")
+                XCTFail("Invalid error type \(error)")
             }
         }
     }
@@ -106,7 +106,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
     
         do {
             _ = try underTest!.loadConsumptions().toBlocking().toArray()
-            XCTFail("Error have to be thrown!")
+            XCTFail()
         } catch {
             XCTAssertTrue(error is SimpleError)
             switch error as! SimpleError {
@@ -141,12 +141,12 @@ class ConsumptionListInteractorImplTest: XCTestCase {
     
         do {
             _ = try underTest!.delete(consumption: ConsumptionListInteractorImplTest.TEST_CONSUMPTION_1).toBlocking().toArray()
-            XCTFail("Error have to be thrown!")
+            XCTFail()
         } catch {
             if case SimpleError.error(let message) = error {
                 XCTAssertEqual(ConsumptionListInteractorImplTest.TEST_ERROR_MESSAGE, message)
             } else {
-                XCTFail("Invalid error type")
+                XCTFail("Invalid error type \(error)")
             }
         }
     
@@ -218,7 +218,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
             if case SimpleError.error(let message) = error {
                 XCTAssertEqual(ConsumptionListInteractorImplTest.TEST_ERROR_MESSAGE, message)
             } else {
-                XCTFail("Invalid error type")
+                XCTFail("Invalid error type \(error)")
             }
         }
     }

@@ -56,12 +56,6 @@ extension SessionFormViewController: UITextFieldDelegate {
         let candidate = (textField.safeText as NSString).replacingCharacters(in: range, with: string)
         let separator = formatter.decimalSeparator!
 
-        if candidate == "" { return true }
-
-        let isWellFormatted = candidate.range(of: "^[0-9]+([\(separator)][0-9]*)?$", options: .regularExpression) != nil
-
-        return isWellFormatted
+        return candidate.isEmpty || candidate.range(of: "^[0-9]+([\(separator)][0-9]*)?$", options: .regularExpression) != nil
     }
-
-
 }

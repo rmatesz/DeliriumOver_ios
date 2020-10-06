@@ -25,15 +25,22 @@ class ConsumptionFormInteractorImpl : ConsumptionFormInteractor {
     }
     
     func validateDrink(drink: String) -> ConsumptionFormValidationResult {
-        if (drink == "") { return ConsumptionFormValidationResult.EMPTY }
-        else { return ConsumptionFormValidationResult.SUCCESS }
+        if (drink.isEmpty) {
+            return ConsumptionFormValidationResult.EMPTY
+        } else {
+            return ConsumptionFormValidationResult.SUCCESS
+        }
     }
     
     func validateAlcohol(alcohol: Double?) -> ConsumptionFormValidationResult {
-        if (alcohol == nil) { return ConsumptionFormValidationResult.EMPTY }
-        else if (alcohol! < 0) { return ConsumptionFormValidationResult.NEGATIVE }
-        else if (alcohol == 0.0) { return ConsumptionFormValidationResult.ZERO }
-        else { return ConsumptionFormValidationResult.SUCCESS }
+        guard let alcohol = alcohol else {
+            return ConsumptionFormValidationResult.EMPTY
+        }
+        if (alcohol < 0) {
+            return ConsumptionFormValidationResult.NEGATIVE
+        } else if (alcohol == 0.0) {
+            return ConsumptionFormValidationResult.ZERO
+        } else { return ConsumptionFormValidationResult.SUCCESS }
     }
     
     func validateQuantity(quantity: Double?) -> ConsumptionFormValidationResult {
@@ -47,7 +54,7 @@ class ConsumptionFormInteractorImpl : ConsumptionFormInteractor {
             return ConsumptionFormValidationResult.SUCCESS
         }
     }
-    
+
     func resolveDate(currentDate: Date, newDate: Date) -> Date {
         let calendar = Calendar.init(identifier: Calendar.Identifier.gregorian)
 

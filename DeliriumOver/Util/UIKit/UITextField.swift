@@ -10,5 +10,7 @@ import Foundation
 import UIKit
 
 extension UITextField {
-    var safeText: String { get { return text ?? "" } }
+    var safeText: String {
+        return text ?? ""
+    }
 }

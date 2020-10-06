@@ -39,14 +39,12 @@ class SessionRepositoryImpl: SessionRepository {
                     session.shared && session.deviceId != self.deviceId
                 })
             }
-
-        //.map { it.filter { session -> session.shared && session.deviceId != deviceId } }
     }
-    
+
     func insert(session: Session) -> Single<String> {
         return sessionDAO.insert(session: session)
     }
-    
+
     func update(session: Session) -> Completable {
         return sessionDAO.update(session: session)
     }
@@ -65,6 +63,4 @@ class SessionRepositoryImpl: SessionRepository {
                 })!
         }
     }
-
-    
 }
