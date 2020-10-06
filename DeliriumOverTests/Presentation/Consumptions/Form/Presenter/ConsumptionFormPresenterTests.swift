@@ -220,7 +220,6 @@ class ConsumptionFormPresenterTests: XCTestCase {
 
         // THEN
         verify(interactor).saveConsumption(drink: drink, alcohol: alcohol / 100, quantity: quantity, unit: DrinkUnit.deciliter, date: date)
-//        verify(router).finish()
     }
 
     func testOnSaveClickedWhenDrinkNotSet() {
@@ -256,7 +255,6 @@ class ConsumptionFormPresenterTests: XCTestCase {
         // THEN
         verify(interactor, never()).saveConsumption(drink: any(), alcohol: any(), quantity: any(), unit: any(), date: any())
         verify(interactor, never()).saveConsumption(drink: any(), alcohol: any(), quantity: any(), unit: any())
-//        verify(router).finish()
     }
 
     func testOnSaveClickedWhenDateNotSet() {
@@ -289,7 +287,6 @@ class ConsumptionFormPresenterTests: XCTestCase {
 
         // THEN
         verify(interactor).saveConsumption(drink: drink, alcohol: alcohol / 100, quantity: quantity, unit: DrinkUnit.deciliter, date: now)
-//        verify(router).finish()
     }
 
 
@@ -325,7 +322,6 @@ class ConsumptionFormPresenterTests: XCTestCase {
         // THEN
         verify(interactor, never()).saveConsumption(drink: any(), alcohol: any(), quantity: any(), unit: any(), date: any())
         verify(interactor, never()).saveConsumption(drink: any(), alcohol: any(), quantity: any(), unit: any())
-//        verify(router).finish()
     }
 
     func testOnSaveClickedWhenQuantityNotSet() {
@@ -361,7 +357,6 @@ class ConsumptionFormPresenterTests: XCTestCase {
         // THEN
         verify(interactor, never()).saveConsumption(drink: any(), alcohol: any(), quantity: any(), unit: any(), date: any())
         verify(interactor, never()).saveConsumption(drink: any(), alcohol: any(), quantity: any(), unit: any())
-//        verify(router).finish()
     }
 
     func testOnSaveClickedWhenDrinkUnitNotSet() {
@@ -397,7 +392,6 @@ class ConsumptionFormPresenterTests: XCTestCase {
         // THEN
         verify(interactor, never()).saveConsumption(drink: any(), alcohol: any(), quantity: any(), unit: any(), date: any())
         verify(interactor, never()).saveConsumption(drink: any(), alcohol: any(), quantity: any(), unit: any())
-//        verify(router).finish()
     }
 }
 
