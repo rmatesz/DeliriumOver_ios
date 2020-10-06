@@ -16,33 +16,36 @@ class ConsumptionFormPresenterTests: XCTestCase {
     private let drink = "TEST DRINK"
     private let alcohol = 3.0
     private let quantity = 3.33
+    private let date = createDate(2020, 10, 11, 11, 30)
+    private let now = createDate(2020, 10, 10, 10, 30)
     private let router = MockConsumptionFormRouter()
     private let view = MockConsumptionFormView()
     private let interactor = MockConsumptionFormInteractor()
     private lazy var underTest = ConsumptionFormPresenterImpl(router: router, view: view, interactor: interactor)
 
-    func testLoadData() {
-        let now = createDate(2020, 10, 10, 10, 30)
+    override func setUp() {
         dateProvider = TestDateProvider(date: now)
-        stub(view) { mock in
-            when(mock.updateTime(any())).thenDoNothing()
-            when(mock.saveIsEnabled.set(any())).thenDoNothing()
+
+        stub(router) { mock in
+            mock.finish().thenDoNothing()
         }
 
+        stub(view) { mock in
+            mock.hideDrinkError().thenDoNothing()
+            mock.showDrinkError(any()).thenDoNothing()
+            mock.saveIsEnabled.set(any()).thenDoNothing()
+            mock.updateTime(any()).thenDoNothing()
+        }
+    }
+
+    func testLoadData() {
         underTest.loadData()
 
         verify(view).updateTime(now)
     }
 
     func testOnTimeChanged() {
-        let date = createDate(2020, 10, 11, 11, 30)
-        let now = createDate(2020, 10, 10, 10, 30)
         let resolvedDate = createDate(2020, 10, 12, 12, 30)
-        dateProvider = TestDateProvider(date: now)
-        stub(view) { mock in
-            when(mock.updateTime(any())).thenDoNothing()
-            when(mock.saveIsEnabled.set(any())).thenDoNothing()
-        }
         stub(interactor) { mock in
             when(mock.resolveDate(currentDate: now, newDate: date)).thenReturn(resolvedDate)
         }
@@ -56,10 +59,6 @@ class ConsumptionFormPresenterTests: XCTestCase {
         stub(interactor) { mock in
             when(mock.validateDrink(drink: drink)).thenReturn(ConsumptionFormValidationResult.SUCCESS)
         }
-        stub(view) { mock in
-            when(mock.hideDrinkError()).thenDoNothing()
-            when(mock.saveIsEnabled.set(any())).thenDoNothing()
-        }
 
         underTest.onDrinkChanged(drink)
 
@@ -69,10 +68,6 @@ class ConsumptionFormPresenterTests: XCTestCase {
     func testOnDrinkChangedToEmpty() {
         stub(interactor) { mock in
             when(mock.validateDrink(drink: drink)).thenReturn(ConsumptionFormValidationResult.EMPTY)
-        }
-        stub(view) { mock in
-            when(mock.showDrinkError(any())).thenDoNothing()
-            when(mock.saveIsEnabled.set(any())).thenDoNothing()
         }
 
         underTest.onDrinkChanged(drink)
@@ -84,10 +79,6 @@ class ConsumptionFormPresenterTests: XCTestCase {
         stub(interactor) { mock in
             when(mock.validateDrink(drink: drink)).thenReturn(ConsumptionFormValidationResult.ZERO)
         }
-        stub(view) { mock in
-            when(mock.showDrinkError(any())).thenDoNothing()
-            when(mock.saveIsEnabled.set(any())).thenDoNothing()
-        }
 
         underTest.onDrinkChanged(drink)
 
@@ -98,9 +89,6 @@ class ConsumptionFormPresenterTests: XCTestCase {
         stub(interactor) { mock in
             when(mock.validateAlcohol(alcohol: alcohol)).thenReturn(ConsumptionFormValidationResult.SUCCESS)
         }
-        stub(view) { mock in
-            when(mock.saveIsEnabled.set(any())).thenDoNothing()
-        }
 
         underTest.onAlcoholChanged(alcohol)
     }
@@ -109,19 +97,12 @@ class ConsumptionFormPresenterTests: XCTestCase {
         stub(interactor) { mock in
             when(mock.validateAlcohol(alcohol: alcohol)).thenReturn(ConsumptionFormValidationResult.NEGATIVE)
         }
-        stub(view) { mock in
-            when(mock.saveIsEnabled.set(any())).thenDoNothing()
-        }
-
         underTest.onAlcoholChanged(alcohol)
     }
 
     func testOnAlcoholChangedToZero() {
         stub(interactor) { mock in
             when(mock.validateAlcohol(alcohol: alcohol)).thenReturn(ConsumptionFormValidationResult.ZERO)
-        }
-        stub(view) { mock in
-            when(mock.saveIsEnabled.set(any())).thenDoNothing()
         }
 
         underTest.onAlcoholChanged(alcohol)
@@ -132,9 +113,6 @@ class ConsumptionFormPresenterTests: XCTestCase {
         stub(interactor) { mock in
             when(mock.validateAlcohol(alcohol: alcohol)).thenReturn(ConsumptionFormValidationResult.EMPTY)
         }
-        stub(view) { mock in
-            when(mock.saveIsEnabled.set(any())).thenDoNothing()
-        }
 
         underTest.onAlcoholChanged(alcohol)
     }
@@ -142,9 +120,6 @@ class ConsumptionFormPresenterTests: XCTestCase {
     func testOnQuantityChangedToValid() {
         stub(interactor) { mock in
             when(mock.validateQuantity(quantity: quantity)).thenReturn(ConsumptionFormValidationResult.SUCCESS)
-        }
-        stub(view) { mock in
-            when(mock.saveIsEnabled.set(any())).thenDoNothing()
         }
 
         underTest.onQuantityChanged(quantity)
@@ -154,9 +129,6 @@ class ConsumptionFormPresenterTests: XCTestCase {
         stub(interactor) { mock in
             when(mock.validateQuantity(quantity: quantity)).thenReturn(ConsumptionFormValidationResult.NEGATIVE)
         }
-        stub(view) { mock in
-            when(mock.saveIsEnabled.set(any())).thenDoNothing()
-        }
 
         underTest.onQuantityChanged(quantity)
     }
@@ -165,10 +137,6 @@ class ConsumptionFormPresenterTests: XCTestCase {
         stub(interactor) { mock in
             when(mock.validateQuantity(quantity: quantity)).thenReturn(ConsumptionFormValidationResult.ZERO)
         }
-        stub(view) { mock in
-            when(mock.saveIsEnabled.set(any())).thenDoNothing()
-        }
-
         underTest.onQuantityChanged(quantity)
     }
 
@@ -176,10 +144,6 @@ class ConsumptionFormPresenterTests: XCTestCase {
         stub(interactor) { mock in
             when(mock.validateQuantity(quantity: quantity)).thenReturn(ConsumptionFormValidationResult.EMPTY)
         }
-        stub(view) { mock in
-            when(mock.saveIsEnabled.set(any())).thenDoNothing()
-        }
-
         underTest.onQuantityChanged(quantity)
     }
 
@@ -189,24 +153,10 @@ class ConsumptionFormPresenterTests: XCTestCase {
 
     func testOnSaveClickedWhenEverythingSet() {
         // GIVEN
-        let date = createDate(2020, 10, 11, 11, 30)
-        let now = createDate(2020, 10, 10, 10, 30)
-        dateProvider = TestDateProvider(date: now)
-
         stub(interactor) { mock in
             mock.validateDrink(drink: drink).thenReturn(.SUCCESS)
             mock.resolveDate(currentDate: now, newDate: date).thenReturn(date)
             mock.saveConsumption(drink: any(), alcohol: any(), quantity: any(), unit: any(), date: any()).thenReturn(Completable.empty())
-        }
-
-        stub(view) { mock in
-            mock.hideDrinkError().thenDoNothing()
-            mock.saveIsEnabled.set(any()).thenDoNothing()
-            mock.updateTime(any()).thenDoNothing()
-        }
-
-        stub(router) { mock in
-            mock.finish().thenDoNothing()
         }
 
         underTest.onDrinkChanged(drink)
@@ -224,24 +174,10 @@ class ConsumptionFormPresenterTests: XCTestCase {
 
     func testOnSaveClickedWhenDrinkNotSet() {
         // GIVEN
-        let date = createDate(2020, 10, 11, 11, 30)
-        let now = createDate(2020, 10, 10, 10, 30)
-        dateProvider = TestDateProvider(date: now)
-
         stub(interactor) { mock in
             mock.validateDrink(drink: drink).thenReturn(.SUCCESS)
             mock.resolveDate(currentDate: now, newDate: date).thenReturn(date)
             mock.saveConsumption(drink: any(), alcohol: any(), quantity: any(), unit: any(), date: any()).thenReturn(Completable.empty())
-        }
-
-        stub(view) { mock in
-            mock.hideDrinkError().thenDoNothing()
-            mock.saveIsEnabled.set(any()).thenDoNothing()
-            mock.updateTime(any()).thenDoNothing()
-        }
-
-        stub(router) { mock in
-            mock.finish().thenDoNothing()
         }
 
         underTest.onAlcoholChanged(alcohol)
@@ -259,22 +195,9 @@ class ConsumptionFormPresenterTests: XCTestCase {
 
     func testOnSaveClickedWhenDateNotSet() {
         // GIVEN
-        let now = createDate(2020, 10, 10, 10, 30)
-        dateProvider = TestDateProvider(date: now)
-
         stub(interactor) { mock in
             mock.validateDrink(drink: drink).thenReturn(.SUCCESS)
             mock.saveConsumption(drink: any(), alcohol: any(), quantity: any(), unit: any(), date: any()).thenReturn(Completable.empty())
-        }
-
-        stub(view) { mock in
-            mock.hideDrinkError().thenDoNothing()
-            mock.saveIsEnabled.set(any()).thenDoNothing()
-            mock.updateTime(any()).thenDoNothing()
-        }
-
-        stub(router) { mock in
-            mock.finish().thenDoNothing()
         }
 
         underTest.onDrinkChanged(drink)
@@ -292,24 +215,10 @@ class ConsumptionFormPresenterTests: XCTestCase {
 
     func testOnSaveClickedWhenAlcoholNotSet() {
         // GIVEN
-        let date = createDate(2020, 10, 11, 11, 30)
-        let now = createDate(2020, 10, 10, 10, 30)
-        dateProvider = TestDateProvider(date: now)
-
         stub(interactor) { mock in
             mock.validateDrink(drink: drink).thenReturn(.SUCCESS)
             mock.resolveDate(currentDate: now, newDate: date).thenReturn(date)
             mock.saveConsumption(drink: any(), alcohol: any(), quantity: any(), unit: any(), date: any()).thenReturn(Completable.empty())
-        }
-
-        stub(view) { mock in
-            mock.hideDrinkError().thenDoNothing()
-            mock.saveIsEnabled.set(any()).thenDoNothing()
-            mock.updateTime(any()).thenDoNothing()
-        }
-
-        stub(router) { mock in
-            mock.finish().thenDoNothing()
         }
 
         underTest.onDrinkChanged(drink)
@@ -326,24 +235,10 @@ class ConsumptionFormPresenterTests: XCTestCase {
 
     func testOnSaveClickedWhenQuantityNotSet() {
         // GIVEN
-        let date = createDate(2020, 10, 11, 11, 30)
-        let now = createDate(2020, 10, 10, 10, 30)
-        dateProvider = TestDateProvider(date: now)
-
         stub(interactor) { mock in
             mock.validateDrink(drink: drink).thenReturn(.SUCCESS)
             mock.resolveDate(currentDate: now, newDate: date).thenReturn(date)
             mock.saveConsumption(drink: any(), alcohol: any(), quantity: any(), unit: any(), date: any()).thenReturn(Completable.empty())
-        }
-
-        stub(view) { mock in
-            mock.hideDrinkError().thenDoNothing()
-            mock.saveIsEnabled.set(any()).thenDoNothing()
-            mock.updateTime(any()).thenDoNothing()
-        }
-
-        stub(router) { mock in
-            mock.finish().thenDoNothing()
         }
 
         underTest.onDrinkChanged(drink)
@@ -361,24 +256,10 @@ class ConsumptionFormPresenterTests: XCTestCase {
 
     func testOnSaveClickedWhenDrinkUnitNotSet() {
         // GIVEN
-        let date = createDate(2020, 10, 11, 11, 30)
-        let now = createDate(2020, 10, 10, 10, 30)
-        dateProvider = TestDateProvider(date: now)
-
         stub(interactor) { mock in
             mock.validateDrink(drink: drink).thenReturn(.SUCCESS)
             mock.resolveDate(currentDate: now, newDate: date).thenReturn(date)
             mock.saveConsumption(drink: any(), alcohol: any(), quantity: any(), unit: any(), date: any()).thenReturn(Completable.empty())
-        }
-
-        stub(view) { mock in
-            mock.hideDrinkError().thenDoNothing()
-            mock.saveIsEnabled.set(any()).thenDoNothing()
-            mock.updateTime(any()).thenDoNothing()
-        }
-
-        stub(router) { mock in
-            mock.finish().thenDoNothing()
         }
 
         underTest.onDrinkChanged(drink)
