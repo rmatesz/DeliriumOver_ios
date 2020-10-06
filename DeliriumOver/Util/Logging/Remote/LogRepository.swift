@@ -20,29 +20,23 @@ class LogRepositoryImpl: LogRepository {
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
     private let context: NSManagedObjectContext
-
+    
     init (context: NSManagedObjectContext) {
         self.context = context
     }
-
+    
     func store(model: LogModel) -> Completable {
-        return Completable.create { (observer) -> Disposable in
-            do {
-                let logEntity = NSEntityDescription.insertNewObject(forEntityName: "LogEntity", into: self.context) as! LogEntity
-
-                logEntity.data = String(data: try self.encoder.encode(model), encoding: .utf8)!
-                logEntity.timestamp = model.timestamp
-
-                try self.context.obtainPermanentIDs(for: [logEntity])
-                try self.context.save()
-                observer(CompletableEvent.completed)
-            } catch {
-                observer(CompletableEvent.error(error))
-            }
-            return Disposables.create()
+        return Completable.from {
+            let logEntity = NSEntityDescription.insertNewObject(forEntityName: "LogEntity", into: self.context) as! LogEntity
+            
+            logEntity.data = String(data: try self.encoder.encode(model), encoding: .utf8)!
+            logEntity.timestamp = model.timestamp
+            
+            try self.context.obtainPermanentIDs(for: [logEntity])
+            try self.context.save()
         }
     }
-
+    
     var logs: Observable<[LogModel]> {
         return Observable<[LogModel]>.create { (observer) -> Disposable in
             do {
@@ -50,21 +44,21 @@ class LogRepositoryImpl: LogRepository {
             } catch {
                 observer.onError(error)
             }
-
+            
             let contextObserver = { (notification: Notification) in
                 do {
                     let result = try self.context.registeredObjects.filter {
                         $0 is LogEntity
                     }.map { $0 as! LogEntity }
-                        .map {
-                            try self.decoder.decode(LogModel.self, from: $0.data!.data(using: .utf8)!)
+                    .map {
+                        try self.decoder.decode(LogModel.self, from: $0.data!.data(using: .utf8)!)
                     }
                     observer.onNext(result)
                 } catch {
                     observer.onError(error)
                 }
             }
-
+            
             let contextObjectsDidChangeObserver = NotificationCenter.default.addObserver(forName: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil, queue: OperationQueue.current, using: contextObserver)
             let contextObjectsDidSaveObserver = NotificationCenter.default.addObserver(forName: Notification.Name.NSManagedObjectContextDidSave, object: nil, queue: OperationQueue.current, using: contextObserver)
             return Disposables.create {
@@ -73,27 +67,21 @@ class LogRepositoryImpl: LogRepository {
             }
         }
     }
-
+    
     func clear() -> Completable {
-        return Completable.create { (observer) -> Disposable in
-            do {
-                let request = NSFetchRequest<NSFetchRequestResult>(entityName: "LogEntity")
-                let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
-
-                try self.context.execute(deleteRequest)
-                observer(CompletableEvent.completed)
-            } catch {
-                observer(CompletableEvent.error(error))
-            }
-            return Disposables.create()
+        return Completable.from {
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "LogEntity")
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
+            
+            try self.context.execute(deleteRequest)
         }
-
+        
     }
-
+    
     private func getAllSync() throws -> [LogModel] {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "LogEntity")
         request.returnsObjectsAsFaults = false
-
+        
         let result = try context.fetch(request)
         return try result.map {
             $0 as! LogEntity
@@ -102,5 +90,5 @@ class LogRepositoryImpl: LogRepository {
             try decoder.decode(LogModel.self, from: $0.data!.data(using: .utf8)!)
         }
     }
-
+    
 }

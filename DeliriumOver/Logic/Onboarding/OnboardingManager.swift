@@ -16,21 +16,24 @@ class OnboardingManager {
     }
 
     func loadOnboarding(page: Page) -> Observable<[Onboarding]> {
-        userDefaults.rx.observe([String].self, "OnboardingFinishedForPage_\(page.rawValue)")
+        userDefaults.rx.observe([String].self, getKey(forPage: page))
             .map { (value) -> [Onboarding] in
                 page.onboarding().filter { !(value ?? []).contains($0.rawValue) }
             }
     }
 
     private func completedOnboarding(forPage page: Page) -> [String] {
-        return userDefaults.stringArray(forKey: page.rawValue) ?? []
+        return userDefaults.stringArray(forKey: getKey(forPage: page)) ?? []
     }
 
     func markFinished(page: Page, onboarding: Onboarding) {
         userDefaults.setValue(
             completedOnboarding(forPage: page) + [onboarding.rawValue],
-            forKey: page.rawValue
-        )
+            forKey: getKey(forPage: page))
+    }
+
+    private func getKey(forPage page: Page) -> String {
+        return "OnboardingFinishedForPage_\(page.rawValue)"
     }
 
     enum Page: String {

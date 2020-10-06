@@ -20,43 +20,25 @@ class DAOImpl : DAO {
     }
 
     func getEntity<T>(id: String) -> Maybe<T> {
-        return Maybe.create { (observer) -> Disposable in
-            DispatchQueue.main.async {
-                guard let url = URL(string: id) else {
-                    observer(.error(DatabaseError(message: "Invalid objectID: \(id)")))
-                    return
-                }
-                guard let objectId = self.context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: url) else {
-                    observer(.completed)
-                    return
-                }
-                do {
-                    let result = try self.context.existingObject(with: objectId)
-                    guard let entity = result as? T else {
-                        observer(.error(DatabaseError(message: "The id(\(id) doesn't represent the expected entity \(T.Type.self). The returned object is: \(result)")))
-                        return
-                    }
-                    observer(.success(entity))
-                } catch {
-                    observer(.error(error))
-                }
+        return Maybe<T>.from {
+            guard let url = URL(string: id) else {
+                throw DatabaseError(message: "Invalid objectID: \(id)")
             }
-            return Disposables.create()
+            guard let objectId = self.context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: url) else {
+                return nil
+            }
+            let result = try self.context.existingObject(with: objectId)
+            guard let entity = result as? T else {
+                throw DatabaseError(message: "The id(\(id) doesn't represent the expected entity \(T.Type.self). The returned object is: \(result)")
+            }
+            return entity
         }
     }
 
     func save() -> Completable {
-        return Completable.create(subscribe: { (observer) -> Disposable in
-            DispatchQueue.main.async {
-                do {
-                    try self.context.save()
-                    observer(CompletableEvent.completed)
-                } catch {
-                    observer(CompletableEvent.error(error))
-                }
-            }
-            return Disposables.create()
-        })
+        return Completable.from {
+            try self.context.save()
+        }
     }
 
     internal func finaliseEntity<T: NSManagedObject>(entity: T, fillEntity: @escaping (T) -> Void) -> Single<T> {

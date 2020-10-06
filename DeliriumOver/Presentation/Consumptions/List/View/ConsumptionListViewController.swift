@@ -94,10 +94,10 @@ class ConsumptionListViewController: UIViewController {
     @IBOutlet weak var listContainer: UIView!
     @IBOutlet var emptyState: [UIView]!
     private var disposeBag: DisposeBag!
-    private var addConsumptionDecorator: AddConsumptionDecorator? = nil
+    private var addConsumptionDecorator: AddConsumptionDecorator?
 
     override func viewDidAppear(_ animated: Bool) {
-        addConsumptionDecorator = AddConsumptionDecorator(viewController: self, viewModel: viewModel as! AddConsumptionViewModel)
+        addConsumptionDecorator = AddConsumptionDecorator(viewController: self, viewModel: viewModel)
         disposeBag = DisposeBag()
         viewModel.consumptions.map { $0.isEmpty }.bind(to: listContainer.rx.isHidden).disposed(by: disposeBag)
         emptyState.forEach { view in

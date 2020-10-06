@@ -114,8 +114,8 @@ class ReportsOverviewViewController: UIViewController {
     private func displayOnboarding(_ onboarding: OnboardingManager.Onboarding) {
         switch onboarding {
         case .setupSessionData:
-            performSegue(withIdentifier: "ShowSessionForm", sender: self)
             viewModel.setOnboardingDone(onboarding)
+            performSegue(withIdentifier: "ShowSessionForm", sender: self)
         case .disclaimer:
             let alert = UIAlertController(title: "Delirium Over!", message: "The data displayed by the application is informational. All measurements are an average for a healthy (healthy liver) person. It highly depends on the actual state of mind, emptyness of stomach and drinking habits. If you'd like to drive, wait more than the displayed degradation time, before you can safely sit in the car.", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { _ in

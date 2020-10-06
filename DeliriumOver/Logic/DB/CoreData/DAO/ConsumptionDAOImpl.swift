@@ -11,26 +11,18 @@ import RxSwift
 import CoreData
 
 class ConsumptionDAOImpl : DAOImpl, ConsumptionDAO {
-
     func get(_ consumptionId: String) -> Maybe<Consumption> {
         return getEntity(id: consumptionId).map { Consumption(consumptionEntity: $0) }
     }
 
     func getAll(sessionId: String) -> Maybe<[Consumption]> {
-        return Maybe<[Consumption]>.create { (observer: @escaping (MaybeEvent<[Consumption]>) -> Void) -> Disposable in
-            DispatchQueue.main.async {
-                do {
-                    let request = NSFetchRequest<ConsumptionEntity>(entityName: "ConsumptionEntity")
-                    request.predicate = NSPredicate(format: "sessionId == %@", sessionId)
-                    request.returnsObjectsAsFaults = false
+        return Maybe<[Consumption]>.from {
+            let request = NSFetchRequest<ConsumptionEntity>(entityName: "ConsumptionEntity")
+            request.predicate = NSPredicate(format: "sessionId == %@", sessionId)
+            request.returnsObjectsAsFaults = false
 
-                    let result = try self.context.fetch(request)
-                    observer(MaybeEvent.success(result.map { Consumption(consumptionEntity: $0) }))
-                } catch {
-                    observer(MaybeEvent.error(error))
-                }
-            }
-            return Disposables.create()
+            let result = try self.context.fetch(request)
+            return result.map { Consumption(consumptionEntity: $0) }
         }
     }
 
@@ -44,17 +36,9 @@ class ConsumptionDAOImpl : DAOImpl, ConsumptionDAO {
     }
 
     private func delete(consumption: ConsumptionEntity) -> Completable {
-        return Completable.create { (observer) -> Disposable in
-            DispatchQueue.main.async {
-                self.context.delete(consumption)
-                do {
-                    try self.context.save()
-                    observer(.completed)
-                } catch {
-                    observer(.error(error))
-                }
-            }
-            return Disposables.create()
+        return Completable.from {
+            self.context.delete(consumption)
+            try self.context.save()
         }
     }
 

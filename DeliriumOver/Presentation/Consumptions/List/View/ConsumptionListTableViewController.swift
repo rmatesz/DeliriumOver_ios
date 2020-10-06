@@ -32,7 +32,7 @@ class ConsumptionListTableViewController: UITableViewController {
                 $0.map { (consumption) -> ConsumptionListItem in
                     ConsumptionListItem(drink: consumption.drink,
                                         alcohol: String(format: "%.01f%%", consumption.alcohol*100),
-                                        quantity: "\(consumption.quantity)  \(consumption.unit)",
+                                        quantity: String(format: "%.01f %@", consumption.quantity, consumption.unit.label()),
                                         date: consumption.date)
                 }
 

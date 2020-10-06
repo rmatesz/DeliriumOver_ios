@@ -21,7 +21,7 @@ class OnboardingManagerTests: XCTestCase {
     func testLoadOnboardingForReports() {
         let waitingForDispose = expectation(description: "waiting for dipose")
         var counter = 0
-        let disposable = underTest.loadOnboarding(page: .reports).subscribe(onNext: { (actual) in
+        _ = underTest.loadOnboarding(page: .reports).subscribe(onNext: { (actual) in
             let expected: [OnboardingManager.Onboarding]
             switch counter {
                 case 0: expected = [OnboardingManager.Onboarding.addConsumption, .manageConsumptions, .disclaimer, .setupSessionData]
@@ -30,25 +30,13 @@ class OnboardingManagerTests: XCTestCase {
             }
             XCTAssertEqual(expected, actual, "Assertion #\(counter) failed!")
             counter = counter + 1
-        }, onError: { error in
-
-        }, onCompleted: {
-
-        }, onDisposed: {
-            waitingForDispose.fulfill()
+            if counter > 1 {
+                waitingForDispose.fulfill()
+            }
         })
 
         underTest.markFinished(page: .reports, onboarding: .disclaimer)
 
-        disposable.dispose()
-
-        waitForExpectations(timeout: 2) { (error) in
-            guard error != nil else { return }
-            assertionFailure("expectation has not been fullfilled")
-        }
+        waitForExpectations(timeout: 2)
     }
-//
-//    func markFinished(page: Page, onboarding: Onboarding) {
-//        userDefaults.setValue(completedOnboarding(forPage: page) + [onboarding.rawValue], forKey: page.rawValue)
-//    }
 }

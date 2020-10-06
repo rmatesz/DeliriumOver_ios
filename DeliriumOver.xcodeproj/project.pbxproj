@@ -86,6 +86,8 @@
 		801EF3D7252B442A0036A678 /* OnboardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801EF3D6252B44290036A678 /* OnboardingManager.swift */; };
 		801EF3DF252B5FE40036A678 /* OnboardingSwinject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801EF3DE252B5FE30036A678 /* OnboardingSwinject.swift */; };
 		801EF405252BB4200036A678 /* OnboardingManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801EF404252BB41F0036A678 /* OnboardingManagerTests.swift */; };
+		801EF40A252C5AD50036A678 /* MaybeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801EF409252C5AD30036A678 /* MaybeExtensions.swift */; };
+		801EF40F252C5B1D0036A678 /* CompletableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801EF40E252C5B1D0036A678 /* CompletableExtensions.swift */; };
 		80239DE305DE6FE952994E34 /* Pods_DeliriumOverTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C99880F8C752445999952D /* Pods_DeliriumOverTests.framework */; };
 		802ABAF423325DEA00DE0306 /* ConsumptionFormRouterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802ABAF323325DEA00DE0306 /* ConsumptionFormRouterImpl.swift */; };
 		8038257025090D9200F9C81E /* LoggingSwinject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038256F25090D9200F9C81E /* LoggingSwinject.swift */; };
@@ -254,6 +256,8 @@
 		801EF3D6252B44290036A678 /* OnboardingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingManager.swift; sourceTree = "<group>"; };
 		801EF3DE252B5FE30036A678 /* OnboardingSwinject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSwinject.swift; sourceTree = "<group>"; };
 		801EF404252BB41F0036A678 /* OnboardingManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingManagerTests.swift; sourceTree = "<group>"; };
+		801EF409252C5AD30036A678 /* MaybeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaybeExtensions.swift; sourceTree = "<group>"; };
+		801EF40E252C5B1D0036A678 /* CompletableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletableExtensions.swift; sourceTree = "<group>"; };
 		802ABAF323325DEA00DE0306 /* ConsumptionFormRouterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionFormRouterImpl.swift; sourceTree = "<group>"; };
 		8038256F25090D9200F9C81E /* LoggingSwinject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingSwinject.swift; sourceTree = "<group>"; };
 		80395D66232660A8008120A6 /* HasApply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasApply.swift; sourceTree = "<group>"; };
@@ -921,6 +925,8 @@
 			isa = PBXGroup;
 			children = (
 				804B88AD237033E600BBB2C4 /* ConnectableObservableExtension.swift */,
+				801EF409252C5AD30036A678 /* MaybeExtensions.swift */,
+				801EF40E252C5B1D0036A678 /* CompletableExtensions.swift */,
 			);
 			path = RxSwift;
 			sourceTree = "<group>";
@@ -1493,6 +1499,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8041DB922316923A00BF9964 /* ConsumptionFormViewController.swift in Sources */,
+				801EF40A252C5AD50036A678 /* MaybeExtensions.swift in Sources */,
 				8000E4142517EA2A000612C3 /* AutoSessionCloser.swift in Sources */,
 				80395D6A2326627A008120A6 /* BasePresenter.swift in Sources */,
 				422CA97B22108F4C00BC5401 /* FirebaseSwinject.swift in Sources */,
@@ -1591,6 +1598,7 @@
 				804B88B02370618700BBB2C4 /* AlcoholCalculatorRxDecorator.swift in Sources */,
 				80D45AC42397F00800D999D9 /* SessionListView.swift in Sources */,
 				801EF388252755F00036A678 /* FirebaseAuthentication.swift in Sources */,
+				801EF40F252C5B1D0036A678 /* CompletableExtensions.swift in Sources */,
 				800120DA24F69FD7002BA889 /* SessionFormSwinject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
