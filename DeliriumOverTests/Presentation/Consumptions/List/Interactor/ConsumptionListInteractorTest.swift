@@ -84,34 +84,6 @@ class ConsumptionListInteractorImplTest: XCTestCase {
     
         XCTAssertEqual(ConsumptionListInteractorImplTest.TEST_SESSION.consumptions, result!)
     }
-    func testLoadConsumptionsWhenInProgressSession2() throws {
-        stub(sessionRepository) { (stub) in
-            when(stub.inProgressSession).get.thenReturn(Observable.just(ConsumptionListInteractorImplTest.TEST_SESSION))
-        }
-
-        let result = try underTest!.loadConsumptions().toBlocking().first()
-
-        XCTFail()
-    }
-
-    func testLoadConsumptionsWhenInProgressSession3() throws {
-        stub(sessionRepository) { (stub) in
-            when(stub.inProgressSession).get.thenReturn(Observable.just(ConsumptionListInteractorImplTest.TEST_SESSION))
-        }
-
-        let result = try underTest!.loadConsumptions().toBlocking().first()
-
-    }
-
-    func testLoadConsumptionsWhenInProgressSession4() throws {
-        stub(sessionRepository) { (stub) in
-            when(stub.inProgressSession).get.thenReturn(Observable.just(ConsumptionListInteractorImplTest.TEST_SESSION))
-        }
-
-        let result = try underTest!.loadConsumptions().toBlocking().first()
-
-        XCTAssertEqual(ConsumptionListInteractorImplTest.TEST_SESSION.consumptions, [])
-    }
     
     func testLoadConsumptionsWhenExistingSession() throws {
         underTest = ConsumptionListInteractorImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "10")
