@@ -141,7 +141,7 @@
 		80EDF10C236DAA28003BA24C /* ReportOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF10B236DAA28003BA24C /* ReportOverviewView.swift */; };
 		80EDF10E236DE7F8003BA24C /* ReportOverviewInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF10D236DE7F8003BA24C /* ReportOverviewInteractorImpl.swift */; };
 		80F86D792521FCC900DBF2F6 /* ConsumptionFormInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F86D782521FCC900DBF2F6 /* ConsumptionFormInteractorTests.swift */; };
-		80F86D80252235C100DBF2F6 /* ConsumptionFormPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F86D7F252235C100DBF2F6 /* ConsumptionFormPresenterTests.swift */; };
+		80F86D80252235C100DBF2F6 /* ConsumptionFormPresenterImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F86D7F252235C100DBF2F6 /* ConsumptionFormPresenterImplTests.swift */; };
 		80F86D8E2524A83700DBF2F6 /* ConsumptionDAOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F86D8D2524A83700DBF2F6 /* ConsumptionDAOTests.swift */; };
 		80F86D972524AAA700DBF2F6 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F86D962524AAA700DBF2F6 /* CoreData.swift */; };
 		B8B96A0A05D74AAE63584771 /* Pods_DeliriumOver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13B129C7E5EC8374E6B23481 /* Pods_DeliriumOver.framework */; };
@@ -313,7 +313,7 @@
 		80EDF10B236DAA28003BA24C /* ReportOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportOverviewView.swift; sourceTree = "<group>"; };
 		80EDF10D236DE7F8003BA24C /* ReportOverviewInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReportOverviewInteractorImpl.swift; path = DeliriumOver/Presentation/Reports/Overview/View/ReportOverviewInteractorImpl.swift; sourceTree = SOURCE_ROOT; };
 		80F86D782521FCC900DBF2F6 /* ConsumptionFormInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionFormInteractorTests.swift; sourceTree = "<group>"; };
-		80F86D7F252235C100DBF2F6 /* ConsumptionFormPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionFormPresenterTests.swift; sourceTree = "<group>"; };
+		80F86D7F252235C100DBF2F6 /* ConsumptionFormPresenterImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionFormPresenterImplTests.swift; sourceTree = "<group>"; };
 		80F86D8D2524A83700DBF2F6 /* ConsumptionDAOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionDAOTests.swift; sourceTree = "<group>"; };
 		80F86D962524AAA700DBF2F6 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1129,7 +1129,7 @@
 		80F86D7E252235AE00DBF2F6 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				80F86D7F252235C100DBF2F6 /* ConsumptionFormPresenterTests.swift */,
+				80F86D7F252235C100DBF2F6 /* ConsumptionFormPresenterImplTests.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -1626,7 +1626,7 @@
 				801EF405252BB4200036A678 /* OnboardingManagerTests.swift in Sources */,
 				80E73AE72521CA4300BCB8A9 /* AutoSessionOpenerTests.swift in Sources */,
 				80E73AD42521C5D200BCB8A9 /* String+Error.swift in Sources */,
-				80F86D80252235C100DBF2F6 /* ConsumptionFormPresenterTests.swift in Sources */,
+				80F86D80252235C100DBF2F6 /* ConsumptionFormPresenterImplTests.swift in Sources */,
 				80E73B1A2521F5EB00BCB8A9 /* ConsumptionListItemView.swift in Sources */,
 				4246D74C2200583E0066BC01 /* DeliriumOverTests.swift in Sources */,
 				80F86D972524AAA700DBF2F6 /* CoreData.swift in Sources */,
