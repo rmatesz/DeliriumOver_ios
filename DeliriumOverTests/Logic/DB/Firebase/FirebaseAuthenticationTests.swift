@@ -39,8 +39,6 @@ class FirebaseAuthenticationTests: XCTestCase {
         _ = underTest.authenticate().subscribe(onSuccess: { (result) in
             XCTAssertEqual(self.user, result)
             emission.fulfill()
-        }, onError: { e in
-
         })
 
         completionHandler.value!!(FirebaseAuthDataResult(user: user), nil)
@@ -57,8 +55,7 @@ class FirebaseAuthenticationTests: XCTestCase {
 
         let emission = expectation(description: "Waiting for emission")
 
-        _ = underTest.authenticate().subscribe(onSuccess: { (result) in
-        }, onError: { error in
+        _ = underTest.authenticate().subscribe(onError: { error in
             XCTAssertEqual(FirebaseError.authenticationError, error as! FirebaseError)
             emission.fulfill()
         })
@@ -78,8 +75,7 @@ class FirebaseAuthenticationTests: XCTestCase {
 
         let emission = expectation(description: "Waiting for emission")
 
-        _ = underTest.authenticate().subscribe(onSuccess: { (result) in
-        }, onError: { e in
+        _ = underTest.authenticate().subscribe(onError: { e in
             XCTAssertEqual(error, e as! String)
             emission.fulfill()
         })

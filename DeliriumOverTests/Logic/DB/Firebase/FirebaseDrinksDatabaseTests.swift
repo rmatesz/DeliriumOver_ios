@@ -40,8 +40,6 @@ class FirebaseDrinksDatabaseTests: XCTestCase {
         _ = underTest.getDrinks().subscribe(onSuccess: { (result) in
             XCTAssertEqual(drinks, result)
             emission.fulfill()
-        }, onError: { (error) in
-
         })
 
         successfulHandler.value!(MockDataSnapshot(mockData: drinks))
@@ -59,9 +57,7 @@ class FirebaseDrinksDatabaseTests: XCTestCase {
 
         let emission = expectation(description: "Waiting for emission")
 
-        _ = underTest.getDrinks().subscribe(onSuccess: { (result) in
-
-        }, onError: { (e) in
+        _ = underTest.getDrinks().subscribe(onError: { (e) in
             XCTAssertEqual(error, e as! String)
             emission.fulfill()
         })

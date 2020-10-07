@@ -89,6 +89,7 @@
 		801EF40A252C5AD50036A678 /* MaybeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801EF409252C5AD30036A678 /* MaybeExtensions.swift */; };
 		801EF40F252C5B1D0036A678 /* CompletableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801EF40E252C5B1D0036A678 /* CompletableExtensions.swift */; };
 		801EF417252CFCCC0036A678 /* NumberPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801EF416252CFCCB0036A678 /* NumberPickerSheet.swift */; };
+		801EF41D252E4C240036A678 /* FirebaseDatabaseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801EF41C252E4C240036A678 /* FirebaseDatabaseExtensions.swift */; };
 		80239DE305DE6FE952994E34 /* Pods_DeliriumOverTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C99880F8C752445999952D /* Pods_DeliriumOverTests.framework */; };
 		802ABAF423325DEA00DE0306 /* ConsumptionFormRouterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802ABAF323325DEA00DE0306 /* ConsumptionFormRouterImpl.swift */; };
 		8038257025090D9200F9C81E /* LoggingSwinject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8038256F25090D9200F9C81E /* LoggingSwinject.swift */; };
@@ -260,6 +261,7 @@
 		801EF409252C5AD30036A678 /* MaybeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaybeExtensions.swift; sourceTree = "<group>"; };
 		801EF40E252C5B1D0036A678 /* CompletableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletableExtensions.swift; sourceTree = "<group>"; };
 		801EF416252CFCCB0036A678 /* NumberPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerSheet.swift; sourceTree = "<group>"; };
+		801EF41C252E4C240036A678 /* FirebaseDatabaseExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseExtensions.swift; sourceTree = "<group>"; };
 		802ABAF323325DEA00DE0306 /* ConsumptionFormRouterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionFormRouterImpl.swift; sourceTree = "<group>"; };
 		8038256F25090D9200F9C81E /* LoggingSwinject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingSwinject.swift; sourceTree = "<group>"; };
 		80395D66232660A8008120A6 /* HasApply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasApply.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 		422C68DA22010E9800F7702A /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				801EF41B252E4C020036A678 /* Firebase */,
 				80E5149F250675870092ECB3 /* Logging */,
 				800120D324F51C20002BA889 /* UIKit */,
 				804B88AC237033CB00BBB2C4 /* RxSwift */,
@@ -854,6 +857,14 @@
 				801EF404252BB41F0036A678 /* OnboardingManagerTests.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		801EF41B252E4C020036A678 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				801EF41C252E4C240036A678 /* FirebaseDatabaseExtensions.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		80395D6523266095008120A6 /* Common */ = {
@@ -1567,6 +1578,7 @@
 				422C68E52201117E00F7702A /* Session.swift in Sources */,
 				8000E41125154DB0000612C3 /* LogDataModel.xcdatamodeld in Sources */,
 				4232DAFA2210CF0600DCC8DD /* ConsumptionListInteractor.swift in Sources */,
+				801EF41D252E4C240036A678 /* FirebaseDatabaseExtensions.swift in Sources */,
 				429B93972204E28100B663FD /* SessionRepositoryImpl.swift in Sources */,
 				422C68D922010DC900F7702A /* AlcoholCalculator.swift in Sources */,
 				4246D7372200583D0066BC01 /* ReportsOverviewViewController.swift in Sources */,

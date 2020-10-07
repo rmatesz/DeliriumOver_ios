@@ -224,8 +224,6 @@ class FirebaseSessionDatabaseTests: XCTestCase {
         _ = underTest.getMinVersionForShare().subscribe(onSuccess: { (result) in
             XCTAssertEqual(version, result)
             emission.fulfill()
-        }, onError: { (error) in
-
         })
 
         successfulHandler.value!(MockDataSnapshot(mockData: version))
@@ -243,9 +241,7 @@ class FirebaseSessionDatabaseTests: XCTestCase {
 
         let emission = expectation(description: "Waiting for emission")
 
-        _ = underTest.getMinVersionForShare().subscribe(onSuccess: { (result) in
-
-        }, onError: { (e) in
+        _ = underTest.getMinVersionForShare().subscribe(onError: { (e) in
             XCTAssertEqual(error, e as! String)
             emission.fulfill()
         })

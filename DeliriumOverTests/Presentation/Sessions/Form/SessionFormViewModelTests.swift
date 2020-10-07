@@ -142,7 +142,7 @@ class SessionFormViewModelTests: XCTestCase {
         _ = underTest.saveSession()
             .observeOn(scheduler)
             .subscribeOn(scheduler)
-            .subscribe(onCompleted: {}, onError: { (error) in
+            .subscribe(onError: { (error) in
                 assert(error is RepositoryError)
                 exp.fulfill()
             })
