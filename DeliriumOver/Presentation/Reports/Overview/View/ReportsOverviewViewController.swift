@@ -152,10 +152,6 @@ class ReportsOverviewViewController: UIViewController {
         }
     }
 
-    private func hasConsumption(records: [Record]) -> Bool {
-        return records.contains { !$0.isEmpty() }
-    }
-
     @IBAction func onAddClicked(_ sender: UIButton) {
         addConsumptionDecorator?.addConsumption(sender: sender)
     }
