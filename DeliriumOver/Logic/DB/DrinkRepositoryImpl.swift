@@ -12,7 +12,6 @@ import RxSwift
 class DrinkRepositoryImpl : DrinkRepository {
     private let sessionRepository: SessionRepository
     private let drinksDatabase: FirebaseDrinksDatabase
-//    private let drinkTypeParser: DrinkTypeParser
     
     init(sessionRepository: SessionRepository, drinksDatabase: FirebaseDrinksDatabase) {
         self.sessionRepository = sessionRepository
@@ -26,25 +25,37 @@ class DrinkRepositoryImpl : DrinkRepository {
     func getFrequentlyConsumedDrinks() -> Observable<[Drink]> {
         return sessionRepository.sessions
             .map {
-                return Dictionary(grouping: $0
-                    .flatMap({ (session) -> [Consumption] in
-                        session.consumptions
-                    }), by: {$0.drink})
-                    .map({ (key, value) -> ([Consumption], Int) in
-                        (value, value.count)
-                    })
-                    .sorted(by: { (left, right) -> Bool in
-                        left.1 > right.1
-                    })
-                    .map({ (entry) -> Consumption in
-                        entry.0.max(by: { (left, right) -> Bool in
-                            left.date < right.date
-                        })!
-                    })
-                    .map({ (consumption) -> Drink in
-                        Drink(consumption: consumption)
-                    })
+                return $0.flattenConsumptions()
+                    .groupByDrink()
+                    .sortedByCount()
+                    .map { $0.getLatest()! }
+                    .map { Drink(consumption: $0) }
             }
     }
 }
 
+extension Array where Element == Session {
+    func flattenConsumptions() -> [Consumption] {
+        return self.flatMap { $0.consumptions }
+    }
+}
+
+extension Array where Element == Consumption {
+    func groupByDrink() -> [[Consumption]] {
+        return Dictionary(grouping: self, by: { $0.drink }).map { $0.value }
+    }
+
+    func getLatest() -> Consumption? {
+        return self.max(by: { (left, right) -> Bool in
+            left.date < right.date
+        })
+    }
+}
+
+extension Array where Element == [Consumption] {
+    func sortedByCount() -> [[Consumption]] {
+        return self.sorted(by: { (lhs, rhs) -> Bool in
+            lhs.count > rhs.count
+        })
+    }
+}

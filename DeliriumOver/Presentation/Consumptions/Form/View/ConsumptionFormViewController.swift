@@ -26,11 +26,11 @@ class ConsumptionFormViewController : UIViewController, ConsumptionFormView, UIT
     }
     private let quantityPicker: QuantityPickerSheet<DrinkUnit> = QuantityPickerSheet<DrinkUnit>().apply {
         $0.maximum = 10.0
-        $0.unit = DrinkUnit.allCases
+        $0.units = DrinkUnit.allCases
     }
     private let alcoholPicker: QuantityPickerSheet<String> = QuantityPickerSheet<String>().apply {
         $0.maximum = 100.0
-        $0.unit = ["%"]
+        $0.units = ["%"]
     }
     
     var saveIsEnabled: Bool = false {

@@ -47,7 +47,6 @@
 		429893B62202265200460356 /* DateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893B52202265200460356 /* DateProvider.swift */; };
 		429893B82202279700460356 /* SystemDateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893B72202279700460356 /* SystemDateProvider.swift */; };
 		429893BC220313CF00460356 /* AlcoholCalculatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893BB220313CF00460356 /* AlcoholCalculatorTest.swift */; };
-		429893BF22031C0400460356 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429893BE22031C0400460356 /* DoubleExtension.swift */; };
 		429B93952204E24600B663FD /* SessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429B93942204E24600B663FD /* SessionRepository.swift */; };
 		429B93972204E28100B663FD /* SessionRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429B93962204E28100B663FD /* SessionRepositoryImpl.swift */; };
 		42B8D8AF22044F0B0050F0B2 /* TestDateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B8D8AE22044F0B0050F0B2 /* TestDateProvider.swift */; };
@@ -216,7 +215,6 @@
 		429893B52202265200460356 /* DateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateProvider.swift; sourceTree = "<group>"; };
 		429893B72202279700460356 /* SystemDateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemDateProvider.swift; sourceTree = "<group>"; };
 		429893BB220313CF00460356 /* AlcoholCalculatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholCalculatorTest.swift; sourceTree = "<group>"; };
-		429893BE22031C0400460356 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		429B93942204E24600B663FD /* SessionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRepository.swift; sourceTree = "<group>"; };
 		429B93962204E28100B663FD /* SessionRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRepositoryImpl.swift; sourceTree = "<group>"; };
 		42B8D8AE22044F0B0050F0B2 /* TestDateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDateProvider.swift; sourceTree = "<group>"; };
@@ -377,7 +375,6 @@
 				804B88AC237033CB00BBB2C4 /* RxSwift */,
 				80395D6C232BDA02008120A6 /* Widget */,
 				80395D6523266095008120A6 /* Common */,
-				429893BD22031BC100460356 /* Number */,
 				422C68DB22010EA000F7702A /* Date */,
 				4204FE32221220A900BBB83E /* SimpleError.swift */,
 			);
@@ -714,14 +711,6 @@
 				429893BB220313CF00460356 /* AlcoholCalculatorTest.swift */,
 			);
 			path = Calculations;
-			sourceTree = "<group>";
-		};
-		429893BD22031BC100460356 /* Number */ = {
-			isa = PBXGroup;
-			children = (
-				429893BE22031C0400460356 /* DoubleExtension.swift */,
-			);
-			path = Number;
 			sourceTree = "<group>";
 		};
 		429B93922204E22300B663FD /* Repository */ = {
@@ -1584,7 +1573,6 @@
 				4246D7372200583D0066BC01 /* ReportsOverviewViewController.swift in Sources */,
 				80D45ABB2397EC9E00D999D9 /* SessionListPresenter.swift in Sources */,
 				8055178725079B6C00FE0F17 /* SumoUploader.swift in Sources */,
-				429893BF22031C0400460356 /* DoubleExtension.swift in Sources */,
 				422CA97822106E0900BC5401 /* ConsumptionListTableViewController.swift in Sources */,
 				801EF37E252755F00036A678 /* SessionDAOImpl.swift in Sources */,
 				4288264B220F675D001A9A5A /* DrinkRepository.swift in Sources */,

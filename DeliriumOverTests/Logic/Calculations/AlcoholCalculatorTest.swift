@@ -9,27 +9,27 @@
 import XCTest
 @testable import DeliriumOver
 
-public let DELTA: Double = 1E-6
+public let kDelta: Double = 1E-6
 
-let BEER_ALCOHOL_G = 15.78
-let BEER_STRONG_ALCOHOL_G = 23.67
-let PALINKA_ALCOHOL_G = 23.67
-let WINE_ALCOHOL_G = 12.624
-let MARTINI_ALCOHOL_G = 12.624
-let WHISKY_ALCOHOL_G = 39.45
-let VODKA_ALCOHOL_G = 14.991
-let CHAMPAGNE_ALCOHOL_G = 9.0735
+let kBeerAlcoholG = 15.78
+let kBeerStrongAlcoholG = 23.67
+let kPalinkaAlcoholG = 23.67
+let kWineAlcoholG = 12.624
+let kMartiniAlcoholG = 12.624
+let kWhiskyAlcoholG = 39.45
+let kVodkaAlcoholG = 14.991
+let kChampagneAlcoholG = 9.0735
 
-let BEER_ALCOHOL_P = 0.04
-let BEER_STRONG_ALCOHOL_P = 0.06
-let PALINKA_ALCOHOL_P = 0.60
-let WINE_ALCOHOL_P = 0.08
-let MARTINI_ALCOHOL_P = 0.16
-let WHISKY_ALCOHOL_P = 0.5
-let VODKA_ALCOHOL_P = 0.38
-let CHAMPAGNE_ALCOHOL_P = 0.115
+let kBeerAlcoholP = 0.04
+let kBeerStrongAlcoholP = 0.06
+let kPalinkaP = 0.60
+let kWineAlcoholP = 0.08
+let kMartiniAlcoholP = 0.16
+let kWhiskyAlcoholP = 0.5
+let kVodkaAlcoholP = 0.38
+let kChampagneAlcoholP = 0.115
 
-let DATE_NOW = createDate(2018, 1, 26, 23, 59, timezone: TimeZone(abbreviation: "UTC")!)
+let kDateNow = createDate(2018, 1, 26, 23, 59, timezone: TimeZone(abbreviation: "UTC")!)
 
 class AlcoholCalculatorTest: XCTestCase {
 
@@ -38,7 +38,7 @@ class AlcoholCalculatorTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        dateProvider = TestDateProvider(date: DATE_NOW)
+        dateProvider = TestDateProvider(date: kDateNow)
     }
     
     override func tearDown() {
@@ -47,33 +47,33 @@ class AlcoholCalculatorTest: XCTestCase {
     }
 
     func testCalcAlcoholWeight() {
-        let beer = underTest.calcAlcoholWeight(quantity: 0.5, drinkUnit: DrinkUnit.liter, alcohol: BEER_ALCOHOL_P)
-        let beerStrong = underTest.calcAlcoholWeight(quantity: 0.5, drinkUnit: DrinkUnit.liter, alcohol: BEER_STRONG_ALCOHOL_P)
-        let wine = underTest.calcAlcoholWeight(quantity: 2.0, drinkUnit: DrinkUnit.deciliter, alcohol: WINE_ALCOHOL_P)
-        let palinka = underTest.calcAlcoholWeight(quantity: 5.0, drinkUnit: DrinkUnit.centiliter, alcohol: PALINKA_ALCOHOL_P)
-        let martini = underTest.calcAlcoholWeight(quantity: 1.0, drinkUnit: DrinkUnit.deciliter, alcohol: MARTINI_ALCOHOL_P)
-        let whisky = underTest.calcAlcoholWeight(quantity: 1.0, drinkUnit: DrinkUnit.deciliter, alcohol: WHISKY_ALCOHOL_P)
-        let vodka = underTest.calcAlcoholWeight(quantity: 0.5, drinkUnit: DrinkUnit.deciliter, alcohol: VODKA_ALCOHOL_P)
-        let champagne = underTest.calcAlcoholWeight(quantity: 1.0, drinkUnit: DrinkUnit.deciliter, alcohol: CHAMPAGNE_ALCOHOL_P)
-        XCTAssertEqual(BEER_ALCOHOL_G, beer, accuracy: DELTA)
-        XCTAssertEqual(BEER_STRONG_ALCOHOL_G, beerStrong)
-        XCTAssertEqual(WINE_ALCOHOL_G, wine)
-        XCTAssertEqual(PALINKA_ALCOHOL_G, palinka)
-        XCTAssertEqual(MARTINI_ALCOHOL_G, martini)
-        XCTAssertEqual(WHISKY_ALCOHOL_G, whisky)
-        XCTAssertEqual(VODKA_ALCOHOL_G, vodka, accuracy: DELTA)
-        XCTAssertEqual(CHAMPAGNE_ALCOHOL_G, champagne, accuracy: DELTA)
+        let beer = underTest.calcAlcoholWeight(quantity: 0.5, drinkUnit: DrinkUnit.liter, alcohol: kBeerAlcoholP)
+        let beerStrong = underTest.calcAlcoholWeight(quantity: 0.5, drinkUnit: DrinkUnit.liter, alcohol: kBeerStrongAlcoholP)
+        let wine = underTest.calcAlcoholWeight(quantity: 2.0, drinkUnit: DrinkUnit.deciliter, alcohol: kWineAlcoholP)
+        let palinka = underTest.calcAlcoholWeight(quantity: 5.0, drinkUnit: DrinkUnit.centiliter, alcohol: kPalinkaP)
+        let martini = underTest.calcAlcoholWeight(quantity: 1.0, drinkUnit: DrinkUnit.deciliter, alcohol: kMartiniAlcoholP)
+        let whisky = underTest.calcAlcoholWeight(quantity: 1.0, drinkUnit: DrinkUnit.deciliter, alcohol: kWhiskyAlcoholP)
+        let vodka = underTest.calcAlcoholWeight(quantity: 0.5, drinkUnit: DrinkUnit.deciliter, alcohol: kVodkaAlcoholP)
+        let champagne = underTest.calcAlcoholWeight(quantity: 1.0, drinkUnit: DrinkUnit.deciliter, alcohol: kChampagneAlcoholP)
+        XCTAssertEqual(kBeerAlcoholG, beer, accuracy: kDelta)
+        XCTAssertEqual(kBeerStrongAlcoholG, beerStrong)
+        XCTAssertEqual(kWineAlcoholG, wine)
+        XCTAssertEqual(kPalinkaAlcoholG, palinka)
+        XCTAssertEqual(kMartiniAlcoholG, martini)
+        XCTAssertEqual(kWhiskyAlcoholG, whisky)
+        XCTAssertEqual(kVodkaAlcoholG, vodka, accuracy: kDelta)
+        XCTAssertEqual(kChampagneAlcoholG, champagne, accuracy: kDelta)
     }
     
     func testCalcBloodAlcoholConcentrationForMale() {
     XCTAssertEqual(
     0.26521008403361346,
-    underTest.calcBloodAlcoholConcentration(alcohol: BEER_ALCOHOL_G, gender: Sex.MALE, weight: 85.0)
+    underTest.calcBloodAlcoholConcentration(alcohol: kBeerAlcoholG, gender: Sex.MALE, weight: 85.0)
     )
     XCTAssertEqual(
     0.8670329670329671,
     underTest.calcBloodAlcoholConcentration(
-        alcohol: BEER_ALCOHOL_G + PALINKA_ALCOHOL_G,
+        alcohol: kBeerAlcoholG + kPalinkaAlcoholG,
         gender: Sex.MALE,
         weight: 65.0
     )
@@ -81,49 +81,49 @@ class AlcoholCalculatorTest: XCTestCase {
     XCTAssertEqual(
     0.6630252100840337,
     underTest.calcBloodAlcoholConcentration(
-        alcohol: BEER_ALCOHOL_G + BEER_STRONG_ALCOHOL_G,
+        alcohol: kBeerAlcoholG + kBeerStrongAlcoholG,
         gender: Sex.MALE,
         weight: 85.0
     )
     )
     XCTAssertEqual(
     0.39781512605042024,
-    underTest.calcBloodAlcoholConcentration(alcohol: BEER_STRONG_ALCOHOL_G, gender: Sex.MALE, weight: 85.0)
+    underTest.calcBloodAlcoholConcentration(alcohol: kBeerStrongAlcoholG, gender: Sex.MALE, weight: 85.0)
     )
     XCTAssertEqual(
     Double.infinity,
-    underTest.calcBloodAlcoholConcentration(alcohol: BEER_STRONG_ALCOHOL_G, gender: Sex.MALE, weight: 0.0)
+    underTest.calcBloodAlcoholConcentration(alcohol: kBeerStrongAlcoholG, gender: Sex.MALE, weight: 0.0)
     )
     }
     
     func testCalcBloodAlcoholConcentrationForFemale() {
         XCTAssertEqual(
         0.30941176470588233,
-        underTest.calcBloodAlcoholConcentration(alcohol: BEER_ALCOHOL_G, gender: Sex.FEMALE, weight: 85.0)
+        underTest.calcBloodAlcoholConcentration(alcohol: kBeerAlcoholG, gender: Sex.FEMALE, weight: 85.0)
         )
         XCTAssertEqual(
         1.0115384615384615384615384615385,
         underTest.calcBloodAlcoholConcentration(
-            alcohol: BEER_ALCOHOL_G + PALINKA_ALCOHOL_G,
+            alcohol: kBeerAlcoholG + kPalinkaAlcoholG,
             gender: Sex.FEMALE,
             weight: 65.0
-        ), accuracy: DELTA
+        ), accuracy: kDelta
         )
         XCTAssertEqual(
         0.77352941176470588235294117647059,
         underTest.calcBloodAlcoholConcentration(
-            alcohol: BEER_ALCOHOL_G + BEER_STRONG_ALCOHOL_G,
+            alcohol: kBeerAlcoholG + kBeerStrongAlcoholG,
             gender: Sex.FEMALE,
             weight: 85.0
-        ), accuracy: DELTA
+        ), accuracy: kDelta
         )
         XCTAssertEqual(
         0.46411764705882352941176470588235,
-        underTest.calcBloodAlcoholConcentration(alcohol: BEER_STRONG_ALCOHOL_G, gender: Sex.FEMALE, weight: 85.0), accuracy: DELTA
+        underTest.calcBloodAlcoholConcentration(alcohol: kBeerStrongAlcoholG, gender: Sex.FEMALE, weight: 85.0), accuracy: kDelta
         )
         XCTAssertEqual(
         Double.infinity,
-        underTest.calcBloodAlcoholConcentration(alcohol: BEER_STRONG_ALCOHOL_G, gender: Sex.FEMALE, weight: 0.0)
+        underTest.calcBloodAlcoholConcentration(alcohol: kBeerStrongAlcoholG, gender: Sex.FEMALE, weight: 0.0)
         )
     }
     
@@ -142,7 +142,7 @@ class AlcoholCalculatorTest: XCTestCase {
             XCTAssertEqual(
                 getBacWhenMaximum(param),
                 underTest.calcBloodAlcoholConcentration(session: getSession(param), date: getMaximumBacDate(param)),
-                accuracy: DELTA
+                accuracy: kDelta
             )
         }
     }
@@ -152,7 +152,7 @@ class AlcoholCalculatorTest: XCTestCase {
             XCTAssertEqual(
                 getBacDuringElimination(param),
                 underTest.calcBloodAlcoholConcentration(session: getSession(param), date: getDuringEliminationDate(param)),
-                accuracy: DELTA
+                accuracy: kDelta
             )
         }
     }
@@ -162,14 +162,14 @@ class AlcoholCalculatorTest: XCTestCase {
             XCTAssertEqual(
             0.0,
             underTest.calcBloodAlcoholConcentration(session: getSession(param), date: getAfterEliminationDate(param)),
-            accuracy: DELTA
+            accuracy: kDelta
             )
         }
     }
 
     func testCalcTimeOfZeroBAC() {
         for param in params {
-            XCTAssertEqual(getZeroBacDate(param).timeIntervalSince1970, underTest.calcTimeOfZeroBAC(getSession(param)).timeIntervalSince1970, accuracy: 1 - DELTA)
+            XCTAssertEqual(getZeroBacDate(param).timeIntervalSince1970, underTest.calcTimeOfZeroBAC(getSession(param)).timeIntervalSince1970, accuracy: 1 - kDelta)
         }
     }
 
@@ -178,7 +178,7 @@ class AlcoholCalculatorTest: XCTestCase {
             XCTAssertEqual(
                 0.0,
                 underTest.calcBloodAlcoholConcentration(session: getSession(param), date: underTest.calcTimeOfZeroBAC(getSession(param))),
-                accuracy: DELTA
+                accuracy: kDelta
             )
         }
     }
@@ -191,7 +191,7 @@ class AlcoholCalculatorTest: XCTestCase {
                     session: getSession(param),
                     date: createDate(2018, 1, 26, 12, 0, timezone: TimeZone(abbreviation: "UTC")!)
                 ),
-                accuracy: DELTA
+                accuracy: kDelta
             )
         }
     }
@@ -207,8 +207,8 @@ class AlcoholCalculatorTest: XCTestCase {
             print(result)
             XCTAssertEqual(records.count, result.count)
             for i in 0..<records.count {
-                XCTAssertEqual(records[i].time.timeIntervalSince1970, result[i].time.timeIntervalSince1970, accuracy: 1 - DELTA)
-                XCTAssertEqual(records[i].bacLevel, result[i].bacLevel, accuracy: DELTA)
+                XCTAssertEqual(records[i].time.timeIntervalSince1970, result[i].time.timeIntervalSince1970, accuracy: 1 - kDelta)
+                XCTAssertEqual(records[i].bacLevel, result[i].bacLevel, accuracy: kDelta)
             }
         }
     }
@@ -265,7 +265,7 @@ class AlcoholCalculatorTest: XCTestCase {
                 drink: "sör",
                 quantity: 0.5,
                 unit: DrinkUnit.liter,
-                alcohol: BEER_ALCOHOL_P,
+                alcohol: kBeerAlcoholP,
                 date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
             )]
         session = Session(title: "One beer", weight: 85.0, consumptions: consumptions)
@@ -309,7 +309,7 @@ class AlcoholCalculatorTest: XCTestCase {
                 drink: "sör",
                 quantity: 0.5,
                 unit: DrinkUnit.liter,
-                alcohol: BEER_ALCOHOL_P,
+                alcohol: kBeerAlcoholP,
                 date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
             )
         ]
@@ -355,7 +355,7 @@ class AlcoholCalculatorTest: XCTestCase {
                 drink: "sör",
                 quantity: 0.5,
                 unit: DrinkUnit.liter,
-                alcohol: BEER_ALCOHOL_P,
+                alcohol: kBeerAlcoholP,
                 date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
             )
         ]
@@ -406,7 +406,7 @@ class AlcoholCalculatorTest: XCTestCase {
                 drink: "sör",
                 quantity: 0.5,
                 unit: DrinkUnit.liter,
-                alcohol: BEER_ALCOHOL_P,
+                alcohol: kBeerAlcoholP,
                 date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
             )
         ]
@@ -500,7 +500,7 @@ class AlcoholCalculatorTest: XCTestCase {
                 drink: "sör",
                 quantity: 5.0,
                 unit: DrinkUnit.deciliter,
-                alcohol: BEER_ALCOHOL_P,
+                alcohol: kBeerAlcoholP,
                 date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
             ),
             Consumption(
@@ -508,7 +508,7 @@ class AlcoholCalculatorTest: XCTestCase {
                 drink: "palinka",
                 quantity: 5.0,
                 unit: DrinkUnit.centiliter,
-                alcohol: PALINKA_ALCOHOL_P,
+                alcohol: kPalinkaP,
                 date: createDate(2018, 1, 26, 13, 10, timezone: TimeZone(abbreviation: "UTC")!)
             )
         ]
@@ -565,7 +565,7 @@ class AlcoholCalculatorTest: XCTestCase {
                 drink: "sör",
                 quantity: 5.0,
                 unit: DrinkUnit.deciliter,
-                alcohol: BEER_ALCOHOL_P,
+                alcohol: kBeerAlcoholP,
                 date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
             ),
             Consumption(
@@ -573,7 +573,7 @@ class AlcoholCalculatorTest: XCTestCase {
                 drink: "palinka",
                 quantity: 5.0,
                 unit: DrinkUnit.centiliter,
-                alcohol: PALINKA_ALCOHOL_P,
+                alcohol: kPalinkaP,
                 date: createDate(2018, 1, 26, 13, 10, timezone: TimeZone(abbreviation: "UTC")!)
             )
         ]
@@ -631,7 +631,7 @@ class AlcoholCalculatorTest: XCTestCase {
                 drink: "sör",
                 quantity: 5.0,
                 unit: DrinkUnit.deciliter,
-                alcohol: BEER_ALCOHOL_P,
+                alcohol: kBeerAlcoholP,
                 date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
             ),
             Consumption(
@@ -639,7 +639,7 @@ class AlcoholCalculatorTest: XCTestCase {
                 drink: "sör",
                 quantity: 5.0,
                 unit: DrinkUnit.deciliter,
-                alcohol: BEER_STRONG_ALCOHOL_P,
+                alcohol: kBeerStrongAlcoholP,
                 date: createDate(2018, 1, 26, 14, 0, timezone: TimeZone(abbreviation: "UTC")!)
             )
         ]
@@ -696,7 +696,7 @@ class AlcoholCalculatorTest: XCTestCase {
                 drink: "sör",
                 quantity: 5.0,
                 unit: DrinkUnit.deciliter,
-                alcohol: BEER_ALCOHOL_P,
+                alcohol: kBeerAlcoholP,
                 date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
             ),
             Consumption(
@@ -704,7 +704,7 @@ class AlcoholCalculatorTest: XCTestCase {
                 drink: "sör",
                 quantity: 5.0,
                 unit: DrinkUnit.deciliter,
-                alcohol: BEER_STRONG_ALCOHOL_P,
+                alcohol: kBeerStrongAlcoholP,
                 date: createDate(2018, 1, 26, 18, 0, timezone: TimeZone(abbreviation: "UTC")!)
             )
         ]
@@ -757,7 +757,7 @@ class AlcoholCalculatorTest: XCTestCase {
                 drink: "sör",
                 quantity: 5.0,
                 unit: DrinkUnit.deciliter,
-                alcohol: BEER_STRONG_ALCOHOL_P,
+                alcohol: kBeerStrongAlcoholP,
                 date: createDate(2018, 1, 26, 18, 0, timezone: TimeZone(abbreviation: "UTC")!)
             ),
             Consumption(
@@ -765,7 +765,7 @@ class AlcoholCalculatorTest: XCTestCase {
                 drink: "sör",
                 quantity: 5.0,
                 unit: DrinkUnit.deciliter,
-                alcohol: BEER_ALCOHOL_P,
+                alcohol: kBeerAlcoholP,
                 date: createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!)
             )
         ]
@@ -935,7 +935,7 @@ class AlcoholCalculatorTest: XCTestCase {
                 time: createDate(2018, 1, 26, 17, 35, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 9.46236263736264
             ),
-            RecordData(time: DATE_NOW, bacLevel: 8.502362637362639),
+            RecordData(time: kDateNow, bacLevel: 8.502362637362639),
             RecordData(
                 time: createDate(2018, 1, 27, 1, 5, 27, timezone: TimeZone(abbreviation: "UTC")!),
                 bacLevel: 8.33623763736264
@@ -971,7 +971,7 @@ class AlcoholCalculatorTest: XCTestCase {
                 createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!),
                 0.0,
                 createDate(2018, 1, 26, 13, 0, timezone: TimeZone(abbreviation: "UTC")!),
-                DATE_NOW,
+                kDateNow,
                 [Record]()
             ]
         )

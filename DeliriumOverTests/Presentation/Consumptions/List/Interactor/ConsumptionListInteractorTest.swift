@@ -15,12 +15,12 @@ import RxTest
 @testable import DeliriumOver
 
 class ConsumptionListInteractorImplTest: XCTestCase {
-    private static let TEST_ERROR_MESSAGE = "TEST ERROR"
-    private static let TEST_ERROR: SimpleError = SimpleError.error(message: TEST_ERROR_MESSAGE)
-    static let TEST_CONSUMPTION_1 = Consumption("1", drink: "test drink", quantity: 2.0, unit: DrinkUnit.deciliter, alcohol: 10.5)
-    static let TEST_CONSUMPTION_2 = Consumption("2", drink: "test drink 2", quantity: 5.0, unit: DrinkUnit.centiliter, alcohol: 65.0)
+    private static let testErrorMessage = "TEST ERROR"
+    private static let testError: SimpleError = SimpleError.error(message: testErrorMessage)
+    static let testConsumption1 = Consumption("1", drink: "test drink", quantity: 2.0, unit: DrinkUnit.deciliter, alcohol: 10.5)
+    static let testConsumption2 = Consumption("2", drink: "test drink 2", quantity: 5.0, unit: DrinkUnit.centiliter, alcohol: 65.0)
     
-    static let TEST_SESSION = Session(
+    static let testSession = Session(
         id: "10",
         title: "Test session",
         description: "Test description",
@@ -28,7 +28,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
         weight: 85.0,
         height: 175.0,
         gender: Sex.MALE,
-        consumptions: [TEST_CONSUMPTION_1, TEST_CONSUMPTION_2],
+        consumptions: [testConsumption1, testConsumption2],
         inProgress: false
     )
     var sessionRepository = MockSessionRepository()
@@ -43,7 +43,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
     
     func testLoadConsumptionsWhenLoadSessionFailure() {
         stub(sessionRepository) { (stub) in
-            when(stub.inProgressSession).get.thenReturn(Observable.error(ConsumptionListInteractorImplTest.TEST_ERROR))
+            when(stub.inProgressSession).get.thenReturn(Observable.error(ConsumptionListInteractorImplTest.testError))
         }
 
         do {
@@ -53,7 +53,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
             XCTAssertTrue(error is SimpleError)
             switch error as! SimpleError {
             case .error(let message):
-                XCTAssertEqual(ConsumptionListInteractorImplTest.TEST_ERROR_MESSAGE, message)
+                XCTAssertEqual(ConsumptionListInteractorImplTest.testErrorMessage, message)
             }
         }
     }
@@ -77,31 +77,31 @@ class ConsumptionListInteractorImplTest: XCTestCase {
 
     func testLoadConsumptionsWhenInProgressSession() throws {
         stub(sessionRepository) { (stub) in
-            when(stub.inProgressSession).get.thenReturn(Observable.just(ConsumptionListInteractorImplTest.TEST_SESSION))
+            when(stub.inProgressSession).get.thenReturn(Observable.just(ConsumptionListInteractorImplTest.testSession))
         }
     
         let result = try underTest!.loadConsumptions().toBlocking().first()
     
-        XCTAssertEqual(ConsumptionListInteractorImplTest.TEST_SESSION.consumptions, result!)
+        XCTAssertEqual(ConsumptionListInteractorImplTest.testSession.consumptions, result!)
     }
     
     func testLoadConsumptionsWhenExistingSession() throws {
         underTest = ConsumptionListInteractorImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "10")
     
         stub(sessionRepository) { (stub) in
-            when(stub.loadSession(sessionId: "10")).thenReturn(Observable.just(ConsumptionListInteractorImplTest.TEST_SESSION))
+            when(stub.loadSession(sessionId: "10")).thenReturn(Observable.just(ConsumptionListInteractorImplTest.testSession))
         }
     
         let result = try underTest!.loadConsumptions().toBlocking().first()
         
-        XCTAssertEqual(ConsumptionListInteractorImplTest.TEST_SESSION.consumptions, result!)
+        XCTAssertEqual(ConsumptionListInteractorImplTest.testSession.consumptions, result!)
     }
 
     func testLoadConsumptionsWhenExistingSessionFailure() {
         underTest = ConsumptionListInteractorImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "10")
     
         stub(sessionRepository) { (stub) in
-            when(stub.loadSession(sessionId: "10")).thenReturn(Observable.error(ConsumptionListInteractorImplTest.TEST_ERROR))
+            when(stub.loadSession(sessionId: "10")).thenReturn(Observable.error(ConsumptionListInteractorImplTest.testError))
         }
     
         do {
@@ -111,7 +111,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
             XCTAssertTrue(error is SimpleError)
             switch error as! SimpleError {
             case .error(let message):
-                XCTAssertEqual(ConsumptionListInteractorImplTest.TEST_ERROR_MESSAGE, message)
+                XCTAssertEqual(ConsumptionListInteractorImplTest.testErrorMessage, message)
             }
         }
     }
@@ -119,38 +119,38 @@ class ConsumptionListInteractorImplTest: XCTestCase {
     func testDeleteConsumptionWhenSuccess() throws {
         underTest = ConsumptionListInteractorImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "10")
         stub(sessionRepository) { (stub) in
-            when(stub.loadSession(sessionId: "10")).thenReturn(Observable.just(ConsumptionListInteractorImplTest.TEST_SESSION))
+            when(stub.loadSession(sessionId: "10")).thenReturn(Observable.just(ConsumptionListInteractorImplTest.testSession))
         }
         stub(consumptionRepository) { (stub) in
-            when(stub.delete(consumption: ConsumptionListInteractorImplTest.TEST_CONSUMPTION_1)).thenReturn(Completable.empty())
+            when(stub.delete(consumption: ConsumptionListInteractorImplTest.testConsumption1)).thenReturn(Completable.empty())
         }
     
-        _ = try underTest!.delete(consumption: ConsumptionListInteractorImplTest.TEST_CONSUMPTION_1).toBlocking().toArray()
+        _ = try underTest!.delete(consumption: ConsumptionListInteractorImplTest.testConsumption1).toBlocking().toArray()
     
-        verify(consumptionRepository).delete(consumption: ConsumptionListInteractorImplTest.TEST_CONSUMPTION_1)
+        verify(consumptionRepository).delete(consumption: ConsumptionListInteractorImplTest.testConsumption1)
     }
 
     func testDeleteConsumptionWhenError() {
         underTest = ConsumptionListInteractorImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "10")
     
         stub(consumptionRepository) { stub in
-            when(stub.delete(consumption: ConsumptionListInteractorImplTest.TEST_CONSUMPTION_1)).thenReturn(
-                Completable.error(ConsumptionListInteractorImplTest.TEST_ERROR)
+            when(stub.delete(consumption: ConsumptionListInteractorImplTest.testConsumption1)).thenReturn(
+                Completable.error(ConsumptionListInteractorImplTest.testError)
             )
         }
     
         do {
-            _ = try underTest!.delete(consumption: ConsumptionListInteractorImplTest.TEST_CONSUMPTION_1).toBlocking().toArray()
+            _ = try underTest!.delete(consumption: ConsumptionListInteractorImplTest.testConsumption1).toBlocking().toArray()
             XCTFail()
         } catch {
             if case SimpleError.error(let message) = error {
-                XCTAssertEqual(ConsumptionListInteractorImplTest.TEST_ERROR_MESSAGE, message)
+                XCTAssertEqual(ConsumptionListInteractorImplTest.testErrorMessage, message)
             } else {
                 XCTFail("Invalid error type \(error)")
             }
         }
     
-        verify(consumptionRepository).delete(consumption: ConsumptionListInteractorImplTest.TEST_CONSUMPTION_1)
+        verify(consumptionRepository).delete(consumption: ConsumptionListInteractorImplTest.testConsumption1)
     }
     
     func testAddDrinkWhenNoInProgressSession() throws {
@@ -165,7 +165,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
             when(stub.getFrequentlyConsumedDrinks()).thenReturn(Observable.never())
         }
         stub(consumptionRepository) { (stub) in
-            when(stub.saveConsumption(sessionId: ConsumptionListInteractorImplTest.TEST_SESSION.id, consumption: consumption)).thenReturn(Completable.empty())
+            when(stub.saveConsumption(sessionId: ConsumptionListInteractorImplTest.testSession.id, consumption: consumption)).thenReturn(Completable.empty())
         }
     
         stub(sessionRepository) { (stub) in when(stub.inProgressSession).get.thenReturn(Observable.never())
@@ -176,7 +176,6 @@ class ConsumptionListInteractorImplTest: XCTestCase {
     
         // THEN
         verifyNoMoreInteractions(consumptionRepository)
-//        verify(consumptionRepository).saveConsumption(sessionId: ConsumptionListInteractorImplTest.TEST_SESSION.id, consumption: Consumption(drink: testDrink.name, quantity: testDrink.defaultQuantity, unit: testDrink.defaultUnit, alcohol: testDrink.alcohol))
     }
 
     func testAddDrinkWhenSessionIdIsNotNil() throws {
@@ -193,7 +192,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
             when(stub.saveConsumption(sessionId: "12", consumption: consumption)).thenReturn(Completable.empty())
         }
         stub(sessionRepository) { (stub) in
-            when(stub.loadSession(sessionId: "12")).thenReturn(Observable<Session>.just(ConsumptionListInteractorImplTest.TEST_SESSION))
+            when(stub.loadSession(sessionId: "12")).thenReturn(Observable<Session>.just(ConsumptionListInteractorImplTest.testSession))
         }
     
         // WHEN
@@ -207,7 +206,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
         // GIVEN
         underTest = ConsumptionListInteractorImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "12")
         stub(drinkRepository) { (stub) in
-            when(stub.getFrequentlyConsumedDrinks()).thenReturn(Observable.error(ConsumptionListInteractorImplTest.TEST_ERROR))
+            when(stub.getFrequentlyConsumedDrinks()).thenReturn(Observable.error(ConsumptionListInteractorImplTest.testError))
         }
     
         // WHEN
@@ -216,7 +215,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
             XCTFail("Error have to be thrown!")
         } catch {
             if case SimpleError.error(let message) = error {
-                XCTAssertEqual(ConsumptionListInteractorImplTest.TEST_ERROR_MESSAGE, message)
+                XCTAssertEqual(ConsumptionListInteractorImplTest.testErrorMessage, message)
             } else {
                 XCTFail("Invalid error type \(error)")
             }

@@ -18,17 +18,17 @@ class QuantityPickerSheet<Unit: CustomStringConvertible>: NumberPickerSheetBase,
     var minimum: Double = 0.0
     var maximum: Double = 100.0
     var step: Double = 0.1
-    var unit: [Unit] = []
+    var units: [Unit] = []
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return unit.isEmpty ? 1 : 2
+        return units.isEmpty ? 1 : 2
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if (component == 0) {
             return Int((maximum - minimum) / step) + 1
         } else {
-            return unit.count
+            return units.count
         }
     }
 
@@ -36,7 +36,7 @@ class QuantityPickerSheet<Unit: CustomStringConvertible>: NumberPickerSheetBase,
         if (component == 0) {
             return String(format:"%.1f", minimum + step * Double(row))
         } else {
-            return unit[row].description
+            return units[row].description
         }
     }
 
@@ -51,7 +51,7 @@ class QuantityPickerSheet<Unit: CustomStringConvertible>: NumberPickerSheetBase,
 
     private func notifyQuantitySelected() {
         let quantity = minimum + Double(numberPicker.selectedRow(inComponent: 0)) * step
-        let unit = self.unit[numberPicker.selectedRow(inComponent: 1)]
+        let unit = self.units[numberPicker.selectedRow(inComponent: 1)]
         onQuantitySelected?(quantity, unit)
     }
 }
