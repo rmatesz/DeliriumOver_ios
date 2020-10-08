@@ -25,6 +25,7 @@ class ConsumptionListInteractorImpl: ConsumptionListInteractor {
     
     public func loadConsumptions() -> Observable<[Consumption]> {
         return self.loadSession()
+            .ifEmpty(switchTo: Observable.error(SimpleError.error(message: "Session can't be loaded!")))
             .map { (session) -> [Consumption] in
                 session.consumptions
             }

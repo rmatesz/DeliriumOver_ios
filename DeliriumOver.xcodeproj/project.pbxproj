@@ -28,7 +28,6 @@
 		4246D73C2200583D0066BC01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4246D73A2200583D0066BC01 /* Main.storyboard */; };
 		4246D73E2200583D0066BC01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4246D73D2200583D0066BC01 /* Assets.xcassets */; };
 		4246D7412200583D0066BC01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4246D73F2200583D0066BC01 /* LaunchScreen.storyboard */; };
-		4246D74C2200583E0066BC01 /* DeliriumOverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246D74B2200583E0066BC01 /* DeliriumOverTests.swift */; };
 		4246D7572200583E0066BC01 /* DeliriumOverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246D7562200583E0066BC01 /* DeliriumOverUITests.swift */; };
 		426AB6C8221344F00061EF0B /* ConsumptionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426AB6C7221344F00061EF0B /* ConsumptionExtension.swift */; };
 		426AB6CA221750BD0061EF0B /* DrinkExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426AB6C9221750BD0061EF0B /* DrinkExtension.swift */; };
@@ -195,7 +194,6 @@
 		4246D7402200583D0066BC01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4246D7422200583D0066BC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4246D7472200583E0066BC01 /* DeliriumOverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeliriumOverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4246D74B2200583E0066BC01 /* DeliriumOverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliriumOverTests.swift; sourceTree = "<group>"; };
 		4246D74D2200583E0066BC01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4246D7522200583E0066BC01 /* DeliriumOverUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeliriumOverUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4246D7562200583E0066BC01 /* DeliriumOverUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliriumOverUITests.swift; sourceTree = "<group>"; };
@@ -523,7 +521,6 @@
 				4204FE30221163C900BBB83E /* GeneratedMocks.swift */,
 				4232DAF32210CCA500DCC8DD /* Presentation */,
 				429893B92203138900460356 /* Logic */,
-				4246D74B2200583E0066BC01 /* DeliriumOverTests.swift */,
 				4246D74D2200583E0066BC01 /* Info.plist */,
 				42B8D8AE22044F0B0050F0B2 /* TestDateProvider.swift */,
 			);
@@ -1640,7 +1637,6 @@
 				80E73AD42521C5D200BCB8A9 /* String+Error.swift in Sources */,
 				80F86D80252235C100DBF2F6 /* ConsumptionFormPresenterImplTests.swift in Sources */,
 				80E73B1A2521F5EB00BCB8A9 /* ConsumptionListItemView.swift in Sources */,
-				4246D74C2200583E0066BC01 /* DeliriumOverTests.swift in Sources */,
 				80F86D972524AAA700DBF2F6 /* CoreData.swift in Sources */,
 				4204FE31221163C900BBB83E /* GeneratedMocks.swift in Sources */,
 			);

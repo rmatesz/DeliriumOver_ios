@@ -33,6 +33,9 @@ class ConsumptionFormPresenterTests: XCTestCase {
         stub(view) { mock in
             mock.hideDrinkError().thenDoNothing()
             mock.showDrinkError(any()).thenDoNothing()
+            mock.showLoadingIndicator().thenDoNothing()
+            mock.hideLoadingIndicator().thenDoNothing()
+            mock.showAlert(title: any(), message: any(), action: any()).thenDoNothing()
             mock.saveIsEnabled.set(any()).thenDoNothing()
             mock.updateTime(any()).thenDoNothing()
         }

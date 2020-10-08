@@ -83,7 +83,12 @@ class FirebaseSessionDatabaseTests: XCTestCase {
                 XCTAssertEqual([self.session], result)
                 counter = counter + 1
             } else {
-                XCTAssertEqual([self.session, self.session2], result)
+                XCTAssertEqual(
+                    [self.session, self.session2]
+                        .sorted(by: { (s1, s2) in s1.id > s2.id }),
+                    result
+                        .sorted(by: { (s1, s2) in s1.id > s2.id })
+                )
                 sessionEmitted.fulfill()
             }
         })
