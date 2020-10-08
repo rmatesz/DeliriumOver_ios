@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class DatePickerSheet: NumberPickerSheetBase {
+class DatePickerSheet: XibUIView {
     override var xibFilename: String { "DatePickerSheet" }
 
     @IBOutlet weak var datePicker: UIDatePicker!

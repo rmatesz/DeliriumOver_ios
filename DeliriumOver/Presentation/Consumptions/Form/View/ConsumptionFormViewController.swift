@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class ConsumptionFormViewController : UIViewController, ConsumptionFormView, UITextFieldDelegate {
+
     private static let dateFormatter = DateFormatter().apply { $0.dateFormat = "HH:mm" }
     
     var presenter: ConsumptionFormPresenter?
@@ -20,6 +21,7 @@ class ConsumptionFormViewController : UIViewController, ConsumptionFormView, UIT
     @IBOutlet weak var alcohol: UITextField!
     @IBOutlet weak var time: UITextField!
     @IBOutlet weak var saveBtn: UIButton!
+    var loadingIndicator: LoadingIndicator!
     
     private let timePicker: DatePickerSheet = DatePickerSheet().apply { (datePicker: DatePickerSheet) in
         datePicker.datePicker.datePickerMode = UIDatePickerMode.time
@@ -40,6 +42,7 @@ class ConsumptionFormViewController : UIViewController, ConsumptionFormView, UIT
     }
 
     override func viewDidLoad() {
+        loadingIndicator = LoadingIndicator(frame: view.frame)
         presenter?.loadData()
         
         timePicker.onDateSelected = { self.dateSelected(date: $0) }
@@ -71,6 +74,20 @@ class ConsumptionFormViewController : UIViewController, ConsumptionFormView, UIT
     
     func hideDrinkError() {
         drinkError.isHidden = true
+    }
+
+    func showLoadingIndicator() {
+        view.addSubview(loadingIndicator)
+    }
+
+    func hideLoadingIndicator() {
+        loadingIndicator.removeFromSuperview()
+    }
+
+    func showAlert(title: String, message: String, action: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: action, style: UIAlertActionStyle.default))
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func drinkChanged(_ sender: UITextField) {

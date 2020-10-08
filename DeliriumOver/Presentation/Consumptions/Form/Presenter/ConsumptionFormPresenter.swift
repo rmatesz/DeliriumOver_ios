@@ -11,7 +11,7 @@ import Foundation
 protocol ConsumptionFormPresenter {
     
     func loadData()
-    
+
     func onDrinkChanged(_ value: String)
     func onAlcoholChanged(_ value: Double)
     func onQuantityChanged(_ value: Double)

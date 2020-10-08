@@ -109,7 +109,3 @@ class MConsumptionEntity: ConsumptionEntity {
         }
     }
 }
-
-class MSessionEntity: SessionEntity {
-    // This is needed for mocking SessionEntity
-}

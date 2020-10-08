@@ -21,8 +21,14 @@ class ConsumptionRepositoryImpl : ConsumptionRepository {
     func delete(consumption: Consumption) -> Completable {
         return consumptionDAO.delete(consumptions: consumption)
     }
-    
+
     func saveConsumption(sessionId: String, consumption: Consumption) -> Completable {
         return self.consumptionDAO.insert(sessionId: sessionId, consumption: consumption)
+            .do(onError: { error in
+                Logger.w(tag: "ConsumptionRepositoryImpl",
+                         category: "Repository",
+                         message: "Error during saving consumption.",
+                         error: error)
+            })
     }
 }

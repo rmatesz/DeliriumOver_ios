@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,19 +14,42 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IJd-c3-e4x">
-                    <rect key="frame" x="87" y="416" width="240" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tA2-lV-oJq">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kq9-hb-fqN">
-                    <rect key="frame" x="126" y="309" width="22" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IJd-c3-e4x" customClass="RoundedCornerView" customModule="DeliriumOver" customModuleProvider="target">
+                    <rect key="frame" x="175" y="416" width="64" height="64"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="9fV-JB-SAp"/>
+                        <constraint firstAttribute="width" constant="64" id="zz3-tF-eFY"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="wWt-gy-chB">
+                    <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </activityIndicatorView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="tA2-lV-oJq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ACp-HK-91T"/>
+                <constraint firstItem="wWt-gy-chB" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="IbQ-6d-Jzb"/>
+                <constraint firstItem="IJd-c3-e4x" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="LYS-m8-UyW"/>
+                <constraint firstAttribute="bottom" secondItem="tA2-lV-oJq" secondAttribute="bottom" id="N66-09-9jK"/>
+                <constraint firstItem="wWt-gy-chB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Xnn-s2-SC6"/>
+                <constraint firstItem="IJd-c3-e4x" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="XsY-qe-lsf"/>
+                <constraint firstAttribute="trailing" secondItem="tA2-lV-oJq" secondAttribute="trailing" id="bcC-c9-Roy"/>
+                <constraint firstItem="tA2-lV-oJq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fwq-fI-UIi"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="71"/>
         </view>
     </objects>
 </document>

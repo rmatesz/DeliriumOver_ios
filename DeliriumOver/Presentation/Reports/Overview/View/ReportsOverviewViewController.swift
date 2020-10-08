@@ -47,11 +47,11 @@ class ReportsOverviewViewController: UIViewController {
             .bind(to: alcoholEliminationTime.rx.text).disposed(by: disposeBag)
         viewModel.chartData.subscribe { self.setupChart(stats: $0) }.disposed(by: disposeBag)
         emptyState.forEach { view in
-            viewModel.chartData.map { !$0.hasData() }
+            viewModel.chartData.map { $0.hasData() }
                 .bind(to: view.rx.isHidden).disposed(by: disposeBag)
         }
         contentState.forEach { view in
-            viewModel.chartData.map { $0.hasData() }
+            viewModel.chartData.map { !$0.hasData() }
                 .bind(to: view.rx.isHidden).disposed(by: disposeBag)
         }
         viewModel.onboardingTrigger
@@ -159,7 +159,7 @@ class ReportsOverviewViewController: UIViewController {
 
 extension Array where Element == Record {
     func hasData() -> Bool {
-        return !self.contains { $0.isEmpty() }
+        return self.contains { !$0.isEmpty() }
     }
 }
 

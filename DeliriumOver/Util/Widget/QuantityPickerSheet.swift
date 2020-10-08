@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class QuantityPickerSheet<Unit: CustomStringConvertible>: NumberPickerSheetBase, UIPickerViewDelegate, UIPickerViewDataSource {
+class QuantityPickerSheet<Unit: CustomStringConvertible>: XibUIView, UIPickerViewDelegate, UIPickerViewDataSource {
     override var xibFilename: String { "QuantityPickerSheet" }
     
     @IBOutlet weak var numberPicker: UIPickerView!

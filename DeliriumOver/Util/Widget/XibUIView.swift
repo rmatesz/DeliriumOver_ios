@@ -9,19 +9,7 @@
 import Foundation
 import UIKit
 
-protocol NumberPickerSheet {
-    var xibFilename: String { get }
-}
-
-extension NumberPickerSheet where Self: UIView {
-    fileprivate func initializeSubviews() {
-        let view = Bundle.main.loadNibNamed(xibFilename, owner: self, options: nil)![0] as! UIView
-        self.addSubview(view)
-        view.frame = self.bounds
-    }
-}
-
-class NumberPickerSheetBase: UIView, NumberPickerSheet {
+class XibUIView: UIView {
     var xibFilename: String { fatalError("Needs to be overridden")}
 
     required init?(coder aDecoder: NSCoder) {
@@ -37,5 +25,11 @@ class NumberPickerSheetBase: UIView, NumberPickerSheet {
     override init(frame: CGRect) {
         super.init(frame: frame)
         initializeSubviews()
+    }
+
+    fileprivate func initializeSubviews() {
+        let view = Bundle.main.loadNibNamed(xibFilename, owner: self, options: nil)![0] as! UIView
+        self.addSubview(view)
+        view.frame = self.bounds
     }
 }

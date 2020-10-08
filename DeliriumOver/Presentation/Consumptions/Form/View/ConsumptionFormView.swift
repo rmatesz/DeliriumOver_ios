@@ -7,12 +7,17 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ConsumptionFormView {
     func updateTime(_ time: Date)
     
     func showDrinkError(_ error: String)
     func hideDrinkError()
-    
+
+    func showAlert(title: String, message: String, action: String)
+    func showLoadingIndicator()
+    func hideLoadingIndicator()
+
     var saveIsEnabled: Bool { get set }
 }

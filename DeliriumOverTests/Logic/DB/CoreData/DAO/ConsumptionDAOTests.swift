@@ -17,7 +17,7 @@ class ConsumptionDAOTests : XCTestCase {
     private let sessionId = "x-coredata://F1697911-CD8A-4D63-B40F-AB0CA020C873/Session/p1"
     private lazy var sessionIdURL = URL(string: sessionId)!
     private let sessionObjectId = MockManagedObjectID()
-    private let sessionEntity = MockMSessionEntity()
+    private let sessionEntity = SessionEntity()
     private let now = Date()
     private lazy var consumption1 = Consumption("x-coredata://F1697911-CD8A-4D63-B40F-AB0CA020C873/Consumption/p1", drink: "Beer", quantity: 5, unit: .deciliter, alcohol: 5, date: now)
     private lazy var consumption2 = Consumption("x-coredata://F1697911-CD8A-4D63-B40F-AB0CA020C873/Consumption/p2", drink: "Palinka", quantity: 5, unit: .centiliter, alcohol: 55, date: now)

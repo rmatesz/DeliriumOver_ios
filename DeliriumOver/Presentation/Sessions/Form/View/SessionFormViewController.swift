@@ -18,9 +18,10 @@ class SessionFormViewController : UIViewController {
     @IBOutlet weak var weight: UITextField!
     @IBOutlet weak var gender: UISegmentedControl!
     private var disposeBag: DisposeBag!
+    private var loadingIndicator: LoadingIndicator!
 
-    func onSaveFinished() {
-        // TODO: hide progress
+    override func viewDidLoad() {
+        loadingIndicator = LoadingIndicator(frame: view.frame)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -42,9 +43,21 @@ class SessionFormViewController : UIViewController {
         presenter.saveSession()
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler())
-            .subscribe { self.presentingViewController?.dismiss(animated: true) }
+            .do(onSubscribed: {
+                self.view.addSubview(self.loadingIndicator!)
+            })
+            .subscribe(
+                onCompleted: {
+                    self.loadingIndicator.removeFromSuperview()
+                    self.presentingViewController?.dismiss(animated: true) },
+                onError: { _ in
+                    self.loadingIndicator.removeFromSuperview()
+                    let alert = UIAlertController(title: "Error!", message: "Unable to save session. Please try again!", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Got it!", style: UIAlertActionStyle.default))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            )
             .disposed(by: disposeBag)
-        // TODO: show progress
     }
 }
 

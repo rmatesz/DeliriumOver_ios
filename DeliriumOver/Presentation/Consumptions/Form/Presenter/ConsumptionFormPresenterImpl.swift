@@ -72,13 +72,13 @@ class ConsumptionFormPresenterImpl : BasePresenter, ConsumptionFormPresenter {
                                    date: time ?? currentDate)
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler())
+            .do(onSubscribed: { self.view.showLoadingIndicator() })
             .subscribe(onCompleted: {
+                self.view.hideLoadingIndicator()
                 self.router.finish()
-            }, onError: {
-                Logger.w(tag: "ConsumptionForm",
-                         category: "Consumption registry",
-                         message: "Error during saving consumption.",
-                         error: $0)
+            }, onError: { _ in
+                self.view.hideLoadingIndicator()
+                self.view.showAlert(title: "Error!", message: "Unable to save consumption. Please try again!", action: "Got it!")
             })
             .disposed(by: disposeBag)
     }
