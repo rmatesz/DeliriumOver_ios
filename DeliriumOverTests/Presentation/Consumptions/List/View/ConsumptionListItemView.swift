@@ -18,7 +18,7 @@ class ConsumptionListItemViewTests: XCTestCase {
     private let hour = 10
     private let minute = 32
     private lazy var date = createDate(2020, 9, 29, hour, minute)
-    private lazy var item = ConsumptionListItem(drink: drink, alcohol: alcohol, quantity: quantity, date: date)
+    private lazy var item = ConsumptionListItem(drink: drink, alcohol: alcohol, quantity: quantity, date: date, consumption:  Consumption())
     private let underTest = ConsumptionListItemView()
 
     func testUpdatePopulatesLabelsText() {

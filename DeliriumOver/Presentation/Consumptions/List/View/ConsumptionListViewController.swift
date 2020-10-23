@@ -83,7 +83,7 @@ protocol AddConsumptionViewController {
 }
 
 protocol AddConsumptionViewModel {
-    var drinks: BehaviorRelay<[Drink]> { get }
+    var drinks: Observable<[Drink]> { get }
     func addDrinkAsConsumption(drink: Drink) -> Completable
 }
 

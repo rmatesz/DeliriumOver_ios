@@ -13,4 +13,5 @@ struct ConsumptionListItem {
     var alcohol: String
     var quantity: String
     var date: Date
+    var consumption: Consumption
 }

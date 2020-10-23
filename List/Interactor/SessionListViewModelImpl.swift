@@ -9,14 +9,14 @@
 import Foundation
 import RxSwift
 
-class SessionListInteractorImpl: SessionListInteractor {
+class SessionListViewModelImpl: SessionListViewModel {
     private let sessionRepository: SessionRepository
     
     init(sessionRepository: SessionRepository) {
         self.sessionRepository = sessionRepository
     }
     
-    func loadSessions() -> Observable<[Session]> {
+    var sessions: Observable<[Session]> {
         return sessionRepository.sessions
     }
 }

@@ -23,13 +23,14 @@ class ReportOverviewViewModelImpl: ReportOverviewViewModel {
     let alcoholEliminationDate = BehaviorRelay<Date>(value: Date())
     let sessionTitle = BehaviorRelay<String>(value: "")
     let chartData = BehaviorRelay<[Record]>(value: [])
-    let drinks = BehaviorRelay<[Drink]>(value: [])
+    let drinks: Observable<[Drink]>
     let onboardingTrigger = BehaviorRelay<[OnboardingManager.Onboarding]>(value: [])
 
     
     init(interactor: ReportOverviewInteractor, onboardingManager: OnboardingManager) {
         self.interactor = interactor
         self.onboardingManager = onboardingManager
+        drinks = interactor.loadFrequentlyConsumedDrinks()
 
         interactor.loadStatistics()
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
@@ -67,12 +68,6 @@ class ReportOverviewViewModelImpl: ReportOverviewViewModel {
             .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
             .observeOn(MainScheduler())
             .bind(to: chartData)
-            .disposed(by: disposeBag)
-
-        interactor.loadFrequentlyConsumedDrinks()
-            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-            .observeOn(MainScheduler())
-            .bind(to: drinks)
             .disposed(by: disposeBag)
     }
     

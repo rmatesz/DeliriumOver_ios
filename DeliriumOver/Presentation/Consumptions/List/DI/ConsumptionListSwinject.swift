@@ -20,13 +20,9 @@ class ConsumptionListSwinject {
             })
             controller.viewModel = resolver.resolve(ConsumptionListViewModel.self)
         }
-        
-        container.register(ConsumptionListViewModel.self) { (resolver) -> ConsumptionListViewModel in
-            ConsumptionListViewModelImpl(interactor: resolver.resolve(ConsumptionListInteractor.self)!)
-        }
 
-        container.register(ConsumptionListInteractor.self) { (resolver) -> ConsumptionListInteractor in
-            ConsumptionListInteractorImpl(sessionRepository: resolver.resolve(SessionRepository.self)!, consumptionRepository: resolver.resolve(ConsumptionRepository.self)!, drinkRepository: resolver.resolve(DrinkRepository.self)!)
+        container.register(ConsumptionListViewModel.self) { (resolver) -> ConsumptionListViewModel in
+            ConsumptionListViewModelImpl(sessionRepository: resolver.resolve(SessionRepository.self)!, consumptionRepository: resolver.resolve(ConsumptionRepository.self)!, drinkRepository: resolver.resolve(DrinkRepository.self)!)
         }
     }
 }

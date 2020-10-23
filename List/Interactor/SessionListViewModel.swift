@@ -1,5 +1,5 @@
 //
-//  SessionListView.swift
+//  SessionListInteractor.swift
 //  DeliriumOver
 //
 //  Created by Mate Redecsi on 2019. 12. 04..
@@ -7,7 +7,8 @@
 //
 
 import Foundation
+import RxSwift
 
-protocol SessionListView: class {
-    func displaySessions(sessions: [SessionListItem])
+protocol SessionListViewModel {
+    var sessions: Observable<[Session]> { get }
 }

@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import RxSwift
 import UIKit
 
-class SessionListViewController : UITableViewController, SessionListView {
-    var presenter: SessionListPresenter!
-    
+class SessionListViewController : UITableViewController {
+    var viewModel: SessionListViewModel!
+
+    private let disposeBag = DisposeBag()
     private var sessionItems: [SessionListItem] = []
     private var sessions: [SessionListItem]
     {
@@ -23,13 +25,13 @@ class SessionListViewController : UITableViewController, SessionListView {
             tableView.reloadData()
         }
     }
-
-    func displaySessions(sessions: [SessionListItem]) {
-        self.sessions = sessions
-    }
     
     override func viewDidLoad() {
-        presenter.start()
+        viewModel.sessions
+            .subscribe { sessions in
+                self.sessions = sessions.map { SessionListItem(title: $0.title, inProgress: $0.inProgress) }
+            }
+            .disposed(by: disposeBag)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

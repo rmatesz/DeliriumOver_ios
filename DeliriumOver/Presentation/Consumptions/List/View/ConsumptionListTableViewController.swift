@@ -33,7 +33,8 @@ class ConsumptionListTableViewController: UITableViewController {
                     ConsumptionListItem(drink: consumption.drink,
                                         alcohol: String(format: "%.01f%%", consumption.alcohol*100),
                                         quantity: String(format: "%.01f %@", consumption.quantity, consumption.unit.label()),
-                                        date: consumption.date)
+                                        date: consumption.date,
+                                        consumption: consumption)
                 }
 
             }
@@ -64,7 +65,9 @@ class ConsumptionListTableViewController: UITableViewController {
                             commit editingStyle: UITableViewCellEditingStyle,
                             forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            viewModel.onConsumptionSwiped(index: indexPath.row)
+            viewModel.delete(consumption: consumptionItems[indexPath.row].consumption)
+                .subscribe()
+                .disposed(by: disposeBag)
         }
     }
 

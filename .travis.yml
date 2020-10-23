@@ -1,5 +1,6 @@
 language: swift
 os: osx
+osx_image: xcode12.2
 
 xcode_workspace: DeliriumOver.xcworkspace
 xcode_scheme: DeliriumOver

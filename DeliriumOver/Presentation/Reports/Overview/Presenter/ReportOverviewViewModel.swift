@@ -15,7 +15,7 @@ protocol ReportOverviewViewModel: AddConsumptionViewModel {
     var alcoholEliminationDate: BehaviorRelay<Date> { get }
     var sessionTitle: BehaviorRelay<String> { get }
     var chartData: BehaviorRelay<[Record]> { get }
-    var drinks: BehaviorRelay<[Drink]> { get }
+    var drinks: Observable<[Drink]> { get }
     var onboardingTrigger: BehaviorRelay<[OnboardingManager.Onboarding]> { get }
 
     func onTitleEdited(title: String)

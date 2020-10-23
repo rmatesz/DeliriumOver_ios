@@ -14,7 +14,7 @@ import RxBlocking
 import RxTest
 @testable import DeliriumOver
 
-class ConsumptionListInteractorImplTest: XCTestCase {
+class ConsumptionListViewModelImplTest: XCTestCase {
     private static let testErrorMessage = "TEST ERROR"
     private static let testError: SimpleError = SimpleError.error(message: testErrorMessage)
     static let testConsumption1 = Consumption("1", drink: "test drink", quantity: 2.0, unit: DrinkUnit.deciliter, alcohol: 10.5)
@@ -34,26 +34,26 @@ class ConsumptionListInteractorImplTest: XCTestCase {
     var sessionRepository = MockSessionRepository()
     var consumptionRepository = MockConsumptionRepository()
     var drinkRepository = MockDrinkRepository()
-    var underTest: ConsumptionListInteractorImpl?
+    var underTest: ConsumptionListViewModelImpl?
     
     override func setUp() {
         super.setUp()
-        underTest = ConsumptionListInteractorImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository)
+        underTest = ConsumptionListViewModelImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository)
     }
     
     func testLoadConsumptionsWhenLoadSessionFailure() {
         stub(sessionRepository) { (stub) in
-            when(stub.inProgressSession).get.thenReturn(Observable.error(ConsumptionListInteractorImplTest.testError))
+            when(stub.inProgressSession).get.thenReturn(Observable.error(ConsumptionListViewModelImplTest.testError))
         }
 
         do {
-            _ = try underTest!.loadConsumptions().toBlocking().first()
+            _ = try underTest!.consumptions.toBlocking().first()
             XCTFail("Expected result is to throw error.")
         } catch {
             XCTAssertTrue(error is SimpleError)
             switch error as! SimpleError {
             case .error(let message):
-                XCTAssertEqual(ConsumptionListInteractorImplTest.testErrorMessage, message)
+                XCTAssertEqual(ConsumptionListViewModelImplTest.testErrorMessage, message)
             }
         }
     }
@@ -64,7 +64,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
         }
     
         do {
-            _ = try underTest!.loadConsumptions().toBlocking().first()
+            _ = try underTest!.consumptions.toBlocking().first()
             XCTFail()
         } catch {
             if case SimpleError.error(let message) = error {
@@ -77,85 +77,85 @@ class ConsumptionListInteractorImplTest: XCTestCase {
 
     func testLoadConsumptionsWhenInProgressSession() throws {
         stub(sessionRepository) { (stub) in
-            when(stub.inProgressSession).get.thenReturn(Observable.just(ConsumptionListInteractorImplTest.testSession))
+            when(stub.inProgressSession).get.thenReturn(Observable.just(ConsumptionListViewModelImplTest.testSession))
         }
     
-        let result = try underTest!.loadConsumptions().toBlocking().first()
+        let result = try underTest!.consumptions.toBlocking().first()
     
-        XCTAssertEqual(ConsumptionListInteractorImplTest.testSession.consumptions, result!)
+        XCTAssertEqual(ConsumptionListViewModelImplTest.testSession.consumptions, result!)
     }
     
     func testLoadConsumptionsWhenExistingSession() throws {
-        underTest = ConsumptionListInteractorImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "10")
+        underTest = ConsumptionListViewModelImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "10")
     
         stub(sessionRepository) { (stub) in
-            when(stub.loadSession(sessionId: "10")).thenReturn(Observable.just(ConsumptionListInteractorImplTest.testSession))
+            when(stub.loadSession(sessionId: "10")).thenReturn(Observable.just(ConsumptionListViewModelImplTest.testSession))
         }
     
-        let result = try underTest!.loadConsumptions().toBlocking().first()
+        let result = try underTest!.consumptions.toBlocking().first()
         
-        XCTAssertEqual(ConsumptionListInteractorImplTest.testSession.consumptions, result!)
+        XCTAssertEqual(ConsumptionListViewModelImplTest.testSession.consumptions, result!)
     }
 
     func testLoadConsumptionsWhenExistingSessionFailure() {
-        underTest = ConsumptionListInteractorImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "10")
+        underTest = ConsumptionListViewModelImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "10")
     
         stub(sessionRepository) { (stub) in
-            when(stub.loadSession(sessionId: "10")).thenReturn(Observable.error(ConsumptionListInteractorImplTest.testError))
+            when(stub.loadSession(sessionId: "10")).thenReturn(Observable.error(ConsumptionListViewModelImplTest.testError))
         }
     
         do {
-            _ = try underTest!.loadConsumptions().toBlocking().toArray()
+            _ = try underTest!.consumptions.toBlocking().toArray()
             XCTFail()
         } catch {
             XCTAssertTrue(error is SimpleError)
             switch error as! SimpleError {
             case .error(let message):
-                XCTAssertEqual(ConsumptionListInteractorImplTest.testErrorMessage, message)
+                XCTAssertEqual(ConsumptionListViewModelImplTest.testErrorMessage, message)
             }
         }
     }
 
     func testDeleteConsumptionWhenSuccess() throws {
-        underTest = ConsumptionListInteractorImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "10")
+        underTest = ConsumptionListViewModelImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "10")
         stub(sessionRepository) { (stub) in
-            when(stub.loadSession(sessionId: "10")).thenReturn(Observable.just(ConsumptionListInteractorImplTest.testSession))
+            when(stub.loadSession(sessionId: "10")).thenReturn(Observable.just(ConsumptionListViewModelImplTest.testSession))
         }
         stub(consumptionRepository) { (stub) in
-            when(stub.delete(consumption: ConsumptionListInteractorImplTest.testConsumption1)).thenReturn(Completable.empty())
+            when(stub.delete(consumption: ConsumptionListViewModelImplTest.testConsumption1)).thenReturn(Completable.empty())
         }
     
-        _ = try underTest!.delete(consumption: ConsumptionListInteractorImplTest.testConsumption1).toBlocking().toArray()
+        _ = try underTest!.delete(consumption: ConsumptionListViewModelImplTest.testConsumption1).toBlocking().toArray()
     
-        verify(consumptionRepository).delete(consumption: ConsumptionListInteractorImplTest.testConsumption1)
+        verify(consumptionRepository).delete(consumption: ConsumptionListViewModelImplTest.testConsumption1)
     }
 
     func testDeleteConsumptionWhenError() {
-        underTest = ConsumptionListInteractorImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "10")
+        underTest = ConsumptionListViewModelImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "10")
     
         stub(consumptionRepository) { stub in
-            when(stub.delete(consumption: ConsumptionListInteractorImplTest.testConsumption1)).thenReturn(
-                Completable.error(ConsumptionListInteractorImplTest.testError)
+            when(stub.delete(consumption: ConsumptionListViewModelImplTest.testConsumption1)).thenReturn(
+                Completable.error(ConsumptionListViewModelImplTest.testError)
             )
         }
     
         do {
-            _ = try underTest!.delete(consumption: ConsumptionListInteractorImplTest.testConsumption1).toBlocking().toArray()
+            _ = try underTest!.delete(consumption: ConsumptionListViewModelImplTest.testConsumption1).toBlocking().toArray()
             XCTFail()
         } catch {
             if case SimpleError.error(let message) = error {
-                XCTAssertEqual(ConsumptionListInteractorImplTest.testErrorMessage, message)
+                XCTAssertEqual(ConsumptionListViewModelImplTest.testErrorMessage, message)
             } else {
                 XCTFail("Invalid error type \(error)")
             }
         }
     
-        verify(consumptionRepository).delete(consumption: ConsumptionListInteractorImplTest.testConsumption1)
+        verify(consumptionRepository).delete(consumption: ConsumptionListViewModelImplTest.testConsumption1)
     }
     
     func testAddDrinkWhenNoInProgressSession() throws {
         // GIVEN
-        underTest = ConsumptionListInteractorImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: nil)
+        underTest = ConsumptionListViewModelImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: nil)
         let testDrink = Drink(name: "test", alcohol: 10.0, defaultQuantity: 5.0, defaultUnit: DrinkUnit.deciliter)
         let testDate = createDate(2019, 1, 24, 13, 9, 32)
         dateProvider = TestDateProvider(date: testDate)
@@ -165,14 +165,14 @@ class ConsumptionListInteractorImplTest: XCTestCase {
             when(stub.getFrequentlyConsumedDrinks()).thenReturn(Observable.never())
         }
         stub(consumptionRepository) { (stub) in
-            when(stub.saveConsumption(sessionId: ConsumptionListInteractorImplTest.testSession.id, consumption: consumption)).thenReturn(Completable.empty())
+            when(stub.saveConsumption(sessionId: ConsumptionListViewModelImplTest.testSession.id, consumption: consumption)).thenReturn(Completable.empty())
         }
     
         stub(sessionRepository) { (stub) in when(stub.inProgressSession).get.thenReturn(Observable.never())
         }
     
         // WHEN
-        _ = try underTest!.add(drink: testDrink).toBlocking().first()
+        _ = try underTest!.addDrinkAsConsumption(drink: testDrink).toBlocking().first()
     
         // THEN
         verifyNoMoreInteractions(consumptionRepository)
@@ -180,7 +180,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
 
     func testAddDrinkWhenSessionIdIsNotNil() throws {
         // GIVEN
-        underTest = ConsumptionListInteractorImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "12")
+        underTest = ConsumptionListViewModelImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "12")
         let testDrink = Drink(name: "test", alcohol: 10.0, defaultQuantity: 5.0, defaultUnit: DrinkUnit.deciliter)
         let testDate = createDate(2019, 1, 24, 13, 9, 32)
         dateProvider = TestDateProvider(date: testDate)
@@ -192,11 +192,11 @@ class ConsumptionListInteractorImplTest: XCTestCase {
             when(stub.saveConsumption(sessionId: "12", consumption: consumption)).thenReturn(Completable.empty())
         }
         stub(sessionRepository) { (stub) in
-            when(stub.loadSession(sessionId: "12")).thenReturn(Observable<Session>.just(ConsumptionListInteractorImplTest.testSession))
+            when(stub.loadSession(sessionId: "12")).thenReturn(Observable<Session>.just(ConsumptionListViewModelImplTest.testSession))
         }
     
         // WHEN
-        _ = try underTest!.add(drink: testDrink).toBlocking().first()
+        _ = try underTest!.addDrinkAsConsumption(drink: testDrink).toBlocking().first()
     
         // THEN
         verify(consumptionRepository).saveConsumption(sessionId: "12", consumption: Consumption(drink: testDrink.name, quantity: testDrink.defaultQuantity, unit: testDrink.defaultUnit, alcohol: testDrink.alcohol))
@@ -204,18 +204,18 @@ class ConsumptionListInteractorImplTest: XCTestCase {
 
     func testLoadFrequentlyConsumedDrinksWhenError() {
         // GIVEN
-        underTest = ConsumptionListInteractorImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "12")
+        underTest = ConsumptionListViewModelImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "12")
         stub(drinkRepository) { (stub) in
-            when(stub.getFrequentlyConsumedDrinks()).thenReturn(Observable.error(ConsumptionListInteractorImplTest.testError))
+            when(stub.getFrequentlyConsumedDrinks()).thenReturn(Observable.error(ConsumptionListViewModelImplTest.testError))
         }
     
         // WHEN
         do {
-            _ = try underTest!.loadFrequentlyConsumedDrinks().toBlocking().first()
+            _ = try underTest!.drinks.toBlocking().first()
             XCTFail("Error have to be thrown!")
         } catch {
             if case SimpleError.error(let message) = error {
-                XCTAssertEqual(ConsumptionListInteractorImplTest.testErrorMessage, message)
+                XCTAssertEqual(ConsumptionListViewModelImplTest.testErrorMessage, message)
             } else {
                 XCTFail("Invalid error type \(error)")
             }
@@ -224,14 +224,14 @@ class ConsumptionListInteractorImplTest: XCTestCase {
 
     func testLoadFrequentlyConsumedDrinksWhenEmptyResult() throws {
         // GIVEN
-        underTest = ConsumptionListInteractorImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "12")
+        underTest = ConsumptionListViewModelImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository, sessionId: "12")
     
         stub(drinkRepository) { (stub) in
             when(stub.getFrequentlyConsumedDrinks()).thenReturn(Observable.just([]))
         }
     
         // WHEN
-        let result = try underTest!.loadFrequentlyConsumedDrinks().toBlocking().first()
+        let result = try underTest!.drinks.toBlocking().first()
         
         // THEN
         XCTAssertTrue(result!.isEmpty)
@@ -239,7 +239,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
 
     func testLoadFrequentlyConsumedDrinksWhenSingleResult() throws {
         // GIVEN
-        underTest = ConsumptionListInteractorImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository)
+        underTest = ConsumptionListViewModelImpl(sessionRepository: sessionRepository, consumptionRepository: consumptionRepository, drinkRepository: drinkRepository)
     
         let testDrink = Drink(name: "test")
         let testDrinks = [testDrink]
@@ -249,7 +249,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
         }
     
         // WHEN
-        let result = try underTest!.loadFrequentlyConsumedDrinks().toBlocking().first()
+        let result = try underTest!.drinks.toBlocking().first()
 
         // THEN
         XCTAssertEqual(testDrinks, result!)
@@ -267,7 +267,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
         }
     
         // WHEN
-        let result = try underTest!.loadFrequentlyConsumedDrinks().toBlocking().first()
+        let result = try underTest!.drinks.toBlocking().first()
     
         // THEN
         XCTAssertEqual(testDrinks, result!)
@@ -287,7 +287,7 @@ class ConsumptionListInteractorImplTest: XCTestCase {
         }
     
         // WHEN
-        let result = try underTest!.loadFrequentlyConsumedDrinks().toBlocking().first()
+        let result = try underTest!.drinks.toBlocking().first()
     
         // THEN
         XCTAssertEqual(limitedList, result!)

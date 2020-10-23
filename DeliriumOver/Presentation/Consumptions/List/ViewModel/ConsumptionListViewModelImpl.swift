@@ -9,7 +9,8 @@
 import Foundation
 import RxSwift
 
-class ConsumptionListInteractorImpl: ConsumptionListInteractor {
+class ConsumptionListViewModelImpl: ConsumptionListViewModel {
+
     private let sessionRepository: SessionRepository
     private let consumptionRepository: ConsumptionRepository
     private let drinkRepository: DrinkRepository
@@ -23,7 +24,7 @@ class ConsumptionListInteractorImpl: ConsumptionListInteractor {
         self.sessionId = sessionId
     }
     
-    public func loadConsumptions() -> Observable<[Consumption]> {
+    var consumptions: Observable<[Consumption]> {
         return self.loadSession()
             .ifEmpty(switchTo: Observable.error(SimpleError.error(message: "Session can't be loaded!")))
             .map { (session) -> [Consumption] in
@@ -31,7 +32,7 @@ class ConsumptionListInteractorImpl: ConsumptionListInteractor {
             }
     }
 
-    public func loadFrequentlyConsumedDrinks() -> Observable<[Drink]> {
+    var drinks: Observable<[Drink]> {
         return drinkRepository.getFrequentlyConsumedDrinks()
             .map({ (drinks) -> [Drink] in
                 Array(drinks.prefix(3))
@@ -43,7 +44,7 @@ class ConsumptionListInteractorImpl: ConsumptionListInteractor {
             .delete(consumption: consumption)
     }
     
-    public func add(drink: Drink) -> Completable {
+    public func addDrinkAsConsumption(drink: Drink) -> Completable {
         if let sessionId = session?.id ?? self.sessionId {
             return self.consumptionRepository.saveConsumption(sessionId: sessionId, consumption: Consumption(drink: drink))
         } else {
