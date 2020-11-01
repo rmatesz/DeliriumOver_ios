@@ -1,7 +1,7 @@
 use_modular_headers!
 use_frameworks!
 
-source 'https://github.com/CocoaPods/Specs.git'
+source 'https://cdn.cocoapods.org/'
 
 target "DeliriumOver" do
     pod 'RxSwift',  '~> 5.0'
