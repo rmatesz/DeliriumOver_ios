@@ -11,15 +11,19 @@ import RxSwift
 
 class OnboardingManager {
     private let userDefaults: UserDefaults
+    private let trigger: BehaviorSubject<Void> = BehaviorSubject<Void>(value: ())
+
     init(userDefaults: UserDefaults) {
         self.userDefaults = userDefaults
     }
 
     func loadOnboarding(page: Page) -> Observable<[Onboarding]> {
-        userDefaults.rx.observe([String].self, getKey(forPage: page))
-            .map { (value) -> [Onboarding] in
-                page.onboarding().filter { !(value ?? []).contains($0.rawValue) }
-            }
+        return trigger.flatMap { _ -> Observable<[Onboarding]> in
+            self.userDefaults.rx.observe([String].self, self.getKey(forPage: page))
+                .map { (value) -> [Onboarding] in
+                    page.onboarding().filter { !(value ?? []).contains($0.rawValue) }
+                }
+        }
     }
 
     private func completedOnboarding(forPage page: Page) -> [String] {
@@ -30,6 +34,7 @@ class OnboardingManager {
         userDefaults.setValue(
             completedOnboarding(forPage: page) + [onboarding.rawValue],
             forKey: getKey(forPage: page))
+        trigger.onNext(())
     }
 
     private func getKey(forPage page: Page) -> String {
