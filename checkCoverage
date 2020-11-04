@@ -4,9 +4,9 @@ coverage=`xcrun xccov view --report --json Build/Logs/Test/*.xcresult | cut -d',
 threshold=$1
 
 if (( $(echo "$coverage < $threshold" |bc -l) )); then
-	echo "Current coverage is below threshold! Coverage: $coverage. Threshold: $threshold"
+	echo -e "Current coverage is below threshold! Coverage: $coverage. Threshold: $threshold"
 	exit -1
-Else
-	echo "Coverage check passed! Coverage: $coverage. Threshold: $threshold"
+else
+	echo -e "Coverage check passed! Coverage: $coverage. Threshold: $threshold"
 fi
 

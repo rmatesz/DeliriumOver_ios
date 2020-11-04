@@ -10,11 +10,11 @@ import Foundation
 import RxSwift
 
 extension ConnectableObservableType {
-    func autoconnect() -> Observable<E> {
+    func autoconnect() -> Observable<Element> {
         return Observable.create { observer in
             return self.do(onSubscribe: {
                 _ = self.connect()
-            }).subscribe { (event: Event<Self.E>) in
+            }).subscribe { (event: Event<Self.Element>) in
                 switch event {
                 case .next(let value):
                     observer.on(.next(value))
