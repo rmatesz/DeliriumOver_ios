@@ -9,4 +9,3 @@ if (( $(echo "$coverage < $threshold" |bc -l) )); then
 else
 	echo -e "Coverage check passed! Coverage: $coverage. Threshold: $threshold"
 fi
-
